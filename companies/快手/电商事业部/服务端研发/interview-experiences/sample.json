@@ -1,0 +1,19 @@
+{
+  "company": "待填写",
+  "business_group": "待填写",
+  "department": "待填写",
+  "role": "待填写",
+  "source": {
+    "type": "manual",
+    "url": "",
+    "note": ""
+  },
+  "interview_rounds": 0,
+  "questions": [
+    {
+      "question": "待填写",
+      "insight": "待填写"
+    }
+  ],
+  "final_insight": "待填写"
+}

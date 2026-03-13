@@ -1,0 +1,23 @@
+{
+  "company": "字节跳动",
+  "business_group": "抖音电商",
+  "department": "商业化技术",
+  "role": "后端开发",
+  "source": {
+    "type": "manual",
+    "url": "",
+    "note": "来源备注"
+  },
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "question": "你如何理解高并发系统中的缓存击穿、缓存穿透、缓存雪崩？",
+      "insight": "这题不只是背概念，更要讲出识别场景、解决手段和方案取舍。"
+    },
+    {
+      "question": "MySQL 索引失效的常见场景有哪些？",
+      "insight": "要从查询写法、联合索引最左前缀、类型转换、范围查询等角度系统回答。"
+    }
+  ],
+  "final_insight": "整场面试更看重基础是否扎实、表达是否结构化，以及是否能结合真实项目说明取舍。"
+}

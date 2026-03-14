@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-14T07:33:44.230421+00:00",
+  "generated_at": "2026-03-14T10:07:00+00:00",
   "phase": "collection-and-production",
   "summary": {
-    "todo": 4,
+    "todo": 2,
     "running": 0,
-    "completed": 3,
+    "completed": 4,
     "companies_seeded": 8,
-    "question_banks_filled": 3,
-    "interview_json_count": 3
+    "question_banks_filled": 4,
+    "interview_json_count": 4
   },
   "queues": {
     "priority_companies": [
@@ -45,6 +45,13 @@
       "company": "阿里巴巴",
       "business_group": "淘天集团",
       "department": "技术平台",
+      "question_bank_ready": true,
+      "interview_json_count": 1
+    },
+    {
+      "company": "美团",
+      "business_group": "到店事业群",
+      "department": "后端技术",
       "question_bank_ready": true,
       "interview_json_count": 1
     }
@@ -92,8 +99,8 @@
       "company": "美团",
       "business_group": "到店事业群",
       "department": "后端技术",
-      "question_bank_ready": false,
-      "interview_json_count": 0
+      "question_bank_ready": true,
+      "interview_json_count": 1
     },
     {
       "company": "拼多多",

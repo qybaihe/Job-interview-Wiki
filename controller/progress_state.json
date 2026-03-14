@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-14T10:07:00+00:00",
+  "generated_at": "2026-03-14T10:27:00+00:00",
   "phase": "collection-and-production",
   "summary": {
-    "todo": 2,
+    "todo": 0,
     "running": 0,
-    "completed": 4,
+    "completed": 5,
     "companies_seeded": 8,
-    "question_banks_filled": 4,
-    "interview_json_count": 4
+    "question_banks_filled": 5,
+    "interview_json_count": 5
   },
   "queues": {
     "priority_companies": [
@@ -54,6 +54,13 @@
       "department": "后端技术",
       "question_bank_ready": true,
       "interview_json_count": 1
+    },
+    {
+      "company": "拼多多",
+      "business_group": "主站业务",
+      "department": "服务端",
+      "question_bank_ready": true,
+      "interview_json_count": 1
     }
   ],
   "notes": [
@@ -61,22 +68,6 @@
     "先题库后面经，或题库与面经并行，但必须保证每轮有真实内容入库。"
   ],
   "next_actions": [
-    {
-      "company": "美团",
-      "business_group": "到店事业群",
-      "department": "后端技术",
-      "role": "后端开发",
-      "action": "fill_question_bank",
-      "priority": "P0"
-    },
-    {
-      "company": "美团",
-      "business_group": "到店事业群",
-      "department": "后端技术",
-      "role": "后端开发",
-      "action": "add_interview_json",
-      "priority": "P0"
-    },
     {
       "company": "拼多多",
       "business_group": "主站业务",
@@ -96,18 +87,11 @@
   ],
   "pending": [
     {
-      "company": "美团",
-      "business_group": "到店事业群",
-      "department": "后端技术",
-      "question_bank_ready": true,
-      "interview_json_count": 1
-    },
-    {
       "company": "拼多多",
       "business_group": "主站业务",
       "department": "服务端",
-      "question_bank_ready": false,
-      "interview_json_count": 0
+      "question_bank_ready": true,
+      "interview_json_count": 1
     }
   ]
 }

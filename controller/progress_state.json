@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-03-14T20:29:00+00:00",
+  "generated_at": "2026-03-14T20:49:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 7,
+    "completed": 8,
     "companies_seeded": 8,
-    "question_banks_filled": 6,
+    "question_banks_filled": 7,
     "interview_json_count": 6
   },
   "queues": {
@@ -79,22 +79,24 @@
       "question_bank_ready": true,
       "interview_json_count": 1,
       "artifact": "companies/字节跳动/抖音电商/商业化技术/interview-experiences/2026-字节跳动-抖音电商-商业化技术-算法-样板.json"
-    }
-  ],
-  "notes": [
-    "第一批头部公司后端样板已完成 5 家真实题库与 JSON 内容。",
-    "已新增腾讯 / 微信事业群 / 基础平台 / 客户端开发题库样板。",
-    "本轮新增字节跳动 / 抖音电商 / 商业化技术 / 算法结构化面经样板，开始从后端样板扩展到算法岗位。"
-  ],
-  "next_actions": [
+    },
     {
       "company": "美团",
       "business_group": "到店事业群",
       "department": "后端技术",
       "role": "算法",
-      "action": "fill_question_bank",
-      "priority": "P1"
-    },
+      "question_bank_ready": true,
+      "interview_json_count": 0,
+      "artifact": "companies/美团/到店事业群/后端技术/算法-question-bank.md"
+    }
+  ],
+  "notes": [
+    "第一批头部公司后端样板已完成 5 家真实题库与 JSON 内容。",
+    "已新增腾讯 / 微信事业群 / 基础平台 / 客户端开发题库样板。",
+    "已新增字节跳动 / 抖音电商 / 商业化技术 / 算法结构化面经样板。",
+    "本轮新增美团 / 到店事业群 / 后端技术 / 算法题库样板。"
+  ],
+  "next_actions": [
     {
       "company": "拼多多",
       "business_group": "主站业务",
@@ -108,6 +110,14 @@
       "business_group": "微信事业群",
       "department": "基础平台",
       "role": "客户端开发",
+      "action": "add_interview_json",
+      "priority": "P1"
+    },
+    {
+      "company": "美团",
+      "business_group": "到店事业群",
+      "department": "后端技术",
+      "role": "算法",
       "action": "add_interview_json",
       "priority": "P2"
     }

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-14T10:27:00+00:00",
+  "generated_at": "2026-03-14T10:47:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
@@ -64,34 +64,26 @@
     }
   ],
   "notes": [
-    "先从头部公司 + 后端开发开始做第一批高质量样本。",
-    "先题库后面经，或题库与面经并行，但必须保证每轮有真实内容入库。"
+    "第一批头部公司 + 后端开发样板已补齐。",
+    "下一阶段可扩到快手/京东/百度，或扩展算法、客户端、测开岗位。"
   ],
   "next_actions": [
     {
-      "company": "拼多多",
-      "business_group": "主站业务",
-      "department": "服务端",
+      "company": "快手",
+      "business_group": "电商事业部",
+      "department": "服务端研发",
       "role": "后端开发",
       "action": "fill_question_bank",
-      "priority": "P0"
+      "priority": "P1"
     },
     {
-      "company": "拼多多",
-      "business_group": "主站业务",
-      "department": "服务端",
+      "company": "京东",
+      "business_group": "零售技术",
+      "department": "后端研发",
       "role": "后端开发",
       "action": "add_interview_json",
-      "priority": "P0"
+      "priority": "P1"
     }
   ],
-  "pending": [
-    {
-      "company": "拼多多",
-      "business_group": "主站业务",
-      "department": "服务端",
-      "question_bank_ready": true,
-      "interview_json_count": 1
-    }
-  ]
+  "pending": []
 }

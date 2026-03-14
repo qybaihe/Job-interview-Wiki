@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-03-14T14:27:00+00:00",
+  "generated_at": "2026-03-14T14:47:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
     "completed": 8,
     "companies_seeded": 8,
-    "question_banks_filled": 7,
+    "question_banks_filled": 8,
     "interview_json_count": 8
   },
   "queues": {
@@ -80,23 +80,31 @@
       "company": "百度",
       "business_group": "智能云",
       "department": "基础架构",
-      "question_bank_ready": false,
+      "question_bank_ready": true,
       "interview_json_count": 1
     }
   ],
   "notes": [
-    "第一批头部公司 + 后端开发样板已补齐。",
-    "第二阶段扩张已补入快手电商事业部、京东零售技术、百度智能云后端样板。",
-    "京东零售技术题库已补齐；下一步优先补百度智能云题库。"
+    "第一批与第二阶段后端样板已覆盖 8 家已初始化公司。",
+    "当前 8 家公司均已有至少 1 份后端开发样板内容入库。",
+    "下一步建议转向算法/客户端岗位，或补充更多带明确来源的真实面经。"
   ],
   "next_actions": [
     {
-      "company": "百度",
-      "business_group": "智能云",
-      "department": "基础架构",
-      "role": "后端开发",
+      "company": "字节跳动",
+      "business_group": "抖音电商",
+      "department": "商业化技术",
+      "role": "算法",
+      "action": "add_interview_json",
+      "priority": "P2"
+    },
+    {
+      "company": "腾讯",
+      "business_group": "微信事业群",
+      "department": "基础平台",
+      "role": "客户端开发",
       "action": "fill_question_bank",
-      "priority": "P1"
+      "priority": "P2"
     }
   ],
   "pending": []

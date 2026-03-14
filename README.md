@@ -84,6 +84,7 @@ companies/
 - `PLAN.md`：项目查找计划
 - `SOURCES.md`：来源口径与清洗规则
 - `FIRST_BATCH.md`：第一批优先抓取清单
+- `SEARCH_WORKFLOW.md`：固定查找路径、来源优先级、清洗规则与 cron 消费方式
 
 ---
 

@@ -17,12 +17,18 @@
 执行入口：
 - `python3 scripts/jobwiki_orchestrate.py`
 
+依赖规则文档：
+- `SEARCH_WORKFLOW.md`
+- `FIRST_BATCH.md`
+- `controller/progress_state.json`
+
 职责：
 1. 读取 `controller/progress_state.json`
 2. 扫描首批重点目标是否已有真实 `question-bank.md`
 3. 扫描是否已有真实 `interview-experiences/*.json`
-4. 输出本轮应推进的目标（公司 / 岗位 / 事业群 / 动作类型）
-5. 主线程据此决定：
+4. 按 `SEARCH_WORKFLOW.md` 规定的固定路径决定本轮优先查找方向
+5. 输出本轮应推进的目标（公司 / 岗位 / 事业群 / 动作类型）
+6. 主线程据此决定：
    - 找线索
    - 整题库
    - 落 JSON

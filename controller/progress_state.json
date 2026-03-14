@@ -1,13 +1,13 @@
 {
-  "generated_at": "",
-  "phase": "bootstrap-to-collection",
+  "generated_at": "2026-03-14T07:33:44.230421+00:00",
+  "phase": "collection-and-production",
   "summary": {
-    "todo": 5,
+    "todo": 4,
     "running": 0,
-    "completed": 0,
+    "completed": 3,
     "companies_seeded": 8,
-    "question_banks_filled": 0,
-    "interview_json_count": 0
+    "question_banks_filled": 3,
+    "interview_json_count": 3
   },
   "queues": {
     "priority_companies": [
@@ -26,9 +26,81 @@
     ]
   },
   "running": [],
-  "completed": [],
+  "completed": [
+    {
+      "company": "字节跳动",
+      "business_group": "抖音电商",
+      "department": "商业化技术",
+      "question_bank_ready": true,
+      "interview_json_count": 1
+    },
+    {
+      "company": "腾讯",
+      "business_group": "微信事业群",
+      "department": "基础平台",
+      "question_bank_ready": true,
+      "interview_json_count": 1
+    },
+    {
+      "company": "阿里巴巴",
+      "business_group": "淘天集团",
+      "department": "技术平台",
+      "question_bank_ready": true,
+      "interview_json_count": 1
+    }
+  ],
   "notes": [
     "先从头部公司 + 后端开发开始做第一批高质量样本。",
     "先题库后面经，或题库与面经并行，但必须保证每轮有真实内容入库。"
+  ],
+  "next_actions": [
+    {
+      "company": "美团",
+      "business_group": "到店事业群",
+      "department": "后端技术",
+      "role": "后端开发",
+      "action": "fill_question_bank",
+      "priority": "P0"
+    },
+    {
+      "company": "美团",
+      "business_group": "到店事业群",
+      "department": "后端技术",
+      "role": "后端开发",
+      "action": "add_interview_json",
+      "priority": "P0"
+    },
+    {
+      "company": "拼多多",
+      "business_group": "主站业务",
+      "department": "服务端",
+      "role": "后端开发",
+      "action": "fill_question_bank",
+      "priority": "P0"
+    },
+    {
+      "company": "拼多多",
+      "business_group": "主站业务",
+      "department": "服务端",
+      "role": "后端开发",
+      "action": "add_interview_json",
+      "priority": "P0"
+    }
+  ],
+  "pending": [
+    {
+      "company": "美团",
+      "business_group": "到店事业群",
+      "department": "后端技术",
+      "question_bank_ready": false,
+      "interview_json_count": 0
+    },
+    {
+      "company": "拼多多",
+      "business_group": "主站业务",
+      "department": "服务端",
+      "question_bank_ready": false,
+      "interview_json_count": 0
+    }
   ]
 }

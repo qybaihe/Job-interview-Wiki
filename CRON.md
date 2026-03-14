@@ -14,10 +14,13 @@
 ### 1. jobwiki-orchestrate（主 cron）
 建议频率：**每 20 分钟一次**
 
+执行入口：
+- `python3 scripts/jobwiki_orchestrate.py`
+
 职责：
 1. 读取 `controller/progress_state.json`
-2. 判断当前是否有 running 任务
-3. 判断第一批清单是否还有未消费项
+2. 扫描首批重点目标是否已有真实 `question-bank.md`
+3. 扫描是否已有真实 `interview-experiences/*.json`
 4. 输出本轮应推进的目标（公司 / 岗位 / 事业群 / 动作类型）
 5. 主线程据此决定：
    - 找线索

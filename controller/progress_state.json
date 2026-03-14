@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-14T14:47:00+00:00",
+  "generated_at": "2026-03-14T20:10:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 8,
+    "completed": 6,
     "companies_seeded": 8,
-    "question_banks_filled": 8,
-    "interview_json_count": 8
+    "question_banks_filled": 6,
+    "interview_json_count": 5
   },
   "queues": {
     "priority_companies": [
@@ -63,31 +63,19 @@
       "interview_json_count": 1
     },
     {
-      "company": "快手",
-      "business_group": "电商事业部",
-      "department": "服务端研发",
+      "company": "腾讯",
+      "business_group": "微信事业群",
+      "department": "基础平台",
+      "role": "客户端开发",
       "question_bank_ready": true,
-      "interview_json_count": 1
-    },
-    {
-      "company": "京东",
-      "business_group": "零售技术",
-      "department": "后端研发",
-      "question_bank_ready": true,
-      "interview_json_count": 1
-    },
-    {
-      "company": "百度",
-      "business_group": "智能云",
-      "department": "基础架构",
-      "question_bank_ready": true,
-      "interview_json_count": 1
+      "interview_json_count": 0,
+      "artifact": "companies/腾讯/微信事业群/基础平台/客户端开发-question-bank.md"
     }
   ],
   "notes": [
-    "第一批与第二阶段后端样板已覆盖 8 家已初始化公司。",
-    "当前 8 家公司均已有至少 1 份后端开发样板内容入库。",
-    "下一步建议转向算法/客户端岗位，或补充更多带明确来源的真实面经。"
+    "第一批头部公司后端样板已完成 5 家真实题库与 JSON 内容。",
+    "本轮新增腾讯 / 微信事业群 / 基础平台 / 客户端开发题库样板，开始从后端扩展到第二优先岗位。",
+    "下一步建议优先补字节算法、腾讯客户端真实来源面经，或继续补美团/拼多多第二岗位题库。"
   ],
   "next_actions": [
     {
@@ -96,13 +84,21 @@
       "department": "商业化技术",
       "role": "算法",
       "action": "add_interview_json",
+      "priority": "P1"
+    },
+    {
+      "company": "美团",
+      "business_group": "到店事业群",
+      "department": "后端技术",
+      "role": "算法",
+      "action": "fill_question_bank",
       "priority": "P2"
     },
     {
-      "company": "腾讯",
-      "business_group": "微信事业群",
-      "department": "基础平台",
-      "role": "客户端开发",
+      "company": "拼多多",
+      "business_group": "主站业务",
+      "department": "服务端",
+      "role": "算法",
       "action": "fill_question_bank",
       "priority": "P2"
     }

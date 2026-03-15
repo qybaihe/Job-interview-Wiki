@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-15T08:15:00+00:00",
+  "generated_at": "2026-03-15T08:35:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
@@ -139,7 +139,7 @@
     "已新增腾讯 / 微信事业群 / 基础平台 / 客户端开发结构化面经样板。",
     "已新增美团 / 到店事业群 / 后端技术 / 算法结构化面经样板。",
     "已新增拼多多 / 主站业务 / 服务端 / 算法结构化面经样板。",
-    "本轮已对 progress_state.json 完成一次去重清洗，把重复 completed 记录收敛为按公司/部门聚合的唯一条目。"
+    "本轮新增 controller/merge_notes.md，明确 clean_merge / source_enrich 规则与当前优先对象。"
   ],
   "next_actions": [
     {

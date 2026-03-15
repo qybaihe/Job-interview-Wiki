@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-15T11:55:00+00:00",
+  "generated_at": "2026-03-15T12:15:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 14,
+    "completed": 15,
     "companies_seeded": 8,
     "question_banks_filled": 11,
-    "interview_json_count": 11
+    "interview_json_count": 12
   },
   "queues": {
     "priority_companies": [
@@ -185,11 +185,15 @@
       "department": "推荐策略",
       "role": "算法",
       "question_bank_ready": true,
-      "interview_json_count": 0,
+      "interview_json_count": 1,
       "artifacts": [
-        "companies/美团/核心本地商业/推荐策略/算法-question-bank.md"
+        "companies/美团/核心本地商业/推荐策略/算法-question-bank.md",
+        "companies/美团/核心本地商业/推荐策略/interview-experiences/2026-美团-核心本地商业-推荐策略-算法-样板.json"
       ],
-      "note": "本轮新增核心本地商业推荐策略算法题库，覆盖本地生活推荐/搜索/营销策略、多目标优化、地理约束、商户生态与实验评估。"
+      "source_enriched_roles": [
+        "算法"
+      ],
+      "note": "已补核心本地商业推荐策略结构化面经样板，后续应优先补真实公开来源链接与轮次差异。"
     }
   ],
   "notes": [
@@ -200,7 +204,7 @@
     "已新增拼多多 / 主站业务 / 服务端 / 算法结构化面经样板。",
     "已新增腾讯 / 平台与内容事业群 / 后台研发 / 后端开发结构化面经样板。",
     "已新增快手 / 主站业务 / 推荐算法 / 算法结构化面经样板。",
-    "已新增美团 / 核心本地商业 / 推荐策略 / 算法题库。"
+    "已新增美团 / 核心本地商业 / 推荐策略 / 算法结构化面经样板。"
   ],
   "next_actions": [
     {
@@ -208,7 +212,7 @@
       "business_group": "核心本地商业",
       "department": "推荐策略",
       "role": "算法",
-      "action": "add_interview_json",
+      "action": "source_enrich_real_link",
       "priority": "P1"
     },
     {

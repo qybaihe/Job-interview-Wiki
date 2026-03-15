@@ -6,7 +6,11 @@
   "source": {
     "type": "manual-curated",
     "url": "",
-    "note": "第二阶段扩张样板：基于到店事业群算法岗位常见公开高频面试方向整理，用于先补结构化样本；本轮已按题库术语做一次 clean_merge，统一到‘点击率 / 转化率 / 核销率 / GMV / 补贴成本 / 多目标优化 / 策略实验’口径。后续需补可核验公开面经链接与轮次细节。"
+    "note": "第二阶段扩张样板：基于到店事业群算法岗位常见公开高频面试方向整理，用于先补结构化样本；本轮已按题库术语做一次 clean_merge，统一到‘点击率 / 转化率 / 核销率 / GMV / 补贴成本 / 多目标优化 / 策略实验’口径。后续需补可核验公开面经链接与轮次细节。",
+    "basis": [
+      "companies/美团/到店事业群/后端技术/算法-question-bank.md"
+    ],
+    "verification_status": "template-only-unverified-public-post"
   },
   "interview_rounds": 3,
   "questions": [

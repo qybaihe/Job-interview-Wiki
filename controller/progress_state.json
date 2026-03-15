@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-15T09:35:00+00:00",
+  "generated_at": "2026-03-15T09:55:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
@@ -80,6 +80,9 @@
       ],
       "clean_merged_roles": [
         "算法"
+      ],
+      "source_enriched_roles": [
+        "算法"
       ]
     },
     {
@@ -95,6 +98,9 @@
         "companies/拼多多/主站业务/服务端/interview-experiences/2026-拼多多-主站业务-服务端-算法-样板.json"
       ],
       "clean_merged_roles": [
+        "算法"
+      ],
+      "source_enriched_roles": [
         "算法"
       ]
     },
@@ -148,7 +154,7 @@
     "已新增腾讯 / 微信事业群 / 基础平台 / 客户端开发结构化面经样板。",
     "已新增美团 / 到店事业群 / 后端技术 / 算法结构化面经样板。",
     "已新增拼多多 / 主站业务 / 服务端 / 算法结构化面经样板。",
-    "本轮对拼多多 / 主站业务 / 服务端 / 算法完成一次 clean_merge：统一题库与 JSON 的多目标优化、冷启动治理和大促治理术语口径。"
+    "本轮完成 source_enrich followup：腾讯客户端、美团算法、拼多多算法三个样板的 source.basis / verification_status 已统一。"
   ],
   "next_actions": [
     {
@@ -156,7 +162,7 @@
       "business_group": "微信事业群",
       "department": "基础平台",
       "role": "客户端开发",
-      "action": "source_enrich_followup",
+      "action": "source_enrich_real_link",
       "priority": "P2"
     },
     {
@@ -164,7 +170,7 @@
       "business_group": "到店事业群",
       "department": "后端技术",
       "role": "算法",
-      "action": "source_enrich_followup",
+      "action": "source_enrich_real_link",
       "priority": "P2"
     },
     {
@@ -172,7 +178,7 @@
       "business_group": "主站业务",
       "department": "服务端",
       "role": "算法",
-      "action": "source_enrich_followup",
+      "action": "source_enrich_real_link",
       "priority": "P2"
     }
   ],

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-15T08:35:00+00:00",
+  "generated_at": "2026-03-15T08:55:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
@@ -50,6 +50,9 @@
         "companies/腾讯/微信事业群/基础平台/客户端开发-question-bank.md",
         "companies/腾讯/微信事业群/基础平台/interview-experiences/2026-首批样板-后端开发.json",
         "companies/腾讯/微信事业群/基础平台/interview-experiences/2026-腾讯-微信事业群-基础平台-客户端开发-样板.json"
+      ],
+      "source_enriched_roles": [
+        "客户端开发"
       ]
     },
     {
@@ -130,7 +133,7 @@
       "question_bank_ready": true,
       "interview_json_count": 1,
       "artifact": "companies/腾讯/微信事业群/基础平台/interview-experiences/2026-腾讯-微信事业群-基础平台-客户端开发-样板.json",
-      "note": "已完成一次清洗合并：去除 progress_state 中重复 completed 项，按公司/部门聚合 artifacts。"
+      "note": "已完成一次清洗合并：去除 progress_state 中重复 completed 项，按公司/部门聚合 artifacts；本轮补充 source_enrich 说明。"
     }
   ],
   "notes": [
@@ -139,7 +142,7 @@
     "已新增腾讯 / 微信事业群 / 基础平台 / 客户端开发结构化面经样板。",
     "已新增美团 / 到店事业群 / 后端技术 / 算法结构化面经样板。",
     "已新增拼多多 / 主站业务 / 服务端 / 算法结构化面经样板。",
-    "本轮新增 controller/merge_notes.md，明确 clean_merge / source_enrich 规则与当前优先对象。"
+    "本轮为腾讯 / 微信事业群 / 基础平台 / 客户端开发样板补充 source_enrich：增加 basis、verification_status 与更明确的来源说明。"
   ],
   "next_actions": [
     {
@@ -163,7 +166,7 @@
       "business_group": "微信事业群",
       "department": "基础平台",
       "role": "客户端开发",
-      "action": "source_enrich",
+      "action": "source_enrich_followup",
       "priority": "P2"
     }
   ],

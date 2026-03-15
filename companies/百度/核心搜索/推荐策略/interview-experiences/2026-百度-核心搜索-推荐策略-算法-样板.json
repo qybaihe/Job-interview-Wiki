@@ -4,13 +4,23 @@
   "department": "推荐策略",
   "role": "算法",
   "source": {
-    "type": "manual-curated",
-    "url": "",
-    "note": "第二阶段扩张样板：基于 `算法-question-bank.md` 与搜索排序 / Query 理解 / 搜索生态治理高频问题整理，用于先补结构化面经样板；当前并非已核验的单场真实公开面经。后续若补到明确面经长帖，应优先回填 source.url、轮次信息与题目顺序。",
-    "basis": [
-      "companies/百度/核心搜索/推荐策略/算法-question-bank.md"
+    "type": "manual-curated-with-public-tech-basis",
+    "url": "https://cloud.baidu.com/article",
+    "urls": [
+      "https://cloud.baidu.com/article",
+      "https://cloud.baidu.com/topic/ai-search",
+      "https://cloud.baidu.com/topic/big-data",
+      "https://cloud.baidu.com/topic/artificial-intelligence"
     ],
-    "verification_status": "template-only-unverified-public-post",
+    "note": "第二阶段扩张样板：基于 `算法-question-bank.md` 与搜索排序 / Query 理解 / 搜索生态治理高频问题整理，用于先补结构化面经样板；当前并非已核验的单场真实公开面经。本次补入百度智能云公开技术文章与 AI Search / Big Data / Artificial Intelligence 主题入口，作为搜索推荐策略问题域的公开技术 basis；后续若补到明确面经长帖，应优先回填 source.url、轮次信息与题目顺序。",
+    "basis": [
+      "companies/百度/核心搜索/推荐策略/算法-question-bank.md",
+      "https://cloud.baidu.com/article",
+      "https://cloud.baidu.com/topic/ai-search",
+      "https://cloud.baidu.com/topic/big-data",
+      "https://cloud.baidu.com/topic/artificial-intelligence"
+    ],
+    "verification_status": "public-tech-basis-enriched-not-single-interview-post",
     "todo": {
       "target": "source_enrich_real_link",
       "preferred_source_types": [

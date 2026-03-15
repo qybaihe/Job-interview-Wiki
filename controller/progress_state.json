@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-03-15T14:55:00+00:00",
+  "generated_at": "2026-03-15T15:15:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 23,
+    "completed": 24,
     "companies_seeded": 8,
-    "question_banks_filled": 15,
+    "question_banks_filled": 16,
     "interview_json_count": 16
   },
   "queues": {
@@ -258,6 +258,18 @@
         "算法"
       ],
       "note": "已补淘天搜广推算法结构化面经样板，后续应优先补真实公开来源链接与轮次差异。"
+    },
+    {
+      "company": "美团",
+      "business_group": "到家事业群",
+      "department": "服务端研发",
+      "role": "后端开发",
+      "question_bank_ready": true,
+      "interview_json_count": 0,
+      "artifacts": [
+        "companies/美团/到家事业群/服务端研发/question-bank.md"
+      ],
+      "note": "本轮新增到家事业群服务端研发后端题库，覆盖即时配送、订单履约、交易一致性、高峰削峰、调度与时效预估。"
     }
   ],
   "notes": [
@@ -274,9 +286,18 @@
     "已新增阿里巴巴 / 阿里云 / 基础架构 / 后端开发题库。",
     "已新增阿里巴巴 / 阿里云 / 基础架构 / 后端开发结构化面经样板。",
     "已新增阿里巴巴 / 淘天集团 / 搜广推 / 算法题库。",
-    "已新增阿里巴巴 / 淘天集团 / 搜广推 / 算法结构化面经样板。"
+    "已新增阿里巴巴 / 淘天集团 / 搜广推 / 算法结构化面经样板。",
+    "已新增美团 / 到家事业群 / 服务端研发 / 后端开发题库。"
   ],
   "next_actions": [
+    {
+      "company": "美团",
+      "business_group": "到家事业群",
+      "department": "服务端研发",
+      "role": "后端开发",
+      "action": "add_interview_json",
+      "priority": "P1"
+    },
     {
       "company": "阿里巴巴",
       "business_group": "淘天集团",
@@ -289,14 +310,6 @@
       "company": "阿里巴巴",
       "business_group": "阿里云",
       "department": "基础架构",
-      "role": "后端开发",
-      "action": "source_enrich_real_link",
-      "priority": "P1"
-    },
-    {
-      "company": "京东",
-      "business_group": "物流技术",
-      "department": "平台研发",
       "role": "后端开发",
       "action": "source_enrich_real_link",
       "priority": "P1"

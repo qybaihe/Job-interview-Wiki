@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-03-15T23:15:00+00:00",
+  "generated_at": "2026-03-15T23:35:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 48,
+    "completed": 49,
     "companies_seeded": 8,
     "question_banks_filled": 19,
     "interview_json_count": 19
@@ -279,7 +279,7 @@
       "source_enriched_roles": [
         "算法"
       ],
-      "note": "已将 source 从无链接样板升级为带公开技术博客 basis 的结构化样板，并继续补入 analytics / machine-learning 主题入口；后续仍应补单场真实面经链接。"
+      "note": "已将 source 从无链接样板升级为带公开技术博客 basis 的结构化样板，并继续补入 analytics / machine-learning / e-commerce / big-data 主题入口；后续仍应补单场真实面经链接。"
     },
     {
       "company": "美团",
@@ -366,7 +366,8 @@
     "已为腾讯 / 微信事业群 / 基础平台 / 客户端开发样板补入腾讯云开发者社区客户端/移动开发相关专栏入口与移动开发、性能优化主题页，并修复 orchestrate 覆盖后的状态回退。",
     "已为阿里巴巴 / 淘天集团 / 技术平台 / 后端开发样板补入阿里云公开技术博客首页与 architecture / cloud-native / database 主题入口，并修复 orchestrate 覆盖后的状态回退。",
     "已为字节跳动 / 抖音电商 / 商业化技术 / 后端开发样板补入火山引擎开发者社区文章页与 architecture / database / middleware 分类入口，并修复 orchestrate 覆盖后的状态回退。",
-    "已为腾讯 / 微信事业群 / 基础平台 / 后端开发样板补入腾讯云开发者社区专栏入口、专栏页及分布式系统 / 消息队列主题页，并修复 orchestrate 覆盖后的状态回退。"
+    "已为腾讯 / 微信事业群 / 基础平台 / 后端开发样板补入腾讯云开发者社区专栏入口、专栏页及分布式系统 / 消息队列主题页，并修复 orchestrate 覆盖后的状态回退。",
+    "已为阿里巴巴 / 淘天集团 / 搜广推 / 算法样板继续补入 e-commerce / big-data 主题入口，并修复 orchestrate 覆盖后的状态回退。"
   ],
   "next_actions": [
     {

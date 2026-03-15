@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-15T11:15:00+00:00",
+  "generated_at": "2026-03-15T11:35:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 12,
+    "completed": 13,
     "companies_seeded": 8,
     "question_banks_filled": 10,
-    "interview_json_count": 10
+    "interview_json_count": 11
   },
   "queues": {
     "priority_companies": [
@@ -169,11 +169,15 @@
       "department": "推荐算法",
       "role": "算法",
       "question_bank_ready": true,
-      "interview_json_count": 0,
+      "interview_json_count": 1,
       "artifacts": [
-        "companies/快手/主站业务/推荐算法/question-bank.md"
+        "companies/快手/主站业务/推荐算法/question-bank.md",
+        "companies/快手/主站业务/推荐算法/interview-experiences/2026-快手-主站业务-推荐算法-算法-样板.json"
       ],
-      "note": "本轮新增推荐算法题库，覆盖召回/排序/重排、多目标优化、实验评估、冷启动、生态治理与线上稳定性。"
+      "source_enriched_roles": [
+        "算法"
+      ],
+      "note": "已补推荐算法结构化面经样板，后续应优先补真实公开来源链接与轮次差异。"
     }
   ],
   "notes": [
@@ -183,7 +187,7 @@
     "已新增美团 / 到店事业群 / 后端技术 / 算法结构化面经样板。",
     "已新增拼多多 / 主站业务 / 服务端 / 算法结构化面经样板。",
     "已新增腾讯 / 平台与内容事业群 / 后台研发 / 后端开发结构化面经样板。",
-    "已新增快手 / 主站业务 / 推荐算法 / 算法题库。"
+    "已新增快手 / 主站业务 / 推荐算法 / 算法结构化面经样板。"
   ],
   "next_actions": [
     {
@@ -191,7 +195,7 @@
       "business_group": "主站业务",
       "department": "推荐算法",
       "role": "算法",
-      "action": "add_interview_json",
+      "action": "source_enrich_real_link",
       "priority": "P1"
     },
     {

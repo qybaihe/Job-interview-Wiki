@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-15T13:15:00+00:00",
+  "generated_at": "2026-03-15T13:35:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 18,
+    "completed": 19,
     "companies_seeded": 8,
     "question_banks_filled": 13,
-    "interview_json_count": 13
+    "interview_json_count": 14
   },
   "queues": {
     "priority_companies": [
@@ -217,11 +217,15 @@
       "department": "平台研发",
       "role": "后端开发",
       "question_bank_ready": true,
-      "interview_json_count": 0,
+      "interview_json_count": 1,
       "artifacts": [
-        "companies/京东/物流技术/平台研发/question-bank.md"
+        "companies/京东/物流技术/平台研发/question-bank.md",
+        "companies/京东/物流技术/平台研发/interview-experiences/2026-京东-物流技术-平台研发-后端开发-样板.json"
       ],
-      "note": "本轮新增物流技术平台研发后端题库，覆盖订单履约、仓配系统、一致性、高并发、稳定性与平台化设计。"
+      "source_enriched_roles": [
+        "后端开发"
+      ],
+      "note": "已补物流技术平台研发结构化面经样板，后续应优先补真实公开来源链接与轮次差异。"
     }
   ],
   "notes": [
@@ -234,7 +238,7 @@
     "已新增快手 / 主站业务 / 推荐算法 / 算法结构化面经样板。",
     "已新增美团 / 核心本地商业 / 推荐策略 / 算法结构化面经样板。",
     "已新增百度 / 核心搜索 / 推荐策略 / 算法结构化面经样板。",
-    "已新增京东 / 物流技术 / 平台研发 / 后端开发题库。"
+    "已新增京东 / 物流技术 / 平台研发 / 后端开发结构化面经样板。"
   ],
   "next_actions": [
     {
@@ -242,7 +246,7 @@
       "business_group": "物流技术",
       "department": "平台研发",
       "role": "后端开发",
-      "action": "add_interview_json",
+      "action": "source_enrich_real_link",
       "priority": "P1"
     },
     {

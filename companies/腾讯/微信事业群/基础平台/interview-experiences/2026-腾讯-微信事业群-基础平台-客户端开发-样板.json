@@ -4,13 +4,23 @@
   "department": "基础平台",
   "role": "客户端开发",
   "source": {
-    "type": "manual-curated",
-    "url": "",
-    "note": "第二阶段扩张样板：当前基于 `客户端开发-question-bank.md` 与客户端基础平台岗位公开高频问题进行结构化整理；该文件是可用样板，不是已核验真实面经原帖。后续若补到明确公开面经链接，应优先回填 source.url、面试轮次差异与追问链路。",
-    "basis": [
-      "companies/腾讯/微信事业群/基础平台/客户端开发-question-bank.md"
+    "type": "manual-curated-with-public-tech-basis",
+    "url": "https://cloud.tencent.com/developer/column/1070",
+    "urls": [
+      "https://cloud.tencent.com/developer/column/1070",
+      "https://cloud.tencent.com/developer/column",
+      "https://cloud.tencent.com/developer/tag/10287",
+      "https://cloud.tencent.com/developer/tag/10333"
     ],
-    "verification_status": "template-only-unverified-public-post",
+    "note": "第二阶段扩张样板：当前基于 `客户端开发-question-bank.md` 与客户端基础平台岗位公开高频问题进行结构化整理；该文件是可用样板，不是已核验真实面经原帖。本次补入腾讯云开发者社区客户端/移动开发相关专栏入口与移动开发、性能优化主题页，作为微信基础平台客户端问题域的公开技术 basis；后续若补到明确公开面经链接，应优先回填 source.url、面试轮次差异与追问链路。",
+    "basis": [
+      "companies/腾讯/微信事业群/基础平台/客户端开发-question-bank.md",
+      "https://cloud.tencent.com/developer/column/1070",
+      "https://cloud.tencent.com/developer/column",
+      "https://cloud.tencent.com/developer/tag/10287",
+      "https://cloud.tencent.com/developer/tag/10333"
+    ],
+    "verification_status": "public-tech-basis-enriched-not-single-interview-post",
     "todo": {
       "target": "source_enrich_real_link",
       "preferred_source_types": [

@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-15T10:35:00+00:00",
+  "generated_at": "2026-03-15T10:55:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 10,
+    "completed": 11,
     "companies_seeded": 8,
     "question_banks_filled": 9,
-    "interview_json_count": 9
+    "interview_json_count": 10
   },
   "queues": {
     "priority_companies": [
@@ -153,6 +153,22 @@
       "department": "后台研发",
       "role": "后端开发",
       "question_bank_ready": true,
+      "interview_json_count": 1,
+      "artifacts": [
+        "companies/腾讯/平台与内容事业群/后台研发/question-bank.md",
+        "companies/腾讯/平台与内容事业群/后台研发/interview-experiences/2026-腾讯-平台与内容事业群-后台研发-后端开发-样板.json"
+      ],
+      "source_enriched_roles": [
+        "后端开发"
+      ],
+      "note": "已补结构化后端开发面经样板，后续应优先补真实公开来源链接与轮次差异。"
+    },
+    {
+      "company": "腾讯",
+      "business_group": "平台与内容事业群",
+      "department": "后台研发",
+      "role": "后端开发",
+      "question_bank_ready": true,
       "interview_json_count": 0,
       "artifacts": [
         "companies/腾讯/平台与内容事业群/后台研发/question-bank.md"
@@ -166,7 +182,7 @@
     "已新增腾讯 / 微信事业群 / 基础平台 / 客户端开发结构化面经样板。",
     "已新增美团 / 到店事业群 / 后端技术 / 算法结构化面经样板。",
     "已新增拼多多 / 主站业务 / 服务端 / 算法结构化面经样板。",
-    "已新增腾讯 / 平台与内容事业群 / 后台研发 / 后端开发题库。"
+    "已新增腾讯 / 平台与内容事业群 / 后台研发 / 后端开发结构化面经样板。"
   ],
   "next_actions": [
     {
@@ -174,7 +190,7 @@
       "business_group": "平台与内容事业群",
       "department": "后台研发",
       "role": "后端开发",
-      "action": "add_interview_json",
+      "action": "source_enrich_real_link",
       "priority": "P1"
     },
     {

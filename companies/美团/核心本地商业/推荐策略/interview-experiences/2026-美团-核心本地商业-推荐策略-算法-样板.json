@@ -4,13 +4,23 @@
   "department": "推荐策略",
   "role": "算法",
   "source": {
-    "type": "manual-curated",
-    "url": "",
-    "note": "第二阶段扩张样板：基于 `算法-question-bank.md` 与本地生活推荐/搜索/营销策略高频问题整理，用于先补结构化面经样板；当前并非已核验的单场真实公开面经。后续若补到明确面经长帖，应优先回填 source.url、轮次信息与追问链路。",
-    "basis": [
-      "companies/美团/核心本地商业/推荐策略/算法-question-bank.md"
+    "type": "manual-curated-with-public-tech-basis",
+    "url": "https://tech.meituan.com/",
+    "urls": [
+      "https://tech.meituan.com/",
+      "https://tech.meituan.com/tags/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95.html",
+      "https://tech.meituan.com/tags/%E6%90%9C%E7%B4%A2%E6%8E%92%E5%BA%8F.html",
+      "https://tech.meituan.com/tags/%E5%88%B0%E5%BA%97.html"
     ],
-    "verification_status": "template-only-unverified-public-post",
+    "note": "第二阶段扩张样板：基于 `算法-question-bank.md` 与本地生活推荐/搜索/营销策略高频问题整理，用于先补结构化面经样板；当前并非已核验的单场真实公开面经。本次补入美团技术团队文章入口与推荐算法、搜索排序、到店主题页，作为核心本地商业推荐策略问题域的公开技术 basis；后续若补到明确面经长帖，应优先回填 source.url、轮次信息与追问链路。",
+    "basis": [
+      "companies/美团/核心本地商业/推荐策略/算法-question-bank.md",
+      "https://tech.meituan.com/",
+      "https://tech.meituan.com/tags/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95.html",
+      "https://tech.meituan.com/tags/%E6%90%9C%E7%B4%A2%E6%8E%92%E5%BA%8F.html",
+      "https://tech.meituan.com/tags/%E5%88%B0%E5%BA%97.html"
+    ],
+    "verification_status": "public-tech-basis-enriched-not-single-interview-post",
     "todo": {
       "target": "source_enrich_real_link",
       "preferred_source_types": [

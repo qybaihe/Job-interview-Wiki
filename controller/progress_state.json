@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-15T09:55:00+00:00",
+  "generated_at": "2026-03-15T10:15:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
@@ -154,7 +154,7 @@
     "已新增腾讯 / 微信事业群 / 基础平台 / 客户端开发结构化面经样板。",
     "已新增美团 / 到店事业群 / 后端技术 / 算法结构化面经样板。",
     "已新增拼多多 / 主站业务 / 服务端 / 算法结构化面经样板。",
-    "本轮完成 source_enrich followup：腾讯客户端、美团算法、拼多多算法三个样板的 source.basis / verification_status 已统一。"
+    "本轮为腾讯客户端、美团算法、拼多多算法三个样板补充 source.todo，明确后续真实来源补链的优先来源类型与搜索模板。"
   ],
   "next_actions": [
     {
@@ -163,7 +163,7 @@
       "department": "基础平台",
       "role": "客户端开发",
       "action": "source_enrich_real_link",
-      "priority": "P2"
+      "priority": "P1"
     },
     {
       "company": "美团",
@@ -171,7 +171,7 @@
       "department": "后端技术",
       "role": "算法",
       "action": "source_enrich_real_link",
-      "priority": "P2"
+      "priority": "P1"
     },
     {
       "company": "拼多多",
@@ -179,7 +179,7 @@
       "department": "服务端",
       "role": "算法",
       "action": "source_enrich_real_link",
-      "priority": "P2"
+      "priority": "P1"
     }
   ],
   "pending": []

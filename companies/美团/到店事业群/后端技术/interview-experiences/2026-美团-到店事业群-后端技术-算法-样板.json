@@ -10,7 +10,20 @@
     "basis": [
       "companies/美团/到店事业群/后端技术/算法-question-bank.md"
     ],
-    "verification_status": "template-only-unverified-public-post"
+    "verification_status": "template-only-unverified-public-post",
+    "todo": {
+      "target": "source_enrich_real_link",
+      "preferred_source_types": [
+        "完整面经长帖",
+        "GitHub/Markdown 整理仓库",
+        "个人博客长文复盘"
+      ],
+      "search_templates": [
+        "美团 到店事业群 后端技术 算法 面经",
+        "美团 到店 算法 面试 复盘",
+        "本地生活 算法 面经 美团"
+      ]
+    }
   },
   "interview_rounds": 3,
   "questions": [

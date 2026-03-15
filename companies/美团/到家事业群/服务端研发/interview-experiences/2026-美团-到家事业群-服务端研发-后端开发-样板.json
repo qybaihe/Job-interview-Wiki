@@ -4,15 +4,25 @@
   "department": "服务端研发",
   "role": "后端开发",
   "source": {
-    "type": "manual-curated",
-    "url": "",
-    "note": "第二阶段扩张样板：基于到家事业群服务端研发后端题库整理出的结构化面经样板，用于先补齐公司 / 业务线 / 岗位维度的可用内容。当前不是已核验的单场真实公开面经，后续应优先补明确来源链接、轮次顺序和更细颗粒度的问题来源。",
-    "basis": [
-      "companies/美团/到家事业群/服务端研发/question-bank.md"
+    "type": "manual-curated-with-public-tech-basis",
+    "url": "https://tech.meituan.com/",
+    "urls": [
+      "https://tech.meituan.com/",
+      "https://tech.meituan.com/tags/%E9%85%8D%E9%80%81.html",
+      "https://tech.meituan.com/tags/%E8%B0%83%E5%BA%A6.html",
+      "https://tech.meituan.com/tags/%E4%BA%A4%E6%98%93.html"
     ],
-    "verification_status": "template-only-unverified-public-post",
+    "note": "当前仍不是已核验的单场真实公开面经，而是基于美团技术团队公开技术文章标签页（配送 / 调度 / 交易）与本仓库题库内容交叉整理出的结构化样板。此次已补入可访问的公开技术来源，用来支撑业务链路、履约调度、交易一致性和高峰稳定性等问题背景；后续仍应优先补明确到单场面试轮次的真实公开面经链接。",
+    "basis": [
+      "companies/美团/到家事业群/服务端研发/question-bank.md",
+      "https://tech.meituan.com/",
+      "https://tech.meituan.com/tags/%E9%85%8D%E9%80%81.html",
+      "https://tech.meituan.com/tags/%E8%B0%83%E5%BA%A6.html",
+      "https://tech.meituan.com/tags/%E4%BA%A4%E6%98%93.html"
+    ],
+    "verification_status": "public-tech-basis-enriched-not-single-interview-post",
     "todo": {
-      "target": "source_enrich_real_link",
+      "target": "single_interview_round_source",
       "preferred_source_types": [
         "完整面经长帖",
         "技术博客复盘",

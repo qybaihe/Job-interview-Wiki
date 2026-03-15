@@ -7,9 +7,16 @@
   "title": "2026-美团-即时零售-服务端研发-后端开发-样板",
   "source": {
     "type": "manual-curated-from-question-bank",
-    "note": "当前不是已核验的单场真实公开面经，而是基于即时零售服务端后端题库整理出的结构化样板，用于先沉淀分钟级履约、门店库存、调度协同、区域限流和稳定性建设等问题场景。后续仍应优先补充明确到单场面试轮次的真实公开来源。"
+    "note": "当前不是已核验的单场真实公开面经，而是基于即时零售服务端后端题库整理出的结构化样板，用于先沉淀分钟级履约、门店库存、调度协同、区域限流和稳定性建设等问题场景。后续仍应优先补充明确到单场面试轮次的真实公开来源。当前已补入美团技术团队公开文章与标签页，作为业务与技术问题域的公开 basis，而非单场真实面试原文。",
+    "basis": [
+      "https://tech.meituan.com/",
+      "https://tech.meituan.com/tags/%E9%85%8D%E9%80%81.html",
+      "https://tech.meituan.com/tags/%E8%B0%83%E5%BA%A6.html",
+      "https://tech.meituan.com/tags/%E4%BA%A4%E6%98%93.html",
+      "https://tech.meituan.com/tags/%E9%9B%B6%E5%94%AE.html"
+    ]
   },
-  "verification_status": "template-from-question-bank-not-single-interview-post",
+  "verification_status": "public-tech-basis-enriched-not-single-interview-post",
   "rounds": [
     {
       "name": "一面",

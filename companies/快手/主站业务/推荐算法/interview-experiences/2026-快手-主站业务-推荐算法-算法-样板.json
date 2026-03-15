@@ -4,13 +4,23 @@
   "department": "推荐算法",
   "role": "算法",
   "source": {
-    "type": "manual-curated",
-    "url": "",
-    "note": "第二阶段扩张样板：基于 `question-bank.md` 与短视频推荐算法高频问题整理，用于先补结构化面经样板；当前并非已核验的单场真实公开面经。后续若补到明确面经长帖，应优先回填 source.url、轮次信息与追问链路。",
-    "basis": [
-      "companies/快手/主站业务/推荐算法/question-bank.md"
+    "type": "manual-curated-with-public-tech-basis",
+    "url": "https://www.kuaishou.com/new-research",
+    "urls": [
+      "https://www.kuaishou.com/new-research",
+      "https://www.kuaishou.com/new-research/category?categoryType=tech",
+      "https://www.kuaishou.com/new-research/tag?tagType=tech&tagName=%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F",
+      "https://www.kuaishou.com/new-research/tag?tagType=tech&tagName=%E5%A4%A7%E6%A8%A1%E5%9E%8B"
     ],
-    "verification_status": "template-only-unverified-public-post",
+    "note": "第二阶段扩张样板：基于 `question-bank.md` 与短视频推荐算法高频问题整理，用于先补结构化面经样板；当前并非已核验的单场真实公开面经。本次补入快手技术研究院公开技术文章入口及技术分类、推荐系统、大模型主题页，作为主站推荐算法问题域的公开技术 basis；后续若补到明确面经长帖，应优先回填 source.url、轮次信息与追问链路。",
+    "basis": [
+      "companies/快手/主站业务/推荐算法/question-bank.md",
+      "https://www.kuaishou.com/new-research",
+      "https://www.kuaishou.com/new-research/category?categoryType=tech",
+      "https://www.kuaishou.com/new-research/tag?tagType=tech&tagName=%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F",
+      "https://www.kuaishou.com/new-research/tag?tagType=tech&tagName=%E5%A4%A7%E6%A8%A1%E5%9E%8B"
+    ],
+    "verification_status": "public-tech-basis-enriched-not-single-interview-post",
     "todo": {
       "target": "source_enrich_real_link",
       "preferred_source_types": [

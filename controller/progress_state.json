@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-03-15T20:55:00+00:00",
+  "generated_at": "2026-03-15T21:15:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 41,
+    "completed": 42,
     "companies_seeded": 8,
     "question_banks_filled": 19,
     "interview_json_count": 19
@@ -189,7 +189,7 @@
       "source_enriched_roles": [
         "算法"
       ],
-      "note": "已补推荐算法结构化面经样板，后续应优先补真实公开来源链接与轮次差异。"
+      "note": "已将 source 从无链接样板升级为带快手技术研究院公开技术文章入口的结构化样板，并补入技术分类 / 推荐系统 / 大模型主题页；后续仍应补单场真实面经链接。"
     },
     {
       "company": "美团",
@@ -349,7 +349,8 @@
     "已为京东 / 零售技术 / 后端研发 / 后端开发样板补入京东云博客与零售 / 大数据 / 云原生主题入口，并修复 orchestrate 覆盖后的状态回退。",
     "已为百度 / 智能云 / 基础架构 / 后端开发样板补入百度智能云公开技术文章与 AI Native Cloud / Cloud Native / Big Data 主题入口，并修复 orchestrate 覆盖后的状态回退。",
     "已为百度 / 核心搜索 / 推荐策略 / 算法样板补入百度智能云公开技术文章与 AI Search / Big Data / Artificial Intelligence 主题入口，并修复 orchestrate 覆盖后的状态回退。",
-    "已为快手 / 电商事业部 / 服务端研发 / 后端开发样板补入快手技术研究院公开技术文章入口与技术分类 / 推荐系统 / 音视频处理主题页，并修复 orchestrate 覆盖后的状态回退。"
+    "已为快手 / 电商事业部 / 服务端研发 / 后端开发样板补入快手技术研究院公开技术文章入口与技术分类 / 推荐系统 / 音视频处理主题页，并修复 orchestrate 覆盖后的状态回退。",
+    "已为快手 / 主站业务 / 推荐算法 / 算法样板补入快手技术研究院公开技术文章入口与技术分类 / 推荐系统 / 大模型主题页，并修复 orchestrate 覆盖后的状态回退。"
   ],
   "next_actions": [
     {

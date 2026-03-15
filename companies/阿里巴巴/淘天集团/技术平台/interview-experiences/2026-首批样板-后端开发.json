@@ -4,9 +4,22 @@
   "department": "技术平台",
   "role": "后端开发",
   "source": {
-    "type": "manual-curated",
-    "url": "",
-    "note": "首批样板：基于公开常见电商/平台型后端岗位高频面试问题整理，用于落第一批结构化面经模板；后续需补公开来源链接。"
+    "type": "manual-curated-with-public-tech-basis",
+    "url": "https://www.alibabacloud.com/blog",
+    "urls": [
+      "https://www.alibabacloud.com/blog",
+      "https://www.alibabacloud.com/blog/topics/architecture",
+      "https://www.alibabacloud.com/blog/topics/cloud-native",
+      "https://www.alibabacloud.com/blog/topics/database"
+    ],
+    "note": "首批样板：基于公开常见电商/平台型后端岗位高频面试问题整理，用于落第一批结构化面经模板。本次补入阿里云公开技术博客首页与 architecture / cloud-native / database 主题入口，作为淘天技术平台后端问题域的公开技术 basis；后续仍需补公开单场面经链接。",
+    "basis": [
+      "https://www.alibabacloud.com/blog",
+      "https://www.alibabacloud.com/blog/topics/architecture",
+      "https://www.alibabacloud.com/blog/topics/cloud-native",
+      "https://www.alibabacloud.com/blog/topics/database"
+    ],
+    "verification_status": "public-tech-basis-enriched-not-single-interview-post"
   },
   "interview_rounds": 4,
   "questions": [

@@ -4,13 +4,23 @@
   "department": "后台研发",
   "role": "后端开发",
   "source": {
-    "type": "manual-curated",
-    "url": "",
-    "note": "第二阶段扩张样板：基于 `question-bank.md` 与内容平台后台研发高频问题整理而成，用于先补结构化面经样板；当前并非已核验的单场真实公开面经。后续若补到明确面经长帖，应优先回填 source.url、轮次信息与追问链路。",
-    "basis": [
-      "companies/腾讯/平台与内容事业群/后台研发/question-bank.md"
+    "type": "manual-curated-with-public-tech-basis",
+    "url": "https://cloud.tencent.com/developer/column/1030",
+    "urls": [
+      "https://cloud.tencent.com/developer/column/1030",
+      "https://cloud.tencent.com/developer/column",
+      "https://cloud.tencent.com/developer/tag/10397",
+      "https://cloud.tencent.com/developer/tag/10624"
     ],
-    "verification_status": "template-only-unverified-public-post",
+    "note": "第二阶段扩张样板：基于 `question-bank.md` 与内容平台后台研发高频问题整理而成，用于先补结构化面经样板；当前并非已核验的单场真实公开面经。本次补入腾讯云开发者社区专栏页、专栏入口以及分布式系统、消息队列主题页，作为内容平台后台研发问题域的公开技术 basis；后续若补到明确面经长帖，应优先回填 source.url、轮次信息与追问链路。",
+    "basis": [
+      "companies/腾讯/平台与内容事业群/后台研发/question-bank.md",
+      "https://cloud.tencent.com/developer/column/1030",
+      "https://cloud.tencent.com/developer/column",
+      "https://cloud.tencent.com/developer/tag/10397",
+      "https://cloud.tencent.com/developer/tag/10624"
+    ],
+    "verification_status": "public-tech-basis-enriched-not-single-interview-post",
     "todo": {
       "target": "source_enrich_real_link",
       "preferred_source_types": [

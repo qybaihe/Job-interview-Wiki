@@ -4,13 +4,23 @@
   "department": "平台研发",
   "role": "后端开发",
   "source": {
-    "type": "manual-curated",
-    "url": "",
-    "note": "第二阶段扩张样板：基于 `question-bank.md` 与物流平台 / 仓配系统 / 分布式一致性高频问题整理，用于先补结构化面经样板；当前并非已核验的单场真实公开面经。后续若补到明确面经长帖，应优先回填 source.url、面试轮次和题目顺序。",
-    "basis": [
-      "companies/京东/物流技术/平台研发/question-bank.md"
+    "type": "manual-curated-with-public-tech-basis",
+    "url": "https://www.jdcloud.com/cn/blog",
+    "urls": [
+      "https://www.jdcloud.com/cn/blog",
+      "https://www.jdcloud.com/cn/blog/tag/智能供应链",
+      "https://www.jdcloud.com/cn/blog/tag/物流",
+      "https://www.jdcloud.com/cn/blog/tag/大数据"
     ],
-    "verification_status": "template-only-unverified-public-post",
+    "note": "第二阶段扩张样板：基于 `question-bank.md` 与物流平台 / 仓配系统 / 分布式一致性高频问题整理，用于先补结构化面经样板；当前并非已核验的单场真实公开面经。本次补入京东云博客及其智能供应链 / 物流 / 大数据主题入口，作为物流平台研发问题域的公开技术 basis；后续若补到明确面经长帖，应优先回填 source.url、面试轮次和题目顺序。",
+    "basis": [
+      "companies/京东/物流技术/平台研发/question-bank.md",
+      "https://www.jdcloud.com/cn/blog",
+      "https://www.jdcloud.com/cn/blog/tag/智能供应链",
+      "https://www.jdcloud.com/cn/blog/tag/物流",
+      "https://www.jdcloud.com/cn/blog/tag/大数据"
+    ],
+    "verification_status": "public-tech-basis-enriched-not-single-interview-post",
     "todo": {
       "target": "source_enrich_real_link",
       "preferred_source_types": [

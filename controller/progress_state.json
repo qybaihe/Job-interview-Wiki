@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-15T12:35:00+00:00",
+  "generated_at": "2026-03-15T12:55:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 16,
+    "completed": 17,
     "companies_seeded": 8,
     "question_banks_filled": 12,
-    "interview_json_count": 12
+    "interview_json_count": 13
   },
   "queues": {
     "priority_companies": [
@@ -201,11 +201,15 @@
       "department": "推荐策略",
       "role": "算法",
       "question_bank_ready": true,
-      "interview_json_count": 0,
+      "interview_json_count": 1,
       "artifacts": [
-        "companies/百度/核心搜索/推荐策略/算法-question-bank.md"
+        "companies/百度/核心搜索/推荐策略/算法-question-bank.md",
+        "companies/百度/核心搜索/推荐策略/interview-experiences/2026-百度-核心搜索-推荐策略-算法-样板.json"
       ],
-      "note": "本轮新增核心搜索推荐策略算法题库，覆盖 Query 理解、召回、排序、多目标优化、搜索生态治理和实验评估。"
+      "source_enriched_roles": [
+        "算法"
+      ],
+      "note": "已补核心搜索推荐策略结构化面经样板，后续应优先补真实公开来源链接与轮次差异。"
     }
   ],
   "notes": [
@@ -217,7 +221,7 @@
     "已新增腾讯 / 平台与内容事业群 / 后台研发 / 后端开发结构化面经样板。",
     "已新增快手 / 主站业务 / 推荐算法 / 算法结构化面经样板。",
     "已新增美团 / 核心本地商业 / 推荐策略 / 算法结构化面经样板。",
-    "已新增百度 / 核心搜索 / 推荐策略 / 算法题库。"
+    "已新增百度 / 核心搜索 / 推荐策略 / 算法结构化面经样板。"
   ],
   "next_actions": [
     {
@@ -225,7 +229,7 @@
       "business_group": "核心搜索",
       "department": "推荐策略",
       "role": "算法",
-      "action": "add_interview_json",
+      "action": "source_enrich_real_link",
       "priority": "P1"
     },
     {

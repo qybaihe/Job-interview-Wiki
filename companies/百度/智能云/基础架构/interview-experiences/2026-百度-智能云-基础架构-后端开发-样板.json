@@ -4,9 +4,36 @@
   "department": "基础架构",
   "role": "后端开发",
   "source": {
-    "type": "manual-summary",
-    "url": "",
-    "note": "基于云基础架构后端常见高频题、分布式系统与平台稳定性场景整理的样板内容。"
+    "type": "manual-curated-with-public-tech-basis",
+    "url": "https://cloud.baidu.com/article",
+    "urls": [
+      "https://cloud.baidu.com/article",
+      "https://cloud.baidu.com/topic/ai-native-cloud",
+      "https://cloud.baidu.com/topic/cloud-native",
+      "https://cloud.baidu.com/topic/big-data"
+    ],
+    "note": "基于云基础架构后端常见高频题、分布式系统与平台稳定性场景整理的样板内容。本次补入百度智能云公开技术文章与 AI Native Cloud / Cloud Native / Big Data 主题入口，作为基础架构问题域的公开技术 basis；当前仍不是已核验的单场真实公开面经，后续应优先补明确到单场轮次的真实来源链接。",
+    "basis": [
+      "companies/百度/智能云/基础架构/question-bank.md",
+      "https://cloud.baidu.com/article",
+      "https://cloud.baidu.com/topic/ai-native-cloud",
+      "https://cloud.baidu.com/topic/cloud-native",
+      "https://cloud.baidu.com/topic/big-data"
+    ],
+    "verification_status": "public-tech-basis-enriched-not-single-interview-post",
+    "todo": {
+      "target": "single_interview_round_source",
+      "preferred_source_types": [
+        "完整面经长帖",
+        "GitHub/Markdown 整理仓库",
+        "个人博客长文复盘"
+      ],
+      "search_templates": [
+        "百度 智能云 基础架构 后端 面经",
+        "百度 云基础架构 后端 面试 复盘",
+        "百度 云原生 平台 后端 面经"
+      ]
+    }
   },
   "interview_rounds": 3,
   "questions": [

@@ -4,9 +4,22 @@
   "department": "商业化技术",
   "role": "后端开发",
   "source": {
-    "type": "manual-curated",
-    "url": "",
-    "note": "首批样板：基于公开常见后端面试高频点整理，用于建立结构化样本；后续需用真实公开面经补链接与轮次细节。"
+    "type": "manual-curated-with-public-tech-basis",
+    "url": "https://developer.volcengine.com/articles",
+    "urls": [
+      "https://developer.volcengine.com/articles",
+      "https://developer.volcengine.com/articles?category=architecture",
+      "https://developer.volcengine.com/articles?category=database",
+      "https://developer.volcengine.com/articles?category=middleware"
+    ],
+    "note": "首批样板：基于公开常见后端面试高频点整理，用于建立结构化样本。本次补入火山引擎开发者社区文章页与 architecture / database / middleware 相关分类入口，作为抖音电商商业化技术后端问题域的公开技术 basis；后续仍需用真实公开面经补链接与轮次细节。",
+    "basis": [
+      "https://developer.volcengine.com/articles",
+      "https://developer.volcengine.com/articles?category=architecture",
+      "https://developer.volcengine.com/articles?category=database",
+      "https://developer.volcengine.com/articles?category=middleware"
+    ],
+    "verification_status": "public-tech-basis-enriched-not-single-interview-post"
   },
   "interview_rounds": 3,
   "questions": [

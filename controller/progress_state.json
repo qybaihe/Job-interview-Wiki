@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-03-15T10:15:00+00:00",
+  "generated_at": "2026-03-15T10:35:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 9,
+    "completed": 10,
     "companies_seeded": 8,
-    "question_banks_filled": 8,
+    "question_banks_filled": 9,
     "interview_json_count": 9
   },
   "queues": {
@@ -146,6 +146,18 @@
       "interview_json_count": 1,
       "artifact": "companies/腾讯/微信事业群/基础平台/interview-experiences/2026-腾讯-微信事业群-基础平台-客户端开发-样板.json",
       "note": "已完成一次清洗合并：去除 progress_state 中重复 completed 项，按公司/部门聚合 artifacts；本轮补充 source_enrich 说明。"
+    },
+    {
+      "company": "腾讯",
+      "business_group": "平台与内容事业群",
+      "department": "后台研发",
+      "role": "后端开发",
+      "question_bank_ready": true,
+      "interview_json_count": 0,
+      "artifacts": [
+        "companies/腾讯/平台与内容事业群/后台研发/question-bank.md"
+      ],
+      "note": "本轮新增后台研发后端开发题库，覆盖内容平台后端常见项目题、高并发、消息链路、评论/点赞/推送等系统设计方向。"
     }
   ],
   "notes": [
@@ -154,9 +166,17 @@
     "已新增腾讯 / 微信事业群 / 基础平台 / 客户端开发结构化面经样板。",
     "已新增美团 / 到店事业群 / 后端技术 / 算法结构化面经样板。",
     "已新增拼多多 / 主站业务 / 服务端 / 算法结构化面经样板。",
-    "本轮为腾讯客户端、美团算法、拼多多算法三个样板补充 source.todo，明确后续真实来源补链的优先来源类型与搜索模板。"
+    "已新增腾讯 / 平台与内容事业群 / 后台研发 / 后端开发题库。"
   ],
   "next_actions": [
+    {
+      "company": "腾讯",
+      "business_group": "平台与内容事业群",
+      "department": "后台研发",
+      "role": "后端开发",
+      "action": "add_interview_json",
+      "priority": "P1"
+    },
     {
       "company": "腾讯",
       "business_group": "微信事业群",
@@ -169,14 +189,6 @@
       "company": "美团",
       "business_group": "到店事业群",
       "department": "后端技术",
-      "role": "算法",
-      "action": "source_enrich_real_link",
-      "priority": "P1"
-    },
-    {
-      "company": "拼多多",
-      "business_group": "主站业务",
-      "department": "服务端",
       "role": "算法",
       "action": "source_enrich_real_link",
       "priority": "P1"

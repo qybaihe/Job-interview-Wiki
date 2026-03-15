@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-03-15T17:35:00+00:00",
+  "generated_at": "2026-03-15T17:55:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 31,
+    "completed": 32,
     "companies_seeded": 8,
-    "question_banks_filled": 18,
+    "question_banks_filled": 19,
     "interview_json_count": 18
   },
   "queues": {
@@ -287,6 +287,18 @@
         "companies/拼多多/多多买菜/服务端/interview-experiences/2026-拼多多-多多买菜-服务端-后端开发-样板.json"
       ],
       "note": "已补多多买菜服务端后端题库 + 结构化样板，核心覆盖社区团购、次日达履约、库存一致性、仓配协同、高并发交易与稳定性建设。"
+    },
+    {
+      "company": "美团",
+      "business_group": "即时零售",
+      "department": "服务端研发",
+      "role": "后端开发",
+      "question_bank_ready": true,
+      "interview_json_count": 0,
+      "artifacts": [
+        "companies/美团/即时零售/服务端研发/question-bank.md"
+      ],
+      "note": "本轮新增即时零售服务端后端题库，覆盖分钟级履约、门店库存、门店系统、调度协同、区域限流与高峰保护。"
     }
   ],
   "notes": [
@@ -311,9 +323,18 @@
     "已为阿里巴巴 / 阿里云 / 基础架构 / 后端开发样板补入公开技术博客文章来源基础。",
     "已新增拼多多 / 多多买菜 / 服务端 / 后端开发题库。",
     "已新增拼多多 / 多多买菜 / 服务端 / 后端开发结构化面经样板。",
-    "已强化阿里巴巴 / 阿里云 / 基础架构 / 后端开发题库。"
+    "已强化阿里巴巴 / 阿里云 / 基础架构 / 后端开发题库。",
+    "已新增美团 / 即时零售 / 服务端研发 / 后端开发题库。"
   ],
   "next_actions": [
+    {
+      "company": "美团",
+      "business_group": "即时零售",
+      "department": "服务端研发",
+      "role": "后端开发",
+      "action": "add_interview_json",
+      "priority": "P1"
+    },
     {
       "company": "美团",
       "business_group": "到家事业群",
@@ -327,14 +348,6 @@
       "business_group": "淘天集团",
       "department": "搜广推",
       "role": "算法",
-      "action": "single_interview_round_source",
-      "priority": "P1"
-    },
-    {
-      "company": "阿里巴巴",
-      "business_group": "阿里云",
-      "department": "基础架构",
-      "role": "后端开发",
       "action": "single_interview_round_source",
       "priority": "P1"
     }

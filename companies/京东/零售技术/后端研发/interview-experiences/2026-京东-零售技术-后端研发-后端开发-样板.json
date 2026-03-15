@@ -4,9 +4,36 @@
   "department": "后端研发",
   "role": "后端开发",
   "source": {
-    "type": "manual-summary",
-    "url": "",
-    "note": "基于零售技术后端常见高频题、库存订单场景和履约链路项目追问整理的样板内容。"
+    "type": "manual-curated-with-public-tech-basis",
+    "url": "https://www.jdcloud.com/cn/blog",
+    "urls": [
+      "https://www.jdcloud.com/cn/blog",
+      "https://www.jdcloud.com/cn/blog/tag/零售",
+      "https://www.jdcloud.com/cn/blog/tag/大数据",
+      "https://www.jdcloud.com/cn/blog/tag/云原生"
+    ],
+    "note": "基于零售技术后端常见高频题、库存订单场景和履约链路项目追问整理的样板内容。本次补入京东云博客及其零售 / 大数据 / 云原生主题入口，作为零售技术后端问题域的公开技术 basis；当前仍不是已核验的单场真实公开面经，后续应优先补明确到单场轮次的真实来源链接。",
+    "basis": [
+      "companies/京东/零售技术/后端研发/question-bank.md",
+      "https://www.jdcloud.com/cn/blog",
+      "https://www.jdcloud.com/cn/blog/tag/零售",
+      "https://www.jdcloud.com/cn/blog/tag/大数据",
+      "https://www.jdcloud.com/cn/blog/tag/云原生"
+    ],
+    "verification_status": "public-tech-basis-enriched-not-single-interview-post",
+    "todo": {
+      "target": "single_interview_round_source",
+      "preferred_source_types": [
+        "完整面经长帖",
+        "GitHub/Markdown 整理仓库",
+        "个人博客长文复盘"
+      ],
+      "search_templates": [
+        "京东 零售技术 后端 面经",
+        "京东 零售 后端 面试 复盘",
+        "京东 商品 交易 库存 后端 面经"
+      ]
+    }
   },
   "interview_rounds": 3,
   "questions": [

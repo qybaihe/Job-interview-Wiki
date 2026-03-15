@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-03-15T18:55:00+00:00",
+  "generated_at": "2026-03-15T19:15:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 35,
+    "completed": 36,
     "companies_seeded": 8,
     "question_banks_filled": 19,
     "interview_json_count": 19
@@ -273,7 +273,7 @@
       "source_enriched_roles": [
         "后端开发"
       ],
-      "note": "已将 source 从无链接样板升级为带公开技术文章 basis 的结构化样板；当前已补 tech.meituan.com 及其 配送 / 调度 / 交易 标签页，后续仍应补单场真实面经链接。"
+      "note": "已将 source 从无链接样板升级为带公开技术文章 basis 的结构化样板，并继续补入供应链 / 日志采集主题入口以支撑履约、供给协同和线上排障问题背景；后续仍应补单场真实面经链接。"
     },
     {
       "company": "拼多多",
@@ -331,7 +331,8 @@
     "已新增美团 / 即时零售 / 服务端研发 / 后端开发题库。",
     "已新增美团 / 即时零售 / 服务端研发 / 后端开发结构化面经样板。",
     "已为美团 / 即时零售 / 服务端研发 / 后端开发样板补入公开技术文章来源基础，并修复 orchestrate 覆盖后的状态回退。",
-    "已为阿里巴巴 / 淘天集团 / 搜广推 / 算法样板继续补入 analytics / machine-learning 主题入口，并修复 orchestrate 覆盖后的状态回退。"
+    "已为阿里巴巴 / 淘天集团 / 搜广推 / 算法样板继续补入 analytics / machine-learning 主题入口，并修复 orchestrate 覆盖后的状态回退。",
+    "已为美团 / 到家事业群 / 服务端研发 / 后端开发样板继续补入供应链 / 日志采集主题入口，并修复 orchestrate 覆盖后的状态回退。"
   ],
   "next_actions": [
     {

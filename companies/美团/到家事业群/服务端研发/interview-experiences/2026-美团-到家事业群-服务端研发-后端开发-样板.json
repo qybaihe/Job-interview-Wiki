@@ -10,15 +10,19 @@
       "https://tech.meituan.com/",
       "https://tech.meituan.com/tags/%E9%85%8D%E9%80%81.html",
       "https://tech.meituan.com/tags/%E8%B0%83%E5%BA%A6.html",
-      "https://tech.meituan.com/tags/%E4%BA%A4%E6%98%93.html"
+      "https://tech.meituan.com/tags/%E4%BA%A4%E6%98%93.html",
+      "https://tech.meituan.com/tags/%E4%BE%9B%E5%BA%94%E9%93%BE.html",
+      "https://tech.meituan.com/tags/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86.html"
     ],
-    "note": "当前仍不是已核验的单场真实公开面经，而是基于美团技术团队公开技术文章标签页（配送 / 调度 / 交易）与本仓库题库内容交叉整理出的结构化样板。此次已补入可访问的公开技术来源，用来支撑业务链路、履约调度、交易一致性和高峰稳定性等问题背景；后续仍应优先补明确到单场面试轮次的真实公开面经链接。",
+    "note": "当前仍不是已核验的单场真实公开面经，而是基于美团技术团队公开技术文章标签页（配送 / 调度 / 交易）与本仓库题库内容交叉整理出的结构化样板。本次继续补入供应链与日志采集主题入口，用来更稳地支撑业务链路、履约调度、交易一致性、高峰稳定性、供应侧协同与线上排障等问题背景；后续仍应优先补明确到单场面试轮次的真实公开面经链接。",
     "basis": [
       "companies/美团/到家事业群/服务端研发/question-bank.md",
       "https://tech.meituan.com/",
       "https://tech.meituan.com/tags/%E9%85%8D%E9%80%81.html",
       "https://tech.meituan.com/tags/%E8%B0%83%E5%BA%A6.html",
-      "https://tech.meituan.com/tags/%E4%BA%A4%E6%98%93.html"
+      "https://tech.meituan.com/tags/%E4%BA%A4%E6%98%93.html",
+      "https://tech.meituan.com/tags/%E4%BE%9B%E5%BA%94%E9%93%BE.html",
+      "https://tech.meituan.com/tags/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86.html"
     ],
     "verification_status": "public-tech-basis-enriched-not-single-interview-post",
     "todo": {

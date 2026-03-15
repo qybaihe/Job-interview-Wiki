@@ -4,9 +4,22 @@
   "department": "基础平台",
   "role": "后端开发",
   "source": {
-    "type": "manual-curated",
-    "url": "",
-    "note": "首批样板：基于公开常见基础平台后端高频考点整理，用于建立 JSON 结构和持续推进模板；后续补真实公开来源。"
+    "type": "manual-curated-with-public-tech-basis",
+    "url": "https://cloud.tencent.com/developer/column/1030",
+    "urls": [
+      "https://cloud.tencent.com/developer/column/1030",
+      "https://cloud.tencent.com/developer/column",
+      "https://cloud.tencent.com/developer/tag/10397",
+      "https://cloud.tencent.com/developer/tag/10624"
+    ],
+    "note": "首批样板：基于公开常见基础平台后端高频考点整理，用于建立 JSON 结构和持续推进模板。本次补入腾讯云开发者社区专栏入口、专栏页以及分布式系统、消息队列主题页，作为微信事业群基础平台后端问题域的公开技术 basis；后续仍需补真实公开来源。",
+    "basis": [
+      "https://cloud.tencent.com/developer/column/1030",
+      "https://cloud.tencent.com/developer/column",
+      "https://cloud.tencent.com/developer/tag/10397",
+      "https://cloud.tencent.com/developer/tag/10624"
+    ],
+    "verification_status": "public-tech-basis-enriched-not-single-interview-post"
   },
   "interview_rounds": 3,
   "questions": [

@@ -4,15 +4,25 @@
   "department": "搜广推",
   "role": "算法",
   "source": {
-    "type": "manual-curated",
-    "url": "",
-    "note": "第二阶段扩张样板：基于淘天集团搜广推算法题库整理出的结构化面经样板，用于先补齐公司 / 业务线 / 岗位维度的可用内容。当前不是已核验的单场真实公开面经，后续应优先补明确来源链接、面试轮次与题目顺序。",
-    "basis": [
-      "companies/阿里巴巴/淘天集团/搜广推/算法-question-bank.md"
+    "type": "manual-curated-with-public-tech-basis",
+    "url": "https://www.alibabacloud.com/blog",
+    "urls": [
+      "https://www.alibabacloud.com/blog",
+      "https://www.alibabacloud.com/blog/topics/ai",
+      "https://www.alibabacloud.com/blog/topics/recommendation",
+      "https://www.alibabacloud.com/blog/topics/search"
     ],
-    "verification_status": "template-only-unverified-public-post",
+    "note": "当前仍不是已核验的单场真实公开面经，而是基于淘天集团搜广推算法题库与阿里云公开技术博客中 AI / recommendation / search 相关主题页交叉整理出的结构化样板。本次已补入可访问公开技术来源，用来支撑搜广推算法岗位涉及的召回、排序、多目标优化、在线实验和工程落地背景；后续仍应优先补明确到单场面试轮次的真实公开面经链接。",
+    "basis": [
+      "companies/阿里巴巴/淘天集团/搜广推/算法-question-bank.md",
+      "https://www.alibabacloud.com/blog",
+      "https://www.alibabacloud.com/blog/topics/ai",
+      "https://www.alibabacloud.com/blog/topics/recommendation",
+      "https://www.alibabacloud.com/blog/topics/search"
+    ],
+    "verification_status": "public-tech-basis-enriched-not-single-interview-post",
     "todo": {
-      "target": "source_enrich_real_link",
+      "target": "single_interview_round_source",
       "preferred_source_types": [
         "完整面经长帖",
         "技术博客复盘",

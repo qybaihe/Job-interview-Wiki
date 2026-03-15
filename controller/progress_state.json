@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-03-15T15:55:00+00:00",
+  "generated_at": "2026-03-15T16:15:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 26,
+    "completed": 27,
     "companies_seeded": 8,
     "question_banks_filled": 16,
     "interview_json_count": 17
@@ -257,7 +257,7 @@
       "source_enriched_roles": [
         "算法"
       ],
-      "note": "已补淘天搜广推算法结构化面经样板，后续应优先补真实公开来源链接与轮次差异。"
+      "note": "已将 source 从无链接样板升级为带公开技术博客 basis 的结构化样板；当前已补 alibabacloud.com/blog 及其 AI / recommendation / search 主题页，后续仍应补单场真实面经链接。"
     },
     {
       "company": "美团",
@@ -293,17 +293,10 @@
     "已新增阿里巴巴 / 淘天集团 / 搜广推 / 算法结构化面经样板。",
     "已新增美团 / 到家事业群 / 服务端研发 / 后端开发题库。",
     "已新增美团 / 到家事业群 / 服务端研发 / 后端开发结构化面经样板。",
-    "已为美团 / 到家事业群 / 服务端研发 / 后端开发样板补入公开技术文章来源基础。"
+    "已为美团 / 到家事业群 / 服务端研发 / 后端开发样板补入公开技术文章来源基础。",
+    "已为阿里巴巴 / 淘天集团 / 搜广推 / 算法样板补入公开技术博客文章来源基础。"
   ],
   "next_actions": [
-    {
-      "company": "阿里巴巴",
-      "business_group": "淘天集团",
-      "department": "搜广推",
-      "role": "算法",
-      "action": "source_enrich_real_link",
-      "priority": "P1"
-    },
     {
       "company": "阿里巴巴",
       "business_group": "阿里云",
@@ -317,6 +310,14 @@
       "business_group": "到家事业群",
       "department": "服务端研发",
       "role": "后端开发",
+      "action": "single_interview_round_source",
+      "priority": "P1"
+    },
+    {
+      "company": "阿里巴巴",
+      "business_group": "淘天集团",
+      "department": "搜广推",
+      "role": "算法",
       "action": "single_interview_round_source",
       "priority": "P1"
     }

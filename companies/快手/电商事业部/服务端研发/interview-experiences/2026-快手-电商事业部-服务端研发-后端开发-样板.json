@@ -4,9 +4,36 @@
   "department": "服务端研发",
   "role": "后端开发",
   "source": {
-    "type": "manual-summary",
-    "url": "",
-    "note": "基于电商服务端常见高频题与直播电商场景项目追问整理的样板内容。"
+    "type": "manual-curated-with-public-tech-basis",
+    "url": "https://www.kuaishou.com/new-research",
+    "urls": [
+      "https://www.kuaishou.com/new-research",
+      "https://www.kuaishou.com/new-research/category?categoryType=tech",
+      "https://www.kuaishou.com/new-research/tag?tagType=tech&tagName=%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F",
+      "https://www.kuaishou.com/new-research/tag?tagType=tech&tagName=%E9%9F%B3%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86"
+    ],
+    "note": "基于电商服务端常见高频题与直播电商场景项目追问整理的样板内容。本次补入快手技术研究院公开技术文章入口及技术分类、推荐系统、音视频处理等主题页，作为直播电商后端问题域的公开技术 basis；当前仍不是已核验的单场真实公开面经，后续应优先补明确到单场轮次的真实来源链接。",
+    "basis": [
+      "companies/快手/电商事业部/服务端研发/question-bank.md",
+      "https://www.kuaishou.com/new-research",
+      "https://www.kuaishou.com/new-research/category?categoryType=tech",
+      "https://www.kuaishou.com/new-research/tag?tagType=tech&tagName=%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F",
+      "https://www.kuaishou.com/new-research/tag?tagType=tech&tagName=%E9%9F%B3%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86"
+    ],
+    "verification_status": "public-tech-basis-enriched-not-single-interview-post",
+    "todo": {
+      "target": "single_interview_round_source",
+      "preferred_source_types": [
+        "完整面经长帖",
+        "GitHub/Markdown 整理仓库",
+        "个人博客长文复盘"
+      ],
+      "search_templates": [
+        "快手 电商事业部 后端 面经",
+        "快手 直播电商 后端 面试 复盘",
+        "快手 商家 营销 活动 后端 面经"
+      ]
+    }
   },
   "interview_rounds": 3,
   "questions": [

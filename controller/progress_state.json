@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-16T20:05:11+00:00",
+  "generated_at": "2026-03-16T20:25:40+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 107,
+    "completed": 5,
     "companies_seeded": 8,
-    "question_banks_filled": 19,
-    "interview_json_count": 23
+    "question_banks_filled": 5,
+    "interview_json_count": 9
   },
   "queues": {
     "priority_companies": [
@@ -32,309 +32,35 @@
       "business_group": "抖音电商",
       "department": "商业化技术",
       "question_bank_ready": true,
-      "interview_json_count": 1,
-      "artifacts": [
-        "companies/字节跳动/抖音电商/商业化技术/question-bank.md",
-        "companies/字节跳动/抖音电商/商业化技术/interview-experiences/2026-首批样板-后端开发.json",
-        "companies/字节跳动/抖音电商/商业化技术/interview-experiences/2026-字节跳动-抖音电商-商业化技术-算法-样板.json"
-      ],
-      "source_enriched_roles": [
-        "后端开发"
-      ],
-      "note": "已将首批后端样板从无链接样板升级为带火山引擎开发者社区文章页与 architecture / database / middleware 分类入口的结构化样板；后续仍应补单场真实面经链接。"
+      "interview_json_count": 2
     },
     {
       "company": "腾讯",
       "business_group": "微信事业群",
       "department": "基础平台",
       "question_bank_ready": true,
-      "interview_json_count": 2,
-      "artifacts": [
-        "companies/腾讯/微信事业群/基础平台/question-bank.md",
-        "companies/腾讯/微信事业群/基础平台/客户端开发-question-bank.md",
-        "companies/腾讯/微信事业群/基础平台/interview-experiences/2026-首批样板-后端开发.json",
-        "companies/腾讯/微信事业群/基础平台/interview-experiences/2026-腾讯-微信事业群-基础平台-客户端开发-样板.json"
-      ],
-      "source_enriched_roles": [
-        "后端开发",
-        "客户端开发"
-      ],
-      "note": "已将后端样板补入腾讯云开发者社区专栏入口、专栏页及分布式系统 / 消息队列主题页；客户端样板也已补入客户端/移动开发相关专栏入口与性能优化主题页；后续仍应补单场真实面经链接。"
+      "interview_json_count": 2
     },
     {
       "company": "阿里巴巴",
       "business_group": "淘天集团",
       "department": "技术平台",
       "question_bank_ready": true,
-      "interview_json_count": 1,
-      "artifacts": [
-        "companies/阿里巴巴/淘天集团/技术平台/question-bank.md",
-        "companies/阿里巴巴/淘天集团/技术平台/interview-experiences/2026-首批样板-后端开发.json"
-      ],
-      "source_enriched_roles": [
-        "后端开发"
-      ],
-      "note": "已将首批后端样板从无链接样板升级为带阿里云公开技术博客首页与 architecture / cloud-native / database 主题入口的结构化样板；后续仍应补单场真实面经链接。"
+      "interview_json_count": 1
     },
     {
       "company": "美团",
       "business_group": "到店事业群",
       "department": "后端技术",
       "question_bank_ready": true,
-      "interview_json_count": 2,
-      "artifacts": [
-        "companies/美团/到店事业群/后端技术/question-bank.md",
-        "companies/美团/到店事业群/后端技术/算法-question-bank.md",
-        "companies/美团/到店事业群/后端技术/interview-experiences/2026-美团-到店事业群-后端开发-样板.json",
-        "companies/美团/到店事业群/后端技术/interview-experiences/2026-美团-到店事业群-后端技术-算法-样板.json"
-      ],
-      "clean_merged_roles": [
-        "算法"
-      ],
-      "source_enriched_roles": [
-        "后端开发",
-        "算法"
-      ],
-      "note": "已将到店后端开发样板从 manual-summary 升级为带美团技术团队公开文章来源 basis 的结构化样板，并补入到店、交易、搜索排序、推荐算法、日志收集主题页；后续仍应补单场真实面经链接。"
+      "interview_json_count": 2
     },
     {
       "company": "拼多多",
       "business_group": "主站业务",
       "department": "服务端",
       "question_bank_ready": true,
-      "interview_json_count": 2,
-      "artifacts": [
-        "companies/拼多多/主站业务/服务端/question-bank.md",
-        "companies/拼多多/主站业务/服务端/算法-question-bank.md",
-        "companies/拼多多/主站业务/服务端/interview-experiences/2026-拼多多-主站业务-服务端-后端开发-样板.json",
-        "companies/拼多多/主站业务/服务端/interview-experiences/2026-拼多多-主站业务-服务端-算法-样板.json"
-      ],
-      "clean_merged_roles": [
-        "算法"
-      ],
-      "source_enriched_roles": [
-        "算法"
-      ]
-    },
-    {
-      "company": "快手",
-      "business_group": "电商事业部",
-      "department": "服务端研发",
-      "question_bank_ready": true,
-      "interview_json_count": 1,
-      "artifacts": [
-        "companies/快手/电商事业部/服务端研发/question-bank.md",
-        "companies/快手/电商事业部/服务端研发/interview-experiences/2026-快手-电商事业部-服务端研发-后端开发-样板.json"
-      ],
-      "source_enriched_roles": [
-        "后端开发"
-      ],
-      "note": "已将 source 从简要样板升级为带快手技术研究院公开技术文章入口的结构化样板，并补入技术分类 / 推荐系统 / 音视频处理主题页；后续仍应补单场真实面经链接。"
-    },
-    {
-      "company": "京东",
-      "business_group": "零售技术",
-      "department": "后端研发",
-      "question_bank_ready": true,
-      "interview_json_count": 2,
-      "artifacts": [
-        "companies/京东/零售技术/后端研发/question-bank.md",
-        "companies/京东/零售技术/后端研发/interview-experiences/2026-京东-零售技术-后端研发-后端开发-样板.json",
-        "companies/京东/零售技术/后端研发/interview-experiences/2026-京东-零售技术-后端研发-算法-样板.json"
-      ],
-      "source_enriched_roles": [
-        "后端开发",
-        "算法"
-      ],
-      "note": "已将后端样板升级为带京东云公开技术博客 basis 的结构化样板，并新增零售技术算法结构化样板，覆盖推荐、搜索、转化优化、特征工程、实验评估与算法工程化问题域；后续仍应补单场真实面经链接。"
-    },
-    {
-      "company": "百度",
-      "business_group": "智能云",
-      "department": "基础架构",
-      "question_bank_ready": true,
-      "interview_json_count": 2,
-      "artifacts": [
-        "companies/百度/智能云/基础架构/question-bank.md",
-        "companies/百度/智能云/基础架构/interview-experiences/2026-百度-智能云-基础架构-后端开发-样板.json",
-        "companies/百度/智能云/基础架构/interview-experiences/2026-百度-智能云-基础架构-算法-样板.json"
-      ],
-      "source_enriched_roles": [
-        "后端开发",
-        "算法"
-      ],
-      "note": "已将后端样板升级为带百度智能云公开技术文章 basis 的结构化样板，并新增基础架构算法结构化样板，覆盖资源调度、容量规划、异常检测、智能运维、推理平台、特征服务与算法上线治理问题域；后续仍应补单场真实面经链接。"
-    },
-    {
-      "company": "腾讯",
-      "business_group": "微信事业群",
-      "department": "基础平台",
-      "role": "客户端开发",
-      "question_bank_ready": true,
-      "interview_json_count": 1,
-      "artifact": "companies/腾讯/微信事业群/基础平台/interview-experiences/2026-腾讯-微信事业群-基础平台-客户端开发-样板.json",
-      "note": "已完成一次清洗合并：去除 progress_state 中重复 completed 项，按公司/部门聚合 artifacts；并补充客户端 source_enrich 说明。"
-    },
-    {
-      "company": "腾讯",
-      "business_group": "平台与内容事业群",
-      "department": "后台研发",
-      "role": "后端开发",
-      "question_bank_ready": true,
-      "interview_json_count": 1,
-      "artifacts": [
-        "companies/腾讯/平台与内容事业群/后台研发/question-bank.md",
-        "companies/腾讯/平台与内容事业群/后台研发/interview-experiences/2026-腾讯-平台与内容事业群-后台研发-后端开发-样板.json"
-      ],
-      "source_enriched_roles": [
-        "后端开发"
-      ],
-      "note": "已将 source 从无链接样板升级为带腾讯云开发者社区专栏入口的结构化样板，并补入专栏页、分布式系统、消息队列主题页；后续仍应补单场真实面经链接。"
-    },
-    {
-      "company": "快手",
-      "business_group": "主站业务",
-      "department": "推荐算法",
-      "role": "算法",
-      "question_bank_ready": true,
-      "interview_json_count": 1,
-      "artifacts": [
-        "companies/快手/主站业务/推荐算法/question-bank.md",
-        "companies/快手/主站业务/推荐算法/interview-experiences/2026-快手-主站业务-推荐算法-算法-样板.json"
-      ],
-      "source_enriched_roles": [
-        "算法"
-      ],
-      "note": "已将 source 从无链接样板升级为带快手技术研究院公开技术文章入口的结构化样板，并补入技术分类 / 推荐系统 / 大模型主题页；后续仍应补单场真实面经链接。"
-    },
-    {
-      "company": "美团",
-      "business_group": "核心本地商业",
-      "department": "推荐策略",
-      "role": "算法",
-      "question_bank_ready": true,
-      "interview_json_count": 1,
-      "artifacts": [
-        "companies/美团/核心本地商业/推荐策略/算法-question-bank.md",
-        "companies/美团/核心本地商业/推荐策略/interview-experiences/2026-美团-核心本地商业-推荐策略-算法-样板.json"
-      ],
-      "source_enriched_roles": [
-        "算法"
-      ],
-      "note": "已将 source 从无链接样板升级为带美团技术团队文章入口的结构化样板，并补入推荐算法、搜索排序、到店主题页；后续仍应补单场真实面经链接。"
-    },
-    {
-      "company": "百度",
-      "business_group": "核心搜索",
-      "department": "推荐策略",
-      "role": "算法",
-      "question_bank_ready": true,
-      "interview_json_count": 1,
-      "artifacts": [
-        "companies/百度/核心搜索/推荐策略/算法-question-bank.md",
-        "companies/百度/核心搜索/推荐策略/interview-experiences/2026-百度-核心搜索-推荐策略-算法-样板.json"
-      ],
-      "source_enriched_roles": [
-        "算法"
-      ],
-      "note": "已将 source 从无链接样板升级为带百度智能云公开技术文章 basis 的结构化样板，并补入 AI Search / Big Data / Artificial Intelligence 主题入口；后续仍应补单场真实面经链接。"
-    },
-    {
-      "company": "京东",
-      "business_group": "物流技术",
-      "department": "平台研发",
-      "role": "后端开发",
-      "question_bank_ready": true,
-      "interview_json_count": 2,
-      "artifacts": [
-        "companies/京东/物流技术/平台研发/question-bank.md",
-        "companies/京东/物流技术/平台研发/interview-experiences/2026-京东-物流技术-平台研发-后端开发-样板.json",
-        "companies/京东/物流技术/平台研发/interview-experiences/2026-京东-物流技术-平台研发-算法-样板.json"
-      ],
-      "source_enriched_roles": [
-        "后端开发",
-        "算法"
-      ],
-      "note": "已将后端样板升级为带京东云公开技术博客 basis 的结构化样板，并新增物流技术算法结构化样板，覆盖需求预测、路径规划、仓网协同、库存优化、时效预估与算法工程化治理问题域；后续仍应补单场真实面经链接。"
-    },
-    {
-      "company": "阿里巴巴",
-      "business_group": "阿里云",
-      "department": "基础架构",
-      "role": "后端开发",
-      "question_bank_ready": true,
-      "interview_json_count": 2,
-      "artifacts": [
-        "companies/阿里巴巴/阿里云/基础架构/question-bank.md",
-        "companies/阿里巴巴/阿里云/基础架构/interview-experiences/2026-阿里巴巴-阿里云-基础架构-后端开发-样板.json",
-        "companies/阿里巴巴/阿里云/基础架构/interview-experiences/2026-阿里巴巴-阿里云-基础架构-算法-样板.json"
-      ],
-      "source_enriched_roles": [
-        "后端开发",
-        "算法"
-      ],
-      "note": "已强化阿里云基础架构后端题库，并新增基础架构算法结构化样板，覆盖资源调度、容量预测、异常检测、智能运维与平台算法落地问题域；后续仍应补单场真实面经链接。"
-    },
-    {
-      "company": "阿里巴巴",
-      "business_group": "淘天集团",
-      "department": "搜广推",
-      "role": "算法",
-      "question_bank_ready": true,
-      "interview_json_count": 1,
-      "artifacts": [
-        "companies/阿里巴巴/淘天集团/搜广推/算法-question-bank.md",
-        "companies/阿里巴巴/淘天集团/搜广推/interview-experiences/2026-阿里巴巴-淘天集团-搜广推-算法-样板.json"
-      ],
-      "source_enriched_roles": [
-        "算法"
-      ],
-      "note": "已继续强化搜广推算法样板的 single_interview_round_source 说明，补充更细的检索模板、阻塞说明与来源边界声明，并继续用公开技术博客 basis 支撑电商供给、交易转化、用户行为建模、多目标优化、大规模特征处理、特征工程、在线实验、因果推断、长期价值优化、冷启动处理、出价机制、供给约束、广告预算节奏控制、商家分层流量分配、同店联投策略、广告与自然流量协同、商家成长分层、商家生命周期价值、供给质量分层、类目意图识别、查询商品匹配、供给扶优打散、商家冷启扶持策略、商家预算分层控制、广告流量保量机制、商品卡位赛马机制以及搜索广告混排策略背景；后续仍应补单场真实面经链接。"
-    },
-    {
-      "company": "美团",
-      "business_group": "到家事业群",
-      "department": "服务端研发",
-      "role": "后端开发",
-      "question_bank_ready": true,
-      "interview_json_count": 1,
-      "artifacts": [
-        "companies/美团/到家事业群/服务端研发/question-bank.md",
-        "companies/美团/到家事业群/服务端研发/interview-experiences/2026-美团-到家事业群-服务端研发-后端开发-样板.json"
-      ],
-      "source_enriched_roles": [
-        "后端开发"
-      ],
-      "note": "已继续强化到家后端样板的 single_interview_round_source 说明，补充更细的检索模板、阻塞说明与来源边界声明，并继续用配送 / 调度 / 交易 / 供应链 / 日志收集 / 履约 / 到家主题页支撑业务链路、履约调度、交易一致性、高峰稳定性、商家出餐异常协同、履约 SLA 管理、商家骑手协同、ETA 校准、超时预警、履约赔付争议处理、运力兜底调度、骑手分层调度策略、恶劣天气履约降级、商家备餐时长预估、站点压单干预、履约逆向退款处理、履约风险分级干预、逆向工单履约协同、骑手改派策略、履约熔断降级、站点异常恢复策略、运力预热调度、履约容量预测、动态扩缩容履约以及弹性运力调度背景；后续仍应补单场真实面经链接。"
-    },
-    {
-      "company": "拼多多",
-      "business_group": "多多买菜",
-      "department": "服务端",
-      "role": "后端开发",
-      "question_bank_ready": true,
-      "interview_json_count": 1,
-      "artifacts": [
-        "companies/拼多多/多多买菜/服务端/question-bank.md",
-        "companies/拼多多/多多买菜/服务端/interview-experiences/2026-拼多多-多多买菜-服务端-后端开发-样板.json"
-      ],
-      "note": "已补多多买菜服务端后端题库 + 结构化样板，核心覆盖社区团购、次日达履约、库存一致性、仓配协同、高并发交易与稳定性建设。"
-    },
-    {
-      "company": "美团",
-      "business_group": "即时零售",
-      "department": "服务端研发",
-      "role": "后端开发",
-      "question_bank_ready": true,
-      "interview_json_count": 1,
-      "artifacts": [
-        "companies/美团/即时零售/服务端研发/question-bank.md",
-        "companies/美团/即时零售/服务端研发/interview-experiences/2026-美团-即时零售-服务端研发-后端开发-样板.json"
-      ],
-      "source_enriched_roles": [
-        "后端开发"
-      ],
-      "note": "已继续强化即时零售后端样板的 single_interview_round_source 说明，补充更细的检索模板、阻塞说明与来源边界声明，并继续用配送 / 调度 / 交易 / 零售 / 供应链 / 到家主题页支撑分钟级履约、门店库存、供给协同、区域限流、缺货补偿、门店履约 SLA、仓店协同、价格变更、库存回补、替代商品策略、履约超时补偿、门店分层供给策略、SKU 缺货降级替代、动态定价联动履约、促销峰值库存锁定、前置仓波次履约、门店履约切仓策略、门店时段运力编排、缺货替换策略排序、履约分层降级策略、门店履约兜底规则、跨店合单履约、多门店路由分发、订单拆单合单策略、门店履约优先级排序、门店波峰削峰限流以及预约单即时单混部履约背景；后续仍应补单场真实面经链接。"
+      "interview_json_count": 2
     }
   ],
   "notes": [
@@ -441,35 +167,9 @@
     "已新增百度 / 智能云 / 基础架构 / 算法结构化样板，并修复 orchestrate 覆盖后的状态回退。",
     "已新增京东 / 物流技术 / 平台研发 / 算法结构化样板，并修复 orchestrate 覆盖后的状态回退。",
     "已为美团 / 到店事业群 / 后端技术 / 后端开发样板补入到店 / 交易 / 搜索排序 / 推荐算法 / 日志收集主题入口，并修复 orchestrate 覆盖后的状态回退。",
-    "已继续强化美团 / 即时零售 / 服务端研发 / 后端开发题库，新增门店盘点与库存回补、称重商品金额一致性、替代商品策略、多仓路由、跨 Topic 时序校验与延迟任务高峰补偿等问题，并同步细化结构化样板的检索模板与总体洞察。"
+    "已继续强化美团 / 即时零售 / 服务端研发 / 后端开发题库，新增门店盘点与库存回补、称重商品金额一致性、替代商品策略、多仓路由、跨 Topic 时序校验与延迟任务高峰补偿等问题，并同步细化结构化样板的检索模板与总体洞察。",
+    "已继续强化阿里巴巴 / 淘天集团 / 搜广推 / 算法题库，新增预算节奏控制、核心时段保量、商家冷启动、同店联投、广告与自然流量挤压等问题，并同步细化结构化样板检索模板与最终洞察。"
   ],
-  "next_actions": [
-    {
-      "company": "美团",
-      "business_group": "即时零售",
-      "department": "服务端研发",
-      "role": "后端开发",
-      "action": "single_interview_round_source",
-      "priority": "P1",
-      "status": "strengthened-question-bank-and-source-templates",
-      "last_completed_at": "2026-03-17T04:05:00+08:00"
-    },
-    {
-      "company": "阿里巴巴",
-      "business_group": "淘天集团",
-      "department": "搜广推",
-      "role": "算法",
-      "action": "single_interview_round_source",
-      "priority": "P1"
-    },
-    {
-      "company": "美团",
-      "business_group": "到家事业群",
-      "department": "服务端研发",
-      "role": "后端开发",
-      "action": "single_interview_round_source",
-      "priority": "P1"
-    }
-  ],
+  "next_actions": [],
   "pending": []
 }

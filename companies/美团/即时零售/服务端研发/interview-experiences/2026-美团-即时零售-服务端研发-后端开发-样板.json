@@ -17,7 +17,7 @@
       "https://tech.meituan.com/tags/%E4%BE%9B%E5%BA%94%E9%93%BE.html",
       "https://tech.meituan.com/tags/%E5%88%B0%E5%AE%B6.html"
     ],
-    "note": "当前仍不是已核验的单场真实公开面经，而是基于即时零售服务端后端题库与美团技术团队公开技术文章交叉整理出的结构化样板。本次继续补入供应链 / 到家主题入口，用来更稳地支撑分钟级履约、门店库存、供给协同、交易链路、区域限流与稳定性治理等后端问题域；后续仍应优先补明确到单场面试轮次的真实公开来源。",
+    "note": "当前仍不是已核验的单场真实公开面经，而是基于即时零售服务端后端题库与美团技术团队公开技术文章交叉整理出的结构化样板。本轮继续把 single_interview_round_source 的追补路径写实：在既有配送、调度、交易、零售、供应链、到家主题入口基础上，继续用这些公开技术 basis 去支撑分钟级履约、门店库存、供给协同、交易链路、区域限流与稳定性治理等后端问题域；后续仍应优先补明确到单场面试轮次的真实公开来源。",
     "basis": [
       "companies/美团/即时零售/服务端研发/question-bank.md",
       "https://tech.meituan.com/",
@@ -27,9 +27,26 @@
       "https://tech.meituan.com/tags/%E9%9B%B6%E5%94%AE.html",
       "https://tech.meituan.com/tags/%E4%BE%9B%E5%BA%94%E9%93%BE.html",
       "https://tech.meituan.com/tags/%E5%88%B0%E5%AE%B6.html"
-    ]
+    ],
+    "verification_status": "public-tech-basis-enriched-not-single-interview-post",
+    "todo": {
+      "target": "single_interview_round_source",
+      "priority": "P1",
+      "preferred_source_types": [
+        "完整面经长帖",
+        "技术博客复盘",
+        "GitHub/Markdown 面试整理"
+      ],
+      "search_templates": [
+        "美团 即时零售 后端 面经",
+        "美团 即时零售 服务端研发 面试",
+        "美团 闪购 后端 面经",
+        "美团 即时零售 一面 二面 后端",
+        "美团 零售 履约 库存 调度 后端 面经"
+      ],
+      "blocking_note": "当前仅完成公开技术文章 basis 补强，尚未拿到可核验到单场轮次的真实公开面经原文。"
+    }
   },
-  "verification_status": "public-tech-basis-enriched-not-single-interview-post",
   "rounds": [
     {
       "name": "一面",
@@ -124,9 +141,5 @@
   "followups": [
     "后续补到真实公开面经来源后，再把题目顺序和轮次颗粒度进一步细化。",
     "可以继续从该样板反向抽题，扩充门店库存一致性、区域限流和履约异常专题题库。"
-  ],
-  "todo": {
-    "target": "single_interview_round_source",
-    "priority": "P1"
-  }
+  ]
 }

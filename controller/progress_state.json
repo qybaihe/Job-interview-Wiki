@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-03-16T06:58:00+00:00",
+  "generated_at": "2026-03-16T07:18:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 70,
+    "completed": 71,
     "companies_seeded": 8,
     "question_banks_filled": 19,
     "interview_json_count": 23
@@ -381,6 +381,7 @@
     "已为美团 / 即时零售 / 服务端研发 / 后端开发样板继续补充来源边界声明，明确公开技术文章仅作为业务背景 basis。",
     "已为美团 / 即时零售 / 服务端研发 / 后端开发样板继续补充 门店库存 / 交易一致性 定向检索模板，并强化真实单场来源缺口说明。",
     "已为美团 / 即时零售 / 服务端研发 / 后端开发样板继续补充 ETA 调度 / 区域限流 定向检索模板，并强化真实单场来源缺口说明。",
+    "已为美团 / 即时零售 / 服务端研发 / 后端开发样板继续补充 门店供给协同 / 履约稳定性 定向检索模板，并强化真实单场来源缺口说明。",
     "已为阿里巴巴 / 淘天集团 / 搜广推 / 算法样板继续补入 analytics / machine-learning 主题入口，并修复 orchestrate 覆盖后的状态回退。",
     "已为美团 / 到家事业群 / 服务端研发 / 后端开发样板继续补入供应链 / 日志采集主题入口，并修复 orchestrate 覆盖后的状态回退。",
     "已为京东 / 物流技术 / 平台研发 / 后端开发样板补入京东云博客与智能供应链 / 物流 / 大数据主题入口，并新增算法结构化样板。",
@@ -407,6 +408,14 @@
   ],
   "next_actions": [
     {
+      "company": "美团",
+      "business_group": "即时零售",
+      "department": "服务端研发",
+      "role": "后端开发",
+      "action": "single_interview_round_source",
+      "priority": "P1"
+    },
+    {
       "company": "阿里巴巴",
       "business_group": "淘天集团",
       "department": "搜广推",
@@ -417,14 +426,6 @@
     {
       "company": "美团",
       "business_group": "到家事业群",
-      "department": "服务端研发",
-      "role": "后端开发",
-      "action": "single_interview_round_source",
-      "priority": "P1"
-    },
-    {
-      "company": "美团",
-      "business_group": "即时零售",
       "department": "服务端研发",
       "role": "后端开发",
       "action": "single_interview_round_source",

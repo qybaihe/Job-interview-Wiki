@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-03-16T06:17:00+00:00",
+  "generated_at": "2026-03-16T06:37:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 68,
+    "completed": 69,
     "companies_seeded": 8,
     "question_banks_filled": 19,
     "interview_json_count": 23
@@ -362,6 +362,7 @@
     "已为美团 / 到家事业群 / 服务端研发 / 后端开发样板继续细化 single_interview_round_source 检索模板与阻塞说明。",
     "已为美团 / 到家事业群 / 服务端研发 / 后端开发样板继续补充来源边界声明，明确公开技术文章仅作为业务背景 basis。",
     "已为美团 / 到家事业群 / 服务端研发 / 后端开发样板继续补充 交易一致性 / 履约调度 定向检索模板，并强化真实单场来源缺口说明。",
+    "已为美团 / 到家事业群 / 服务端研发 / 后端开发样板继续补充 ETA 预估 / 高峰稳定性 定向检索模板，并强化真实单场来源缺口说明。",
     "已为美团 / 到店事业群 / 后端技术 / 后端开发样板补入公开技术文章来源基础。",
     "已为阿里巴巴 / 淘天集团 / 搜广推 / 算法样板补入公开技术博客文章来源基础。",
     "已为阿里巴巴 / 淘天集团 / 搜广推 / 算法样板继续细化 single_interview_round_source 检索模板与阻塞说明。",
@@ -406,6 +407,14 @@
   "next_actions": [
     {
       "company": "美团",
+      "business_group": "到家事业群",
+      "department": "服务端研发",
+      "role": "后端开发",
+      "action": "single_interview_round_source",
+      "priority": "P1"
+    },
+    {
+      "company": "美团",
       "business_group": "即时零售",
       "department": "服务端研发",
       "role": "后端开发",
@@ -417,14 +426,6 @@
       "business_group": "淘天集团",
       "department": "搜广推",
       "role": "算法",
-      "action": "single_interview_round_source",
-      "priority": "P1"
-    },
-    {
-      "company": "美团",
-      "business_group": "到家事业群",
-      "department": "服务端研发",
-      "role": "后端开发",
       "action": "single_interview_round_source",
       "priority": "P1"
     }

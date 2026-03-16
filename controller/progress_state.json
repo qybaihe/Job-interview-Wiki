@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-03-16T03:56:00+00:00",
+  "generated_at": "2026-03-16T04:42:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 62,
+    "completed": 63,
     "companies_seeded": 8,
     "question_banks_filled": 19,
     "interview_json_count": 23
@@ -390,6 +390,7 @@
     "已为腾讯 / 微信事业群 / 基础平台 / 后端开发样板补入腾讯云开发者社区专栏入口、专栏页及分布式系统 / 消息队列主题页，并修复 orchestrate 覆盖后的状态回退。",
     "已为阿里巴巴 / 淘天集团 / 搜广推 / 算法样板继续补入 e-commerce / big-data 主题入口，并修复 orchestrate 覆盖后的状态回退。",
     "已为美团 / 即时零售 / 服务端研发 / 后端开发样板继续补入供应链 / 到家主题入口，并修复 orchestrate 覆盖后的状态回退。",
+    "已为美团 / 即时零售 / 服务端研发 / 后端开发样板继续补充 交易 / 库存 / 履约调度 定向检索模板，并强化单场真实面经缺口说明。",
     "已为美团 / 到家事业群 / 服务端研发 / 后端开发样板继续补入履约 / 到家主题入口，并修复 orchestrate 覆盖后的状态回退。",
     "已新增阿里巴巴 / 阿里云 / 基础架构 / 算法结构化样板，并修复 orchestrate 覆盖后的状态回退。",
     "已新增京东 / 零售技术 / 后端研发 / 算法结构化样板，并修复 orchestrate 覆盖后的状态回退。",

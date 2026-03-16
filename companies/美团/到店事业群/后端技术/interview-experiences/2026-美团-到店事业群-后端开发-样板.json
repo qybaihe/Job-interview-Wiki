@@ -4,9 +4,17 @@
   "department": "后端技术",
   "role": "后端开发",
   "source": {
-    "type": "manual-summary",
-    "url": "",
-    "note": "基于到店后端常见高频题型与项目追问整理的首批样板，供后续收录真实面经时继续细化。"
+    "type": "manual-curated-with-public-tech-basis",
+    "url": "https://tech.meituan.com/",
+    "urls": [
+      "https://tech.meituan.com/",
+      "https://tech.meituan.com/tags/%E5%88%B0%E5%BA%97.html",
+      "https://tech.meituan.com/tags/%E4%BA%A4%E6%98%93.html",
+      "https://tech.meituan.com/tags/%E6%90%9C%E7%B4%A2%E6%8E%92%E5%BA%8F.html",
+      "https://tech.meituan.com/tags/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95.html",
+      "https://tech.meituan.com/tags/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86.html"
+    ],
+    "note": "当前不是已核验的单场真实公开面经，而是基于到店事业群后端技术常见问题域与美团技术团队公开文章中的到店、交易、搜索排序、推荐算法、日志收集等主题页交叉整理出的结构化样板，用于先沉淀营销交易链路、到店履约、搜索推荐协同、日志排障与稳定性治理等问题场景；后续仍应优先补充明确到单场面试轮次的真实公开来源。"
   },
   "interview_rounds": 3,
   "questions": [
@@ -43,5 +51,5 @@
       "insight": "最好给出优化前后指标，比如 RT、QPS、CPU、数据库压力，不然容易显得空。"
     }
   ],
-  "final_insight": "到店后端面试通常不只看八股，而是看你是否能把数据库、缓存、MQ、幂等、稳定性治理放进真实交易或营销场景里讲明白。回答时越贴近抢券、下单、库存、活动流量等业务链路，越容易拿分。"
+  "final_insight": "到店后端面试通常不只看八股，而是看你是否能把数据库、缓存、MQ、幂等、稳定性治理放进真实交易或营销场景里讲明白。回答时越贴近抢券、下单、库存、到店交易、搜索推荐协同等业务链路，越容易拿分。"
 }

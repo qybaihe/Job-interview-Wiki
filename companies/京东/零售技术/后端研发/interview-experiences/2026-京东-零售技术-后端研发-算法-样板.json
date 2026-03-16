@@ -1,0 +1,80 @@
+{
+  "company": "京东",
+  "business_group": "零售技术",
+  "department": "后端研发",
+  "role": "算法",
+  "year": 2026,
+  "title": "2026-京东-零售技术-后端研发-算法-样板",
+  "source": {
+    "type": "manual-curated-with-public-tech-basis",
+    "url": "https://www.jdcloud.com/cn/blog",
+    "urls": [
+      "https://www.jdcloud.com/cn/blog",
+      "https://www.jdcloud.com/cn/blog/tag/零售",
+      "https://www.jdcloud.com/cn/blog/tag/大数据",
+      "https://www.jdcloud.com/cn/blog/tag/云原生",
+      "https://www.jdcloud.com/cn/blog/tag/AI",
+      "https://www.jdcloud.com/cn/blog/tag/机器学习"
+    ],
+    "note": "当前不是已核验的单场真实公开面经，而是基于京东零售技术问题域与京东云公开技术博客中零售 / 大数据 / 云原生 / AI / 机器学习标签页交叉整理出的结构化样板，用于先沉淀商品推荐、搜索排序、用户增长、转化优化、特征工程、实验评估与算法上线治理等问题场景；后续仍应优先补充明确到单场面试轮次的真实公开来源。",
+    "basis": [
+      "companies/京东/零售技术/后端研发/question-bank.md",
+      "https://www.jdcloud.com/cn/blog",
+      "https://www.jdcloud.com/cn/blog/tag/零售",
+      "https://www.jdcloud.com/cn/blog/tag/大数据",
+      "https://www.jdcloud.com/cn/blog/tag/云原生",
+      "https://www.jdcloud.com/cn/blog/tag/AI",
+      "https://www.jdcloud.com/cn/blog/tag/机器学习"
+    ],
+    "verification_status": "public-tech-basis-enriched-not-single-interview-post",
+    "todo": {
+      "target": "single_interview_round_source",
+      "preferred_source_types": [
+        "完整面经长帖",
+        "技术博客复盘",
+        "GitHub/Markdown 面试整理"
+      ],
+      "search_templates": [
+        "京东 零售 算法 面经",
+        "京东 推荐算法 面试 零售技术",
+        "京东 搜索排序 算法 面经"
+      ]
+    }
+  },
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "question": "零售场景下的推荐、搜索和广告为什么不能完全割裂建模？它们的目标函数分别受到哪些业务约束？",
+      "insight": "京东零售技术算法岗通常会从零售场景的整体目标出发，而不是只问单模型。比较好的回答会把 CTR、CVR、GMV、利润率、履约能力与用户体验放到同一个框架里。"
+    },
+    {
+      "question": "如果让你做商品推荐的召回体系，你会如何组合协同过滤、双塔、向量召回和规则召回？",
+      "insight": "高频考点是覆盖率、精度、冷启动、实时性和工程成本的权衡，而不是简单背模型名字。"
+    },
+    {
+      "question": "零售算法为什么会特别强调商品供给、库存、价格和活动强度这些特征？",
+      "insight": "面试官想看你是否理解零售推荐与内容推荐的差异。供给侧和交易侧变化会直接影响特征稳定性、样本构造和在线决策。"
+    },
+    {
+      "question": "如果某个排序模型离线 AUC 提升明显，但线上 GMV 没涨甚至下降，你会怎么排查？",
+      "insight": "这是典型的线上收益归因题。建议从指标错位、样本偏差、业务约束、实验设计和链路瓶颈几个方向展开。"
+    },
+    {
+      "question": "你会如何设计零售算法实验，避免大促、活动、补贴和流量波动带来的干扰？",
+      "insight": "这类题通常会追问实验分桶、周期选择、分层指标和异常样本处理，重点看你对线上评估的理解。"
+    },
+    {
+      "question": "实时特征和离线特征在零售算法系统中分别适合承载什么信息？为什么混用时容易出问题？",
+      "insight": "这里考的是数据时效、特征一致性和训练-服务偏差。回答里最好带上流式计算、回填和特征服务的工程视角。"
+    },
+    {
+      "question": "为什么零售算法岗位也会问你系统工程问题，比如特征平台、推理延迟、回滚和可观测性？",
+      "insight": "因为推荐/搜索模型最终必须落到生产流量上，错误代价高。面试官会特别看你有没有算法工程化与治理意识。"
+    },
+    {
+      "question": "如果一个类目流量大但转化低，你会如何判断问题在召回、排序、价格带还是商品供给本身？",
+      "insight": "这是很典型的业务诊断题。好的回答会把用户意图、供给质量、价格带匹配、曝光结构和转化漏斗结合起来。"
+    }
+  ],
+  "final_insight": "京东零售技术算法岗位通常会把推荐、搜索、交易转化、供给结构、实验评估和线上治理放在一整条零售链路里考察。真正有说服力的回答，不只是模型更复杂，而是能把业务目标、供给约束、特征工程与线上落地讲成一个完整闭环。"
+}

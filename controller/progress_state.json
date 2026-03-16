@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-16T19:45:00+00:00",
+  "generated_at": "2026-03-16T20:05:11+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
@@ -440,7 +440,8 @@
     "已新增京东 / 零售技术 / 后端研发 / 算法结构化样板，并修复 orchestrate 覆盖后的状态回退。",
     "已新增百度 / 智能云 / 基础架构 / 算法结构化样板，并修复 orchestrate 覆盖后的状态回退。",
     "已新增京东 / 物流技术 / 平台研发 / 算法结构化样板，并修复 orchestrate 覆盖后的状态回退。",
-    "已为美团 / 到店事业群 / 后端技术 / 后端开发样板补入到店 / 交易 / 搜索排序 / 推荐算法 / 日志收集主题入口，并修复 orchestrate 覆盖后的状态回退。"
+    "已为美团 / 到店事业群 / 后端技术 / 后端开发样板补入到店 / 交易 / 搜索排序 / 推荐算法 / 日志收集主题入口，并修复 orchestrate 覆盖后的状态回退。",
+    "已继续强化美团 / 即时零售 / 服务端研发 / 后端开发题库，新增门店盘点与库存回补、称重商品金额一致性、替代商品策略、多仓路由、跨 Topic 时序校验与延迟任务高峰补偿等问题，并同步细化结构化样板的检索模板与总体洞察。"
   ],
   "next_actions": [
     {
@@ -449,7 +450,9 @@
       "department": "服务端研发",
       "role": "后端开发",
       "action": "single_interview_round_source",
-      "priority": "P1"
+      "priority": "P1",
+      "status": "strengthened-question-bank-and-source-templates",
+      "last_completed_at": "2026-03-17T04:05:00+08:00"
     },
     {
       "company": "阿里巴巴",

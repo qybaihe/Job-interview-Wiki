@@ -1,0 +1,80 @@
+{
+  "company": "阿里巴巴",
+  "business_group": "阿里云",
+  "department": "基础架构",
+  "role": "算法",
+  "year": 2026,
+  "title": "2026-阿里巴巴-阿里云-基础架构-算法-样板",
+  "source": {
+    "type": "manual-curated-with-public-tech-basis",
+    "url": "https://www.alibabacloud.com/blog",
+    "urls": [
+      "https://www.alibabacloud.com/blog",
+      "https://www.alibabacloud.com/blog/topics/artificial-intelligence",
+      "https://www.alibabacloud.com/blog/topics/machine-learning",
+      "https://www.alibabacloud.com/blog/topics/cloud-native",
+      "https://www.alibabacloud.com/blog/topics/big-data",
+      "https://www.alibabacloud.com/blog/topics/architecture"
+    ],
+    "note": "当前不是已核验的单场真实公开面经，而是基于阿里云基础架构问题域与阿里云公开技术博客中 artificial-intelligence / machine-learning / cloud-native / big-data / architecture 主题页交叉整理出的结构化样板，用于先沉淀资源调度、容量预测、异常检测、智能运维、时序建模与平台算法落地等问题场景；后续仍应优先补充明确到单场面试轮次的真实公开来源。",
+    "basis": [
+      "companies/阿里巴巴/阿里云/基础架构/question-bank.md",
+      "https://www.alibabacloud.com/blog",
+      "https://www.alibabacloud.com/blog/topics/artificial-intelligence",
+      "https://www.alibabacloud.com/blog/topics/machine-learning",
+      "https://www.alibabacloud.com/blog/topics/cloud-native",
+      "https://www.alibabacloud.com/blog/topics/big-data",
+      "https://www.alibabacloud.com/blog/topics/architecture"
+    ],
+    "verification_status": "public-tech-basis-enriched-not-single-interview-post",
+    "todo": {
+      "target": "single_interview_round_source",
+      "preferred_source_types": [
+        "完整面经长帖",
+        "技术博客复盘",
+        "GitHub/Markdown 面试整理"
+      ],
+      "search_templates": [
+        "阿里云 基础架构 算法 面经",
+        "阿里云 机器学习 平台算法 面试",
+        "阿里云 智能运维 算法 面经"
+      ]
+    }
+  },
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "question": "如果让你为云资源池做容量预测，你会如何定义预测目标、时间粒度和评价指标？",
+      "insight": "阿里云基础架构算法岗很容易从业务抽象切入。比较好的回答会先区分 CPU、内存、带宽、存储等不同资源的预测对象，再讲时间粒度、周期性、峰值保护和误差成本。"
+    },
+    {
+      "question": "资源调度里为什么不能只追求资源利用率最大化？还需要同时考虑哪些约束？",
+      "insight": "这类题考的是你是否真正理解平台算法，而不是只会套优化术语。通常要讲稳定性、隔离性、时延、故障域、迁移成本和业务优先级。"
+    },
+    {
+      "question": "如果线上集群出现局部热点和资源倾斜，你会如何识别问题，并给出调度或迁移策略？",
+      "insight": "面试官通常会看你能否把监控指标、异常检测、调度策略与工程执行串起来，而不是只说‘做负载均衡’。"
+    },
+    {
+      "question": "时序异常检测在云监控或智能运维场景里常见哪些误报来源？你会如何优化？",
+      "insight": "高频点通常包括节假日、周期漂移、版本变更、灰度流量和噪声数据。好的回答会覆盖特征处理、阈值策略、反馈闭环和人工验证机制。"
+    },
+    {
+      "question": "如果你要为故障预测模型设计训练样本，正负样本怎么定义？标签延迟和样本偏差怎么处理？",
+      "insight": "这是平台算法里比较能拉开差距的问题，考的是数据定义能力而不只是模型调参能力。"
+    },
+    {
+      "question": "为什么平台算法经常需要把规则系统和模型系统结合起来，而不是完全依赖端到端模型？",
+      "insight": "基础架构场景对可解释性、稳定性和兜底能力要求很高。回答时最好强调规则兜底、故障隔离、灰度发布和策略回滚。"
+    },
+    {
+      "question": "如果一个调度/预测模型离线效果很好，但上线后收益不明显，你会从哪些方向排查？",
+      "insight": "这是非常典型的线上落地题。通常要覆盖训练-服务偏差、数据延迟、决策链路限制、业务指标口径差异以及实验设计问题。"
+    },
+    {
+      "question": "云平台算法岗位为什么也会问你工程化问题，比如特征服务、推理延迟、回滚机制和可观测性？",
+      "insight": "因为基础架构算法往往直接作用在生产系统上，错误代价高。面试官会特别看候选人是否有把模型能力安全落到平台里的工程意识。"
+    }
+  ],
+  "final_insight": "阿里巴巴阿里云基础架构算法岗位通常不会只考机器学习八股，而是把平台资源调度、容量预测、时序建模、异常检测、智能运维和工程可落地性放在同一套问题链路里考察。真正有竞争力的回答，往往不是模型多复杂，而是能把算法目标、平台约束、上线风险和治理闭环讲清楚。"
+}

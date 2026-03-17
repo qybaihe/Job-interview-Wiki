@@ -4,9 +4,36 @@
   "department": "商业化技术",
   "role": "算法",
   "source": {
-    "type": "manual-curated",
-    "url": "",
-    "note": "第二阶段扩张样板：基于抖音电商/商业化技术算法岗位常见公开高频面试方向整理，用于先补结构化样本；后续需补充可核验公开面经链接与轮次细节。"
+    "type": "manual-curated-with-public-tech-basis",
+    "url": "https://developer.volcengine.com/articles",
+    "urls": [
+      "https://developer.volcengine.com/articles",
+      "https://developer.volcengine.com/articles?category=architecture",
+      "https://developer.volcengine.com/articles?category=database",
+      "https://developer.volcengine.com/articles?category=middleware"
+    ],
+    "note": "第二阶段扩张样板：当前基于抖音电商/商业化技术算法岗位公开高频问题进行结构化整理；本次补入火山引擎开发者社区文章页与 architecture / database / middleware 分类入口，作为商业化算法问题域的公开技术 basis。该文件当前仍是可用样板，不是已核验真实单场公开面经；后续若补到明确公开面经链接，应优先回填 source.url、面试轮次差异与追问链路。",
+    "basis": [
+      "companies/字节跳动/抖音电商/商业化技术/question-bank.md",
+      "https://developer.volcengine.com/articles",
+      "https://developer.volcengine.com/articles?category=architecture",
+      "https://developer.volcengine.com/articles?category=database",
+      "https://developer.volcengine.com/articles?category=middleware"
+    ],
+    "verification_status": "public-tech-basis-enriched-not-single-interview-post",
+    "todo": {
+      "target": "source_enrich_real_link",
+      "preferred_source_types": [
+        "完整面经长帖",
+        "GitHub/Markdown 整理仓库",
+        "个人博客长文复盘"
+      ],
+      "search_templates": [
+        "字节 抖音电商 商业化 算法 面经",
+        "抖音电商 商业化技术 算法 面试",
+        "字节 商业化 推荐 广告 算法 面经"
+      ]
+    }
   },
   "interview_rounds": 3,
   "questions": [

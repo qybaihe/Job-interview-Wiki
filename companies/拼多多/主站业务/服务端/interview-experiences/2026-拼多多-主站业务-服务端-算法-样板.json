@@ -4,13 +4,23 @@
   "department": "服务端",
   "role": "算法",
   "source": {
-    "type": "manual-curated",
-    "url": "",
-    "note": "第二阶段扩张样板：基于主站业务算法岗位常见公开高频问题整理，用于先补结构化样本；本轮已按题库术语做一次 clean_merge，统一到‘点击率 / 成交转化 / GMV / 补贴成本 / 多目标优化 / 冷启动治理 / 大促治理 / 策略实验’口径。后续需补可核验公开面经链接与轮次细节。",
-    "basis": [
-      "companies/拼多多/主站业务/服务端/算法-question-bank.md"
+    "type": "manual-curated-with-public-tech-basis",
+    "url": "https://www.pingcap.com/blog/",
+    "urls": [
+      "https://www.pingcap.com/blog/",
+      "https://www.pingcap.com/blog/tags/recommendation-system/",
+      "https://www.pingcap.com/blog/tags/real-time-analytics/",
+      "https://www.pingcap.com/blog/tags/distributed-database/"
     ],
-    "verification_status": "template-only-unverified-public-post",
+    "note": "第二阶段扩张样板：基于主站业务算法岗位常见公开高频问题整理，用于先补结构化样本；本轮已按题库术语做一次 clean_merge，统一到‘点击率 / 成交转化 / GMV / 补贴成本 / 多目标优化 / 冷启动治理 / 大促治理 / 策略实验’口径，并补入公开技术博客与 recommendation-system / real-time-analytics / distributed-database 相关主题入口，作为高并发电商算法问题域的公开技术 basis。当前仍不是已核验真实单场公开面经；后续需继续补到明确题序和轮次的公开来源。",
+    "basis": [
+      "companies/拼多多/主站业务/服务端/算法-question-bank.md",
+      "https://www.pingcap.com/blog/",
+      "https://www.pingcap.com/blog/tags/recommendation-system/",
+      "https://www.pingcap.com/blog/tags/real-time-analytics/",
+      "https://www.pingcap.com/blog/tags/distributed-database/"
+    ],
+    "verification_status": "public-tech-basis-enriched-not-single-interview-post",
     "todo": {
       "target": "source_enrich_real_link",
       "preferred_source_types": [
@@ -21,10 +31,11 @@
       "search_templates": [
         "拼多多 主站业务 服务端 算法 面经",
         "拼多多 算法 面试 复盘",
-        "电商 算法 面经 拼多多"
+        "电商 算法 面经 拼多多",
+        "拼多多 推荐 搜索 算法 面经"
       ]
     }
-  },
+  }
   "interview_rounds": 3,
   "questions": [
     {

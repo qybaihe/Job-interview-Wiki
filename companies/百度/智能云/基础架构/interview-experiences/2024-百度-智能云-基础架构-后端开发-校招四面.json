@@ -1,0 +1,68 @@
+{
+  "company": "百度",
+  "business_group": "智能云",
+  "department": "基础架构",
+  "role": "后端开发",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://blog.csdn.net/weixin_44427286/article/details/119358356",
+      "https://blog.csdn.net/CY2333333/article/details/121561128",
+      "https://www.nowcoder.com/enterprise/139/interview",
+      "https://blog.csdn.net/2401_84573447/article/details/138231899"
+    ],
+    "note": "综合2021-2024年百度后端开发校招/提前批面经（CSDN百度提前批四面、百度ACG物联网Java后端一面、牛客百度校招面经汇总），结合百度智能云基础架构岗位特点整理。百度后端面试通常3-4轮，一面八股广度+手撕算法，二面底层原理+项目深挖，三面主管面偏职业规划，四面（如有）为交叉面。百度智能云方向额外考察云原生（K8S/Docker）、配置中心、服务治理和多租户架构。"
+  },
+  "interview_rounds": 4,
+  "questions": [
+    {
+      "question": "NIO模型和BIO模型的区别？Netty的线程模型是怎样的？Reactor模式的几种变体？",
+      "insight": "百度一面Java网络编程题。BIO：一连接一线程，阻塞等待。NIO：多路复用器Selector管理多连接，非阻塞。Netty采用主从Reactor模型：BossGroup接收连接，WorkerGroup处理IO。三种Reactor变体：单线程、多线程、主从多线程。百度基础架构岗对网络模型要求较高。"
+    },
+    {
+      "question": "MySQL的B+树索引为什么比B树更适合数据库？聚簇索引和非聚簇索引的区别？联合索引的最左前缀原则？",
+      "insight": "百度一面数据库基础。B+树优势：叶子节点链表便于范围查询、非叶子节点不存数据可容纳更多key降低树高、所有查询都到叶子节点查询效率稳定。聚簇索引叶子存完整行数据（InnoDB主键），非聚簇索引叶子存主键值需回表。联合索引(a,b,c)遵循最左前缀，WHERE a=1 AND c=3不能用到c的索引。"
+    },
+    {
+      "question": "线程池的核心参数有哪些？拒绝策略有几种？如何根据业务场景选择线程池参数？",
+      "insight": "百度一面Java并发题。7个核心参数：corePoolSize、maximumPoolSize、keepAliveTime、unit、workQueue、threadFactory、handler。4种拒绝策略：AbortPolicy抛异常、CallerRunsPolicy调用者执行、DiscardPolicy丢弃、DiscardOldestPolicy丢弃最老。CPU密集型：核心数+1；IO密集型：核心数*2或更多。百度会追问实际项目中如何调优。"
+    },
+    {
+      "question": "操作系统的虚拟内存机制？页表是怎么工作的？TLB的作用？缺页中断的处理流程？",
+      "insight": "百度二面操作系统深挖。虚拟内存：每个进程独立虚拟地址空间，通过页表映射到物理内存。多级页表减少内存占用。TLB是页表缓存，加速地址翻译。缺页中断：CPU访问未映射页→陷入内核→查找磁盘位置→分配物理页→加载数据→更新页表→重新执行指令。百度二面对OS底层要求较高。"
+    },
+    {
+      "question": "分布式系统中如何实现配置的动态下发和灰度发布？配置中心挂了怎么办？",
+      "insight": "百度智能云基础架构高频题。动态下发：长轮询/Watch机制（如Apollo/Nacos），客户端监听配置变更实时生效。灰度发布：按IP/机房/百分比分批下发，观察指标后全量。配置中心挂了：客户端本地缓存兜底（文件快照）、多节点高可用部署、降级为静态配置。百度智能云岗位必考配置中心设计。"
+    },
+    {
+      "question": "etcd的Raft一致性协议原理？Leader选举过程？日志复制流程？脑裂怎么处理？",
+      "insight": "百度智能云基础架构核心题。Raft三个角色：Leader/Follower/Candidate。选举：Follower超时未收到心跳→变Candidate→发起投票→获得多数票成为Leader。日志复制：Leader接收写请求→追加日志→并行复制到Follower→多数确认后提交。脑裂：Raft要求多数派（N/2+1）才能选出Leader，少数派分区无法写入，保证一致性。"
+    },
+    {
+      "question": "如何设计一个多租户隔离的云平台？资源配额如何管理？租户间如何防止互相影响？",
+      "insight": "百度智能云基础架构场景题。隔离层次：网络隔离（VPC/VLAN）、计算隔离（容器/VM）、存储隔离（namespace/schema）、流量隔离（限流/QoS）。资源配额：Quota管理+弹性伸缩+超卖策略。防止互相影响：noisy neighbor检测、资源预留、优先级调度、熔断隔离。百度智能云作为公有云平台，多租户是核心能力。"
+    },
+    {
+      "question": "K8S中Pod调度的流程？Scheduler是怎么选择Node的？如何实现自定义调度策略？",
+      "insight": "百度智能云二面云原生深挖。调度流程：Pod创建→进入调度队列→Scheduler过滤（Predicates：资源、亲和性、污点容忍）→打分（Priorities：负载均衡、节点亲和性）→绑定Node。自定义调度：Scheduler Extender（webhook扩展）、Scheduling Framework（插件机制）、自定义Scheduler。"
+    },
+    {
+      "question": "服务网格（Service Mesh）了解吗？Sidecar模式的优缺点？和传统SDK方式的服务治理有什么区别？",
+      "insight": "百度智能云基础架构进阶题。Service Mesh：数据面（Envoy/MOSN sidecar代理）+控制面（Istio管理配置）。Sidecar优点：语言无关、业务无侵入、统一治理。缺点：额外延迟（多一跳）、资源开销、运维复杂度。vs SDK：SDK侵入业务代码但性能好，Mesh无侵入但有额外开销。百度内部有自研Service Mesh方案。"
+    },
+    {
+      "question": "如何设计一个高可用的服务注册发现系统？AP和CP模型分别适合什么场景？",
+      "insight": "百度二面系统设计题。CP模型（etcd/ZooKeeper）：强一致性，适合配置中心、分布式锁、Leader选举。AP模型（Eureka/Nacos AP模式）：高可用优先，适合服务发现（短暂不一致可接受）。高可用设计：多节点部署、客户端缓存、健康检查+自动摘除、跨机房容灾。百度智能云同时使用etcd和自研注册中心。"
+    },
+    {
+      "question": "手撕算法：实现一个支持过期时间的LRU缓存；二叉树的最大路径和。",
+      "insight": "百度每轮必有手撕算法。带过期时间的LRU：在标准LRU（HashMap+双向链表）基础上，每个节点增加expireTime字段，get时检查是否过期，可用懒删除+定时清理结合。二叉树最大路径和：DFS递归，每个节点计算经过该节点的最大路径和（左子树贡献+右子树贡献+节点值），维护全局最大值。"
+    },
+    {
+      "question": "讲一个你做过的项目，遇到的最大技术挑战是什么？你是怎么解决的？如果重新做你会怎么改进？",
+      "insight": "百度三面主管面必问。回答框架：背景→挑战→方案选型→实施过程→结果量化→反思改进。主管面不深挖技术细节，更看重：问题分析能力、方案权衡能力、执行推动能力、复盘总结能力。百度三面通常30-40分钟，项目+职业规划各占一半。"
+    }
+  ],
+  "final_insight": "百度智能云基础架构后端面试特点：3-4轮面试，流程快（可能一周内完完）。一面八股广度覆盖（Java/数据库/网络/OS）+2-3道手撕算法，二面深挖底层原理和云原生技术（K8S/etcd/Service Mesh/配置中心/多租户），三面主管面偏项目和职业规划。智能云方向相比其他百度部门，额外重点考察：分布式一致性协议、云原生架构、服务治理、多租户隔离、配置中心设计。算法每轮必考，要求写完整可运行代码。建议准备：etcd/Raft原理、K8S调度机制、配置中心设计、多租户隔离方案。"
+}

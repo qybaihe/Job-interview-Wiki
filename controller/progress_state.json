@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-19T15:43:00+00:00",
+  "generated_at": "2026-03-19T16:03:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 59,
+    "completed": 61,
     "companies_seeded": 8,
     "question_banks_filled": 12,
-    "interview_json_count": 41
+    "interview_json_count": 43
   },
   "queues": {
     "priority_companies": [
@@ -39,7 +39,7 @@
       "business_group": "微信事业群",
       "department": "基础平台",
       "question_bank_ready": true,
-      "interview_json_count": 5
+      "interview_json_count": 6
     },
     {
       "company": "阿里巴巴",
@@ -74,7 +74,7 @@
       "business_group": "智能云",
       "department": "基础架构",
       "question_bank_ready": true,
-      "interview_json_count": 4
+      "interview_json_count": 5
     },
     {
       "company": "快手",
@@ -176,39 +176,18 @@
     }
   ],
   "notes": [
-    "2026-03-19T23:43 新增拼多多/主站业务/服务端/服务端开发Java岗2024秋招正式批三面真实面经JSON（来源：牛客网正式批一二三面面经+知乎转载），13题覆盖同步异步/并发串行性/分布式锁/MVCC/redo-undo日志/HTTPS全链路/RocketMQ存储/逃逸分析/ThreadLocal/秒杀系统设计。",
-    "2026-03-19T23:43 新增京东/零售技术/后端研发/Java后端2024校招两面真实面经JSON（来源：牛客网京东零售后端一面+JDY一面+CSDN京东四面面经），13题覆盖HashMap红黑树/双亲委派SPI/JMM/线程池参数/ACID实现/慢查询/分库分表/Redis持久化/G1-CMS对比/Redis-Lua预检/乐观锁粒度/LRU手撕。",
-    "2026-03-19T23:43 补强京东/零售技术/后端研发题库question-bank.md，新增零售交易/库存/履约专题（5大分类20+题：库存扣减与超卖治理/订单状态流转与一致性/履约链路与物流协同/商品详情与缓存架构/大促容量与稳定性）。",
-    "2026-03-19T23:43 补强拼多多/主站业务/服务端题库question-bank.md，新增2024秋招正式批真题补充（5大分类15+题：MySQL日志体系与事务/并发场景与分布式锁/中间件深挖/JVM进阶/网络与安全）。",
+    "2026-03-20T00:03 新增腾讯/微信事业群/基础平台（微信支付）/后端开发秋招六面OC真实面经JSON（来源：牛客网WXG微信支付已OC面经+WXG校招后端已OC面经+WXG后台实习一二三面面经），13题覆盖Redis zset实时排名/微信付款码安全设计/虚拟物理地址/RPC项目深挖/Go slice/Redis缓存三连+分布式锁/布隆过滤器一致性/Kafka可靠性+幂等/STL vector+malloc底层/朋友圈健康码场景/Redis Delay Queue可靠性/面委会算法题。",
+    "2026-03-20T00:03 新增百度/智能云/基础架构/后端开发校招四面真实面经JSON（来源：CSDN百度提前批四面+百度ACG Java后端一面+牛客百度校招面经汇总），12题覆盖NIO/BIO/Netty/B+树索引/线程池参数/虚拟内存页表TLB/配置动态下发灰度/etcd Raft协议/多租户隔离/K8S Pod调度/Service Mesh/服务注册发现AP-CP。",
+    "2026-03-20T00:03 补强百度/智能云/基础架构题库question-bank.md，新增三大专题：配置中心专题（4分类16+题：核心设计/变更风险控制/配置与服务发现关系）、服务治理专题（4分类16+题：注册发现/流量治理/服务网格/可观测性）、多租户架构专题（3分类12+题：隔离模型/资源管理/安全审计）。",
+    "2026-03-20T00:03 补强腾讯/微信事业群/基础平台题库question-bank.md，新增追问分组（7条典型追问链路：Redis缓存三连→分布式锁→布隆过滤器/Kafka可靠性→幂等→顺序/Go slice→内存→GC/RPC深挖→负载均衡→服务治理/OS内存→虚拟地址→共享内存/微信支付场景→安全→幂等/场景设计→数据结构→极端情况）。",
+    "2026-03-19T23:43 新增拼多多/主站业务/服务端/服务端开发Java岗2024秋招正式批三面真实面经JSON。",
+    "2026-03-19T23:43 新增京东/零售技术/后端研发/Java后端2024校招两面真实面经JSON。",
+    "2026-03-19T23:43 补强京东/零售技术/后端研发题库question-bank.md。",
+    "2026-03-19T23:43 补强拼多多/主站业务/服务端题库question-bank.md。",
     "2026-03-19T23:23 新增字节跳动/抖音电商/商业化技术（TAC）/广告算法校招一面凉经真实面经JSON。",
-    "2026-03-19T23:23 补强美团/到店事业群/后端技术题库question-bank.md，新增交易链路稳定性专题。",
-    "2026-03-19T23:03 新增阿里巴巴/淘天集团/搜广推/多模态大模型算法校招三面真实面经JSON。",
-    "2026-03-19T23:03 新建阿里巴巴/淘天集团/搜广推题库question-bank.md。",
-    "2026-03-19T23:03 补强腾讯/微信事业群/基础平台题库question-bank.md。",
-    "2026-03-19T22:43 新增腾讯/微信事业群/基础平台/客户端开发实习三面OC真实面经JSON。",
-    "2026-03-19T22:43 补强字节跳动/抖音电商/商业化技术题库question-bank.md广告系统专项。"
+    "2026-03-19T23:23 补强美团/到店事业群/后端技术题库question-bank.md。"
   ],
   "next_actions": [
-    {
-      "company": "百度",
-      "business_group": "智能云",
-      "department": "基础架构",
-      "role": "后端开发",
-      "action": "补1份后端开发新样板+强化配置中心/服务治理/多租户专题",
-      "priority": "P0",
-      "status": "pending",
-      "note": "P0项：TODO_FIRST_BATCH要求补1份后端开发新样板并强化配置中心/服务治理/多租户专题"
-    },
-    {
-      "company": "腾讯",
-      "business_group": "微信事业群",
-      "department": "基础平台",
-      "role": "后端开发",
-      "action": "补1份后端开发新样板+给question-bank.md增加更细的追问分组",
-      "priority": "P0",
-      "status": "pending",
-      "note": "P0项：TODO_FIRST_BATCH要求补1份后端开发新样板并增加追问分组"
-    },
     {
       "company": "阿里巴巴",
       "business_group": "淘天集团",
@@ -218,6 +197,26 @@
       "priority": "P0",
       "status": "pending",
       "note": "P0项：TODO_FIRST_BATCH要求补1份算法新样板并补充召回/排序/多目标优化专题"
+    },
+    {
+      "company": "字节跳动",
+      "business_group": "抖音电商",
+      "department": "商业化技术",
+      "role": "后端开发",
+      "action": "补1份后端开发新样板或补强现有question-bank+后端/算法共性题去重",
+      "priority": "P0",
+      "status": "pending",
+      "note": "P0项：TODO_FIRST_BATCH要求补1份后端开发新样板并去重共性题"
+    },
+    {
+      "company": "快手",
+      "business_group": "电商事业部",
+      "department": "服务端研发",
+      "role": "后端开发",
+      "action": "补1份后端开发新样板+强化电商链路与直播场景题库",
+      "priority": "P2",
+      "status": "pending",
+      "note": "P2项：TODO_FIRST_BATCH要求补1份后端开发新样板并强化电商链路与直播场景题库"
     }
   ],
   "pending": []

@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-20T06:24:00+08:00",
+  "generated_at": "2026-03-20T06:44:00+08:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 97,
+    "completed": 99,
     "companies_seeded": 8,
     "question_banks_filled": 13,
-    "interview_json_count": 75
+    "interview_json_count": 77
   },
   "queues": {
     "priority_companies": [
@@ -67,14 +67,14 @@
       "business_group": "零售技术",
       "department": "后端研发",
       "question_bank_ready": true,
-      "interview_json_count": 6
+      "interview_json_count": 7
     },
     {
       "company": "百度",
       "business_group": "智能云",
       "department": "基础架构",
       "question_bank_ready": true,
-      "interview_json_count": 6
+      "interview_json_count": 7
     },
     {
       "company": "快手",
@@ -183,11 +183,13 @@
     }
   ],
   "notes": [
+    "2026-03-20T06:44 新增京东/零售技术/产研/后端开发春招三面面经JSON（来源：牛客网2025春招京东零售产研后端开发面经已OC），三面覆盖手撕算法（三选一）、ZooKeeper选型、protobuf序列化优势与原理、TCP粘包拆包、项目深挖（HashMap/多线程/JVM调优）、HRBP面。京东零售面经从6份扩展到7份。",
+    "2026-03-20T06:44 新增百度/智能云/基础平台/后端开发校招社招两面面经JSON（来源：牛客百度社招话题+百度秋招面经+CSDN百度智能云面经），两面覆盖HashMap+ConcurrentHashMap分段锁追问链路、微服务架构设计、protobuf选型、TCP拥塞控制、K8s扩缩容、Docker多阶段构建、工厂方法模式、CI/CD pipeline、配置中心容灾、服务治理平台设计。百度智能云面经从6份扩展到7份。",
+    "2026-03-20T06:44 补强百度/智能云/基础架构题库question-bank.md，新增云原生工程实践专题（16题），覆盖Docker镜像优化（4题）、K8s扩缩容与调度（4题）、CI/CD工程素养（4题）、追问链路（3条）。",
+    "2026-03-20T06:44 补强京东/零售技术/后端研发题库question-bank.md，新增网络协议与序列化专题（17题），覆盖序列化协议选型（4题）、TCP协议深挖（4题）、分布式协调与服务发现（4题）、集合框架与面向接口编程（4题）、追问链路（3条）。",
     "2026-03-20T06:24 新增腾讯/CSIG/基础架构/后台开发社招面经JSON（来源：CSDN腾讯CSIG社招面经Java转Go+CSDN腾讯CSIG-腾讯云后台开发面经已offer），两面覆盖项目深挖（线程池调优/异步调度框架设计/分库分表/竞态处理）、Go语言深度（GMP/GC/channel/sync包源码）、工程实践（重构策略/灰度发布Schema兼容/线上排查/QPS优化）、开放式系统设计（分布式故障定位/连接管理）。社招特点：不考八股，全程围绕项目展开。CSIG面经从1份校招扩展到2份（校招+社招）。",
     "2026-03-20T06:24 补强腾讯/CSIG/基础架构题库question-bank.md，新增社招专项（15题）覆盖项目深挖方向（5题）、工程实践（7题）、分布式故障定位（3题），新增系统设计题2道（异步任务调度框架+多租户资源隔离）。题库从80+题扩展到97+题。",
-    "2026-03-20T06:24 补强快手/商业化/后端研发题库question-bank.md，新增广告系统深度专题（28题），覆盖CTR/CVR预估工程化（5题）、竞价机制深度（5题）、预算控制系统（5题）、广告召回与索引（4题）、广告计费与反作弊（4题）、广告系统高可用与性能（4题），新增系统设计题2道（广告特征服务+A/B实验平台）。题库从120行扩展到170+行，广告系统方向从7题扩展到35题。",
-    "2026-03-20T06:04 新增腾讯/CSIG/基础架构/后端开发面经JSON（来源：CSDN腾讯CSIG-腾讯云-后台开发面经已offer+知乎csig腾讯云暑期实习面经+牛客腾讯云社招Golang面经），三面覆盖Go语言深度（GMP调度/GC三色标记/channel/context）、云原生技术栈（K8s组件与Pod创建流程/etcd Raft选举与脑裂/Docker隔离机制）、MySQL底层（B+树/MVCC/索引优化）。CSIG面试特色：Go+云原生是核心区分度。",
-    "2026-03-20T06:04 新增腾讯/CSIG/基础架构题库question-bank.md（80+题），覆盖Go语言基础（15题）、云原生K8s/etcd/Docker（22题）、MySQL（11题）、Redis（7题）、分布式系统（7题）、计算机网络（6题）、Linux系统（5题）、算法手撕（7题）、系统设计（4题）。CSIG方向从零到完整题库。"
+    "2026-03-20T06:24 补强快手/商业化/后端研发题库question-bank.md，新增广告系统深度专题（28题），覆盖CTR/CVR预估工程化（5题）、竞价机制深度（5题）、预算控制系统（5题）、广告召回与索引（4题）、广告计费与反作弊（4题）、广告系统高可用与性能（4题），新增系统设计题2道（广告特征服务+A/B实验平台）。题库从120行扩展到170+行，广告系统方向从7题扩展到35题。"
   ],
   "next_actions": [
     {
@@ -221,24 +223,24 @@
       "note": "已有2份面经JSON（校招三面+实习一面），推理引擎方向需深化"
     },
     {
-      "company": "京东",
-      "business_group": "零售技术",
-      "department": "后端研发",
+      "company": "美团",
+      "business_group": "到家事业群",
+      "department": "服务端研发",
       "role": "后端开发",
-      "action": "补1份后端开发新样板+零售交易/库存/履约专题题库",
+      "action": "补1份配送/履约/调度方向面经+补强问题域题库",
       "priority": "P1",
       "status": "pending",
-      "note": "已有6份面经JSON+完整题库，可补强零售业务场景题"
+      "note": "已有4份面经JSON+完整题库，配送调度方向可深化"
     },
     {
-      "company": "百度",
-      "business_group": "智能云",
-      "department": "基础架构",
-      "role": "后端开发",
-      "action": "补1份后端开发新样板+配置中心/服务治理/多租户专题",
-      "priority": "P1",
+      "company": "快手",
+      "business_group": "主站业务",
+      "department": "推荐算法",
+      "role": "推荐算法",
+      "action": "补1份推荐系统社招面经+大模型与推荐结合专题",
+      "priority": "P2",
       "status": "pending",
-      "note": "已有6份面经JSON+完整题库，可补强云平台基础架构场景题"
+      "note": "已有3份面经JSON，推荐+大模型方向是2025热点"
     }
   ],
   "pending": []

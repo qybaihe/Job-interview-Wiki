@@ -167,6 +167,33 @@
 - MySQL锁 → 事务隔离级别 → MVCC → Next-Key Lock → 索引设计 → 慢查询优化
 - HTTP → HTTPS → TLS握手 → 证书链验证 → 对称/非对称加密 → 前向安全性
 
+## 云原生工程实践专题（2024-2025面经补充）
+
+> 来源：牛客网2024百度技术平台部秋招面经+百度智能云社招面经，提取云原生工程实践高频追问。
+
+### 1. Docker 与镜像优化
+- Dockerfile中CMD和ENTRYPOINT的区别？什么时候用ENTRYPOINT+CMD组合？
+- 多阶段构建（multi-stage build）的原理和好处？如何把编译产物从builder阶段拷贝到运行阶段？
+- 镜像体积优化的常见手段？（alpine基础镜像、合并RUN层、清理apt/yum缓存、.dockerignore）
+- 容器内进程以root运行有什么风险？如何用USER指令降权？
+
+### 2. K8s 扩缩容与调度
+- HPA（水平Pod自动扩缩）的触发指标有哪些？自定义指标（如QPS、队列长度）怎么接入？
+- VPA（垂直Pod自动扩缩）和HPA能同时使用吗？有什么冲突？
+- Pod调度中NodeAffinity、PodAffinity、Taint/Toleration分别解决什么问题？
+- 如果一个Pod一直处于Pending状态，排查思路是什么？（资源不足、调度约束、PV未绑定、镜像拉取失败）
+
+### 3. CI/CD 与工程素养
+- 单元测试的FIRST原则是什么？（Fast、Independent、Repeatable、Self-validating、Timely）
+- 如何在GitLab CI pipeline中集成单元测试、代码覆盖率检查和静态分析？
+- 蓝绿部署、滚动更新、金丝雀发布的区别？各自适合什么场景？
+- 如何做数据库Schema变更的灰度发布？向前兼容和向后兼容怎么保证？
+
+### 4. 追问链路
+- protobuf → 为什么比JSON快 → varint编码 → IDL版本兼容 → gRPC vs bRPC
+- K8s扩容 → HPA指标 → 自定义Metrics → Prometheus Adapter → 扩容延迟优化
+- Docker镜像 → 多阶段构建 → 镜像分层缓存 → 镜像安全扫描 → 供应链安全
+
 ## 反问方向
 - 这个岗位更偏中间件、服务治理、监控平台还是云基础设施？
 - 团队当前最核心的稳定性挑战是什么？

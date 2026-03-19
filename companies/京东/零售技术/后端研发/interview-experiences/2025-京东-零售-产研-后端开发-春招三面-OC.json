@@ -1,0 +1,67 @@
+{
+  "company": "京东",
+  "business_group": "零售技术",
+  "department": "产研",
+  "role": "后端开发",
+  "source": {
+    "type": "real",
+    "urls": [
+      "https://www.nowcoder.com/feed/main/detail/af95ef3f1d2e433d8ea880a7b87b0fad"
+    ],
+    "note": "2025年春招京东零售产研后端开发三面面经（已OC）。来源：牛客网。Timeline：一面3/12、二面3/17、三面3/21、OC+offer 3/31。视频面，京东ME会议APP。一面偏基础+手撕+项目，二面偏项目深挖+系统设计，三面HRBP面。"
+  },
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "round": 1,
+      "question": "手撕算法三选一：最长回文子串 / 三数之和 / 环形链表II",
+      "insight": "京东一面上来先手撕，三选一模式。三数之和是经典双指针题（LeetCode 15），先排序再固定一个数用双指针扫描，注意去重。环形链表II用快慢指针找入环点。难度中等。"
+    },
+    {
+      "round": 1,
+      "question": "为什么代码中声明List<List<Integer>>时new了ArrayList，可以new别的吗？List和ArrayList的关系？",
+      "insight": "考察Java集合框架的接口与实现分离。List是接口，ArrayList和LinkedList是实现类。面向接口编程的好处：可以随时替换实现类而不影响上层代码。也可以new LinkedList，但性能特性不同。"
+    },
+    {
+      "round": 1,
+      "question": "ZooKeeper是做什么用的？为什么用ZooKeeper，还了解哪些其他的？",
+      "insight": "ZooKeeper用于分布式协调：服务注册发现、配置管理、分布式锁、Leader选举。替代方案：etcd（更轻量，K8S生态）、Nacos（阿里，同时支持配置和注册）、Consul（HashiCorp）。京东内部也有自研的注册中心JSF。"
+    },
+    {
+      "round": 1,
+      "question": "为什么用protobuf而不是其他协议？跟其他协议比有什么优势？为什么速度快体积小？",
+      "insight": "protobuf vs JSON/XML：二进制编码体积小（比JSON小3-10倍）、序列化速度快（比JSON快2-100倍）、强类型IDL定义接口。速度快的原因：使用varint编码、字段用tag+wire_type标识而非字段名、编解码不需要解析文本。缺点：可读性差、需要预编译proto文件。"
+    },
+    {
+      "round": 1,
+      "question": "怎么解决TCP粘包拆包问题的？",
+      "insight": "TCP是字节流协议，没有消息边界。解决方案：1）固定长度（简单但浪费）；2）分隔符（如\\n，需要转义）；3）长度前缀（最常用，消息头带length字段）；4）应用层协议自带边界（如HTTP的Content-Length或chunked）。protobuf通常配合长度前缀使用。"
+    },
+    {
+      "round": 1,
+      "question": "遇到过什么困难，怎么解决的？",
+      "insight": "项目经验题。回答框架：背景→问题→分析→方案→结果→反思。最好选一个有技术深度的困难（如性能瓶颈、并发问题、线上故障），而不是沟通协作类的软问题。"
+    },
+    {
+      "round": 2,
+      "question": "项目深挖：HashMap、多线程在项目中的使用场景？集合框架的选型依据？",
+      "insight": "京东二面偏项目深挖。面试官会顺着项目问：为什么用HashMap而不是ConcurrentHashMap？多线程用了线程池还是手动创建？线程池参数怎么配的？有没有遇到过并发问题？怎么排查的？"
+    },
+    {
+      "round": 2,
+      "question": "项目中的垃圾回收和JVM调优经验？",
+      "insight": "二面会问JVM实战。常见调优场景：Full GC频繁（堆内存不足或内存泄漏）、Young GC时间长（新生代过大）、STW时间过长（换G1或ZGC）。排查工具：jstat看GC频率、jmap dump堆、MAT分析大对象。"
+    },
+    {
+      "round": 2,
+      "question": "计算机网络：TCP三次握手四次挥手？HTTPS和HTTP的区别？",
+      "insight": "基础网络题。三次握手：SYN→SYN+ACK→ACK。四次挥手：FIN→ACK→FIN→ACK（TIME_WAIT 2MSL）。HTTPS = HTTP + TLS，多了证书验证和加密握手，默认端口443。"
+    },
+    {
+      "round": 3,
+      "question": "HRBP面：自我介绍、职业规划、为什么选京东、期望薪资",
+      "insight": "京东三面是HRBP面，不考技术。重点考察：稳定性（为什么选京东而不是其他大厂）、成长性（职业规划是否清晰）、匹配度（对零售业务的理解）。京东零售HRBP面通常15-20分钟，比较轻松。"
+    }
+  ],
+  "final_insight": "京东零售产研2025春招后端面试特点：一面50分钟，先手撕算法（三选一，难度中等），再问项目和基础（网络协议、序列化、分布式协调）。二面偏项目深挖，会顺着简历上的技术栈层层追问（集合、并发、JVM调优）。三面HRBP面，轻松快速。整体节奏快，一面到OC约三周。面试官评价'基础还行，用得不够多，了解的还不深入，需要扩展'，说明京东零售二面看重实战深度而非八股广度。"
+}

@@ -126,6 +126,39 @@
 - Redis 高性能 → IO 多路复用 → epoll 原理 → 热 key 治理（一面 Redis 追问链路）
 - 限流算法设计 → 分布式限流 → Sentinel vs 自研（二面场景追问链路）
 
+## 网络协议与序列化专题（2025春招面经补充）
+
+> 来源：牛客网2025京东零售产研后端开发春招三面面经（已OC），提取网络协议和序列化方向高频追问。
+
+### 1. 序列化协议选型
+- protobuf和JSON各自适合什么场景？为什么内部RPC服务间通信优先用protobuf？
+- protobuf为什么速度快体积小？varint编码、tag+wire_type标识、二进制编码各自的作用？
+- protobuf的IDL版本兼容机制？新增字段、删除字段、修改字段类型分别会怎样？
+- 除了protobuf和JSON，还有哪些序列化方案？（Thrift、Avro、MessagePack、Kryo）各自的优缺点？
+
+### 2. TCP协议深挖
+- TCP粘包拆包的原因？为什么UDP没有粘包问题？
+- 解决TCP粘包的四种方案？（固定长度、分隔符、长度前缀、应用层协议边界）各自的优缺点？
+- protobuf配合TCP传输时，通常用什么方式处理消息边界？（长度前缀：4字节length + protobuf payload）
+- TCP Nagle算法和延迟ACK的交互会导致什么问题？如何用TCP_NODELAY优化？
+
+### 3. 分布式协调与服务发现
+- ZooKeeper的核心数据模型？ZNode的类型（持久/临时/顺序）分别用于什么场景？
+- ZooKeeper做分布式锁的实现原理？临时顺序节点+Watch机制的流程？
+- ZooKeeper、etcd、Nacos作为注册中心的对比？CP vs AP模型的选择依据？
+- 京东内部的JSF服务框架和开源Dubbo的异同？
+
+### 4. 集合框架与面向接口编程
+- 为什么声明类型用List而不是ArrayList？面向接口编程的好处？
+- List的常见实现类有哪些？ArrayList、LinkedList、CopyOnWriteArrayList各自的适用场景？
+- Collections.unmodifiableList和List.of()创建的不可变列表有什么区别？
+- Stream API中collect(Collectors.toList())返回的是什么类型？能保证是ArrayList吗？
+
+### 5. 追问链路
+- protobuf → 为什么快 → 编码原理 → IDL兼容 → gRPC流式通信
+- TCP粘包 → 长度前缀 → 自定义协议设计 → Netty的LengthFieldBasedFrameDecoder
+- ZooKeeper → 临时节点 → 分布式锁 → 羊群效应 → Curator框架
+
 ## 反问方向
 - 这个岗位主要负责商品、交易、库存还是履约侧链路？
 - 团队当前最关注的核心稳定性指标是什么？

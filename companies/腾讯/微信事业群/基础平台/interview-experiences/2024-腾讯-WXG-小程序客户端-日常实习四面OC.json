@@ -1,0 +1,131 @@
+{
+  "company": "腾讯",
+  "business_group": "微信事业群（WXG）",
+  "department": "小程序客户端",
+  "role": "客户端开发（C++/Rust方向）",
+  "year": 2024,
+  "type": "日常实习",
+  "source": {
+    "type": "single",
+    "urls": [
+      "https://chiichen.github.io/posts/%E6%9D%82%E8%B0%88/%E9%9D%A2%E7%BB%8F/%E8%85%BE%E8%AE%AFWXG%E6%97%A5%E5%B8%B8%E5%AE%9E%E4%B9%A0%E9%9D%A2%E7%BB%8F.html"
+    ],
+    "note": "个人博客面经，2024-01-30至2024-02-05完成全部面试流程并拿到OC。作者背景：有DragonOS操作系统内核和低代码平台项目经验，熟悉Rust/C++。投递C++后台开发岗位后被WXG小程序客户端面试官捞起。面试节奏极快，年前完成全流程。"
+  },
+  "interview_rounds": 4,
+  "rounds": [
+    {
+      "name": "一面（90min）",
+      "focus": "算法笔试 + 项目深挖 + 编程语言理解",
+      "duration_min": 90,
+      "questions": [
+        {
+          "question": "笔试：二叉树最大平均值子树",
+          "category": "手撕代码",
+          "insight": "后序遍历，每个节点维护子树和与节点数，递归更新全局最大平均值。注意空值判断和成员变量初始化。面试官期望30分钟内完成两道题。"
+        },
+        {
+          "question": "笔试：凑硬币（零钱兑换）",
+          "category": "手撕代码",
+          "insight": "经典DP题。dp[i] = min(dp[i], dp[i-coin]+1)，初始化dp[0]=0，其余为INT_MAX。LeetCode 322原题。"
+        },
+        {
+          "question": "谈谈对Rust和C++交融的看法",
+          "category": "编程语言",
+          "insight": "WXG客户端面试特色题。可以从Enum vs std::variant的易用性差异、所有权机制（Rust的borrow checker vs C++的右值引用/std::move）、历史包袱等角度展开。面试官关注候选人对语言设计哲学的理解深度。"
+        },
+        {
+          "question": "C++中没有borrow check，有什么移动语义的最佳实践能保证used-after-move不出错？",
+          "category": "编程语言",
+          "insight": "深度C++问题。可以从静态分析工具（clang-tidy的bugprone-use-after-move检查）、编码规范（移动后立即置空/重置）、智能指针语义等角度回答。面试官想考察对C++内存安全实践的理解。"
+        },
+        {
+          "question": "Rust为什么既内存安全又高效？",
+          "category": "编程语言",
+          "insight": "安全性：所有权机制消除裸指针、编译期borrow check消除数据竞争。高效性：零成本抽象、对程序员的严格约束给编译器更大的优化空间（如更激进的别名分析）、无GC开销。"
+        },
+        {
+          "question": "介绍glibc和musl的区别",
+          "category": "系统编程",
+          "insight": "glibc：功能全面、动态链接为主、体积大、兼容性好。musl：轻量、支持静态链接、适合嵌入式/容器场景。面试官从项目中的技术选型切入考察系统编程基础。"
+        },
+        {
+          "question": "介绍ELF DYN类型文件加载流程",
+          "category": "系统编程",
+          "insight": "围绕项目展开：解析ELF头→加载Program Header中的LOAD段→解析.interp段获取动态链接器路径→由动态链接器完成符号解析和重定位。区分Loader和Linker的职责。"
+        },
+        {
+          "question": "JWT的原理、能否主动使JWT失效、JWT是否无状态",
+          "category": "后端基础",
+          "insight": "JWT由Header.Payload.Signature三部分组成，服务端不存储token即为无状态。主动失效方案：黑名单机制（需引入状态）、短过期时间+Refresh Token。面试官提醒：不熟的技术不要写在简历上。"
+        }
+      ]
+    },
+    {
+      "name": "二面（75min）",
+      "focus": "编程语言深度 + 项目理解 + 算法",
+      "duration_min": 75,
+      "questions": [
+        {
+          "question": "为什么会学习这么多编程语言？结合实际体验谈谈对各语言的看法",
+          "category": "编程语言",
+          "insight": "WXG面试官喜欢考察候选人的技术视野和思考深度。可以从语言设计哲学、适用场景、生态成熟度等维度对比。C++的评价：历史包袱重、代码一致性弱、掌握编程范式门槛高，但在高手手中是万能武器。"
+        },
+        {
+          "question": "C++使用过程中有没有遇到过内存泄漏问题？怎么解决的？这些工具的原理是什么？",
+          "category": "系统编程",
+          "insight": "常用工具：Valgrind（Memcheck）、AddressSanitizer（ASan）、LeakSanitizer。原理：通过hook malloc/free等内存分配函数，追踪每次分配和释放，检测未释放的内存块。ASan通过编译时插桩+影子内存实现。"
+        },
+        {
+          "question": "算法：实现LRU Cache",
+          "category": "手撕代码",
+          "insight": "经典数据结构设计题。哈希表+双向链表实现O(1)的get和put。LeetCode 146原题。WXG面试高频题，CodeTop上WXG标签排名靠前。"
+        },
+        {
+          "question": "算法：实现环形缓冲区（Ring Buffer）",
+          "category": "手撕代码",
+          "insight": "用数组+读写指针实现。关键：区分满和空的状态（浪费一个位置或维护size计数器）、取模运算处理环形逻辑。WXG客户端方向偏好考察底层数据结构的实现。"
+        }
+      ]
+    },
+    {
+      "name": "主管面/复试（30min）",
+      "focus": "项目深度 + 技术视野",
+      "duration_min": 30,
+      "questions": [
+        {
+          "question": "DragonOS对标Linux有什么优势？",
+          "category": "项目",
+          "insight": "主管面关注候选人对项目的宏观理解和技术判断力。不是简单介绍做了什么，而是要说清楚为什么做、有什么独特价值。"
+        },
+        {
+          "question": "做项目要有突出的地方，而不是单纯的Copy",
+          "category": "项目",
+          "insight": "主管面的核心考察点：候选人是否有独立思考和创新能力。项目介绍时要突出自己的独特贡献和技术决策。"
+        },
+        {
+          "question": "低代码平台有没有实现比较有难度的地方？",
+          "category": "项目",
+          "insight": "考察候选人对项目技术难点的认知和解决问题的能力。"
+        }
+      ]
+    },
+    {
+      "name": "HR面",
+      "focus": "综合素质",
+      "duration_min": 30,
+      "questions": [
+        {
+          "question": "HR面（具体问题未披露）",
+          "category": "HR",
+          "insight": "WXG的HR面相对常规，主要考察稳定性、团队协作、职业规划等。"
+        }
+      ]
+    }
+  ],
+  "overall_insight": "腾讯WXG日常实习面经，从投递到OC仅用16天，节奏极快。面试特点：1）算法题难度中等但要求速度（30min两道题）；2）非常重视编程语言理解深度，Rust/C++对比是特色考点；3）项目面围绕系统编程展开，ELF加载、内存管理等底层知识是加分项；4）主管面短而精，关注候选人的独立思考能力；5）面试官普遍nice，不会追着不会的问题打。WXG客户端方向对系统编程基础要求高，建议刷CodeTop上WXG标签的题目。",
+  "followups": [
+    "可补充WXG后端开发方向的面经对比",
+    "LRU Cache和Ring Buffer可加入WXG高频算法题库"
+  ]
+}

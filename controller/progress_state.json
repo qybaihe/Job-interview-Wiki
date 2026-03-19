@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-20T05:24:00+08:00",
+  "generated_at": "2026-03-20T05:44:00+08:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 91,
+    "completed": 93,
     "companies_seeded": 8,
     "question_banks_filled": 12,
-    "interview_json_count": 70
+    "interview_json_count": 72
   },
   "queues": {
     "priority_companies": [
@@ -39,7 +39,7 @@
       "business_group": "微信事业群",
       "department": "基础平台",
       "question_bank_ready": true,
-      "interview_json_count": 8
+      "interview_json_count": 9
     },
     {
       "company": "阿里巴巴",
@@ -95,7 +95,7 @@
       "business_group": "淘天集团",
       "department": "搜广推",
       "question_bank_ready": true,
-      "interview_json_count": 5
+      "interview_json_count": 6
     },
     {
       "company": "美团",
@@ -176,14 +176,14 @@
     }
   ],
   "notes": [
+    "2026-03-20T05:44 新增阿里妈妈广告算法社招一面面经JSON（来源：牛客2024-01-17面经），10题覆盖推荐系统全链路架构/各阶段优化指标/召回算法演进/Attention机制/概率智力题（抛硬币期望）/最长公共子串DP。社招面试特点：覆盖面广，概率题是阿里妈妈特色。",
+    "2026-03-20T05:44 新增腾讯WXG小程序客户端日常实习四面OC面经JSON（来源：chiichen个人博客2024-01-30），四轮面试覆盖Rust/C++语言深度对比/所有权机制/glibc vs musl/ELF加载/JWT/LRU Cache/Ring Buffer/内存泄漏工具原理。WXG客户端方向特色：重编程语言理解深度和系统编程基础。",
+    "2026-03-20T05:44 补强阿里搜广推题库question-bank.md，新增概率与智力题专题（2题）。",
+    "2026-03-20T05:44 补强腾讯WXG基础平台题库question-bank.md，新增编程语言深度题专项（Rust vs C++对比4题、系统编程3题、客户端方向算法题4题）。",
     "2026-03-20T05:24 新增快手/商业化/后端研发/25春招Java后端二面面经JSON（来源：牛客2025.03.20快手商业部门Java后端春招面经），12题覆盖Int/Integer/equals/hashCode/wait/sleep/DCL单例volatile/链表区间翻转/SQL聚合/索引失效/深浅拷贝/分布式锁。面试特点：不看简历，纯Java基础+SQL+手撕。",
     "2026-03-20T05:24 新增百度/文心大模型/推理平台/后端开发实习一面面经JSON（来源：牛客百度大模型平台后端实习一面+知乎2024 NLP大模型校招面经），10题覆盖项目深挖/Prompt优化/SFT微调方法/Raft协议/Raft网络分区Pre-Vote/五层网络模型/TCP IP分层。面试特点：项目深挖+大模型工程+分布式协议深度。",
     "2026-03-20T05:24 补强快手/商业化/后端研发题库question-bank.md，新增Java基础补充（7题）、设计模式补充（2题）、SQL实操（3题）、手撕代码补充（1题）。",
-    "2026-03-20T05:24 补强百度/文心大模型/推理平台题库question-bank.md，新增大模型工程实操（5题）、分布式协议深度（4题）、计算机网络补充（3题）。",
-    "2026-03-20T05:04 新增拼多多/Temu/服务端/后端开发社招两面面经JSON（来源：牛客Temu后端两年经验社招面经），9题覆盖项目深挖/跨境佣金汇率差值/CountDownLatch vs CyclicBarrier/数据库扩容双写/隔离级别选择/字符串公共字符算法/矩阵逆时针打印。面试特点：业务理解占比高，关注跨境电商特有场景。",
-    "2026-03-20T05:04 新增字节跳动/抖音主站/推荐架构/后端开发社招四面面经JSON（来源：CSDN+牛客字节社招面经多篇），13题覆盖TCP TIME_WAIT/进程间通讯/RPC框架/分布式事务/B+树存储计算/Kafka消息积压/推荐在线服务延迟优化/推荐全链路设计/大模型对推荐影响/LRU/合并K个链表/LIS。社招四轮难度递增。",
-    "2026-03-20T05:04 补强拼多多/Temu/服务端题库question-bank.md，新增第9节数据库扩容与双写、第10节Java并发进阶、第11节跨境电商业务场景专项（汇率/佣金/多币种/GDPR/多时区）、第12节手撕代码补充。",
-    "2026-03-20T05:04 补强字节跳动/抖音主站/推荐架构题库question-bank.md，新增第9节分布式系统（社招高频）、第10节推荐系统在线服务优化专项、第11节推荐全链路架构设计专项、第12节手撕代码补充。"
+    "2026-03-20T05:24 补强百度/文心大模型/推理平台题库question-bank.md，新增大模型工程实操（5题）、分布式协议深度（4题）、计算机网络补充（3题）。"
   ],
   "next_actions": [
     {
@@ -198,23 +198,23 @@
     },
     {
       "company": "腾讯",
-      "business_group": "微信事业群",
-      "department": "基础平台",
+      "business_group": "云与智慧产业事业群",
+      "department": "基础架构",
       "role": "后端开发",
-      "action": "补1份客户端开发面经或后端新样板",
+      "action": "补1份CSIG后端面经+云原生/K8s专题",
       "priority": "P1",
       "status": "pending",
-      "note": "已有8份面经JSON，可补充客户端方向或新后端面经"
+      "note": "CSIG方向目前面经为空，需补充"
     },
     {
       "company": "阿里巴巴",
       "business_group": "淘天集团",
       "department": "搜广推",
       "role": "算法",
-      "action": "补1份算法新样板+召回/排序/多目标优化专题",
+      "action": "补1份搜索算法面经（区别于推荐/广告方向）",
       "priority": "P1",
       "status": "pending",
-      "note": "搜广推方向算法题库需补充召回排序专题"
+      "note": "搜广推已有6份面经JSON，但搜索方向面经缺失"
     },
     {
       "company": "快手",

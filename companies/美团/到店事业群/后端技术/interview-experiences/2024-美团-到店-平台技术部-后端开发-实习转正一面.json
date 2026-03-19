@@ -1,0 +1,68 @@
+{
+  "company": "美团",
+  "business_group": "到店事业群",
+  "department": "平台技术部",
+  "role": "后端开发",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://blog.csdn.net/litterfinger/article/details/140896919",
+      "https://blog.csdn.net/JavaJIAMIN/article/details/116402266",
+      "https://blog.csdn.net/GBS20200720/article/details/123713458"
+    ],
+    "note": "综合多篇2024年美团到店平台技术部后端实习/转正面经，提取一面高频真实问题。面试时长约40-60min，风格为八股+项目+手撕，面试官引导式提问。"
+  },
+  "interview_rounds": 1,
+  "round_label": "技术一面",
+  "questions": [
+    {
+      "question": "Redis分布式锁怎么实现的？用哪个命令？Redisson的看门狗机制了解吗？",
+      "insight": "美团到店一面Redis必考。回答SET NX EX原子命令，说清过期时间防死锁，Redisson看门狗自动续期。追问：主从切换时锁丢失怎么办→RedLock方案。"
+    },
+    {
+      "question": "Redis的ZSet底层数据结构是什么？跳表的优点？是否支持范围查询？",
+      "insight": "ZSet底层是ziplist（元素少时）或skiplist+hashtable。跳表优点：实现简单、支持范围查询O(logN+M)、插入删除O(logN)。对比红黑树：跳表范围查询更自然，实现更简单。"
+    },
+    {
+      "question": "Redis过期策略有哪些？项目里怎么用的？",
+      "insight": "惰性删除+定期删除。惰性删除：访问时检查是否过期；定期删除：每100ms随机抽取检查。内存淘汰策略：allkeys-lru、volatile-lru、volatile-ttl等。项目中要结合业务说明为什么选某种策略。"
+    },
+    {
+      "question": "MySQL聚簇索引和非聚簇索引的区别？查询时有什么不同？",
+      "insight": "聚簇索引叶子节点存完整行数据，非聚簇索引叶子节点存主键值。非聚簇索引查询需要回表（除非覆盖索引）。InnoDB主键即聚簇索引，一张表只能有一个。"
+    },
+    {
+      "question": "MySQL事务隔离级别有哪些？通常用哪个最好？",
+      "insight": "RU/RC/RR/Serializable。MySQL默认RR，互联网公司常用RC（减少间隙锁、降低死锁概率、binlog用row格式即可）。美团内部大量使用RC级别。"
+    },
+    {
+      "question": "B+树和B树的区别？为什么MySQL用B+树？和红黑树比呢？",
+      "insight": "B+树非叶子节点不存数据→单节点能存更多key→树更矮→磁盘IO更少。叶子节点链表连接→范围查询高效。红黑树是二叉树，层数太深，不适合磁盘存储。"
+    },
+    {
+      "question": "项目里用MQ干什么了？有什么作用？",
+      "insight": "MQ三大作用：异步（下单后异步发短信/推送）、解耦（订单服务与库存服务解耦）、削峰（秒杀场景流量削峰）。要结合自己项目具体说明使用场景和收益。"
+    },
+    {
+      "question": "Spring AOP用的什么代理？JDK动态代理和CGLIB的区别？",
+      "insight": "有接口用JDK动态代理（基于反射，代理接口），无接口用CGLIB（基于ASM字节码生成子类）。SpringBoot 2.x默认CGLIB。JDK代理性能在高版本JDK已优化，差距不大。"
+    },
+    {
+      "question": "Spring事务传播行为有哪些？默认是哪个？事务什么时候会失效？",
+      "insight": "默认REQUIRED（有则加入，无则新建）。事务失效场景：方法非public、自调用（未走代理）、异常被catch吞掉、抛出非RuntimeException但未配置rollbackFor。"
+    },
+    {
+      "question": "线程池核心参数有哪些？核心线程数怎么设置？任务执行流程是什么？",
+      "insight": "7个参数：corePoolSize、maxPoolSize、keepAliveTime、unit、workQueue、threadFactory、handler。流程：core→queue→max→reject。CPU密集型：N+1，IO密集型：2N。美团面试官会追问线程数和QPS的关系。"
+    },
+    {
+      "question": "介绍一下G1垃圾收集器。基于什么回收算法？和CMS的区别？",
+      "insight": "G1将堆划分为多个Region，整体基于标记-整理，局部基于复制算法。可预测停顿时间（-XX:MaxGCPauseMillis）。vs CMS：G1无内存碎片、可控停顿、适合大堆（>6G）。"
+    },
+    {
+      "question": "手撕：合并两个有序数组（LeetCode 88）",
+      "insight": "美团手撕题偏基础但要求写得快且无bug。双指针从后往前填充，时间O(m+n)空间O(1)。面试官会追问时间复杂度和空间复杂度。"
+    }
+  ],
+  "final_insight": "美团到店平台技术部一面特点：时长40-60min，覆盖面广但不会特别深挖单点。Redis（分布式锁、数据结构、过期策略）、MySQL（索引、事务、B+树）、Spring（AOP、事务）、JVM（GC）、线程池是必考五大块。手撕题难度LeetCode Easy-Medium。面试官风格温和，引导式提问，会根据回答深度决定是否追问。到店方向额外关注MQ使用场景和缓存策略。"
+}

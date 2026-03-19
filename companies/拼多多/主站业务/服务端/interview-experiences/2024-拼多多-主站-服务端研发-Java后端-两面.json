@@ -1,0 +1,89 @@
+{
+  "company": "拼多多",
+  "business_group": "主站业务",
+  "department": "服务端",
+  "role": "服务端研发（Java）",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.iamshuaidi.com/30909.html",
+      "https://www.cnblogs.com/weigy/p/12302127.html",
+      "https://blog.csdn.net/starbxx/article/details/103523491"
+    ],
+    "note": "综合多篇拼多多服务端研发Java岗真实面经（帅地玩编程、博客园、CSDN），提取一面+二面完整流程。拼多多面试特点：两轮技术面+HR面，一面偏八股+项目+手撕，二面偏场景设计+项目深挖+手撕。"
+  },
+  "interview_rounds": 2,
+  "questions": [
+    {
+      "question": "对象什么时候进入老年代？",
+      "round": 1,
+      "insight": "四种情况：①大对象直接进老年代（-XX:PretenureSizeThreshold）②长期存活对象（年龄达到阈值，默认15）③动态年龄判断（Survivor中相同年龄对象大小之和超过Survivor空间一半）④Minor GC后Survivor放不下。"
+    },
+    {
+      "question": "Error与Exception的异同？抛出Error程序是否无法运行？",
+      "round": 1,
+      "insight": "都继承Throwable。Error表示系统级错误（OOM、StackOverflow），通常不可恢复；Exception分为checked和unchecked。Error理论上可以catch但不建议，某些Error（如OOM）catch后程序可能还能继续运行但状态不可靠。"
+    },
+    {
+      "question": "try-catch-finally都抛异常，catch和finally的异常可以同时抛出吗？",
+      "round": 1,
+      "insight": "不能。finally的异常会覆盖catch的异常（异常覆盖/异常丢失）。如果需要保留原始异常，可以用addSuppressed()方法（Java 7+）或try-with-resources。"
+    },
+    {
+      "question": "synchronized和ReentrantLock的区别？互斥和同步在时间上有要求吗？",
+      "round": 1,
+      "insight": "synchronized是JVM层面关键字，自动释放；ReentrantLock是API层面，需手动unlock，支持公平锁、可中断、条件变量。互斥只要求同一时刻只有一个线程访问（无时序要求），同步要求线程按特定顺序执行（有时序要求）。"
+    },
+    {
+      "question": "死锁的四个必要条件？",
+      "round": 1,
+      "insight": "互斥条件、请求保持条件、不可抢占条件、循环等待条件。破坏任一条件即可预防死锁。实际面试中要能说出对应的解决方案：如按序加锁破坏循环等待、设置超时破坏请求保持。"
+    },
+    {
+      "question": "堆排序和归并排序的原理与时间复杂度？手撕归并排序。",
+      "round": 1,
+      "insight": "堆排序：建堆O(n)+n次调整O(nlogn)，总体O(nlogn)，原地排序但不稳定。归并排序：分治思想，O(nlogn)，稳定但需O(n)额外空间。拼多多一面手撕排序是高频考点。"
+    },
+    {
+      "question": "手写SQL：多表联查+聚合+排序+LIMIT组合题",
+      "round": 1,
+      "insight": "拼多多一面会出SQL实操题。典型题：两张表JOIN后按某指标排序取TOP N，再从中筛选满足条件的记录。考察JOIN、WHERE、ORDER BY、LIMIT、子查询的综合运用。"
+    },
+    {
+      "question": "项目相关：基于SpringBoot的系统如何搭建？数据库表设计有哪些？",
+      "round": 2,
+      "insight": "拼多多二面项目深挖时间长。要能说清楚：技术选型理由、核心表设计（字段、索引）、模块划分、数据流转。面试官会追问为什么不用其他方案。"
+    },
+    {
+      "question": "实现高并发系统需要注意什么？RabbitMQ在高并发系统中的作用？",
+      "round": 2,
+      "insight": "高并发要点：缓存（多级缓存）、异步（MQ削峰）、限流（令牌桶/滑动窗口）、池化（连接池/线程池）、分库分表。MQ作用：异步解耦、流量削峰、最终一致性。追问：MQ如何提升秒杀性能→请求先入队列，异步消费下单。"
+    },
+    {
+      "question": "缓存和数据库的一致性怎么保证？",
+      "round": 2,
+      "insight": "Cache Aside Pattern：先更新DB再删缓存。延迟双删：删缓存→更新DB→延迟再删缓存。终极方案：订阅binlog异步刷新缓存。要能分析每种方案的不一致窗口和适用场景。"
+    },
+    {
+      "question": "Token、Session、Cookie的区别？JWT与Cookie/Session的关系？如何解决跨域？",
+      "round": 2,
+      "insight": "Cookie是浏览器存储机制，Session是服务端状态，Token是无状态凭证。JWT是Token的一种实现，自包含用户信息，无需服务端存储。跨域方案：CORS、JSONP、Nginx反向代理。"
+    },
+    {
+      "question": "TCP拥塞控制流程？TCP标志位有哪些？",
+      "round": 2,
+      "insight": "拥塞控制四阶段：慢启动→拥塞避免→快重传→快恢复。标志位：SYN/ACK/FIN/RST/PSH/URG。面试官可能追问：慢启动阈值怎么变化、快重传触发条件（3个重复ACK）。"
+    },
+    {
+      "question": "hashCode和equals什么时候需要重写？内存泄漏如何排查？",
+      "round": 2,
+      "insight": "当对象作为HashMap/HashSet的key时必须同时重写。内存泄漏排查：jmap dump堆→MAT/VisualVM分析→找到GC Roots引用链→定位泄漏对象。常见泄漏：静态集合、未关闭资源、ThreadLocal未remove。"
+    },
+    {
+      "question": "手撕：反转链表 + 最大子数组和（LeetCode 206 + 53）",
+      "round": 2,
+      "insight": "拼多多二面手撕两道题是常见操作。反转链表用迭代法（三指针）最稳。最大子数组和用Kadane算法（动态规划），O(n)时间O(1)空间。"
+    }
+  ],
+  "final_insight": "拼多多服务端研发Java岗面试流程：两轮技术面（各约1-1.5h）+HR面。一面侧重Java基础（JVM、并发、异常机制）+数据结构与算法（排序原理+手撕）+SQL实操。二面侧重项目深挖（架构设计、表设计、技术选型）+场景题（高并发、缓存一致性、MQ）+网络协议+手撕两道算法。面试官技术面3-4场按情况而定。整体难度中等偏上，对基础功底要求高，尤其是并发编程和JVM内存模型。"
+}

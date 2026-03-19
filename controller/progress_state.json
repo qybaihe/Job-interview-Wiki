@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-19T13:03:00+00:00",
+  "generated_at": "2026-03-19T13:23:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 44,
+    "completed": 46,
     "companies_seeded": 8,
     "question_banks_filled": 7,
-    "interview_json_count": 28
+    "interview_json_count": 30
   },
   "queues": {
     "priority_companies": [
@@ -53,14 +53,14 @@
       "business_group": "到店事业群",
       "department": "后端技术",
       "question_bank_ready": true,
-      "interview_json_count": 3
+      "interview_json_count": 4
     },
     {
       "company": "拼多多",
       "business_group": "主站业务",
       "department": "服务端",
       "question_bank_ready": true,
-      "interview_json_count": 3
+      "interview_json_count": 4
     },
     {
       "company": "京东",
@@ -164,28 +164,32 @@
     "2026-03-19T21:03 新增字节跳动/商业化技术/广告算法校招三面真实面经JSON（来源：CSDN、力扣、知乎多篇2022-2024面经聚合），含12道真实面试题，覆盖LR/交叉熵/AUC/Word2Vec/Adam/位置偏差/广告系统设计等。",
     "2026-03-19T21:03 新增腾讯/WXG/基础平台/客户端开发校招四面真实面经JSON（来源：CSDN、力扣、个人博客多篇2020-2025面经聚合），含11道真实面试题，覆盖项目场景题/虚函数表/事件分发/LFU/面委轮等。",
     "2026-03-19T21:03 新建字节跳动/商业化技术/算法-question-bank.md，含ML基础、深度学习模型、广告系统架构、手撕代码共12节40+题。",
-    "2026-03-19T21:03 补强腾讯/WXG/基础平台/客户端开发-question-bank.md，新增面经真题专项（C++底层、Android核心、架构模式、网络协议、算法真题、面试流程说明）。"
+    "2026-03-19T21:03 补强腾讯/WXG/基础平台/客户端开发-question-bank.md，新增面经真题专项（C++底层、Android核心、架构模式、网络协议、算法真题、面试流程说明）。",
+    "2026-03-19T21:23 新增美团/到店事业群/平台技术部/后端开发实习转正一面真实面经JSON（来源：CSDN多篇2024面经聚合），含12道真实面试题，覆盖Redis分布式锁/ZSet跳表/过期策略/MySQL索引与事务/B+树/MQ/Spring AOP与事务/线程池/G1 GC/手撕。",
+    "2026-03-19T21:23 新增拼多多/主站业务/服务端研发/Java后端两面真实面经JSON（来源：帅地玩编程/博客园/CSDN多篇面经聚合），含14道真实面试题，覆盖JVM对象晋升/异常机制/锁/死锁/排序手撕/SQL/项目深挖/高并发/缓存一致性/TCP/手撕两道算法。",
+    "2026-03-19T21:23 补强美团/到店事业群/后端技术题库，新增面经真题专项（Redis/Spring/JVM/数据库/手撕真题共14题）。",
+    "2026-03-19T21:23 补强拼多多/主站业务/服务端题库，新增面经真题专项（JVM异常/并发锁/网络协议/排序推导/SQL实操/内存排查/手撕真题共20+题）。"
   ],
   "next_actions": [
     {
       "company": "美团",
-      "business_group": "到店事业群",
-      "department": "后端技术",
+      "business_group": "即时零售",
+      "department": "服务端研发",
       "role": "后端开发",
       "action": "search_real_interview_json",
-      "priority": "P0",
+      "priority": "P1",
       "status": "pending",
-      "note": "TODO_FIRST_BATCH P0项：补1份后端开发新样板"
+      "note": "P0已全部完成，推进P1：美团即时零售后端面经"
     },
     {
-      "company": "拼多多",
-      "business_group": "主站业务",
-      "department": "服务端",
+      "company": "快手",
+      "business_group": "电商事业部",
+      "department": "服务端研发",
       "role": "后端开发",
-      "action": "search_real_interview_json",
-      "priority": "P0",
+      "action": "补强题库_search_more_interview",
+      "priority": "P2",
       "status": "pending",
-      "note": "TODO_FIRST_BATCH P0项：补1份后端开发新样板"
+      "note": "P2项：快手电商后端面经补强"
     }
   ],
   "pending": []

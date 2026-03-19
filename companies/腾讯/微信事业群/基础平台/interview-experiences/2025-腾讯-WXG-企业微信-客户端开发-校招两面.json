@@ -1,0 +1,91 @@
+{
+  "company": "腾讯",
+  "business_group": "微信事业群",
+  "department": "基础平台（企业微信）",
+  "role": "客户端开发",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/discuss/559700427332243456",
+      "https://www.xnip.cn/jingyan/55384.html",
+      "https://blog.csdn.net/dancehole/article/details/146431279",
+      "https://blog.csdn.net/GBS20200720/article/details/123293870",
+      "https://blog.csdn.net/Androidbye/article/details/119189166"
+    ],
+    "note": "综合2024-2025年腾讯WXG企业微信客户端开发多篇真实面经（牛客、CSDN），涵盖C++/Android方向。企微客户端面试特点：一面先笔试后面试，算法题难度Hard级别（LFU）；二面偏Android基础+项目架构；整体对C++底层、网络协议、架构设计考察较深。广州企微移动端团队。"
+  },
+  "interview_rounds": 2,
+  "questions": [
+    {
+      "round": 1,
+      "question": "手撕：LFU缓存，用map + set实现。时间复杂度是多少？怎么优化到O(1)？",
+      "insight": "WXG企微客户端一面上来就是Hard级算法题。LFU用HashMap+TreeSet可以做到O(logN)，优化到O(1)需要用HashMap+双向链表+频次桶（类似LeetCode 460标准解法）。面试官会追问时间复杂度分析和优化思路，不仅要写出来还要讲清楚。"
+    },
+    {
+      "round": 1,
+      "question": "熟悉什么排序算法？时间复杂度？稳定性？",
+      "insight": "基础但必须答全。快排O(nlogn)不稳定、归并O(nlogn)稳定、堆排O(nlogn)不稳定、冒泡O(n²)稳定、插入O(n²)稳定。WXG面试官可能追问：为什么快排不稳定？什么场景下选归并而不是快排？TimSort的思路？"
+    },
+    {
+      "round": 1,
+      "question": "面向对象三大特性？",
+      "insight": "封装、继承、多态。看似简单但面试官会深挖：多态的实现机制（虚函数表）、继承的菱形问题、封装的访问控制（public/protected/private）。C++方向还会追问虚继承、纯虚函数、抽象类。"
+    },
+    {
+      "round": 1,
+      "question": "指针和引用的区别？底层实现？使用上的区别？",
+      "insight": "底层实现：引用本质上是const指针，编译器自动解引用。区别：引用必须初始化且不能重新绑定，指针可以为空可以重新指向；引用没有多级引用，指针有多级指针；sizeof引用是所引用对象的大小，sizeof指针是指针本身大小（4/8字节）。使用上：函数参数传递优先用引用（避免拷贝），需要可选参数时用指针。"
+    },
+    {
+      "round": 1,
+      "question": "内存堆和栈的区别？有什么注意事项？",
+      "insight": "栈：编译器自动分配释放，速度快，空间小（通常几MB），存局部变量和函数调用帧；堆：程序员手动分配释放（malloc/free、new/delete），速度慢，空间大，容易产生内存碎片。注意事项：栈溢出（递归过深）、堆内存泄漏（忘记释放）、野指针（释放后未置空）、double free。"
+    },
+    {
+      "round": 1,
+      "question": "HTTP和TCP的区别？常见的通信协议有哪些？",
+      "insight": "TCP是传输层协议，提供可靠的字节流传输；HTTP是应用层协议，基于TCP实现请求-响应模型。常见通信协议：应用层（HTTP/HTTPS/WebSocket/MQTT/gRPC）、传输层（TCP/UDP）、网络层（IP/ICMP）。微信/企微大量使用长连接+自定义协议（Mars框架），面试官可能追问长连接心跳机制和弱网优化。"
+    },
+    {
+      "round": 2,
+      "question": "项目架构，MVVM与MVP有什么区别？",
+      "insight": "MVP：View和Model通过Presenter通信，Presenter持有View接口引用，手动更新UI；MVVM：ViewModel通过数据绑定（DataBinding/LiveData）自动更新UI，View和ViewModel解耦更彻底。MVVM优势：减少模板代码、天然支持生命周期感知（Android Jetpack）。企微Android端使用MVVM+组件化架构。"
+    },
+    {
+      "round": 2,
+      "question": "SP存储（SharedPreferences）的原理和问题？",
+      "insight": "SP底层是XML文件，全量读写。问题：1）apply()异步写入但可能ANR（8.0以下在Activity onStop时会等待写入完成）；2）不支持跨进程；3）大文件性能差（全量序列化/反序列化）。替代方案：MMKV（基于mmap，增量写入，跨进程安全）、DataStore（Jetpack，协程+Flow）。"
+    },
+    {
+      "round": 2,
+      "question": "Handler机制？为什么主线程的Looper不会ANR？",
+      "insight": "Handler-Looper-MessageQueue消息机制：Handler发送Message到MessageQueue，Looper.loop()死循环从队列取消息分发给Handler处理。主线程Looper不ANR是因为没有消息时会通过epoll_wait进入休眠（Linux epoll机制），不消耗CPU。ANR是因为某个消息处理时间过长（Activity 5s、BroadcastReceiver 10s），不是因为Looper循环本身。"
+    },
+    {
+      "round": 2,
+      "question": "View的生命周期？从创建到显示经历了哪些过程？",
+      "insight": "构造函数→onFinishInflate→onAttachedToWindow→onMeasure→onSizeChanged→onLayout→onDraw→onWindowFocusChanged。面试官可能追问：measure/layout/draw三个阶段分别做什么？requestLayout和invalidate的区别？自定义View时onMeasure如何处理wrap_content？"
+    },
+    {
+      "round": 2,
+      "question": "事件分发机制？",
+      "insight": "Activity.dispatchTouchEvent→ViewGroup.dispatchTouchEvent→ViewGroup.onInterceptTouchEvent→子View.dispatchTouchEvent→子View.onTouchEvent→ViewGroup.onTouchEvent→Activity.onTouchEvent。关键点：onInterceptTouchEvent返回true则拦截；子View可通过requestDisallowInterceptTouchEvent阻止父View拦截。企微中聊天列表侧滑删除、下拉刷新都涉及事件冲突处理。"
+    },
+    {
+      "round": 2,
+      "question": "Java线程池了解多少？核心参数？",
+      "insight": "ThreadPoolExecutor七大参数：corePoolSize、maximumPoolSize、keepAliveTime、unit、workQueue、threadFactory、handler。执行流程：核心线程→队列→最大线程→拒绝策略。四种拒绝策略：AbortPolicy（抛异常）、CallerRunsPolicy（调用者执行）、DiscardPolicy（丢弃）、DiscardOldestPolicy（丢弃最老）。面试官可能追问：为什么不推荐用Executors创建线程池？"
+    },
+    {
+      "round": 2,
+      "question": "算法题：删除升序数组的重复元素（超过三次的元素原地删除），双指针。",
+      "insight": "LeetCode 26/80变体。双指针法：慢指针指向下一个要写入的位置，快指针遍历数组。关键是维护一个计数器记录当前元素出现次数。WXG二面算法题难度中等，但要求代码工整、边界处理完善。面试官给了约30分钟写代码。"
+    },
+    {
+      "round": 2,
+      "question": "多人协作如何避免代码冲突？pull和rebase的区别？",
+      "insight": "避免冲突：模块化开发、小步提交、频繁同步主分支、Code Review。pull = fetch + merge，会产生合并提交；rebase会把本地提交重新应用到远程分支最新提交之上，保持线性历史。企微团队大规模协作，Git工作流是基本功。"
+    }
+  ],
+  "final_insight": "腾讯WXG企业微信客户端面试特点：一面先笔试后面试，算法题难度偏高（LFU Hard级），C++底层知识（指针/引用/内存/虚函数）是必考项；二面偏Android基础深度（Handler/View生命周期/事件分发/SP存储/线程池）+项目架构（MVVM vs MVP）+Git协作。整体风格：一面考编程功底和语言底层，二面考Android工程能力和项目理解。企微作为ToB产品，对稳定性、性能优化、跨进程通信的要求比C端更高。面试节奏紧凑，每轮约1小时，面试官风格偏严肃。"
+}

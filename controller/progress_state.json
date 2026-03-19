@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-19T17:23:00+00:00",
+  "generated_at": "2026-03-19T17:43:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 69,
+    "completed": 71,
     "companies_seeded": 8,
     "question_banks_filled": 12,
-    "interview_json_count": 49
+    "interview_json_count": 50
   },
   "queues": {
     "priority_companies": [
@@ -39,7 +39,7 @@
       "business_group": "微信事业群",
       "department": "基础平台",
       "question_bank_ready": true,
-      "interview_json_count": 6
+      "interview_json_count": 7
     },
     {
       "company": "阿里巴巴",
@@ -176,12 +176,12 @@
     }
   ],
   "notes": [
+    "2026-03-20T01:43 新增腾讯/微信事业群/基础平台（企业微信）/客户端开发校招两面真实面经JSON（来源：牛客WXG企微客户端一二面凉经+CSDN腾讯客户端2024面经+CSDN腾讯Android社招面经），一面6题覆盖LFU缓存Hard手撕/排序算法稳定性/面向对象三大特性/指针与引用底层/堆栈内存区别/HTTP与TCP区别，二面8题覆盖MVVM vs MVP架构/SP存储原理与替代/Handler机制与epoll/View生命周期/事件分发机制/Java线程池参数/数组去重双指针/Git协作pull vs rebase。",
+    "2026-03-20T01:43 补强阿里巴巴/淘天集团/搜广推/算法题库question-bank.md，新增召回/排序/多目标优化三大深度专题小节（共40+题）：召回深度专题（双塔模型深挖6题+多路召回融合5题+冷启动召回3题）、粗排与精排深度专题（粗排演进4题+精排深挖4题+重排策略3题）、多目标优化深度专题（建模架构4题+融合调权4题+电商实战3题），覆盖COLD/DR/Swing/PLE/ESMM/Pareto/位置偏置等高频考点。",
     "2026-03-20T01:23 新增腾讯/平台与内容事业群/后台研发/后端开发2024校招Java后端两面真实面经JSON（来源：牛客腾讯24校招Java后端一二面面经+面试鸭腾讯PCG Java面经），一面5题覆盖GC判断与收集器选型/线程池核心参数/HashMap vs ConcurrentHashMap/链表递归反转，二面8题覆盖项目深挖/TCP应用层丢数据边界/线程池创建/LFU缓存算法/Spring事务隔离级别/IoC与AOP/联合索引最左匹配与范围截断/CAP理论取舍。",
     "2026-03-20T01:23 新增美团/即时零售/服务端研发/后端开发2025校招闪购Java后端两面真实面经JSON（来源：CSDN美团闪购测开面经+牛客美团日常Java一二面面经），一面8题覆盖泛型与擦除/线程状态流转/反射创建对象/基本类型与位操作/Spring注入方式/MySQL索引结构与失效/Redis项目实战/多线程交替打印，二面6题覆盖CAP在即时零售的取舍/本地消息表+MQ分布式事务/高并发排队系统设计/深度分页优化/门店库存超卖处理/项目深挖。",
     "2026-03-20T01:23 补强腾讯/PCG/后台研发题库question-bank.md，新增面经真题专项：JVM与GC（3题）、Java并发（3题）、缓存算法（2题）、Spring框架（3题）、网络深度（2题）、MySQL（2题）、分布式（1题）、手撕（1题）、4条追问链路。",
-    "2026-03-20T01:23 补强美团/即时零售/服务端研发题库question-bank.md，新增面经真题专项：Java基础（5题）、数据库（3题）、分布式与业务场景（5题）、Redis（2题）、手撕（1题）、5条追问链路。",
-    "2026-03-20T01:03 新增美团/到家事业群/服务端研发（外卖交易方向）/后端开发暑期实习两面OC真实面经JSON（来源：知乎美团外卖交易暑期面经+牛客美团到家Java后端一二面已OC+牛客23届美团后端SSP），一面12题覆盖Java三大特性/集合体系/HashMap/List遍历删除/反射/泛型vs Object/MySQL索引最左匹配/Redis场景/cookie-session-token/Spring Boot自动配置/策略模式/括号平衡算法，二面6题覆盖订单列表页翻页设计/外卖核心数据库表设计/订单状态机/高并发保护/MySQL集群读写分离/微服务拆分。",
-    "2026-03-20T01:03 新增快手/电商事业部/服务端研发/后端开发校招三面OC综合面经JSON（来源：CSDN快手面经总结2024+CSDN快手商业化Java后端二面+知乎快手后台Java四面+知乎快手面经2024），一面8题覆盖Java并发场景/装饰-观察者模式/synchronized vs ReentrantLock+AQS/volatile/线程池参数/三线程交替打印/质因数分解/合并有序数组，二面6题覆盖项目深挖/Redis分布式锁+看门狗/电商库存扣减防超卖/Kafka vs RocketMQ/直播电商上下架+秒杀/Spring事务失效，三面3题覆盖电商订单系统设计/项目挑战/职业规划。"
+    "2026-03-20T01:23 补强美团/即时零售/服务端研发题库question-bank.md，新增面经真题专项：Java基础（5题）、数据库（3题）、分布式与业务场景（5题）、Redis（2题）、手撕（1题）、5条追问链路。"
   ],
   "next_actions": [
     {
@@ -199,20 +199,20 @@
       "business_group": "微信事业群",
       "department": "基础平台",
       "role": "客户端开发",
-      "action": "补1份客户端开发补强版面经JSON",
-      "priority": "P0",
+      "action": "给客户端开发题库补充追问分组和Android/iOS分方向专题",
+      "priority": "P1",
       "status": "pending",
-      "note": "TODO_FIRST_BATCH P0项：补1份客户端开发补强版样板"
+      "note": "已有3份客户端面经JSON（含新增企微方向），下一步细化客户端开发-question-bank.md的追问链路"
     },
     {
-      "company": "阿里巴巴",
-      "business_group": "淘天集团",
-      "department": "搜广推",
-      "role": "算法",
-      "action": "给算法题库补充召回/排序/多目标优化专题小节",
+      "company": "美团",
+      "business_group": "到店事业群",
+      "department": "后端技术",
+      "role": "后端开发",
+      "action": "补1份后端开发新样板+交易/履约/稳定性专题",
       "priority": "P0",
       "status": "pending",
-      "note": "TODO_FIRST_BATCH P0项：补充召回/排序/多目标优化专题"
+      "note": "TODO_FIRST_BATCH P0项：补1份后端开发新样板，给题库补充交易/履约/稳定性专题"
     }
   ],
   "pending": []

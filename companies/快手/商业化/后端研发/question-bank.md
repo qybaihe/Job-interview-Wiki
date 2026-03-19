@@ -93,6 +93,27 @@
 - 手写LRU缓存
 - 二分查找及其变体
 
+## Java 基础补充（25春招真题）
+- Int和Integer的区别？Integer缓存池范围？自动装箱/拆箱的性能影响？
+- ==和equals()的区别？String的equals()实现？
+- equals()和hashCode()为什么需要同时重写？违反契约会导致什么问题？
+- Int a = 1000, Integer b = 1000; a == b 的结果？Integer与int比较时的拆箱规则？
+- Object中wait()和notify()的作用？为什么必须在synchronized块中调用？
+- Thread.sleep()和Object.wait()的区别？各自对锁的影响？
+- 深拷贝和浅拷贝的区别？Java中实现深拷贝的方式（序列化/递归clone/JSON）？
+
+## 设计模式补充（25春招真题）
+- 手写双检锁（DCL）单例模式，为什么要用volatile？
+- new对象的三步（分配内存→初始化→引用赋值）和指令重排序的关系？
+
+## SQL 实操（25春招真题）
+- GROUP BY聚合查询：查找学生名字和成绩总和
+- LIKE模糊匹配 + MAX聚合：查找张姓学生的名字和最高成绩
+- SQL执行顺序：FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY
+
+## 手撕代码补充（25春招真题）
+- 一次遍历翻转链表从m到n的结点（LeetCode 92，头插法）
+
 ## 系统设计题
 - 设计一个广告投放系统的核心链路
 - 设计一个实时竞价（RTB）系统

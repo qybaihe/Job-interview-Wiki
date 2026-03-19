@@ -1,0 +1,102 @@
+{
+  "company": "快手",
+  "business_group": "商业化",
+  "department": "后端研发",
+  "role": "后端开发",
+  "year": 2025,
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/feed/main/detail/c3a36a8e0c774ac0a1bca12630ebd7f3",
+      "https://www.nowcoder.com/feed/main/detail/56c3c6e07c9848dca76820a9a41a36c0"
+    ],
+    "note": "牛客网2025年3月20日快手商业部门Java后端春招面经，一面+二面合计约2小时。面试特点：不看简历，直接考Java基础知识，偏基础八股+SQL+手撕代码。"
+  },
+  "interview_rounds": 2,
+  "rounds": [
+    {
+      "name": "一面",
+      "focus": "Java基础 + SQL + 手撕代码",
+      "duration_min": 60,
+      "questions": [
+        {
+          "question": "Int和Integer的区别？",
+          "category": "Java基础",
+          "insight": "int是基本类型，Integer是包装类。Integer有缓存池（-128~127），自动装箱/拆箱。涉及内存分配差异：int在栈上，Integer在堆上。"
+        },
+        {
+          "question": "==和equals()的区别？",
+          "category": "Java基础",
+          "insight": "==比较引用地址（基本类型比较值），equals()比较内容（需重写）。String重写了equals()比较字符序列，Object默认equals()等同于==。"
+        },
+        {
+          "question": "equals()和hashCode()需要同时重写的原因？",
+          "category": "Java基础",
+          "insight": "HashMap/HashSet等集合先用hashCode()定位桶，再用equals()判断相等。如果只重写equals()不重写hashCode()，两个逻辑相等的对象可能落在不同桶中，导致集合行为异常。契约：equals()相等则hashCode()必须相等。"
+        },
+        {
+          "question": "Int a = 1000, Integer b = 1000; a == b 是false还是true？",
+          "category": "Java基础",
+          "insight": "true。Integer与int比较时会自动拆箱为int，变成值比较。注意：如果是Integer a = 1000, Integer b = 1000，则a == b为false（超出缓存池范围，是两个不同对象）。"
+        },
+        {
+          "question": "Object中wait()和notify()的作用？",
+          "category": "Java并发",
+          "insight": "wait()让当前线程释放锁并进入等待状态，notify()唤醒一个等待该锁的线程。必须在synchronized块中调用。wait()释放锁，sleep()不释放锁。"
+        },
+        {
+          "question": "Thread中sleep()和wait()的区别？",
+          "category": "Java并发",
+          "insight": "sleep()是Thread静态方法，不释放锁，时间到自动恢复；wait()是Object方法，释放锁，需要notify()/notifyAll()唤醒。sleep()可在任何地方调用，wait()必须在同步块中。"
+        },
+        {
+          "question": "手写单例模式，为什么要用volatile？",
+          "category": "设计模式",
+          "insight": "双检锁（DCL）单例中volatile防止指令重排序。new对象分三步：1.分配内存 2.初始化 3.引用指向内存。无volatile可能重排为1→3→2，其他线程拿到未初始化的对象。"
+        },
+        {
+          "question": "算法：遍历一次，翻转从m到n的链表结点",
+          "category": "算法",
+          "insight": "LeetCode 92 反转链表II。一次遍历解法：找到第m-1个节点作为prev，然后用头插法依次将m到n的节点插到prev后面。时间O(n)空间O(1)。"
+        },
+        {
+          "question": "SQL题：表（学生名，科目名，成绩）1）查找学生名字和成绩总和；2）查找张姓学生的名字和最高成绩",
+          "category": "SQL",
+          "insight": "1) SELECT 学生名, SUM(成绩) FROM 表 GROUP BY 学生名; 2) SELECT 学生名, MAX(成绩) FROM 表 WHERE 学生名 LIKE '张%' GROUP BY 学生名; 考察GROUP BY聚合和LIKE模糊匹配。"
+        },
+        {
+          "question": "索引失效的场景有哪些？",
+          "category": "MySQL",
+          "insight": "常见场景：1.对索引列使用函数/计算 2.隐式类型转换 3.LIKE以%开头 4.OR条件中有非索引列 5.NOT IN/NOT EXISTS 6.联合索引不满足最左前缀 7.范围查询后的列失效 8.数据量小时优化器选择全表扫描。"
+        },
+        {
+          "question": "深拷贝和浅拷贝的区别？",
+          "category": "Java基础",
+          "insight": "浅拷贝只复制对象本身和基本类型字段，引用类型字段仍指向原对象。深拷贝递归复制所有引用对象，完全独立。实现方式：序列化/反序列化、递归clone、JSON转换。"
+        },
+        {
+          "question": "分布式锁的实现方式？",
+          "category": "分布式",
+          "insight": "三种主流方案：1.Redis SET NX EX + Lua释放（高性能，主从切换可能丢锁→Redlock）2.ZooKeeper临时顺序节点（强一致，性能较低）3.MySQL行锁/乐观锁（简单但性能差）。追问：Redisson看门狗自动续期机制。"
+        }
+      ]
+    },
+    {
+      "name": "二面",
+      "focus": "Java深度 + 项目 + 系统设计（推测）",
+      "duration_min": 60,
+      "questions": [
+        {
+          "question": "（二面内容与一面为同一帖，面试官未看简历，全程基础Java知识考察）",
+          "category": "综合",
+          "insight": "该面经作者注明'ps：没有看简历，直接最基础的java知识'，说明快手商业化部门春招面试风格偏基础考察，不深挖项目。一面二面题目风格一致，重Java基础+SQL+手撕。"
+        }
+      ]
+    }
+  ],
+  "overall_insight": "快手商业化部门2025春招Java后端面试风格：不看简历，直接考Java基础知识。一面约1小时，覆盖Java基础（Int/Integer/equals/hashCode/wait/sleep）、设计模式（DCL单例+volatile）、MySQL（索引失效）、SQL实操（GROUP BY聚合）、分布式锁、手撕算法（链表区间翻转）。整体难度偏基础，但要求扎实全面，适合校招/春招准备。面试官不追问项目，纯八股+代码。",
+  "followups": [
+    "可补充快手商业化社招面经，社招更侧重项目深挖和系统设计",
+    "可补充广告系统业务相关面试题（CTR预估、竞价、预算控制）"
+  ]
+}

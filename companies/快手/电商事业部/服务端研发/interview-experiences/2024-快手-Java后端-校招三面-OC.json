@@ -1,0 +1,64 @@
+{
+  "company": "快手",
+  "business_group": "电商事业部",
+  "department": "服务端研发",
+  "role": "后端开发",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/discuss/486354378278957056",
+      "https://maimai.cn/article/detail?fid=1709021790&efid=StbIJhWiUc02V0um-5mUKQ",
+      "https://paicoding.com/article/detail/327",
+      "https://maimai.cn/article/detail?fid=1640589314&efid=zeBbNBDMMB0ghyxpBfeimg"
+    ],
+    "note": "综合2023-2024年快手Java后端校招面经（牛客、脉脉、技术派多篇），提取共性高频问题。快手Java后端面试通常3轮技术面+HR面，一面偏Java基础和集合框架，二面偏项目深挖和系统设计，三面偏综合系统设计和高并发场景。面试节奏快，投递到OC约1-2周。"
+  },
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "question": "HashMap和TreeMap的区别？HashMap在JDK7和JDK8的实现有什么不同？HashMap为什么线程不安全？",
+      "insight": "快手Java一面必考集合框架，且追问很深。HashMap基于哈希表无序O(1)，TreeMap基于红黑树有序O(logN)。JDK7头插法+数组+链表，JDK8尾插法+数组+链表+红黑树。线程不安全：JDK7并发扩容会形成环形链表导致死循环，JDK8并发put可能数据覆盖。"
+    },
+    {
+      "question": "Java基本类型int/float/short/double/long/char各占多少字节？int和float的范围分别是什么？",
+      "insight": "快手一面会从最基础的Java知识开始考察。int 4字节（-2^31到2^31-1），float 4字节（约±3.4E38，精度6-7位），short 2字节，double 8字节，long 8字节，char 2字节（Unicode）。"
+    },
+    {
+      "question": "hashcode和equals的关系？深拷贝和浅拷贝的区别？",
+      "insight": "equals相等则hashcode必须相等，hashcode相等equals不一定相等。重写equals必须重写hashcode。浅拷贝只复制引用，深拷贝递归复制所有引用对象。实现深拷贝可用序列化或手动递归clone。"
+    },
+    {
+      "question": "Java异常体系？Checked Exception和Unchecked Exception的区别？",
+      "insight": "Throwable分Error和Exception。Exception分Checked（编译期必须处理，如IOException）和Unchecked（RuntimeException及其子类，如NullPointerException）。快手面试官会追问实际项目中的异常处理策略。"
+    },
+    {
+      "question": "synchronized和ReentrantLock的区别？CAS原理是什么？AQS了解吗？",
+      "insight": "快手对并发锁追问较深。synchronized是JVM层面的锁（偏向锁→轻量级锁→重量级锁升级），ReentrantLock是API层面的锁（可中断、可超时、可公平）。CAS是Compare-And-Swap，底层依赖CPU的cmpxchg指令。AQS是AbstractQueuedSynchronizer，ReentrantLock/CountDownLatch/Semaphore的底层框架。"
+    },
+    {
+      "question": "说一下Spring的核心机制？Spring事务传播行为有哪些？自调用为什么会导致事务失效？",
+      "insight": "快手一面会问Spring基础。IoC容器管理Bean生命周期，AOP实现切面编程。事务传播行为重点掌握REQUIRED、REQUIRES_NEW、NESTED。自调用事务失效是因为绕过了AOP代理，直接调用了目标方法。"
+    },
+    {
+      "question": "设计一个评论系统，从add/del/list维度思考，如何优化？考虑Redis、消息队列、索引、高并发、读写一致性。",
+      "insight": "快手二面系统设计题，面试官会从各个角度深入追问。要覆盖：表结构设计（评论表+计数表）、缓存策略（热点评论缓存+计数缓存）、异步削峰（MQ处理写入）、索引优化（联合索引+覆盖索引）、读写一致性（缓存双删+异步补偿）。提到的每个方案都会被深入追问到不会为止。"
+    },
+    {
+      "question": "设计一个停车场系统，使用面向对象的方法，手写代码。考虑对象参数、多对象间关系、停车方法、判断剩余车位方法、使用什么设计模式、高并发场景。",
+      "insight": "快手三面偏综合系统设计。核心对象：ParkingLot、ParkingFloor、ParkingSpot、Vehicle、Ticket。设计模式：策略模式（不同车型分配策略）、单例模式（停车场管理器）、观察者模式（车位状态变更通知）。高并发：车位状态用CAS更新，入口限流。"
+    },
+    {
+      "question": "JVM内存结构？什么情况下会触发Full GC？线上GC频繁怎么排查？",
+      "insight": "快手面试会考JVM实战排查能力。堆（新生代+老年代）、栈、方法区、程序计数器、本地方法栈。Full GC触发：老年代空间不足、方法区空间不足、CMS并发失败、显式System.gc()。排查：看GC日志、jstat监控、jmap dump分析、MAT查大对象和泄漏。"
+    },
+    {
+      "question": "MySQL索引底层用什么数据结构？为什么用B+树而不是B树？联合索引最左匹配原则怎么理解？",
+      "insight": "快手一面数据库基础题。B+树叶子节点存数据且有链表连接，适合范围查询和顺序扫描。B树每个节点都存数据，树高更高IO次数更多。联合索引(a,b,c)只有查询条件从最左列开始才能命中索引，跳过中间列后续列索引失效。"
+    },
+    {
+      "question": "Redis五种基本数据类型分别在什么场景下使用？Redis为什么快？",
+      "insight": "String（缓存、计数器）、List（消息队列、最新列表）、Hash（对象存储）、Set（去重、交集并集）、ZSet（排行榜、延迟队列）。Redis快的原因：内存操作、单线程避免锁竞争、IO多路复用、高效数据结构（跳表、压缩列表等）。"
+    }
+  ],
+  "final_insight": "快手Java后端面试特点：一面重Java基础（集合框架、并发、JVM），会从最基础的类型字节数一路追问到CAS/AQS底层原理。二面偏项目和系统设计，评论系统、电商链路是高频题，面试官会对提到的每个优化方案深入追问。三面偏综合OOP设计和高并发场景。算法题难度中等偏上，面试节奏很快，投递到OC通常1-2周。快手电商部门特别关注直播电商场景下的高并发、库存扣减和营销活动链路。"
+}

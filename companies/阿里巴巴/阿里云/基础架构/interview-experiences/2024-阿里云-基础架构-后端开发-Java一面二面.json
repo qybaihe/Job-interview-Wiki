@@ -1,0 +1,73 @@
+{
+  "company": "阿里巴巴",
+  "business_group": "阿里云",
+  "department": "基础架构",
+  "role": "后端开发",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://blog.csdn.net/weixin_37943811/article/details/114807448",
+      "https://www.nowcoder.com/discuss/353156349070614528"
+    ],
+    "note": "综合CSDN阿里云Java后台一面二面面经和牛客阿里云团队B二面面经，涉及阿里云基础架构/云平台方向Java后端开发岗位。一面偏Java基础和数据库，二面偏项目深挖和分布式系统设计。"
+  },
+  "interview_rounds": 2,
+  "questions": [
+    {
+      "round": 1,
+      "question": "String、StringBuilder、StringBuffer 的区别？",
+      "insight": "阿里云一面Java基础必考。String 不可变（final char[]），每次拼接产生新对象；StringBuilder 可变、非线程安全、性能最好；StringBuffer 可变、线程安全（方法加 synchronized）、性能略低。追问：String 为什么设计成不可变？（安全性、缓存 hashCode、字符串常量池复用）"
+    },
+    {
+      "round": 1,
+      "question": "ArrayList 和 LinkedList 的区别和使用场景？",
+      "insight": "一面集合框架基础。ArrayList 底层数组，随机访问 O(1)，插入删除 O(n)，适合读多写少；LinkedList 底层双向链表，插入删除 O(1)（已知节点），随机访问 O(n)，适合频繁增删。追问：ArrayList 扩容机制？（默认 10，1.5 倍扩容，Arrays.copyOf）"
+    },
+    {
+      "round": 1,
+      "question": "HashMap 原理，怎么解决 hash 碰撞的？HashMap 在多线程情况下会有什么问题？",
+      "insight": "阿里云一面高频题。JDK 1.8：数组 + 链表 + 红黑树（链表长度 > 8 且数组长度 >= 64 转红黑树）。hash 碰撞：链地址法。多线程问题：JDK 1.7 扩容时链表反转可能死循环；JDK 1.8 虽无死循环但仍有数据丢失和不一致。追问：负载因子为什么是 0.75？"
+    },
+    {
+      "round": 1,
+      "question": "ConcurrentHashMap 使用过吗？JDK 1.8 对并发方面的优化你知道吗？",
+      "insight": "一面并发集合。JDK 1.7：Segment 分段锁（ReentrantLock），默认 16 段。JDK 1.8：取消分段锁，改用 CAS + synchronized（锁粒度细化到桶头节点），数据结构同 HashMap（数组 + 链表 + 红黑树）。追问：size() 怎么实现的？（baseCount + CounterCell 数组，类似 LongAdder）"
+    },
+    {
+      "round": 1,
+      "question": "CAS 知道是什么吗？ABA 问题怎么解决？",
+      "insight": "一面并发基础。CAS：Compare And Swap，CPU 原子指令，乐观锁思想。三个操作数：内存值 V、预期值 A、新值 B，仅当 V == A 时才更新为 B。ABA 问题：用 AtomicStampedReference 加版本号解决。追问：CAS 自旋开销大怎么办？（LongAdder 分散热点）"
+    },
+    {
+      "round": 1,
+      "question": "MySQL 存储引擎有哪些？区别是什么？",
+      "insight": "一面数据库基础。InnoDB：支持事务、行级锁、外键、MVCC，默认引擎；MyISAM：不支持事务、表级锁、全文索引（5.6 前）、读性能好。追问：InnoDB 的 MVCC 怎么实现的？（undo log + Read View + 隐藏列 trx_id/roll_pointer）"
+    },
+    {
+      "round": 1,
+      "question": "MySQL 索引底层实现？为什么用 B+ 树？联合索引的最左前缀原则？",
+      "insight": "一面数据库进阶。B+ 树优势：叶子节点链表便于范围查询、非叶子节点只存 key 可以扇出更多、树高更低 IO 更少。最左前缀：联合索引 (a, b, c) 只有查询条件从 a 开始才能命中索引。追问：什么情况下索引会失效？（函数操作、隐式类型转换、OR 条件、LIKE 左模糊）"
+    },
+    {
+      "round": 2,
+      "question": "介绍项目，IAM 权限系统是怎么设计的？RBAC 模型怎么实现？",
+      "insight": "阿里云二面项目深挖。IAM 是阿里云基础架构核心能力。RBAC：用户-角色-权限三层模型，角色绑定权限策略，用户绑定角色。追问：如何做细粒度权限控制？（资源级别 + 操作级别 + 条件表达式）。阿里云 RAM 的策略语法（Effect/Action/Resource/Condition）。"
+    },
+    {
+      "round": 2,
+      "question": "分布式系统中如何保证数据一致性？你项目中用了什么方案？",
+      "insight": "二面分布式核心题。常见方案：强一致（2PC/3PC，性能差）、最终一致（本地消息表 + MQ、TCC、Saga）。阿里云场景偏好最终一致 + 对账补偿。追问：如果消息丢了怎么办？（定时扫描本地消息表重发 + 消费端幂等）"
+    },
+    {
+      "round": 2,
+      "question": "如何设计一个高可用的云资源管理系统？你会从哪些方面考虑？",
+      "insight": "二面系统设计题。维度：服务层（多实例 + 负载均衡 + 健康检查）、数据层（主从 + 故障切换）、缓存层（Redis 集群 + 降级策略）、消息层（MQ 集群 + 消息补偿）、跨 AZ 部署（多可用区 + 流量调度）。追问：异地容灾怎么实现？（数据同步 DTS/Canal + DNS/GSLB 流量切换 + 单元化部署）"
+    },
+    {
+      "round": 2,
+      "question": "项目中遇到的最大技术挑战是什么？怎么解决的？",
+      "insight": "二面综合评估题。考察候选人的问题分析能力和工程落地能力。建议从问题发现 → 根因分析 → 方案设计 → 实施验证 → 效果量化的完整链路来回答。阿里云面试官特别关注：你是否真正理解问题本质，而不是只会套方案。"
+    }
+  ],
+  "final_insight": "阿里云基础架构Java后端面试特点：一面重Java基础功底（集合框架、并发、JVM）和数据库原理（MySQL索引、事务、存储引擎），二面转向项目深挖和分布式系统设计（一致性、高可用、容灾）。阿里云方向特别关注IAM/权限体系、资源管理、多租户等云平台核心能力。面试节奏较快，一面约50分钟，二面约30-40分钟。建议准备时重点关注：HashMap/ConcurrentHashMap底层原理、MySQL MVCC、分布式一致性方案、云资源控制面设计。"
+}

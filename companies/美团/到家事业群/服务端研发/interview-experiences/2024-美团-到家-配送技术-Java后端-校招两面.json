@@ -1,0 +1,124 @@
+{
+  "company": "美团",
+  "business_group": "到家事业群",
+  "department": "服务端研发（配送技术方向）",
+  "role": "后端开发",
+  "year": 2024,
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/enterprise/179/interview",
+      "https://www.nowcoder.com/discuss/467789673683865600",
+      "https://blog.csdn.net/litterfinger/article/details/140896919",
+      "https://blog.csdn.net/JavaJIAMIN/article/details/116402266"
+    ],
+    "note": "综合2024年牛客美团到家后端全流程面经、CSDN美团后端一面已过面经、牛客美团到家配送方向面经，提取配送/履约/调度方向后端开发真实面试问题。一面偏Java八股+项目+算法，二面偏配送业务场景+系统设计+稳定性。两面总时长约2.5小时。"
+  },
+  "interview_rounds": 2,
+  "rounds": [
+    {
+      "name": "一面",
+      "focus": "Java基础 + 并发 + 数据库 + 项目 + 手撕",
+      "duration_min": 70,
+      "questions": [
+        {
+          "question": "Spring AOP底层原理？JDK动态代理和CGLIB的区别？项目中AOP用在哪些场景？",
+          "category": "Spring",
+          "insight": "AOP底层：JDK动态代理（基于接口，Proxy.newProxyInstance）和CGLIB（基于继承，生成子类字节码）。Spring默认：有接口用JDK代理，无接口用CGLIB。SpringBoot 2.x默认CGLIB。项目场景：日志、权限校验、限流、事务。"
+        },
+        {
+          "question": "HashMap底层数据结构？如何进行扩容？ConcurrentHashMap如何实现线程安全？size()方法是加锁的吗？",
+          "category": "Java集合",
+          "insight": "HashMap：数组+链表+红黑树（JDK8），默认容量16，负载因子0.75，扩容为2倍。链表>8且数组>=64转红黑树。ConcurrentHashMap JDK8：CAS+synchronized锁桶头节点。size()用baseCount+CounterCell[]，类似LongAdder，不加全局锁。"
+        },
+        {
+          "question": "线程池核心参数？线程池大小如何设置？IO密集型Ncpu*2是怎么算出来的？",
+          "category": "Java并发",
+          "insight": "7个参数：corePoolSize/maximumPoolSize/keepAliveTime/unit/workQueue/threadFactory/handler。CPU密集型：Ncpu+1（减少上下文切换）。IO密集型：Ncpu*2或Ncpu/(1-阻塞系数)。Ncpu*2的推导：假设线程50%时间在等IO，需要2倍线程才能充分利用CPU。实际要压测调优。"
+        },
+        {
+          "question": "synchronized的锁优化？锁升级过程？偏向锁→轻量级锁→重量级锁分别是什么？",
+          "category": "Java并发",
+          "insight": "无锁→偏向锁（单线程重入，Mark Word记录线程ID）→轻量级锁（CAS竞争，自旋等待）→重量级锁（OS互斥量，线程阻塞）。JDK15后偏向锁默认关闭。自旋锁：适应性自旋，JVM根据历史自旋成功率动态调整。"
+        },
+        {
+          "question": "G1垃圾收集器有哪些特点？和CMS的区别？什么场景下选G1？",
+          "category": "JVM",
+          "insight": "G1特点：Region化内存布局、可预测停顿时间（-XX:MaxGCPauseMillis）、混合回收（Mixed GC）、并发标记。vs CMS：G1无内存碎片（Region复制算法）、可控停顿、适合大堆（>6GB）。CMS适合小堆低延迟场景但有碎片问题。"
+        },
+        {
+          "question": "MySQL联合索引(a,b,c)，where a=1 and b>2 and c=3，c能走索引吗？为什么？",
+          "category": "MySQL",
+          "insight": "c不能走索引。联合索引最左匹配原则：遇到范围查询（>、<、between、like）后面的列无法使用索引。这里b>2是范围查询，所以只能用到(a,b)部分索引，c无法利用。优化：如果b的取值范围小，可以改为b in (3,4,5) and c=3。"
+        },
+        {
+          "question": "Redis分布式锁怎么实现？Redisson的看门狗机制是什么？主从切换时锁丢失怎么办？",
+          "category": "Redis",
+          "insight": "基础：SET key value NX EX 30。看门狗：Redisson后台线程每10秒检查锁是否还持有，自动续期到30秒，避免业务未完成锁过期。主从丢锁：主节点写入锁后宕机，从节点晋升但未同步到锁。解决：Redlock（多节点多数派加锁）或业务层幂等兜底。"
+        },
+        {
+          "question": "手撕：合并两个有序数组（LeetCode 88），要求原地合并。",
+          "category": "算法",
+          "insight": "从后往前双指针，避免覆盖。nums1从末尾开始填充，比较nums1和nums2的尾部元素，大的放到nums1末尾。时间O(m+n)空间O(1)。"
+        },
+        {
+          "question": "手撕：手写快排，分析时间复杂度。",
+          "category": "算法",
+          "insight": "partition选pivot，左右指针交换。平均O(nlogn)，最坏O(n²)（已排序数组+固定选首元素）。优化：随机选pivot、三数取中、小数组切插入排序。"
+        }
+      ]
+    },
+    {
+      "name": "二面",
+      "focus": "配送业务场景 + 系统设计 + 稳定性",
+      "duration_min": 80,
+      "questions": [
+        {
+          "question": "你怎么理解美团到家的配送链路？从用户下单到骑手送达，核心系统节点有哪些？",
+          "category": "业务理解",
+          "insight": "核心链路：用户下单→支付→商家接单→备餐→调度派单→骑手到店取餐→配送中→送达→完成。核心系统：订单系统、支付系统、商家系统、调度系统、配送系统、ETA系统、结算系统。面试官考察对到家业务全链路的理解。"
+        },
+        {
+          "question": "骑手调度系统的核心目标是什么？派单时如何在配送时效、骑手负载和顺路程度之间做权衡？",
+          "category": "系统设计/调度",
+          "insight": "核心目标：全局超时率最低+骑手负载均衡+用户体验最优。权衡方式：多目标优化，给时效、负载、顺路度分别赋权，计算综合得分。实际用批量派单（batch dispatch），每隔几秒收集一批订单统一分配，比逐单贪心更优。"
+        },
+        {
+          "question": "ETA预估不准会带来什么后果？ETA的计算链路包含哪些环节？如果地图服务异常怎么降级？",
+          "category": "系统设计/ETA",
+          "insight": "后果：用户投诉、赔付成本上升、骑手考核不公。计算链路：商家备餐时间（历史数据+品类+订单量）+ 骑手到店时间（距离+路况）+ 配送时间（距离+楼层+小区门禁）。降级：历史同时段均值兜底→区域均值→固定值。ETA多轮重算时要保证用户侧口径稳定。"
+        },
+        {
+          "question": "恶劣天气导致订单暴涨、运力不足，系统该怎么应对？从产品策略和技术策略两个角度说。",
+          "category": "高并发/业务场景",
+          "insight": "产品策略：动态配送费（提高骑手接单意愿）、预约单引导（分散高峰）、暂停远距离接单、提示预计送达时间延长。技术策略：入口限流→非核心降级（推荐、评价）→MQ削峰→弹性扩容→跨区调度（临时调配邻近站点运力）。核心原则：保住下单→支付→派单主链路。"
+        },
+        {
+          "question": "如果订单创建RT升高，你会先看哪些指标？如何定位是数据库、缓存、下游服务还是线程池的问题？",
+          "category": "性能排查",
+          "insight": "排查顺序：①看监控大盘（QPS/RT/错误率是否同步变化）②看链路追踪（Trace）定位慢在哪个span ③数据库：慢SQL日志、连接池水位、锁等待 ④缓存：命中率下降、Redis延迟 ⑤下游：依赖服务RT/超时率 ⑥线程池：活跃线程数、队列堆积、拒绝次数。到家场景下优先排查数据库和下游依赖。"
+        },
+        {
+          "question": "设计一个骑手实时位置系统，要求支持高频位置上报、围栏判断和轨迹回放。",
+          "category": "系统设计",
+          "insight": "位置上报：骑手端每3-5秒上报GPS坐标→网关→Kafka→消费写入Redis Geo（实时位置）+ 时序存储（轨迹）。围栏判断：Redis GEORADIUS判断骑手是否在商家/用户附近。轨迹回放：按骑手ID+日期分区存储，查询时按时间范围拉取。挑战：GPS漂移过滤（卡尔曼滤波/速度阈值）、高楼区域定位不准（WiFi辅助定位）、存储量大（冷热分层，7天热数据Redis，历史数据HBase）。"
+        },
+        {
+          "question": "配送途中骑手出了意外（车辆故障/交通事故），系统如何快速改派并保证用户体验？",
+          "category": "业务场景/异常处理",
+          "insight": "触发条件：骑手长时间未移动+位置异常+骑手主动报异常。改派流程：①冻结当前配送单 ②调度系统重新匹配附近空闲骑手 ③新骑手接单后更新ETA并通知用户 ④原骑手异常单进入人工审核。关键点：改派要快（<2分钟）、ETA要重算、用户要收到主动通知、避免改派后新骑手也超时（需考虑剩余时效）。"
+        },
+        {
+          "question": "算法题：设计一个数据结构，支持O(1)的insert、delete和getRandom。（LeetCode 380）",
+          "category": "算法",
+          "insight": "HashMap + ArrayList。HashMap存value→index映射，ArrayList存实际值。insert：尾部追加+HashMap记录。delete：将末尾元素与待删元素交换，删除末尾，更新HashMap。getRandom：随机下标访问ArrayList。"
+        }
+      ]
+    }
+  ],
+  "overall_insight": "美团到家配送技术方向后端面试特点：一面约70分钟，重Java八股（并发、JVM、集合、Spring）+ 数据库（索引、锁）+ Redis + 手撕算法；二面约80分钟，重配送业务场景（调度、ETA、运力、异常处理）和系统设计（实时位置系统、高并发保护、性能排查）。到家配送方向会额外关注实时性、地理位置计算、骑手调度和异常改派等特有问题域。面试官期望候选人不仅懂技术，还能理解配送业务的核心挑战。",
+  "followups": [
+    "可从该面经反向补充到家事业群题库的骑手位置系统设计和ETA降级专项",
+    "后续可补充配送调度算法工程化方向的专项面经"
+  ]
+}

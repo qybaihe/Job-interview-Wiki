@@ -1,0 +1,140 @@
+{
+  "company": "腾讯",
+  "business_group": "平台与内容事业群",
+  "department": "后台研发（QQ方向）",
+  "role": "后端开发",
+  "year": 2025,
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/discuss/599329213241466880",
+      "https://www.nowcoder.com/feed/main/detail/148a3dbbd24b4033a4c171e2c270b703",
+      "https://www.nowcoder.com/enterprise/138/interview"
+    ],
+    "note": "综合2025年牛客腾讯PCG-QQ后端暑期实习三面面经（已OC）及牛客腾讯PCG后台开发面经（一面二面三面），提取真实面试问题。一面偏计算机基础+Go/Java+手撕，二面偏项目深挖+系统设计+性能排查，三面偏架构思维+开放题。面试周期约一周，流程极快。"
+  },
+  "interview_rounds": 3,
+  "rounds": [
+    {
+      "name": "一面",
+      "focus": "计算机基础 + 语言基础 + 手撕算法",
+      "duration_min": 57,
+      "questions": [
+        {
+          "question": "自我介绍，然后介绍最近一段实习做的项目，项目的架构是什么？你主要负责哪部分？",
+          "category": "项目/开场",
+          "insight": "PCG一面开场直接切入实习项目，面试官关注你在项目中的实际角色和技术深度，不是泛泛而谈。"
+        },
+        {
+          "question": "你对程序会关注哪些指标？CPU使用率突刺是什么原因？怎么排查的？",
+          "category": "性能排查",
+          "insight": "关注指标：CPU使用率、内存使用率、Pod重启次数、OOM。CPU突刺排查：用pprof定位热点函数，可能是某行SQL查询字段过多导致结构体反射消耗时间。解决：查询间增加间隔或减少单次查询条数。"
+        },
+        {
+          "question": "TCP和UDP的区别？TCP如何做拥塞控制？",
+          "category": "网络",
+          "insight": "TCP面向连接、可靠、有序、流控拥塞控制；UDP无连接、不可靠、无序、轻量。拥塞控制四阶段：慢启动→拥塞避免→快重传→快恢复。PCG一面网络题是必考项。"
+        },
+        {
+          "question": "进程间通信有哪些方式？进程和线程的区别？协程了解吗？goroutine和OS线程有什么区别？",
+          "category": "操作系统",
+          "insight": "IPC：管道、消息队列、共享内存、信号量、Socket。进程vs线程：资源分配vs调度单位。goroutine：用户态协程，M:N调度模型，栈初始2KB可动态增长，切换成本远低于OS线程。PCG偏Go技术栈，goroutine是高频追问点。"
+        },
+        {
+          "question": "IO多路复用了解吗？select/poll/epoll的区别？为什么epoll更高效？",
+          "category": "操作系统",
+          "insight": "select：fd数组有1024上限，每次调用需拷贝fd集合到内核。poll：链表无上限但仍需遍历。epoll：红黑树+就绪链表，事件驱动回调，O(1)获取就绪fd。epoll的ET模式比LT模式更高效但编程更复杂。"
+        },
+        {
+          "question": "SQL执行慢是什么原因？怎么解决？联合索引最左前缀原则怎么理解？",
+          "category": "MySQL",
+          "insight": "慢SQL原因：缺索引、索引失效、全表扫描、锁等待、数据量大。排查：explain看执行计划、slow_query_log。优化：加索引、减少无用字段、分页优化。联合索引(a,b,c)等价于(a)、(a,b)、(a,b,c)三个索引，where条件必须从最左列开始匹配。"
+        },
+        {
+          "question": "Go中new和make的区别？Go的panic如何恢复？",
+          "category": "Go基础",
+          "insight": "new：分配内存返回指针，零值初始化，适用于所有类型。make：只用于slice/map/channel，返回初始化后的值（非指针）。panic恢复：defer + recover()，recover只在defer函数中有效。"
+        },
+        {
+          "question": "手撕：二叉树的最近公共祖先（LeetCode 236）",
+          "category": "算法",
+          "insight": "递归思路：如果当前节点是p或q则返回当前节点；递归左右子树；如果左右都非空则当前节点是LCA；否则返回非空的那个。时间O(n)空间O(h)。PCG手撕偏树和链表类题目。"
+        }
+      ]
+    },
+    {
+      "name": "二面",
+      "focus": "项目深挖 + 系统设计 + 分布式",
+      "duration_min": 60,
+      "questions": [
+        {
+          "question": "详细讲一下你实习项目的架构，你负责的模块遇到过什么线上问题？怎么排查和解决的？",
+          "category": "项目深挖",
+          "insight": "PCG二面项目深挖非常细致，会追问到具体的代码行、具体的排查工具（pprof/trace/日志）、具体的优化数据。要能讲清楚问题发现→定位→修复→验证的完整链路。"
+        },
+        {
+          "question": "配置中心底层用的什么？你们的服务发现是怎么做的？",
+          "category": "微服务/服务治理",
+          "insight": "常见配置中心：Apollo、Nacos、etcd。服务发现：Consul、etcd、ZooKeeper、Nacos。PCG内部用北极星（Polaris）做服务治理。面试官考察对微服务基础设施的理解深度。"
+        },
+        {
+          "question": "如果设计一个抢单系统，高并发场景下怎么做？分布式锁怎么实现？",
+          "category": "系统设计/高并发",
+          "insight": "抢单系统：预扣库存（Redis原子操作）→ 异步落库 → 超时释放。分布式锁：Redis SET NX EX（单机）、Redlock（多节点）、ZooKeeper临时顺序节点。追问：Redis主从切换时锁丢失怎么办？→ Redlock或业务层幂等兜底。"
+        },
+        {
+          "question": "Redis内存淘汰策略有哪些？哨兵集群工作原理？主挂了怎么替换从？",
+          "category": "Redis",
+          "insight": "淘汰策略：noeviction、allkeys-lru、volatile-lru、allkeys-random、volatile-random、volatile-ttl、allkeys-lfu、volatile-lfu。哨兵：监控→主观下线→客观下线→选举leader哨兵→选新主（优先级/偏移量/runid）→通知从节点和客户端。"
+        },
+        {
+          "question": "HTTP1.1和HTTP2.0有什么区别？HTTP2.0的多路复用解决了什么问题？HTTP3.0为什么用QUIC？",
+          "category": "网络",
+          "insight": "HTTP2.0：二进制分帧、多路复用（解决队头阻塞）、头部压缩（HPACK）、服务端推送。HTTP3.0用QUIC（基于UDP）：解决TCP层队头阻塞、0-RTT建连、连接迁移（基于Connection ID而非四元组）。"
+        },
+        {
+          "question": "如果大流量高并发请求打到你的服务器，怎么处理？限流、熔断、降级分别怎么做？",
+          "category": "高可用",
+          "insight": "多层防护：入口限流（令牌桶/滑动窗口）→ 服务层熔断（Sentinel/Hystrix/Polaris）→ 非核心功能降级 → MQ异步削峰 → 弹性扩容。PCG面试官会追问：限流放在网关还是服务层？熔断后怎么恢复（半开探测）？"
+        },
+        {
+          "question": "手撕：合并K个有序链表（LeetCode 23）",
+          "category": "算法",
+          "insight": "最优解：最小堆（优先队列），每次取堆顶最小节点，将其next入堆。时间O(Nlogk)空间O(k)。也可用分治法两两合并。"
+        }
+      ]
+    },
+    {
+      "name": "三面",
+      "focus": "架构思维 + 开放题 + 综合评估",
+      "duration_min": 45,
+      "questions": [
+        {
+          "question": "你觉得后台开发最重要的能力是什么？你在实习中最大的成长是什么？",
+          "category": "综合/软素质",
+          "insight": "PCG三面偏综合评估，考察技术视野、学习能力和成长潜力。回答要结合具体经历，不要泛泛而谈。"
+        },
+        {
+          "question": "如果让你从零设计一个内容分发系统（类似QQ看点/腾讯新闻），你会怎么设计核心架构？",
+          "category": "系统设计",
+          "insight": "核心模块：内容入库→审核→特征提取→召回→排序→分发→展示。存储：内容库（MySQL/MongoDB）、特征库（Redis/HBase）、索引（ES）。关键挑战：热点内容缓存、实时推荐、审核时效、多端一致性。"
+        },
+        {
+          "question": "你对Go和Java的技术选型有什么看法？什么场景下选Go更合适？",
+          "category": "技术视野",
+          "insight": "Go优势：编译快、部署简单、goroutine天然适合高并发IO密集型服务、内存占用低。Java优势：生态成熟、框架丰富、适合复杂业务逻辑。PCG内部Go占比很高，面试官想看你对技术选型的思考深度。"
+        },
+        {
+          "question": "你有什么想问我的？",
+          "category": "反问",
+          "insight": "好的反问：团队当前最核心的技术挑战是什么？新人进组后最常接触的业务模块？团队在服务治理和稳定性上最近的重点方向？"
+        }
+      ]
+    }
+  ],
+  "overall_insight": "腾讯PCG后台开发面试特点：一面重计算机基础（网络、操作系统、IO模型），Go语言是加分项甚至必备项；二面重项目深挖和系统设计（高并发、分布式锁、服务治理），会追问到具体排查工具和优化数据；三面偏综合评估和架构思维。整体流程极快，一周内可走完全部面试拿到OC。PCG技术栈偏Go+C++，即使投Java岗也会考察Go基础和对高并发服务的理解。",
+  "followups": [
+    "可从该面经反向补充PCG题库的服务治理与微服务基础设施专项",
+    "后续可补充PCG内容分发/推荐系统方向的专项面经"
+  ]
+}

@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-19T18:23:00+00:00",
+  "generated_at": "2026-03-19T18:43:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 74,
+    "completed": 76,
     "companies_seeded": 8,
     "question_banks_filled": 12,
-    "interview_json_count": 53
+    "interview_json_count": 55
   },
   "queues": {
     "priority_companies": [
@@ -39,7 +39,7 @@
       "business_group": "微信事业群",
       "department": "基础平台",
       "question_bank_ready": true,
-      "interview_json_count": 7
+      "interview_json_count": 8
     },
     {
       "company": "阿里巴巴",
@@ -74,7 +74,7 @@
       "business_group": "智能云",
       "department": "基础架构",
       "question_bank_ready": true,
-      "interview_json_count": 5
+      "interview_json_count": 6
     },
     {
       "company": "快手",
@@ -176,11 +176,12 @@
     }
   ],
   "notes": [
+    "2026-03-20T02:43 新增百度/智能云/基础架构/后端开发校招两面真实面经JSON（来源：牛客2024百度Java后端一二面+CSDN 2025百度校招Java后端+CSDN百度后端面经），一面5题覆盖秒杀系统设计/十万并发处理/超买超卖/事务并行与MySQL锁/索引设计与最左前缀，二面6题覆盖HTTP报文与TLS握手/TCP滑动窗口与拥塞控制/Linux日志排查/进程状态与IPC/Redis数据类型与高并发原理/OOM排查与String不可继承+3道手撕算法。",
+    "2026-03-20T02:43 补强百度/智能云/基础架构题库question-bank.md，新增面经真题专项：秒杀与高并发场景设计（4题）、MySQL锁与事务深挖（4题）、网络协议深挖（4题）、Linux与线上排查（4题）、3条追问链路。",
+    "2026-03-20T02:43 新增腾讯/微信事业群/基础平台/后端开发2024校招两面真实面经JSON（来源：牛客腾讯24校招Java后端面经+CSDN腾讯24校招一面+CSDN 2024腾讯后端校招实习面经+牛客腾讯Java社招面经），一面7题覆盖GC机制与GC Root/垃圾收集器G1 vs CMS/线程池设计/HashMap实现与扩容/ArrayList vs LinkedList/Redis分布式锁主从丢锁/进程线程与虚拟内存，二面4题覆盖项目深挖30min+/12306架构设计/哲学家就餐/手撕环形链表II。",
+    "2026-03-20T02:43 补强腾讯/微信事业群/基础平台题库question-bank.md，新增面经真题专项：JVM与GC连环问（5题）、并发编程与线程池（4题）、集合与数据结构（5题）、场景设计题（4题）、操作系统经典题（3题）、4条追问链路。",
     "2026-03-20T02:23 新增京东/零售技术/后端研发/后端开发校招三面v2真实面经JSON（来源：牛客2024京东零售Java后端两篇面经），一面6题覆盖MQ发奖失败补偿/分布式锁setNX底层/Redis高性能IO多路复用/热key风险与JD-hotkey/RabbitMQ原理/手撕O(nlogn)排序，二面10题覆盖限流算法设计/Redis单线程vs多线程/10亿数据外部排序/责任链模式/servlet生命周期/Spring事务嵌套与失效/JVM内存模型volatile/HashMap扩容原理/Cglib vs JDK动态代理/类加载双亲委派，三面1题综合面。",
-    "2026-03-20T02:23 补强京东/零售技术/后端研发题库question-bank.md，新增面经真题专项：MQ项目实战与失败补偿（3题）、Redis分布式锁与热key深挖（4题）、RabbitMQ原理与对比（3题）、Spring事务嵌套与动态代理（3题）、3条追问链路。",
-    "2026-03-20T02:23 新增拼多多/主站业务/服务端/服务端开发2025秋招两面真实面经JSON（来源：CSDN 2025拼多多后端秋招面经+CSDN拼多多服务端Java面经+牛客拼多多服务端面经），一面6题覆盖缓存引入原因与强一致性/缓存一致性策略深挖链路/Java值传递读代码题/HashMap vs TreeMap/CAS vs synchronized/手撕直播间峰值O(n)，二面6题覆盖RocketMQ+分布式锁+ThreadLocal八股连环/逃逸分析标量替换/秒杀系统设计/TopK问题/JVM堆分区G1 ZGC/手撕LRU。",
-    "2026-03-20T02:23 补强拼多多/主站业务/服务端题库question-bank.md，新增面经真题专项：Redis缓存一致性追问链路（5题）、Java集合与并发（5题）、JVM进阶（4题）、场景算法真题（3题）、3条追问链路。",
-    "2026-03-20T02:03 新增美团/到店事业群/后端技术/后端开发校招三面深度八股真实面经JSON（来源：牛客2024-2025年美团到店后端三轮技术面面经+到店平台技术部一面面经），一面13题深挖JVM内存区域/逃逸分析/堆空间划分/方法区/双亲委派/MySQL索引分类/事务ACID/MVCC原理/redo log/幻读解决/InnoDB vs MyISAM/crash-safe/表与索引设计，二面6题覆盖Zookeeper节点类型/Kafka消息存储与不丢失/消费者组Rebalance/项目深挖/分布式事务/到店团购系统设计，三面3题覆盖职业规划/项目成就感/反问。"
+    "2026-03-20T02:23 补强京东/零售技术/后端研发题库question-bank.md，新增面经真题专项：MQ项目实战与失败补偿（3题）、Redis分布式锁与热key深挖（4题）、RabbitMQ原理与对比（3题）、Spring事务嵌套与动态代理（3题）、3条追问链路。"
   ],
   "next_actions": [
     {
@@ -194,24 +195,14 @@
       "note": "已有7份面经JSON，下一步做后端和算法方向的共性题去重"
     },
     {
-      "company": "百度",
-      "business_group": "智能云",
-      "department": "基础架构",
-      "role": "后端开发",
-      "action": "补1份后端开发新样板+配置中心/服务治理/多租户专题",
+      "company": "阿里巴巴",
+      "business_group": "淘天集团",
+      "department": "搜广推",
+      "role": "算法",
+      "action": "补1份算法新样板+召回/排序/多目标优化专题",
       "priority": "P0",
       "status": "pending",
-      "note": "TODO_FIRST_BATCH P0项：补1份后端开发新样板，强化配置中心/服务治理/多租户专题"
-    },
-    {
-      "company": "腾讯",
-      "business_group": "微信事业群",
-      "department": "基础平台",
-      "role": "后端开发",
-      "action": "补1份后端开发新样板+追问分组细化",
-      "priority": "P0",
-      "status": "pending",
-      "note": "TODO_FIRST_BATCH P0项：补1份后端开发新样板，给question-bank.md增加更细的追问分组"
+      "note": "TODO_FIRST_BATCH P0项：补1份算法新样板，给算法题库补充召回/排序/多目标优化专题小节"
     },
     {
       "company": "美团",
@@ -222,6 +213,16 @@
       "priority": "P1",
       "status": "pending",
       "note": "TODO_FIRST_BATCH P1项：补1份后端开发新样板，强化配送/履约/调度问题域"
+    },
+    {
+      "company": "美团",
+      "business_group": "即时零售",
+      "department": "服务端研发",
+      "role": "后端开发",
+      "action": "补1份后端开发新样板+库存/ETA/仓店协同问题域",
+      "priority": "P1",
+      "status": "pending",
+      "note": "TODO_FIRST_BATCH P1项：补1份后端开发新样板，强化库存/ETA/仓店协同问题域"
     }
   ],
   "pending": []

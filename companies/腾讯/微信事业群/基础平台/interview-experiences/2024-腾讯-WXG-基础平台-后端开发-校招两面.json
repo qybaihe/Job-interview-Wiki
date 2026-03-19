@@ -1,0 +1,64 @@
+{
+  "company": "腾讯",
+  "business_group": "微信事业群",
+  "department": "基础平台",
+  "role": "后端开发",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/feed/main/detail/8682e4ae96114b588995ecad345bf31c",
+      "https://blog.csdn.net/weixin_44445786/article/details/135623836",
+      "https://blog.csdn.net/qq_30114149/article/details/137712981",
+      "https://nowcoder.com/discuss/583601"
+    ],
+    "note": "综合2024年腾讯校招Java后端一二面面经（牛客腾讯24校招Java后端面经+CSDN腾讯24校招Java后端一面面经+CSDN 2024腾讯后端校招实习面经+牛客腾讯Java社招面经），腾讯WXG后端面试一面偏Java基础+计算机基础广度覆盖，二面偏项目深挖+场景设计+数据库底层原理，每轮可能有手撕算法。"
+  },
+  "interview_rounds": 2,
+  "questions": [
+    {
+      "question": "Java的GC机制讲一下？判断对象存活的方法？常见的GC Root有哪些？堆里面的对象可以作为GC Root吗？",
+      "insight": "腾讯一面JVM高频连环问。判断存活：引用计数法（有循环引用问题）和可达性分析（主流）。GC Root包括：虚拟机栈中引用的对象、方法区静态属性引用的对象、方法区常量引用的对象、本地方法栈JNI引用的对象、活跃线程。堆里的对象本身不是GC Root，但被GC Root引用链可达的堆对象是存活的。"
+    },
+    {
+      "question": "Java中比较成熟的垃圾收集器有哪些？G1和CMS的区别？启动Java进程时你配过哪些GC参数？",
+      "insight": "腾讯一面GC追问。常见收集器：Serial、ParNew、Parallel Scavenge、CMS、G1、ZGC。CMS：标记-清除，低停顿但有内存碎片和浮动垃圾问题。G1：分Region，可预测停顿时间，标记-整理无碎片。常配参数：-XX:+UseG1GC、-Xms/-Xmx堆大小、-XX:MaxGCPauseMillis目标停顿、-XX:+PrintGCDetails日志。"
+    },
+    {
+      "question": "用过Java的线程池吗？怎么设计或使用线程池能用得更好？Executors创建线程池有什么问题？",
+      "insight": "腾讯一面并发编程。Executors的坑：newFixedThreadPool和newSingleThreadExecutor用LinkedBlockingQueue（无界队列，可能OOM），newCachedThreadPool用SynchronousQueue但最大线程数Integer.MAX_VALUE（可能创建过多线程OOM）。推荐用ThreadPoolExecutor手动设置核心线程数、最大线程数、队列容量、拒绝策略。IO密集型线程数≈2*CPU核数，CPU密集型≈CPU核数+1。"
+    },
+    {
+      "question": "HashMap的实现机制？扩容过程？聚簇索引中两个字段一个int一个varchar，叶子节点存储的数据类型是什么？",
+      "insight": "腾讯一面数据结构+数据库交叉。HashMap：数组+链表+红黑树（JDK8），默认容量16，负载因子0.75，链表长度>8且数组长度>=64转红黑树。扩容：容量翻倍，rehash（JDK8用高位判断，避免全量rehash）。聚簇索引叶子节点存储完整行数据，所以存的是int值和varchar值的实际数据（加上隐藏列如trx_id、roll_pointer）。"
+    },
+    {
+      "question": "ArrayList和LinkedList的区别？为什么数组具有快速查找的能力？ArrayList的扩容机制？",
+      "insight": "腾讯一面Java集合基础。ArrayList底层数组，随机访问O(1)，插入删除O(n)；LinkedList底层双向链表，随机访问O(n)，头尾插入O(1)。数组快速查找：连续内存+元素大小固定→地址=首地址+index*元素大小，一次计算直接定位。ArrayList扩容：默认初始容量10，扩容为原来的1.5倍（oldCapacity + oldCapacity >> 1），Arrays.copyOf拷贝到新数组。"
+    },
+    {
+      "question": "Redis分布式锁的理解？如果Redis作为分布式锁时主节点挂了，数据还没同步到从节点，怎么办？",
+      "insight": "腾讯一面/二面Redis高频追问。基本实现：SET key value NX EX（原子设置+过期时间）。主从切换丢锁问题：用RedLock算法（向N个独立Redis实例加锁，多数成功才算获取成功）。但RedLock有争议（Martin Kleppmann vs Antirez之争），实际生产中也可用ZooKeeper临时顺序节点实现更强一致性的分布式锁。"
+    },
+    {
+      "question": "进程和线程的区别？操作系统的虚拟内存是什么？CPU负载怎么看？",
+      "insight": "腾讯一面操作系统基础。进程是资源分配单位，线程是CPU调度单位；进程有独立地址空间，线程共享进程地址空间；进程切换开销大，线程切换开销小。虚拟内存：每个进程有独立虚拟地址空间，通过页表映射到物理内存，支持按需分页和换页。CPU负载：uptime/top查看load average（1/5/15分钟），load average接近CPU核数表示满载。"
+    },
+    {
+      "question": "项目中遇到的难点是什么？你是怎么解决的？（项目深挖30分钟+）",
+      "insight": "腾讯二面核心环节，项目深挖占比极高。面试官会从简历项目出发，逐层追问：架构设计→技术选型原因→遇到的问题→解决方案→优化效果→如果重新做会怎么改。准备时要对每个项目梳理：背景、架构图、核心难点、量化指标、踩过的坑。WXG面试官特别关注你对项目的理解深度，而不是项目本身的复杂度。"
+    },
+    {
+      "question": "设计一个12306网站的架构。如何处理高并发抢票场景？",
+      "insight": "腾讯二面场景设计题。核心挑战：高并发读（查票）+高并发写（抢票）+库存一致性。方案：CDN+多级缓存处理查票读请求→排队系统削峰（MQ）→Redis预扣库存→异步落库→分库分表（按车次/日期）→热点车次单独处理。与秒杀的区别：12306库存是二维的（座位×区间），需要区间库存管理。"
+    },
+    {
+      "question": "哲学家就餐问题怎么解决？",
+      "insight": "腾讯一面操作系统经典题。五个哲学家围坐，每人需要左右两根筷子才能吃饭。死锁解决方案：1）限制最多4人同时拿筷子（破坏必要条件）；2）奇数号先拿左再拿右，偶数号先拿右再拿左（破坏循环等待）；3）用信号量/互斥锁，拿不到两根就都放下（破坏持有并等待）；4）引入服务生协调（集中式管理）。"
+    },
+    {
+      "question": "手撕算法：环形链表II（找入环节点）；List的remove操作底层实现。",
+      "insight": "腾讯面试算法+源码结合。环形链表II：快慢指针相遇后，一个指针回到头节点，两个指针同速前进，再次相遇点即入环节点（Floyd判圈算法）。ArrayList.remove(index)：System.arraycopy将index后的元素前移一位，size--，最后一位置null帮助GC。LinkedList.remove：修改前后节点指针，O(1)但定位O(n)。"
+    }
+  ],
+  "final_insight": "腾讯WXG后端校招面试特点：一面覆盖面广（JVM/GC、并发、集合、Redis、操作系统、网络），每个点问得不算特别深但会有追问链路。二面以项目深挖为核心（可能占30分钟以上），结合场景设计题考察系统思维。WXG面试通过率较低，还可能有面委会加面。Java方向在WXG相对少见（WXG主力是Go/C++），所以面试官可能更关注计算机基础而非Java特有八股。算法题难度中等，但要求思路清晰、代码完整。"
+}

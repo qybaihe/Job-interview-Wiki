@@ -1,0 +1,63 @@
+{
+  "company": "百度",
+  "business_group": "智能云",
+  "department": "基础架构",
+  "role": "后端开发",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/feed/main/detail/a39d6cd931f147a9972b867535e124ab",
+      "https://blog.csdn.net/qq_38628970/article/details/144058896",
+      "https://blog.csdn.net/2401_84573447/article/details/138231899"
+    ],
+    "note": "综合2024-2025年百度后端开发校招面经（牛客百度Java后端一二面面经+CSDN 2025百度校招Java后端面经+CSDN百度后端面经附答案），百度校招后端重点考察计算机基础（网络IO、协议、Linux）和MySQL，Java问得相对少，更看重基础是否扎实。一面偏场景设计+八股广度，二面偏底层原理+网络协议深挖。"
+  },
+  "interview_rounds": 2,
+  "questions": [
+    {
+      "question": "设计一个秒杀系统，请给出大致思路。如果有十万个请求同时访问你的系统该怎么办？",
+      "insight": "百度一面高频场景设计题。核心思路：前端限流（按钮置灰、验证码）→ 网关层限流（令牌桶/漏桶）→ 服务层排队（MQ削峰）→ 缓存预热库存到Redis → 扣减用Redis原子操作 → 异步落库。十万并发：多级缓存+CDN静态化+服务水平扩展+数据库读写分离。"
+    },
+    {
+      "question": "超买超卖问题怎么解决？",
+      "insight": "秒杀追问。超卖：Redis预扣库存（decr原子操作，判断>=0）+ 数据库乐观锁兜底（version字段或stock>0条件更新）。超买（少卖）：库存回补机制，订单超时未支付自动释放库存。分布式场景下用Lua脚本保证Redis操作原子性。"
+    },
+    {
+      "question": "事务并行会有哪些问题？MySQL有哪些锁请展开说说？",
+      "insight": "百度一面数据库基础。并行问题：脏读、不可重复读、幻读。MySQL锁分类：按粒度（表锁、行锁、间隙锁、临键锁）；按模式（共享锁S、排他锁X）；按意向（IS、IX）；按算法（Record Lock、Gap Lock、Next-Key Lock）。InnoDB默认RR级别下用Next-Key Lock解决幻读。"
+    },
+    {
+      "question": "哪些字段适合建立索引？联合索引的最左前缀原则是什么？",
+      "insight": "适合建索引：区分度高的列、WHERE/JOIN/ORDER BY常用列、外键列。不适合：频繁更新的列、区分度低的列（如性别）、数据量小的表。最左前缀：联合索引(a,b,c)只有查询条件从a开始连续使用时才能命中索引，WHERE a=1 AND b=2可以用，WHERE b=2 AND c=3不能用。"
+    },
+    {
+      "question": "HTTP报文结构？HTTP和HTTPS的区别？TLS握手过程？",
+      "insight": "百度二面网络协议深挖。HTTP报文：请求行/状态行 + 头部 + 空行 + 正文。HTTPS = HTTP + TLS/SSL，端口443，加密传输。TLS 1.2握手：ClientHello → ServerHello+证书 → 客户端验证证书+生成预主密钥用公钥加密发送 → 双方计算会话密钥 → Finished。TLS 1.3简化为1-RTT。"
+    },
+    {
+      "question": "TCP和UDP的区别？TCP滑动窗口和拥塞控制？窗口阻塞怎么处理？",
+      "insight": "百度二面必考。TCP面向连接、可靠、有序、字节流；UDP无连接、不可靠、数据报。滑动窗口：接收方通过rwnd告知发送方接收能力。拥塞控制四阶段：慢启动→拥塞避免→快重传→快恢复。窗口为0时发送方启动持续计时器，定期发送零窗口探测报文。"
+    },
+    {
+      "question": "Linux日志查找方法？如何快速定位线上问题？",
+      "insight": "百度重视Linux基础。常用命令：tail -f实时查看、grep关键字过滤、awk/sed文本处理、less分页查看、journalctl查系统日志。定位问题：先看错误日志（grep ERROR）→ 看时间线（awk按时间过滤）→ 看调用链（traceId grep）→ 看系统指标（top/vmstat/iostat）。"
+    },
+    {
+      "question": "进程状态有哪些？进程间通信方式？进程调度算法？",
+      "insight": "百度二面操作系统。进程状态：创建→就绪→运行→阻塞→终止。IPC方式：管道、命名管道、消息队列、共享内存、信号量、信号、Socket。调度算法：FCFS、SJF、优先级调度、时间片轮转、多级反馈队列（Linux CFS基于此思想）。"
+    },
+    {
+      "question": "Redis数据类型有哪些？setnx的用途？zset底层实现？为什么Redis可以高并发？",
+      "insight": "百度二面Redis连环问。5种基础类型：String、List、Hash、Set、ZSet。setnx用于分布式锁（SET key value NX EX）。ZSet底层：元素少时用ziplist，多时用skiplist+hashtable。高并发原因：纯内存操作、单线程避免锁竞争、IO多路复用（epoll）、高效数据结构。"
+    },
+    {
+      "question": "OOM排查思路？能不能给String类添加自定义方法？",
+      "insight": "百度二面Java深挖。OOM排查：先看GC日志判断是堆溢出还是元空间溢出 → jmap dump堆快照 → MAT/VisualVM分析大对象和泄漏链 → 检查是否有未关闭资源、缓存无上限、大集合未释放。String是final类不能继承，但可以通过组合模式包装、或用工具类添加静态方法。双亲委派机制也阻止了自定义java.lang.String。"
+    },
+    {
+      "question": "手撕算法：两端递增的数组查找最大值；数组中某个值出现次数超过长度一半；一个数二进制中1的个数。",
+      "insight": "百度二面三道算法。第一题：V形数组找峰值，二分查找O(logn)，比较mid和mid+1决定搜索方向。第二题：摩尔投票法O(n)O(1)，或排序取中位数。第三题：n&(n-1)循环计数，每次消除最低位的1，或逐位与1做AND。百度面试每轮必有手撕，要求完整可运行代码。"
+    }
+  ],
+  "final_insight": "百度智能云后端校招面试特点：一面偏场景设计（秒杀系统等）+数据库深挖（MySQL锁、索引、事务），二面偏计算机基础（网络协议、操作系统、Linux命令）+Redis+算法手撕。Java语言本身问得不多，更看重计算机基础是否扎实。每轮必有手撕算法（2-3道），要求写完整可运行代码。面试节奏快，一面约60分钟，二面约50分钟。百度智能云方向会额外关注服务治理、配置中心等云原生话题。"
+}

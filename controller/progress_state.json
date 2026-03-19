@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-19T15:18:30+00:00",
+  "generated_at": "2026-03-19T15:23:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 56,
+    "completed": 57,
     "companies_seeded": 8,
     "question_banks_filled": 12,
-    "interview_json_count": 38
+    "interview_json_count": 39
   },
   "queues": {
     "priority_companies": [
@@ -32,7 +32,7 @@
       "business_group": "抖音电商",
       "department": "商业化技术",
       "question_bank_ready": true,
-      "interview_json_count": 5
+      "interview_json_count": 6
     },
     {
       "company": "腾讯",
@@ -176,16 +176,17 @@
     }
   ],
   "notes": [
-    "2026-03-19T23:03 新增阿里巴巴/淘天集团/搜广推/多模态大模型算法校招三面真实面经JSON（来源：CSDN 2025春招淘天搜推智能产品事业部面经），一面8题覆盖CLIP/LoRA/BLIP系列/Qwen-VL/Q-Former vs MLP/手撕多头注意力，二面6题覆盖Transformer深度/Qwen结构改动/RLHF DPO vs PPO/对比学习/多模态问题/LCS，三面项目深挖+大模型发展历程。",
-    "2026-03-19T23:03 新建阿里巴巴/淘天集团/搜广推题库question-bank.md（50+题，6大分类：推荐模型基础/召回与排序/特征工程/机器学习基础/注意力与Transformer/多模态与大模型），来源聚合CSDN 24届搜广推面经+牛客淘天推荐算法面经+淘天多模态面经。",
-    "2026-03-19T23:03 补强腾讯/微信事业群/基础平台题库question-bank.md，新增Go语言专项（5大分类20+题：运行时调度/并发原语/内存GC/数据结构语言特性/网络工程）和微信IM场景题（5大分类15+题：消息系统/长连接推送/存储同步/群聊扩散/安全治理），来源聚合腾讯社招Golang面经+牛客WXG后端面经+CSDN腾讯后台面经。",
-    "2026-03-19T22:43 新增腾讯/微信事业群/基础平台/客户端开发实习三面OC真实面经JSON（来源：牛客网26届WXG基础微信客户端实习面经+WXG客户端iOS基础面安卓两面面经+CSDN WXG客户端一面二面凉经+WXG客户端一面面委面经+WXG视频号PC客户端面经聚合），一面7题覆盖RunLoop/FPS优化/架构模式/卡顿检测/色彩矩阵/LFU手撕/项目场景，二面4题覆盖网络协议/事件分发/引用类型/排序算法，三面纯项目深挖。",
-    "2026-03-19T22:43 补强字节跳动/抖音电商/商业化技术题库question-bank.md广告系统专项（20题6大分类：广告投放链路与架构/竞价机制与计费模型/预算控制与消耗平滑/频次控制与用户体验/广告数据与归因/广告系统设计题），含eCPM公式、GSP/VCG竞价、Pacing策略、频次控制分布式实现、广告归因与反作弊。",
+    "2026-03-19T23:23 新增字节跳动/抖音电商/商业化技术（TAC）/广告算法校招一面凉经真实面经JSON（来源：牛客网TAC广告算法一面凉经），7题覆盖回归方法/视频时长建模/MSE正态分布前提辨析/长尾多峰分布处理/梯度消失/激活函数/CTR-CVR损失函数选择。",
+    "2026-03-19T23:23 补强美团/到店事业群/后端技术题库question-bank.md，新增交易链路稳定性专题（6大分类25+题：限流与降级策略/容量评估与压测/故障演练与混沌工程/线上故障排查与止损/SLA保障与可观测性），来源聚合美团技术团队博客到店稳定性治理系列+CSDN牛客2024-2025美团到店后端面经+美团酒店故障演练系统公开文章。",
+    "2026-03-19T23:03 新增阿里巴巴/淘天集团/搜广推/多模态大模型算法校招三面真实面经JSON。",
+    "2026-03-19T23:03 新建阿里巴巴/淘天集团/搜广推题库question-bank.md。",
+    "2026-03-19T23:03 补强腾讯/微信事业群/基础平台题库question-bank.md。",
+    "2026-03-19T22:43 新增腾讯/微信事业群/基础平台/客户端开发实习三面OC真实面经JSON。",
+    "2026-03-19T22:43 补强字节跳动/抖音电商/商业化技术题库question-bank.md广告系统专项。",
     "2026-03-19T22:23 新增快手/商业化/后端研发/Java后端校招三面OC真实面经JSON。",
     "2026-03-19T22:23 新增快手/商业化/后端研发题库question-bank.md。",
     "2026-03-19T22:23 新增百度/文心大模型/推理平台/后端开发校招三面真实面经JSON。",
-    "2026-03-19T22:23 新增百度/文心大模型/推理平台题库question-bank.md。",
-    "2026-03-19T23:18 已继续清洗字节跳动 / 抖音电商 / 商业化技术题库，将广告计划、资格判定、预算消耗、实验灰度与恢复期问题进一步收敛为广告投放主状态、资格口径与恢复期统一治理框架。"
+    "2026-03-19T22:23 新增百度/文心大模型/推理平台题库question-bank.md。"
   ],
   "next_actions": [
     {
@@ -193,20 +194,30 @@
       "business_group": "抖音电商",
       "department": "商业化技术",
       "role": "算法",
-      "action": "search_real_interview_json",
-      "priority": "P0",
+      "action": "继续搜索更完整的多轮面经（二面三面），替换或补强现有curated样板JSON",
+      "priority": "P1",
       "status": "pending",
-      "note": "P0项：TODO_FIRST_BATCH要求补1份算法面经JSON更完整来源版"
+      "note": "本轮已新增TAC一面凉经真实JSON，但仍缺完整三轮面经；现有2026样板JSON仍为curated非真实面经"
     },
     {
-      "company": "美团",
-      "business_group": "到店事业群",
-      "department": "后端技术",
+      "company": "拼多多",
+      "business_group": "主站业务",
+      "department": "服务端",
       "role": "后端开发",
-      "action": "补强question-bank交易/履约/稳定性专题",
+      "action": "补1份后端开发新样板+细化高并发交易/库存/推荐协同问题",
       "priority": "P0",
       "status": "pending",
-      "note": "P0项：TODO_FIRST_BATCH要求给题库补充交易/履约/稳定性专题"
+      "note": "P0项：TODO_FIRST_BATCH要求补1份后端开发新样板并细化高并发交易/库存/推荐协同问题"
+    },
+    {
+      "company": "京东",
+      "business_group": "零售技术",
+      "department": "后端研发",
+      "role": "后端开发",
+      "action": "补1份后端开发新样板+细化零售交易/库存/履约专题题库",
+      "priority": "P0",
+      "status": "pending",
+      "note": "P0项：TODO_FIRST_BATCH要求补1份后端开发新样板并细化零售交易/库存/履约专题"
     }
   ],
   "pending": []

@@ -1,0 +1,157 @@
+{
+  "company": "快手",
+  "business_group": "商业化",
+  "department": "后端研发",
+  "role": "后端开发",
+  "year": 2024,
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/discuss/486354378278957056",
+      "https://blog.csdn.net/qq_33945246/article/details/140814062",
+      "https://blog.csdn.net/weixin_32146783/article/details/114779356",
+      "https://www.nowcoder.com/discuss/507961220322861056",
+      "https://www.nowcoder.com/discuss/353158997379325952"
+    ],
+    "note": "综合牛客网快手商业化技术-广告投放Java开发三面OC面经、CSDN快手商业化Java后端二面面经、牛客快手社招Java后端面经，提取真实面试问题。部门为商业化技术-广告投放方向，技术栈Java，三面流程。"
+  },
+  "interview_rounds": 3,
+  "rounds": [
+    {
+      "name": "一面",
+      "focus": "实习/项目深挖 + Redis + MySQL + Java并发",
+      "duration_min": 70,
+      "questions": [
+        {
+          "question": "自我介绍，实习经历详细介绍（约15min），项目中你负责的核心模块？",
+          "category": "项目",
+          "insight": "快手商业化一面项目占比很大（约30min），面试官会根据简历深挖实习内容，追问技术选型原因和遇到的问题。"
+        },
+        {
+          "question": "Redis过期键的删除策略有哪些？",
+          "category": "Redis",
+          "insight": "三种策略：惰性删除（访问时检查过期则删除）、定期删除（每隔一段时间随机抽查删除）、定时删除（为每个key设置定时器，到期立即删除，CPU开销大实际不用）。Redis采用惰性+定期组合。追问：内存淘汰策略（allkeys-lru/volatile-lru/noeviction等）。"
+        },
+        {
+          "question": "Redis能实现ACID属性吗？Redis事务和MySQL事务有什么区别？",
+          "category": "Redis",
+          "insight": "Redis事务通过MULTI/EXEC实现，但不支持回滚（命令错误会跳过继续执行），不满足严格ACID。vs MySQL：MySQL有undo log支持回滚，有redo log保证持久性，有MVCC+锁保证隔离性。Redis事务更像批量命令打包。"
+        },
+        {
+          "question": "HTTP头常见字段有哪些？一般是干什么用的？",
+          "category": "网络",
+          "insight": "请求头：Host/User-Agent/Accept/Content-Type/Authorization/Cookie/Cache-Control。响应头：Content-Type/Set-Cookie/Cache-Control/ETag/Last-Modified。追问：缓存协商过程（强缓存vs协商缓存）。"
+        },
+        {
+          "question": "QUIC了解吗？HTTP/3.0和HTTP/2.0的区别？",
+          "category": "网络",
+          "insight": "HTTP/3基于QUIC（UDP），解决了HTTP/2的TCP队头阻塞问题。QUIC特点：0-RTT建连、多路复用无队头阻塞、连接迁移（基于Connection ID而非四元组）、内置TLS 1.3。"
+        },
+        {
+          "question": "TCP协议讲一下，TCP和UDP分别用在什么场景？",
+          "category": "网络",
+          "insight": "TCP：可靠传输、流量控制、拥塞控制，适合文件传输/HTTP/数据库连接。UDP：无连接、低延迟，适合视频直播/游戏/DNS。快手商业化广告投放场景：广告竞价请求对延迟敏感，部分内部RPC可能用UDP优化。"
+        },
+        {
+          "question": "MySQL索引介绍一下？B+树为什么范围查询快？",
+          "category": "MySQL",
+          "insight": "B+树叶子节点通过双向链表连接，范围查询只需找到起始叶子节点然后顺序遍历，无需回溯父节点。vs B树：B树数据分散在所有节点，范围查询需要中序遍历整棵树。"
+        },
+        {
+          "question": "了解MVCC吗？介绍一下实现原理。",
+          "category": "MySQL",
+          "insight": "MVCC通过隐藏列（trx_id/roll_pointer）+undo log版本链+ReadView实现。RC级别每次SELECT生成新ReadView，RR级别只在第一次SELECT生成ReadView。核心判断：trx_id < min_trx_id可见，trx_id > max_trx_id不可见，之间看是否在活跃事务列表中。"
+        },
+        {
+          "question": "Redis的哨兵机制了解吗？（追问到Raft协议，聊了约10分钟）",
+          "category": "Redis",
+          "insight": "哨兵：监控主从状态、自动故障转移、通知客户端。选举leader哨兵用Raft协议。追问Raft：Leader选举（任期+投票）、日志复制（AppendEntries）、安全性保证。面试官还追问了Kafka的KRaft替代ZooKeeper的设计。"
+        },
+        {
+          "question": "手撕：打家劫舍（动态规划）+ 子数组之和（前缀和/滑动窗口）",
+          "category": "算法",
+          "insight": "打家劫舍：dp[i]=max(dp[i-1], dp[i-2]+nums[i])。子数组之和：前缀和+哈希表O(n)，或排序+双指针。两道都秒了，面试官评价不错。"
+        }
+      ]
+    },
+    {
+      "name": "二面",
+      "focus": "项目深挖 + Java深度 + 分布式 + 场景设计",
+      "duration_min": 60,
+      "questions": [
+        {
+          "question": "项目中遇到的最大难点是什么？怎么解决的？",
+          "category": "项目",
+          "insight": "二面项目追问更深，不只是做了什么，而是为什么这么做、有没有其他方案、方案对比的思考过程。"
+        },
+        {
+          "question": "G1垃圾收集器的工作原理？和CMS的区别？",
+          "category": "JVM",
+          "insight": "G1将堆划分为多个Region（Eden/Survivor/Old/Humongous），通过Mixed GC同时回收年轻代和部分老年代。vs CMS：G1标记-整理无碎片，可预测停顿时间（-XX:MaxGCPauseMillis），适合大堆。CMS标记-清除有碎片，JDK14移除。"
+        },
+        {
+          "question": "Spring IOC和AOP的原理？IOC容器的初始化过程？",
+          "category": "Spring",
+          "insight": "IOC：BeanDefinition加载→BeanFactoryPostProcessor处理→实例化→属性注入→BeanPostProcessor处理→初始化。AOP：基于动态代理（JDK Proxy接口/CGLIB子类），通过BeanPostProcessor在初始化后创建代理对象。"
+        },
+        {
+          "question": "ThreadLocal的实现原理？内存泄漏问题怎么解决？",
+          "category": "Java并发",
+          "insight": "每个Thread持有ThreadLocalMap，key是ThreadLocal的弱引用，value是强引用。GC回收ThreadLocal后key变null但value还在→内存泄漏。解决：用完调用remove()。广告投放场景：ThreadLocal存储请求上下文（用户ID、广告位信息）。"
+        },
+        {
+          "question": "MySQL可重复读级别下，当前读和快照读的区别？",
+          "category": "MySQL",
+          "insight": "快照读：普通SELECT，读MVCC快照，不加锁。当前读：SELECT FOR UPDATE/INSERT/UPDATE/DELETE，读最新数据，加锁。RR级别下快照读用ReadView，当前读用Next-Key Lock（Record Lock+Gap Lock）防止幻读。"
+        },
+        {
+          "question": "分布式锁的实现方式？Redis分布式锁的原理和风险？",
+          "category": "分布式",
+          "insight": "Redis：SET NX EX + Lua脚本释放（判断value一致再删除）。风险：主从切换锁丢失→Redlock方案（多数节点加锁成功）。追问：Redisson看门狗机制（自动续期）。"
+        },
+        {
+          "question": "场景题：多系统调用时如何保证数据一致性？",
+          "category": "分布式",
+          "insight": "方案：1.分布式事务（Seata AT/TCC）2.本地消息表+MQ最终一致性 3.Saga模式。广告投放场景：广告扣费→预算更新→曝光计数，需要保证最终一致性，通常用MQ+幂等消费。"
+        },
+        {
+          "question": "手撕：区间合并问题（非力扣原题，约力扣中等难度）",
+          "category": "算法",
+          "insight": "按区间起点排序，遍历合并重叠区间。变体：可能是区间调度、会议室分配等。"
+        }
+      ]
+    },
+    {
+      "name": "三面",
+      "focus": "主管面 + 技术视野 + 职业规划",
+      "duration_min": 45,
+      "questions": [
+        {
+          "question": "介绍你做过的最有成就感的项目，从技术和业务两个角度。",
+          "category": "项目",
+          "insight": "三面主管面偏综合，技术深度不如一二面，但更看重全局思考能力和业务理解。"
+        },
+        {
+          "question": "如果让你设计一个广告投放系统的核心链路，你会怎么设计？",
+          "category": "系统设计",
+          "insight": "广告投放核心链路：请求→召回（多路召回）→粗排→精排→竞价（GSP/VCG）→计费→曝光。关键技术点：低延迟（P99<100ms）、高并发、实时特征、预算控制、反作弊。"
+        },
+        {
+          "question": "你对快手商业化业务有什么了解？为什么选择这个方向？",
+          "category": "职业规划",
+          "insight": "快手商业化包括：信息流广告、搜索广告、直播打赏、电商广告。技术挑战：大规模实时竞价、用户画像、CTR/CVR预估、预算平滑消耗。展示对广告技术栈的了解会加分。"
+        },
+        {
+          "question": "你还有什么想问我的？",
+          "category": "反问",
+          "insight": "建议问：团队技术栈和架构演进方向、新人成长路径、商业化技术未来的重点投入方向。"
+        }
+      ]
+    }
+  ],
+  "overall_insight": "快手商业化（广告投放方向）Java后端校招面试三轮，流程快（一面到OC约两周）。一面项目+八股并重，Redis（过期策略/事务/哨兵/Raft）、MySQL（索引/MVCC）、网络（HTTP/2 vs HTTP/3/QUIC/TCP vs UDP）是重点，手撕两道中等难度。二面偏项目深挖和分布式（G1/ThreadLocal/分布式锁/一致性），场景题贴近广告业务。三面主管面考察技术视野和业务理解，会问广告投放系统设计。整体面试官评价nice，会引导和追问，注重深度理解而非死记硬背。",
+  "followups": [
+    "可补充快手商业化方向的广告系统专项题（CTR预估、竞价机制、预算控制）",
+    "后续可补充快手商业化社招面经，社招更侧重系统设计和架构能力"
+  ]
+}

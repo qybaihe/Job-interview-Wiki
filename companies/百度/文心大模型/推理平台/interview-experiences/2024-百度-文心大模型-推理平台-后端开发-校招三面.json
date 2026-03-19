@@ -1,0 +1,142 @@
+{
+  "company": "百度",
+  "business_group": "文心大模型",
+  "department": "推理平台",
+  "role": "后端开发",
+  "year": 2024,
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/discuss/392829046223241216",
+      "https://blog.csdn.net/weixin_44427286/article/details/119358356",
+      "https://www.nowcoder.com/creation/subject/feba655c853c4295b44fe0e647827d9c",
+      "https://www.glassdoor.com/Interview/Baidu-Software-Engineer-Interview-Questions-EI_IE35325.0,5_KO6,23.htm",
+      "https://www.nowcoder.com/enterprise/139/interview"
+    ],
+    "note": "综合牛客网百度2024-2025校招后端面经（测开/后端方向）、CSDN百度提前批四面面经、Glassdoor百度Software Engineer面经，结合百度文心大模型/推理平台岗位特点提取真实面试问题。百度校招流程快（一面到三面可在3天内完成），面试风格偏基础+项目。"
+  },
+  "interview_rounds": 3,
+  "rounds": [
+    {
+      "name": "一面",
+      "focus": "项目深挖 + 计算机基础 + 数据结构",
+      "duration_min": 60,
+      "questions": [
+        {
+          "question": "自我介绍，挑一个最有技术深度的项目详细介绍，包括技术选型、架构设计、遇到的难点和解决方案。",
+          "category": "项目",
+          "insight": "百度一面项目占比大（约20-30min），面试官会从简历中挑最感兴趣的项目深挖。推理平台方向会关注：模型服务化经验、高性能计算、GPU资源调度相关项目。"
+        },
+        {
+          "question": "项目中Redis的使用场景？二次缓存（本地缓存+Redis）怎么设计？缓存一致性怎么保证？",
+          "category": "Redis",
+          "insight": "二次缓存：L1本地缓存（Caffeine/Guava）+ L2 Redis。一致性方案：Cache Aside Pattern（先更新DB再删缓存）、延迟双删、Canal监听binlog异步更新。推理平台场景：模型元数据缓存、推理结果缓存。"
+        },
+        {
+          "question": "进程和线程的区别？协程了解吗？Go的goroutine和Java线程的区别？",
+          "category": "操作系统",
+          "insight": "进程：资源分配单位，独立地址空间。线程：CPU调度单位，共享进程资源。协程：用户态轻量级线程，无内核切换开销。goroutine：Go运行时调度（GMP模型），栈初始2KB可动态增长，百万级并发。百度推理平台部分服务用Go开发。"
+        },
+        {
+          "question": "TCP三次握手？中间涉及的协议有什么？",
+          "category": "网络",
+          "insight": "三次握手：SYN→SYN+ACK→ACK。涉及协议：IP协议（网络层路由）、ARP协议（IP→MAC解析）、TCP协议（传输层）。追问：为什么三次而不是两次（防止历史连接初始化、同步双方序列号）。"
+        },
+        {
+          "question": "MySQL的数据结构？为什么用B+树？B+树和跳表的对比？",
+          "category": "MySQL",
+          "insight": "B+树：多路平衡搜索树，非叶子节点只存key，叶子节点双向链表。vs 跳表：跳表实现简单、支持范围查询，但磁盘IO不如B+树（B+树单节点大=一次IO读更多key）。Redis用跳表因为纯内存无磁盘IO瓶颈。"
+        },
+        {
+          "question": "Java的垃圾回收机制？GC Roots有哪些？可达性分析的过程？",
+          "category": "JVM",
+          "insight": "GC Roots：虚拟机栈引用的对象、方法区静态变量引用、方法区常量引用、JNI引用、synchronized持有的对象。可达性分析：从GC Roots出发，不可达的对象标记为可回收。追问：finalize()方法的作用和风险。"
+        },
+        {
+          "question": "HashMap底层实现？put操作的完整流程？扩容机制？",
+          "category": "Java集合",
+          "insight": "put流程：hash(key)→定位桶→桶为空直接插入→不为空判断key是否相同（equals）→相同覆盖→不同链表/红黑树插入→检查是否需要扩容。扩容：容量翻倍，JDK8用高低位链表优化rehash（hash & oldCap == 0留原位，否则移到原位+oldCap）。"
+        },
+        {
+          "question": "手撕：二叉树的最大深度（递归+非递归两种方法）",
+          "category": "算法",
+          "insight": "递归：max(左子树深度, 右子树深度)+1。非递归：BFS层序遍历计层数，或DFS用栈模拟。百度一面手撕难度偏简单，但要求代码规范、边界处理完整。"
+        }
+      ]
+    },
+    {
+      "name": "二面",
+      "focus": "系统设计 + 中间件 + 并发编程 + 推理平台相关",
+      "duration_min": 60,
+      "questions": [
+        {
+          "question": "项目中的高并发场景怎么处理的？QPS多少？瓶颈在哪？怎么优化的？",
+          "category": "项目",
+          "insight": "二面项目追问更深入，关注性能数据和优化过程。推理平台方向：模型推理的吞吐量优化（batching、异步推理、模型并行）、GPU利用率提升。"
+        },
+        {
+          "question": "线程池的核心参数？拒绝策略有哪些？线程池大小怎么设置？",
+          "category": "Java并发",
+          "insight": "核心参数：corePoolSize/maximumPoolSize/keepAliveTime/workQueue/threadFactory/handler。拒绝策略：AbortPolicy(抛异常)/CallerRunsPolicy(调用者执行)/DiscardPolicy(丢弃)/DiscardOldestPolicy(丢弃最老)。大小设置：CPU密集型=N+1，IO密集型=2N。"
+        },
+        {
+          "question": "消息队列的使用场景？如何保证消息不丢失？如何保证消息顺序性？",
+          "category": "中间件",
+          "insight": "不丢失：生产者确认(ack)→Broker持久化(刷盘)→消费者手动提交offset。顺序性：Kafka同一partition内有序，业务key路由到同一partition。推理平台场景：推理请求排队、异步回调通知、模型更新事件。"
+        },
+        {
+          "question": "微服务架构下服务发现怎么做？注册中心挂了怎么办？",
+          "category": "分布式",
+          "insight": "服务发现：Nacos/Eureka/Consul/ZooKeeper。注册中心挂了：客户端本地缓存服务列表，短期内可正常调用。Nacos AP模式（Distro协议）vs CP模式（Raft协议）。百度内部有自研服务发现框架。"
+        },
+        {
+          "question": "Docker和虚拟机的区别？容器编排了解吗？K8s的核心概念？",
+          "category": "云原生",
+          "insight": "Docker：共享宿主机内核，轻量级，秒级启动。VM：独立内核，隔离性强，分钟级启动。K8s核心：Pod/Deployment/Service/Ingress/ConfigMap/PVC。推理平台强相关：模型服务容器化部署、GPU资源调度（nvidia-device-plugin）、弹性伸缩（HPA）。"
+        },
+        {
+          "question": "大模型推理服务的性能指标有哪些？怎么优化推理延迟？",
+          "category": "推理平台专项",
+          "insight": "指标：TTFT（首token延迟）、TPOT（token间延迟）、吞吐量（tokens/s）、GPU利用率。优化：KV Cache、Continuous Batching、PagedAttention（vLLM）、量化（INT8/INT4）、投机采样（Speculative Decoding）、Tensor Parallelism。"
+        },
+        {
+          "question": "手撕：LRU缓存实现（要求O(1)的get和put）",
+          "category": "算法",
+          "insight": "HashMap + 双向链表。get：哈希表查找→移到链表头部。put：存在则更新+移到头部，不存在则插入头部→超容量删除尾部。注意：dummy head/tail简化边界处理。"
+        }
+      ]
+    },
+    {
+      "name": "三面",
+      "focus": "技术视野 + 系统设计 + 综合素质",
+      "duration_min": 45,
+      "questions": [
+        {
+          "question": "从提出需求到上线，一般会经历哪些流程？你在其中扮演什么角色？",
+          "category": "工程素养",
+          "insight": "需求评审→技术方案设计→开发→Code Review→测试（单测/集成测试/压测）→灰度发布→全量上线→监控告警。展示对完整研发流程的理解和质量意识。"
+        },
+        {
+          "question": "如果让你设计一个大模型推理服务平台，你会从哪些方面考虑？",
+          "category": "系统设计",
+          "insight": "核心模块：请求网关（限流/鉴权/路由）→请求队列→推理引擎（模型加载/batch调度/KV Cache管理）→结果返回（流式/非流式）。非功能需求：多模型管理、弹性伸缩、GPU资源池化、监控（延迟/吞吐/GPU利用率）、灰度发布、A/B测试。"
+        },
+        {
+          "question": "你对大模型技术的发展趋势怎么看？推理优化方向有哪些？",
+          "category": "技术视野",
+          "insight": "趋势：MoE架构（稀疏激活降低推理成本）、长上下文（Ring Attention/Infini-Attention）、多模态融合、端侧部署。推理优化：量化/蒸馏/剪枝、FlashAttention、Continuous Batching、Speculative Decoding、硬件协同优化（昆仑芯片）。"
+        },
+        {
+          "question": "你还有什么想问我的？",
+          "category": "反问",
+          "insight": "建议问：文心大模型推理平台当前的技术挑战、团队规模和协作方式、百度昆仑芯片和推理框架的关系、新人的成长路径。"
+        }
+      ]
+    }
+  ],
+  "overall_insight": "百度文心大模型推理平台后端校招面试三轮，流程极快（可在3天内完成一面到三面）。一面偏基础（项目+Java集合+OS+网络+MySQL），手撕简单但要求代码规范。二面加深到并发编程、中间件、云原生和推理平台专项（大模型推理性能优化是加分项）。三面主管面考察技术视野和系统设计能力，会问大模型推理服务平台的整体设计。整体风格：百度面试官偏学术风，喜欢追问原理和底层实现，对大模型相关知识（推理优化、模型部署）有额外加分。",
+  "followups": [
+    "可补充百度文心大模型方向的算法岗面经（偏模型训练/微调/RLHF）",
+    "后续可补充百度推理框架FastDeploy和昆仑芯片相关的系统设计题"
+  ]
+}

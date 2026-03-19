@@ -1,0 +1,104 @@
+{
+  "company": "阿里巴巴",
+  "business_group": "淘天集团",
+  "department": "搜广推（阿里妈妈）",
+  "role": "广告算法",
+  "year": 2024,
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/feed/main/detail/c1f7ce42574246af9af60d31a18aed3a",
+      "https://blog.csdn.net/2201_75499313/article/details/136980214",
+      "https://blog.csdn.net/weixin_44805027/article/details/103752202",
+      "https://zhuanlan.zhihu.com/p/100011951"
+    ],
+    "note": "综合牛客网阿里妈妈广告算法一面面经、CSDN 2024淘天阿里妈妈算法工程师一面二面面试题、知乎/CSDN一线互联网公司算法方向社招面试(阿里妈妈)，提取真实面试问题。阿里妈妈是阿里核心广告平台，面试难度高，重点考察广告/推荐模型理解、手撕代码能力和工程落地思维。"
+  },
+  "interview_rounds": 2,
+  "rounds": [
+    {
+      "name": "一面",
+      "focus": "项目 + 手撕代码 + 广告推荐模型基础",
+      "duration_min": 60,
+      "questions": [
+        {
+          "question": "自我介绍，聊项目经历，深挖项目中的模型选型和效果评估。",
+          "category": "项目",
+          "insight": "阿里妈妈一面开场必问项目，面试官会追问模型选型原因、离线/在线指标对齐、AB实验设计。准备好用数据说话。"
+        },
+        {
+          "question": "手撕代码：用PyTorch写Self-Attention。",
+          "category": "手撕代码",
+          "insight": "考察对Transformer核心机制的理解和工程实现能力。关键点：Q/K/V线性变换、scaled dot-product attention（除以sqrt(d_k)）、softmax归一化、多头拼接。面试官可能追问multi-head的实现细节。"
+        },
+        {
+          "question": "手撕代码：前K个高频数（Top-K Frequent Elements）。",
+          "category": "手撕代码",
+          "insight": "经典题。方案：1.HashMap统计频次+最小堆O(NlogK) 2.HashMap+桶排序O(N) 3.快速选择O(N)平均。面试官期望分析时间复杂度并选择最优方案。"
+        },
+        {
+          "question": "手撕代码：二叉树前序、中序、后序遍历，然后根据后序和中序结果写出前序遍历。",
+          "category": "手撕代码",
+          "insight": "后序最后一个元素是根节点，在中序中找到根节点位置划分左右子树，递归构建。关键是正确计算左右子树在后序数组中的边界索引。"
+        },
+        {
+          "question": "了解广告、推荐算法吗？介绍一下Wide&Deep模型。",
+          "category": "广告模型",
+          "insight": "Wide&Deep是Google 2016年提出的经典CTR模型。Wide部分：线性模型+交叉特征，负责记忆（memorization）。Deep部分：DNN，负责泛化（generalization）。联合训练而非ensemble。追问方向：与DeepFM的区别、Wide部分特征工程的局限性。"
+        },
+        {
+          "question": "介绍DIN（Deep Interest Network）的核心思想和创新点。",
+          "category": "广告模型",
+          "insight": "DIN是阿里妈妈2018年提出的CTR模型。核心创新：用Attention机制对用户历史行为加权，不同候选广告激活不同的用户兴趣子集，而非将所有行为等权求和。关键技术：Local Activation Unit（类attention）、Dice激活函数、Mini-batch Aware Regularization。"
+        },
+        {
+          "question": "DIEN（Deep Interest Evolution Network）相比DIN做了什么改进？",
+          "category": "广告模型",
+          "insight": "DIEN在DIN基础上建模用户兴趣的时序演化。两层结构：兴趣抽取层（GRU从行为序列提取兴趣状态）+ 兴趣演化层（AUGRU，用attention-based GRU捕获与目标广告相关的兴趣演化轨迹）。辅助loss用下一个行为监督兴趣抽取层。"
+        }
+      ]
+    },
+    {
+      "name": "二面",
+      "focus": "多目标建模 + 广告系统架构 + 算法深度",
+      "duration_min": 60,
+      "questions": [
+        {
+          "question": "ESMM（Entire Space Multi-Task Model）解决了CVR预估中的什么问题？原理是什么？",
+          "category": "广告模型",
+          "insight": "ESMM解决CVR预估的两大问题：1.样本选择偏差（SSB）：传统CVR只在点击样本上训练，但推理时在全空间预测。2.数据稀疏：转化样本远少于点击样本。原理：pCVR = pCTCVR / pCTR，在全空间同时建模CTR和CTCVR两个任务，隐式学习CVR。底层Embedding共享。"
+        },
+        {
+          "question": "多目标优化中，不同任务之间的梯度冲突怎么处理？了解哪些多任务学习架构？",
+          "category": "多目标优化",
+          "insight": "架构：Shared-Bottom→MMOE（多专家混合）→PLE（渐进式分层提取，解决跷跷板问题）。梯度冲突处理：PCGrad（投影冲突梯度）、GradNorm（动态调整loss权重）、帕累托最优搜索。追问：MMOE中gate网络的作用、PLE相比MMOE的改进。"
+        },
+        {
+          "question": "广告系统中eCPM排序的公式是什么？如何平衡广告收入和用户体验？",
+          "category": "广告系统",
+          "insight": "eCPM = pCTR × pCVR × bid（CPA出价）或 pCTR × bid（CPC出价）。平衡策略：引入用户体验指标（如停留时长、负反馈率）作为排序因子的加权项，或设置广告密度上限、频次控制。GSP/VCG机制保证广告主激励相容。"
+        },
+        {
+          "question": "CTR预估中的概率校准（Calibration）是什么？为什么需要校准？",
+          "category": "广告模型",
+          "insight": "校准确保预估CTR接近真实点击概率。为什么需要：模型输出的score不一定是真实概率，但广告计费（eCPM）需要准确概率值。方法：Platt Scaling（逻辑回归校准）、Isotonic Regression（保序回归）、温度缩放。阿里妈妈在展示广告中大量使用校准技术。"
+        },
+        {
+          "question": "特征交叉在CTR模型中的演进路线？从人工到自动。",
+          "category": "广告模型",
+          "insight": "演进：LR（人工交叉）→FM（二阶自动交叉）→FFM（field-aware）→DeepFM（FM+DNN）→DCN（Cross Network显式高阶交叉）→AutoInt（self-attention自动交叉）→CAN（笛卡尔积特征交互）。趋势：从人工特征工程到端到端自动学习。"
+        },
+        {
+          "question": "手撕代码：链表倒序 / 数组中所有逆序对。",
+          "category": "手撕代码",
+          "insight": "链表倒序：迭代法（三指针prev/curr/next）或递归法。逆序对：归并排序过程中统计，merge时右边元素先入说明左边剩余元素都与之构成逆序对。时间O(NlogN)。"
+        }
+      ]
+    }
+  ],
+  "overall_insight": "阿里妈妈广告算法面试是阿里系中公认难度最高的方向之一。一面重手撕代码能力（一面可能连续3道手撕）和广告推荐模型基础（DIN/DIEN/Wide&Deep必问），二面深入多目标建模（ESMM/MMOE/PLE）、广告系统架构（eCPM/校准/竞价机制）和特征工程演进。面试官期望候选人不仅了解模型原理，还能讲清楚工程落地中的取舍（如在线serving延迟约束下的模型简化、特征实时性与一致性的平衡）。",
+  "followups": [
+    "可从该面经反向补充搜广推算法题库中的广告模型专题（DIN/DIEN/ESMM/校准）",
+    "后续可补充阿里妈妈搜索广告方向的面经（直通车/智能出价/竞价策略）"
+  ]
+}

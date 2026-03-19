@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-19T12:39:00+00:00",
+  "generated_at": "2026-03-19T12:43:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 40,
+    "completed": 42,
     "companies_seeded": 8,
     "question_banks_filled": 6,
-    "interview_json_count": 24
+    "interview_json_count": 26
   },
   "queues": {
     "priority_companies": [
@@ -124,6 +124,20 @@
       "department": "推荐策略",
       "question_bank_ready": true,
       "interview_json_count": 2
+    },
+    {
+      "company": "快手",
+      "business_group": "主站业务",
+      "department": "推荐算法",
+      "question_bank_ready": true,
+      "interview_json_count": 2
+    },
+    {
+      "company": "拼多多",
+      "business_group": "多多买菜",
+      "department": "服务端",
+      "question_bank_ready": true,
+      "interview_json_count": 2
     }
   ],
   "notes": [
@@ -140,30 +154,35 @@
     "2026-03-19T20:03 新增美团/到家事业群/服务端研发/后端开发真实面经JSON。",
     "2026-03-19T20:03 新增阿里云/基础架构/后端开发真实面经JSON。",
     "2026-03-19T20:03 补强阿里云/基础架构题库和美团/到家事业群题库。",
-    "2026-03-19T20:23 新增京东/物流技术/平台研发/Java后端社招三面真实面经JSON（来源：帅地玩编程、CSDN、牛客多篇面经聚合），含14道真实面试题，覆盖JVM深挖、反射原理、Redis大key、MySQL binlog复制、MQ对比、设计模式等。",
-    "2026-03-19T20:23 新增百度/核心搜索/推荐策略/算法校招三面真实面经JSON（来源：CSDN、牛客多篇2023-2024面经聚合），含13道真实面试题，覆盖DeepSpeed ZeRO通信、KV Cache、RoPE、MMoE、召回优化、手撕代码等。",
-    "2026-03-19T20:23 新建百度/核心搜索/推荐策略题库（question-bank.md），含搜索业务理解、召回排序架构、推荐模型、大模型+搜索结合、偏差与实验评估、特征工程、生态治理、ML基础、手撕代码共10大板块。",
-    "2026-03-19T20:23 补强京东/物流技术/平台研发题库，新增面经真题专项（第10节），含JVM深挖、Java语言细节、中间件与数据库、消息队列与微服务、网络与设计模式共5个子节30+题，均来自面经真题。",
-    "2026-03-19T20:39 已继续强化美团 / 到家事业群 / 服务端研发 / 后端开发题库，将海量返券返账返核返池类机械变体进一步收敛为履约异常责任、资金闭环、恢复期重放与跨站补偿统一治理框架。"
+    "2026-03-19T20:23 新增京东/物流技术/平台研发/Java后端社招三面真实面经JSON。",
+    "2026-03-19T20:23 新增百度/核心搜索/推荐策略/算法校招三面真实面经JSON。",
+    "2026-03-19T20:23 新建百度/核心搜索/推荐策略题库。",
+    "2026-03-19T20:23 补强京东/物流技术/平台研发题库。",
+    "2026-03-19T20:43 新增快手/主站业务/推荐算法/算法校招三面真实面经JSON（来源：牛客、博客园、CSDN多篇2023-2024面经聚合），含13道真实面试题，覆盖项目深挖、精排target attention、SIM原理、GBDT推导、协同过滤、手写Transformer、有序数组中位数等。",
+    "2026-03-19T20:43 新增拼多多/多多买菜/服务端/后端开发校招两面真实面经JSON（来源：牛客、CSDN、博客园、SegmentFault多篇2023-2025面经聚合），含13道真实面试题，覆盖HashMap/ConcurrentHashMap、CAS、ThreadLocal、RocketMQ、分布式锁、逃逸分析、TOP K、秒杀设计、概率题等。",
+    "2026-03-19T20:43 补强快手/主站业务/推荐算法题库，新增面经真题专项（第9节），含项目深挖、模型算法、召回基础、手撕代码共4个子节15+题。",
+    "2026-03-19T20:43 补强拼多多/多多买菜/服务端题库，新增面经真题专项（第14节），含Java集合并发、JVM、中间件、网络、场景设计、手撕代码共6个子节18+题。"
   ],
   "next_actions": [
     {
-      "company": "快手",
-      "business_group": "主站业务",
-      "department": "推荐算法",
+      "company": "字节跳动",
+      "business_group": "抖音电商",
+      "department": "商业化技术",
       "role": "算法",
       "action": "search_real_interview_json",
-      "priority": "P2",
-      "status": "pending"
+      "priority": "P0",
+      "status": "pending",
+      "note": "TODO_FIRST_BATCH P0项：补1份算法面经更完整来源版"
     },
     {
-      "company": "拼多多",
-      "business_group": "多多买菜",
-      "department": "服务端",
-      "role": "后端开发",
+      "company": "腾讯",
+      "business_group": "微信事业群",
+      "department": "基础平台",
+      "role": "客户端开发",
       "action": "search_real_interview_json",
-      "priority": "P2",
-      "status": "pending"
+      "priority": "P0",
+      "status": "pending",
+      "note": "TODO_FIRST_BATCH P0项：补1份客户端开发补强版样板"
     }
   ],
   "pending": []

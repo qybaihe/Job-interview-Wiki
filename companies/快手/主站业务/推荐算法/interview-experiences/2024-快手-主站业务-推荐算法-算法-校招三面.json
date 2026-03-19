@@ -1,0 +1,99 @@
+{
+  "company": "快手",
+  "business_group": "主站业务",
+  "department": "推荐算法",
+  "role": "算法",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/feed/main/detail/2ebcde4522124db5913907f7470ce372",
+      "https://www.nowcoder.com/feed/main/detail/da5a6e64cc064ff993a851faa2f74fa5",
+      "https://www.cnblogs.com/coder-duibai/p/16350247.html",
+      "https://blog.csdn.net/weixin_40920183/article/details/125195462"
+    ],
+    "note": "综合2023-2024年快手主站推荐算法校招面经（牛客多篇、博客园、CSDN），提取共性高频问题。快手推荐算法面试通常3轮技术面+HR面，一面偏实习项目深挖和推荐系统基础，二面偏模型细节和业务理解，三面偏综合能力和手撕代码。面试官会拿候选人项目和快手短视频推荐做对比，项目深挖占比很高。"
+  },
+  "verification_status": "real-aggregated-from-public-posts",
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "round": "一面",
+      "question": "讲一下你在实习中做的推荐项目，商品量级多大？召回中相关性分档怎么做的？",
+      "category": "项目深挖",
+      "insight": "快手一面上来就深挖实习项目，面试官会拿快手短视频推荐的量级和复杂度做对比。如果项目规模偏小，面试官可能直接说'对比快手的短视频推荐像玩具'，但不代表挂了，关键是能否讲清楚技术选型和收益。"
+    },
+    {
+      "round": "一面",
+      "question": "会不会出现query太不规范不能match到商品的情况？怎么解决？你们的场景是否每个query和item都能匹配到相关性分数？",
+      "category": "召回/相关性",
+      "insight": "面试官在考察候选人对召回链路中query理解和改写的认知。常见解法包括query纠错、同义词扩展、语义向量召回兜底等。"
+    },
+    {
+      "round": "一面",
+      "question": "精排模型你们用的baseline是什么？怎么用query和行为序列做的target attention？行为序列怎么截断的？",
+      "category": "精排模型",
+      "insight": "快手面试官对DIN/DIEN类target attention机制追问很细。要能讲清楚attention的query是什么、key/value是什么、序列截断策略（按时间窗口还是按长度）以及截断对效果的影响。"
+    },
+    {
+      "round": "一面",
+      "question": "有哪些序列建模的方法和模型？说一下SIM的详细原理。",
+      "category": "模型基础",
+      "insight": "序列建模常见方法：GRU/LSTM、Transformer、DIN/DIEN、SIM、TWIN等。SIM（Search-based Interest Model）核心是用General Search Unit从超长行为序列中先检索出与target item相关的子序列，再做精细建模，解决超长序列计算开销问题。"
+    },
+    {
+      "round": "一面",
+      "question": "说一下GBDT的全部流程，能做分类任务吗，怎么做？",
+      "category": "机器学习基础",
+      "insight": "GBDT通过前向分步加法模型，每一步拟合上一步残差（回归用MSE残差，分类用负梯度/对数似然损失的负梯度）。分类任务用对数似然损失函数，输出经过sigmoid/softmax转换为概率。快手面试官会追问到叶子节点分裂准则、正则化和与XGBoost/LightGBM的区别。"
+    },
+    {
+      "round": "二面",
+      "question": "继续讨论实习项目，这次更深入地讨论技术细节和效果。",
+      "category": "项目深挖",
+      "insight": "快手二面还是会花大量时间在项目上，但比一面更温和，更关注候选人的思考深度和对业务指标的理解。"
+    },
+    {
+      "round": "二面",
+      "question": "user协同过滤和item协同过滤各有什么适合的场景？",
+      "category": "召回基础",
+      "insight": "user-CF适合用户数远小于物品数的场景（如新闻推荐），item-CF适合物品数远小于用户数或物品相似度更稳定的场景（如电商）。短视频平台通常item-CF更实用，因为视频量级大但用户兴趣变化快。"
+    },
+    {
+      "round": "一面/二面",
+      "question": "手写Transformer的核心结构（self-attention部分）。",
+      "category": "手撕代码",
+      "insight": "快手推荐算法面试的代码题会考手写模型核心组件。Transformer self-attention: Q=XWq, K=XWk, V=XWv, Attention(Q,K,V)=softmax(QK^T/sqrt(d_k))V。要能写出multi-head版本和mask处理。"
+    },
+    {
+      "round": "二面",
+      "question": "寻找长度为N、只包含1~N-1的数组中重复过一次的那个数，时间O(n)空间O(1)。",
+      "category": "手撕代码",
+      "insight": "经典数组题。解法1：求和相减，sum(array) - sum(1..N-1)。解法2：异或，全部异或后再异或1~N-1。解法3：原地标记（取负数标记法）。面试官期望O(n)时间O(1)空间。"
+    },
+    {
+      "round": "二面",
+      "question": "在有序有重复数组中查找第一个k的下标，不符合则返回第一个>k的下标。",
+      "category": "手撕代码",
+      "insight": "二分查找变体，lower_bound实现。关键是mid==k时继续往左搜索，确保找到第一个。如果不存在k，返回的位置自然是第一个>k的位置。"
+    },
+    {
+      "round": "一面/二面",
+      "question": "寻找两个有序数组的中位数（Hard难度）。",
+      "category": "手撕代码",
+      "insight": "LeetCode第4题，要求O(log(m+n))。核心思路是二分查找，在较短数组上做partition，使得左半部分元素个数等于右半部分。快手算法面试代码题难度偏高，Hard题不罕见。"
+    },
+    {
+      "round": "全程",
+      "question": "LR、SVM推导（软硬间隔）、KKT条件、XGBoost损失函数推导、LightGBM优化、Boosting vs Bagging区别。",
+      "category": "机器学习基础",
+      "insight": "快手推荐算法面试会考传统ML基础推导，虽然不是每轮都问，但准备时必须覆盖。LR的最大似然推导、SVM的对偶问题和KKT条件、XGBoost的二阶泰勒展开、LightGBM的直方图加速和GOSS采样都是高频考点。"
+    },
+    {
+      "round": "全程",
+      "question": "模型时效性怎么保证？AUC怎么计算？负采样怎么做？",
+      "category": "推荐系统工程",
+      "insight": "模型时效性：增量训练、实时特征更新、online learning。AUC计算：正样本排在负样本前面的概率，可用排序法或Mann-Whitney U统计量。负采样：随机负采样、曝光未点击、热度加权采样，不同采样策略对模型偏差影响不同。"
+    }
+  ],
+  "final_insight": "快手主站推荐算法面试特点：项目深挖占比极高（一面二面都会花大量时间），面试官会拿快手短视频推荐的规模和复杂度做对比。技术面覆盖推荐系统全链路（召回/精排/重排）、序列建模（DIN/SIM/Transformer）、传统ML基础推导（LR/SVM/GBDT/XGBoost）。代码题难度偏高，出现过手写Transformer、两个有序数组中位数等Hard题。整体节奏：一面项目+基础+代码，二面项目+深入+代码，三面综合+HR。拿到已意向的候选人反馈面试体验整体正向。"
+}

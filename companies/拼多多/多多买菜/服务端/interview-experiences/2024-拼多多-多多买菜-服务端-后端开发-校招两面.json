@@ -1,0 +1,100 @@
+{
+  "company": "拼多多",
+  "business_group": "多多买菜",
+  "department": "服务端",
+  "role": "后端开发",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/discuss/782301095736504320",
+      "https://blog.csdn.net/starbxx/article/details/103523491",
+      "https://www.cnblogs.com/weigy/p/12302127.html",
+      "https://segmentfault.com/a/1190000042035124",
+      "https://segmentfault.com/a/1190000016556243"
+    ],
+    "note": "综合2023-2025年拼多多服务端/Java后端校招及社招面经（牛客、CSDN、博客园、SegmentFault多篇），提取共性高频问题。拼多多服务端面试通常2-3轮技术面，一面偏Java基础和八股文追问，二面偏场景设计和高并发，面试风格直接高效，先撕代码再聊项目的模式常见。多多买菜方向会额外关注社区团购、库存、履约相关场景题。"
+  },
+  "verification_status": "real-aggregated-from-public-posts",
+  "interview_rounds": 2,
+  "questions": [
+    {
+      "round": "一面",
+      "question": "HashMap底层实现？JDK7和JDK8有什么区别？TreeMap查询写入的时间复杂度多少？",
+      "category": "Java集合",
+      "insight": "拼多多一面必考集合框架。HashMap：JDK7数组+链表（头插法），JDK8数组+链表+红黑树（尾插法，链表长度>8转红黑树）。TreeMap基于红黑树，查询写入O(logN)。面试官会继续追问ConcurrentHashMap的线程安全实现。"
+    },
+    {
+      "round": "一面",
+      "question": "ConcurrentHashMap怎么实现线程安全的？HashMap多线程有什么问题？怎么解决？",
+      "category": "Java并发",
+      "insight": "JDK7分段锁Segment（继承ReentrantLock），JDK8 CAS+synchronized（锁粒度细化到Node级别）。HashMap多线程问题：JDK7并发扩容死循环，JDK8并发put数据覆盖。解决方案：ConcurrentHashMap、Collections.synchronizedMap、加锁。"
+    },
+    {
+      "round": "一面",
+      "question": "CAS和synchronized有什么区别？都用synchronized不行么？get需要加锁么？",
+      "category": "Java并发",
+      "insight": "CAS是乐观锁（无阻塞，适合竞争不激烈场景），synchronized是悲观锁（阻塞，适合竞争激烈场景）。全用synchronized性能差，CAS在低竞争下吞吐更高。ConcurrentHashMap的get不需要加锁，因为Node的val和next用volatile修饰，保证可见性。"
+    },
+    {
+      "round": "一面",
+      "question": "RocketMQ的消息模型？如何保证消息不丢失？如何保证消息顺序？",
+      "category": "消息队列",
+      "insight": "拼多多2025提前批面经中出现。Producer端：同步发送+重试；Broker端：同步刷盘+主从同步；Consumer端：手动ACK。顺序消息：同一业务key发到同一Queue，Consumer单线程消费同一Queue。面试官会追问消息重复消费如何处理（幂等）。"
+    },
+    {
+      "round": "一面",
+      "question": "分布式锁怎么实现？Redis分布式锁有什么问题？Redlock了解吗？",
+      "category": "分布式系统",
+      "insight": "拼多多面试高频题。Redis分布式锁：SET key value NX PX timeout。问题：主从切换锁丢失、锁续期（看门狗机制）、非原子释放（Lua脚本保证）。Redlock：多节点投票，半数以上加锁成功才算成功，但Martin Kleppmann质疑其正确性。"
+    },
+    {
+      "round": "一面",
+      "question": "ThreadLocal原理？内存泄漏怎么产生的？怎么避免？",
+      "category": "Java并发",
+      "insight": "每个Thread持有ThreadLocalMap，key是ThreadLocal的弱引用，value是强引用。GC回收ThreadLocal后key变null但value还在，造成内存泄漏。避免：用完及时remove()。线程池场景下尤其要注意，线程复用导致ThreadLocal残留。"
+    },
+    {
+      "round": "一面",
+      "question": "JVM堆和栈的区别？对象一定都在堆上吗？什么是逃逸分析？",
+      "category": "JVM",
+      "insight": "拼多多2025提前批真题。堆存对象实例，栈存局部变量和方法调用帧。对象不一定在堆上：JIT编译器通过逃逸分析判断对象是否逃逸出方法，未逃逸的对象可以栈上分配（标量替换），减少GC压力。"
+    },
+    {
+      "round": "二面",
+      "question": "TOP K问题：10亿个数中找最大的前K个，怎么做？时间复杂度是多少？",
+      "category": "场景设计",
+      "insight": "拼多多二面高频场景题。方案1：小顶堆，维护K大小的堆，O(NlogK)。方案2：快速选择（QuickSelect），平均O(N)。方案3：数据量超大时分治+MapReduce。面试官会追问如果内存放不下怎么办（外部排序、分桶）。"
+    },
+    {
+      "round": "二面",
+      "question": "秒杀场景怎么设计？如何防止超卖？如何扛住瞬时高并发？",
+      "category": "场景设计",
+      "insight": "拼多多二面高频场景题。分层削峰：前端限流→网关限流→服务层排队→异步下单。防超卖：Redis预扣库存（Lua脚本原子操作）+数据库乐观锁兜底。扛并发：CDN静态化、本地缓存、热点隔离、异步MQ削峰。多多买菜方向会结合补贴活动和爆品场景追问。"
+    },
+    {
+      "round": "一面",
+      "question": "给一个函数返回0和1，概率为p和1-p，请你实现一个函数使得返回0和1概率一样。",
+      "category": "手撕代码/概率",
+      "insight": "拼多多经典面试题。调用两次原函数：(0,1)和(1,0)的概率都是p*(1-p)，出现(0,1)返回0，出现(1,0)返回1，其他情况重新调用。本质是利用对称性消除偏差。"
+    },
+    {
+      "round": "一面",
+      "question": "10亿个URL，每个URL大小小于56B，要求去重，内存4G。",
+      "category": "手撕代码/系统设计",
+      "insight": "拼多多经典大数据题。方案1：布隆过滤器（有误判率但省内存）。方案2：分桶哈希，按URL哈希值分成多个小文件，每个文件内用HashSet去重。4G内存约能放7000万个56B的URL，所以需要分约15个桶。"
+    },
+    {
+      "round": "一面",
+      "question": "把一个BST转化成一个双向链表。",
+      "category": "手撕代码",
+      "insight": "经典中序遍历题。中序遍历BST得到有序序列，遍历过程中维护prev指针，当前节点left指向prev，prev的right指向当前节点。递归或Morris遍历都可以。"
+    },
+    {
+      "round": "一面",
+      "question": "HTTP和HTTPS的区别？HTTPS的握手过程？证书验证流程？",
+      "category": "网络",
+      "insight": "HTTPS = HTTP + TLS/SSL。握手过程：Client Hello→Server Hello+证书→客户端验证证书→交换密钥（RSA或ECDHE）→对称加密通信。证书验证：检查CA签名链、有效期、域名匹配、是否吊销（CRL/OCSP）。"
+    }
+  ],
+  "final_insight": "拼多多服务端面试风格直接高效，一面重Java基础八股（集合框架、并发、JVM、中间件），追问深度大，RocketMQ/分布式锁/ThreadLocal是近年高频题。二面偏场景设计（TOP K、秒杀、大数据去重），代码题难度中等但要求思路清晰。面试节奏快，先撕代码再聊项目的模式常见。多多买菜方向会在场景题中结合社区团购业务（补贴活动、库存扣减、履约链路）追问。整体待遇拉满，拿到SSP的候选人反馈技术面反馈正向、代码写得快会有加分。"
+}

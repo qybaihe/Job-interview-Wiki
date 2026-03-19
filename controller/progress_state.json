@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-19T17:43:00+00:00",
+  "generated_at": "2026-03-19T18:03:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 71,
+    "completed": 72,
     "companies_seeded": 8,
     "question_banks_filled": 12,
-    "interview_json_count": 50
+    "interview_json_count": 51
   },
   "queues": {
     "priority_companies": [
@@ -53,7 +53,7 @@
       "business_group": "到店事业群",
       "department": "后端技术",
       "question_bank_ready": true,
-      "interview_json_count": 4
+      "interview_json_count": 5
     },
     {
       "company": "拼多多",
@@ -176,12 +176,10 @@
     }
   ],
   "notes": [
+    "2026-03-20T02:03 新增美团/到店事业群/后端技术/后端开发校招三面深度八股真实面经JSON（来源：牛客2024-2025年美团到店后端三轮技术面面经+到店平台技术部一面面经），一面13题深挖JVM内存区域/逃逸分析/堆空间划分/方法区/双亲委派/MySQL索引分类/事务ACID/MVCC原理/redo log/幻读解决/InnoDB vs MyISAM/crash-safe/表与索引设计，二面6题覆盖Zookeeper节点类型/Kafka消息存储与不丢失/消费者组Rebalance/项目深挖/分布式事务/到店团购系统设计，三面3题覆盖职业规划/项目成就感/反问。",
+    "2026-03-20T02:03 补强美团/到店事业群/后端技术题库question-bank.md，新增面经真题专项：JVM深度专项（5题：内存区域/逃逸分析/堆划分/方法区/双亲委派）、MySQL日志与恢复专项（5题：redo log/WAL/幻读/MVCC/InnoDB vs MyISAM）、中间件专项Kafka/Zookeeper（4题：ZK节点/Kafka存储与不丢失/消费者组Rebalance/分布式事务方案）、4条追问链路。",
     "2026-03-20T01:43 新增腾讯/微信事业群/基础平台（企业微信）/客户端开发校招两面真实面经JSON（来源：牛客WXG企微客户端一二面凉经+CSDN腾讯客户端2024面经+CSDN腾讯Android社招面经），一面6题覆盖LFU缓存Hard手撕/排序算法稳定性/面向对象三大特性/指针与引用底层/堆栈内存区别/HTTP与TCP区别，二面8题覆盖MVVM vs MVP架构/SP存储原理与替代/Handler机制与epoll/View生命周期/事件分发机制/Java线程池参数/数组去重双指针/Git协作pull vs rebase。",
-    "2026-03-20T01:43 补强阿里巴巴/淘天集团/搜广推/算法题库question-bank.md，新增召回/排序/多目标优化三大深度专题小节（共40+题）：召回深度专题（双塔模型深挖6题+多路召回融合5题+冷启动召回3题）、粗排与精排深度专题（粗排演进4题+精排深挖4题+重排策略3题）、多目标优化深度专题（建模架构4题+融合调权4题+电商实战3题），覆盖COLD/DR/Swing/PLE/ESMM/Pareto/位置偏置等高频考点。",
-    "2026-03-20T01:23 新增腾讯/平台与内容事业群/后台研发/后端开发2024校招Java后端两面真实面经JSON（来源：牛客腾讯24校招Java后端一二面面经+面试鸭腾讯PCG Java面经），一面5题覆盖GC判断与收集器选型/线程池核心参数/HashMap vs ConcurrentHashMap/链表递归反转，二面8题覆盖项目深挖/TCP应用层丢数据边界/线程池创建/LFU缓存算法/Spring事务隔离级别/IoC与AOP/联合索引最左匹配与范围截断/CAP理论取舍。",
-    "2026-03-20T01:23 新增美团/即时零售/服务端研发/后端开发2025校招闪购Java后端两面真实面经JSON（来源：CSDN美团闪购测开面经+牛客美团日常Java一二面面经），一面8题覆盖泛型与擦除/线程状态流转/反射创建对象/基本类型与位操作/Spring注入方式/MySQL索引结构与失效/Redis项目实战/多线程交替打印，二面6题覆盖CAP在即时零售的取舍/本地消息表+MQ分布式事务/高并发排队系统设计/深度分页优化/门店库存超卖处理/项目深挖。",
-    "2026-03-20T01:23 补强腾讯/PCG/后台研发题库question-bank.md，新增面经真题专项：JVM与GC（3题）、Java并发（3题）、缓存算法（2题）、Spring框架（3题）、网络深度（2题）、MySQL（2题）、分布式（1题）、手撕（1题）、4条追问链路。",
-    "2026-03-20T01:23 补强美团/即时零售/服务端研发题库question-bank.md，新增面经真题专项：Java基础（5题）、数据库（3题）、分布式与业务场景（5题）、Redis（2题）、手撕（1题）、5条追问链路。"
+    "2026-03-20T01:43 补强阿里巴巴/淘天集团/搜广推/算法题库question-bank.md，新增召回/排序/多目标优化三大深度专题小节（共40+题）：召回深度专题（双塔模型深挖6题+多路召回融合5题+冷启动召回3题）、粗排与精排深度专题（粗排演进4题+精排深挖4题+重排策略3题）、多目标优化深度专题（建模架构4题+融合调权4题+电商实战3题），覆盖COLD/DR/Swing/PLE/ESMM/Pareto/位置偏置等高频考点。"
   ],
   "next_actions": [
     {
@@ -195,24 +193,34 @@
       "note": "已有7份面经JSON，下一步做后端和算法方向的共性题去重"
     },
     {
-      "company": "腾讯",
-      "business_group": "微信事业群",
-      "department": "基础平台",
-      "role": "客户端开发",
-      "action": "给客户端开发题库补充追问分组和Android/iOS分方向专题",
-      "priority": "P1",
-      "status": "pending",
-      "note": "已有3份客户端面经JSON（含新增企微方向），下一步细化客户端开发-question-bank.md的追问链路"
-    },
-    {
-      "company": "美团",
-      "business_group": "到店事业群",
-      "department": "后端技术",
+      "company": "拼多多",
+      "business_group": "主站业务",
+      "department": "服务端",
       "role": "后端开发",
-      "action": "补1份后端开发新样板+交易/履约/稳定性专题",
+      "action": "补1份后端开发新样板+高并发交易/库存/推荐协同专题",
       "priority": "P0",
       "status": "pending",
-      "note": "TODO_FIRST_BATCH P0项：补1份后端开发新样板，给题库补充交易/履约/稳定性专题"
+      "note": "TODO_FIRST_BATCH P0项：补1份后端开发新样板，细化高并发交易/库存/推荐协同问题"
+    },
+    {
+      "company": "京东",
+      "business_group": "零售技术",
+      "department": "后端研发",
+      "role": "后端开发",
+      "action": "补1份后端开发新样板+零售交易/库存/履约专题",
+      "priority": "P0",
+      "status": "pending",
+      "note": "TODO_FIRST_BATCH P0项：补1份后端开发新样板，细化零售交易/库存/履约专题题库"
+    },
+    {
+      "company": "百度",
+      "business_group": "智能云",
+      "department": "基础架构",
+      "role": "后端开发",
+      "action": "补1份后端开发新样板+配置中心/服务治理/多租户专题",
+      "priority": "P0",
+      "status": "pending",
+      "note": "TODO_FIRST_BATCH P0项：补1份后端开发新样板，强化配置中心/服务治理/多租户专题"
     }
   ],
   "pending": []

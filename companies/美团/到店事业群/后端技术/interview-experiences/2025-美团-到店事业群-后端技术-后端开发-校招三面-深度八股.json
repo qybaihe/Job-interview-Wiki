@@ -1,0 +1,111 @@
+{
+  "company": "美团",
+  "business_group": "到店事业群",
+  "department": "后端技术",
+  "role": "后端开发",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/discuss/353158391428227072",
+      "https://www.nowcoder.com/feed/main/detail/ad2db39d82384210b083f3a79cefc578",
+      "https://blog.csdn.net/litterfinger/article/details/140896919"
+    ],
+    "note": "综合牛客2024-2025年美团到店后端三轮技术面面经（已意向），以及到店平台技术部一面面经。三面风格为逐层深挖JVM→MySQL→中间件→项目→系统设计，一面1h、二面45min、三面30min。"
+  },
+  "interview_rounds": 3,
+  "questions_round_1": [
+    {
+      "question": "JVM内存区域有哪些？各自存什么内容？",
+      "insight": "堆（对象实例）、方法区/元空间（类信息、常量池、静态变量）、虚拟机栈（栈帧：局部变量表、操作数栈、动态链接、返回地址）、本地方法栈（Native方法）、程序计数器（当前线程执行字节码行号）。美团一面开场高频题。"
+    },
+    {
+      "question": "并不是所有对象都分配到堆上，还可以分配到哪里？什么条件下会栈上分配？",
+      "insight": "逃逸分析：如果对象不会逃逸出方法，JIT可以做栈上分配（-XX:+DoEscapeAnalysis）。还有标量替换：把对象拆成基本类型直接在栈上分配。这是美团面试官区分候选人深度的追问点。"
+    },
+    {
+      "question": "堆的空间是怎么划分的？新生代和老年代的比例？Eden和Survivor的比例？",
+      "insight": "新生代:老年代默认1:2（-XX:NewRatio=2）。Eden:S0:S1默认8:1:1（-XX:SurvivorRatio=8）。对象先在Eden分配，Minor GC后存活对象进Survivor，年龄达到阈值（默认15）晋升老年代。"
+    },
+    {
+      "question": "方法区放哪些内容？JDK8之后有什么变化？",
+      "insight": "类的元数据、运行时常量池、静态变量。JDK8用Metaspace替代永久代，使用本地内存而非JVM堆内存，避免PermGen OOM。字符串常量池在JDK7已移到堆中。"
+    },
+    {
+      "question": "双亲委派模型是什么？什么场景下需要打破双亲委派？怎么打破？",
+      "insight": "加载类时先委托父加载器，父加载器无法加载再自己加载。打破场景：SPI机制（JDBC、JNDI）用线程上下文类加载器；Tomcat每个WebApp独立类加载器实现应用隔离；OSGi模块化。打破方式：重写loadClass()方法。"
+    },
+    {
+      "question": "MySQL的索引有哪些分类？聚簇索引和二级索引的区别？",
+      "insight": "按结构：B+树索引、哈希索引、全文索引。按逻辑：主键索引、唯一索引、普通索引、联合索引。聚簇索引叶子节点存完整行数据，二级索引叶子节点存主键值，查询需回表（除非覆盖索引）。"
+    },
+    {
+      "question": "说一下MySQL的事务？ACID分别是什么？",
+      "insight": "原子性（undo log）、一致性（约束+其他三个特性保证）、隔离性（锁+MVCC）、持久性（redo log）。美团面试官会追问每个特性的底层实现机制。"
+    },
+    {
+      "question": "四种隔离级别分别是怎么实现的？MVCC的原理是什么？",
+      "insight": "RU：直接读最新数据。RC：每次SELECT生成新的ReadView。RR：事务第一次SELECT生成ReadView，后续复用。Serializable：加锁。MVCC核心：隐藏列（trx_id、roll_pointer）+ undo log版本链 + ReadView（m_ids、min_trx_id、max_trx_id、creator_trx_id）。"
+    },
+    {
+      "question": "redo log的原理是什么？为什么需要redo log？和binlog有什么区别？",
+      "insight": "redo log是InnoDB引擎层的物理日志，记录页的修改，保证crash-safe。binlog是Server层的逻辑日志，记录SQL语句，用于主从复制和数据恢复。redo log是循环写，binlog是追加写。两阶段提交保证两者一致。"
+    },
+    {
+      "question": "RR级别下幻读是如何解决的？",
+      "insight": "MVCC + Next-Key Lock（Record Lock + Gap Lock）。快照读通过MVCC解决，当前读通过Next-Key Lock锁住记录和间隙。但RR级别下仍有特殊场景可能出现幻读（先快照读再当前读）。"
+    },
+    {
+      "question": "InnoDB和MyISAM的区别？count(*)为什么InnoDB不像MyISAM一样保存一份？",
+      "insight": "InnoDB支持事务、行锁、外键、MVCC；MyISAM不支持。MyISAM维护了行数变量所以count(*)是O(1)，InnoDB因为MVCC每个事务看到的行数可能不同，无法维护全局计数，必须遍历。"
+    },
+    {
+      "question": "crash-safe能力靠哪个日志？具体怎么保证的？",
+      "insight": "靠redo log。WAL机制（Write-Ahead Logging）：事务提交前先写redo log，再写数据页。崩溃恢复时通过redo log重放已提交但未落盘的数据。配合两阶段提交（prepare→commit）保证redo log和binlog一致。"
+    },
+    {
+      "question": "你项目中的表是怎么设计的？索引怎么设计的？",
+      "insight": "美团面试官必问项目数据库设计。要能说清楚：为什么这样分表、主键选择、联合索引的列顺序（区分度高的放前面）、覆盖索引优化、慢查询如何定位和优化。"
+    }
+  ],
+  "questions_round_2": [
+    {
+      "question": "Zookeeper的节点类型有哪些？持久节点和临时节点的区别？",
+      "insight": "持久节点（PERSISTENT）：客户端断开后仍存在。临时节点（EPHEMERAL）：客户端会话结束自动删除。还有顺序节点（SEQUENTIAL）。临时节点常用于分布式锁、服务注册。"
+    },
+    {
+      "question": "Kafka的消息是怎么存储的？如何保证消息不丢失？",
+      "insight": "Kafka消息存储在分区的日志文件中（segment），顺序写磁盘。不丢失三板斧：生产者acks=all、Broker副本同步（ISR机制、min.insync.replicas）、消费者手动提交offset。"
+    },
+    {
+      "question": "Kafka的消费者组是什么？Rebalance机制了解吗？",
+      "insight": "同一消费者组内的消费者分摊消费分区，不同组独立消费。Rebalance触发条件：消费者加入/离开、分区数变化。Rebalance期间消费暂停，要尽量避免频繁Rebalance（合理设置session.timeout.ms和heartbeat.interval.ms）。"
+    },
+    {
+      "question": "项目中遇到过什么技术难点？怎么解决的？",
+      "insight": "美团二面必问项目深挖。要用STAR法则：Situation（背景）→Task（任务）→Action（行动）→Result（结果）。重点讲技术选型的思考过程和量化收益。"
+    },
+    {
+      "question": "分布式事务了解哪些方案？你们项目用的哪种？为什么？",
+      "insight": "2PC/3PC、TCC、本地消息表、MQ事务消息、Saga。互联网公司常用本地消息表+MQ（最终一致性）。美团内部大量使用本地消息表方案。要能说清楚每种方案的优缺点和适用场景。"
+    },
+    {
+      "question": "如果让你设计一个到店团购的下单系统，你会怎么设计？需要考虑哪些问题？",
+      "insight": "核心考察系统设计能力。要覆盖：库存扣减（Redis预扣+DB落库）、订单状态机、支付回调、超时取消、幂等设计、限流降级、缓存一致性。到店场景还要考虑核销、门店状态同步。"
+    }
+  ],
+  "questions_round_3": [
+    {
+      "question": "你对未来的职业规划是什么？为什么选择到店方向？",
+      "insight": "三面偏综合评估。到店方向的技术挑战：线上线下协同、门店实时状态、交易与履约一致性、搜索推荐与交易承接。要表达对业务的理解和技术成长的期望。"
+    },
+    {
+      "question": "你觉得你做过的项目中最有成就感的是什么？",
+      "insight": "考察自驱力和技术热情。选一个有技术深度的项目，讲清楚挑战、思考过程和最终成果。"
+    },
+    {
+      "question": "有什么想问我的？",
+      "insight": "反问环节。推荐问：团队技术栈和架构演进方向、新人前三个月的成长路径、到店业务当前最大的技术挑战。"
+    }
+  ],
+  "final_insight": "美团到店后端三轮技术面特点：一面深挖JVM和MySQL底层原理（1h），从内存区域→逃逸分析→GC→索引→事务→MVCC→redo log一路追问，考察基础功底的深度和广度。二面转向中间件（Kafka/ZK）和项目深挖+系统设计（45min），考察工程能力和业务理解。三面偏综合评估（30min），考察职业规划和自驱力。整体风格：引导式提问、层层递进、注重底层原理而非表面八股。JVM和MySQL是一面的绝对重点，准备到店方向要额外关注分布式事务和到店业务场景（团购、核销、门店状态）。"
+}

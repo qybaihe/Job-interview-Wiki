@@ -1,0 +1,74 @@
+{
+  "company": "拼多多",
+  "business_group": "Temu",
+  "department": "服务端",
+  "role": "后端开发",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/discuss/663679598311333888",
+      "https://www.nowcoder.com/feed/main/detail/17fd3d923b8f4dd4b4fbc19959d020ae",
+      "https://www.nowcoder.com/creation/subject/f32258bbc2f341bb81b540794119e577"
+    ],
+    "note": "综合2024-2025年拼多多Temu后端两年经验社招面经（牛客多篇）。明确标注部门为Temu，两轮技术面。一面偏项目深挖+Java并发+数据库扩容+跨境业务场景（汇率/佣金），二面偏项目+手撕算法。整体难度中等，业务理解占比高，面试官建议多了解新技术。"
+  },
+  "verification_status": "real-aggregated-from-public-posts",
+  "interview_rounds": 2,
+  "questions": [
+    {
+      "round": "一面",
+      "question": "讲项目，项目有使用了什么技术栈？",
+      "category": "项目/业务",
+      "insight": "Temu社招一面开场必问项目。需要清晰描述技术栈全貌（语言、框架、中间件、存储），面试官会从项目中挖掘追问点。建议提前梳理项目架构图和核心链路。"
+    },
+    {
+      "round": "一面",
+      "question": "上游数据给的错了怎么办？如何保证账务正确？",
+      "category": "项目/业务",
+      "insight": "Temu跨境电商核心问题。账务正确性保障：数据校验（入口校验+对账）、幂等设计、事务补偿、异步对账任务定期核对。跨境场景下上游数据错误可能涉及汇率波动、商品价格变更等。"
+    },
+    {
+      "round": "一面",
+      "question": "AE佣金，你们会有因为汇率问题导致的差值吗？怎么处理？",
+      "category": "项目/业务",
+      "insight": "Temu跨境电商特有问题。多币种结算中汇率波动导致佣金差值是常见问题。处理方式：锁定汇率快照（下单时记录汇率）、定期汇率对账、差值容忍阈值+人工审核、结算周期内统一汇率。"
+    },
+    {
+      "round": "一面",
+      "question": "CountDownLatch和CyclicBarrier有什么区别？CountDownLatch使用有什么注意事项？",
+      "category": "Java并发",
+      "insight": "CountDownLatch：一次性计数器，await等待计数归零，不可重用。CyclicBarrier：可循环使用的屏障，所有线程到达后一起放行。注意事项：CountDownLatch的count必须与实际任务数一致，否则await永远阻塞；建议配合超时使用await(timeout, unit)；countDown()要放在finally块中防止异常导致永久阻塞。"
+    },
+    {
+      "round": "一面",
+      "question": "数据库扩容双写是先切写吗？数据库扩容的本质是什么？",
+      "category": "MySQL/系统设计",
+      "insight": "双写扩容：先双写（新旧库同时写入），再切读（读流量切到新库），最后停旧写。是先切写。扩容本质：单表数据过大导致查询/写入性能下降，通过分库分表将数据分散到多个实例。Temu跨境场景下数据量增长快（多国站点），扩容是常态。"
+    },
+    {
+      "round": "一面",
+      "question": "数据库默认的隔离级别是什么？为什么不是读已提交？",
+      "category": "MySQL",
+      "insight": "MySQL InnoDB默认可重复读（Repeatable Read）。为什么不用读已提交：RR级别下InnoDB通过MVCC+间隙锁解决了大部分幻读问题，提供更强的一致性保证；历史原因是MySQL早期binlog格式（Statement）在RC下可能导致主从不一致。Oracle默认RC是因为其MVCC实现不同。"
+    },
+    {
+      "round": "一面",
+      "question": "手撕算法：查找每个字符串中都出现的字符（LeetCode 1002 变体）",
+      "category": "手撕代码",
+      "insight": "思路：对每个字符串统计字符频次，取所有字符串频次的交集（每个字符取最小出现次数）。时间O(N*L)，N为字符串数，L为平均长度。PDD的IDE无提示，注意边界处理。"
+    },
+    {
+      "round": "二面",
+      "question": "简单聊项目，项目中的核心技术难点和解决方案。",
+      "category": "项目/业务",
+      "insight": "Temu二面项目聊得相对轻松，不像一面追问那么深。重点考察：能否清晰表达技术难点、解决思路是否合理、是否有技术深度。建议准备2-3个有亮点的技术难题。"
+    },
+    {
+      "round": "二面",
+      "question": "手撕算法：矩阵逆时针旋转打印（螺旋矩阵变体）",
+      "category": "手撕代码",
+      "insight": "螺旋矩阵打印（LeetCode 54变体），逆时针方向。用四个边界变量（top/bottom/left/right）控制遍历方向：左→下→右→上。注意边界条件：单行/单列的特殊处理。面试官评价：面试没有太难。"
+    }
+  ],
+  "final_insight": "拼多多Temu服务端社招面试两轮技术面，整体难度中等。一面偏项目深挖+Java并发基础+数据库扩容实战，特别关注跨境电商业务场景（汇率差值、账务正确性、多币种结算）。二面相对轻松，简单聊项目后直接手撕算法。面试官反馈：对业务比较了解是加分项，但建议多了解新技术。薪资沟通环节会聊工作强度（Temu加班较多，12点上班最早12点下班）。整体面试节奏快，业务理解和工程实战能力是核心考察点。"
+}

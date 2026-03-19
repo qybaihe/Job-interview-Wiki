@@ -1,0 +1,128 @@
+{
+  "company": "美团",
+  "business_group": "到家事业群",
+  "department": "服务端研发（外卖交易方向）",
+  "role": "后端开发",
+  "year": 2024,
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://zhuanlan.zhihu.com/p/1890345509287339786",
+      "https://www.nowcoder.com/discuss/472457234488840192",
+      "https://www.nowcoder.com/discuss/418759446061477888"
+    ],
+    "note": "综合知乎美团外卖交易暑期面经（两面OC）、牛客美团到家Java后端一二面面经（已OC）、牛客23届美团后端SSP面经，提取外卖交易/到家方向后端开发真实面试问题。两面总时长约3.5小时，一面偏Java基础+项目，二面偏业务场景+系统设计。"
+  },
+  "interview_rounds": 2,
+  "rounds": [
+    {
+      "name": "一面",
+      "focus": "Java基础 + 集合 + 框架 + 数据库 + 项目",
+      "duration_min": 90,
+      "questions": [
+        {
+          "question": "Java面向对象三大特性的理解？抽象类和接口有什么区别（除了语法层面）？",
+          "category": "Java基础",
+          "insight": "封装/继承/多态。抽象类强调is-a关系，接口强调has-a能力。设计层面：抽象类是对类的抽象（模板方法模式），接口是对行为的抽象（策略模式）。Java 8后接口可以有default方法，边界更模糊，但语义区别仍在。"
+        },
+        {
+          "question": "重载和重写有什么区别？",
+          "category": "Java基础",
+          "insight": "重载：同类中方法名相同、参数列表不同，编译期决定。重写：子类覆盖父类方法，运行期多态。追问点：返回值类型能否不同（重载可以，重写要求协变返回类型）。"
+        },
+        {
+          "question": "聊一下Java集合的体系？HashMap的结构是什么？",
+          "category": "Java集合",
+          "insight": "Collection（List/Set/Queue）和Map两大体系。HashMap：数组+链表+红黑树（JDK8），默认容量16，负载因子0.75，链表长度>8且数组>=64转红黑树。追问：为什么是0.75（时间空间折中，泊松分布）。"
+        },
+        {
+          "question": "遍历List时删除或者添加元素要考虑什么？",
+          "category": "Java集合",
+          "insight": "for-each遍历中修改会抛ConcurrentModificationException（fail-fast机制，modCount检查）。正确做法：Iterator.remove()、倒序遍历删除、CopyOnWriteArrayList、Java 8 removeIf()。"
+        },
+        {
+          "question": "Java反射机制聊一下？",
+          "category": "Java基础",
+          "insight": "运行时获取类信息、调用方法、访问字段。核心类：Class/Method/Field/Constructor。应用：Spring IOC、MyBatis mapper代理、序列化框架。性能开销：方法调用比直接调用慢约10-50倍，可通过setAccessible(true)和缓存优化。"
+        },
+        {
+          "question": "Java泛型聊一下？为什么传泛型，不能传Object吗？",
+          "category": "Java基础",
+          "insight": "泛型提供编译期类型安全检查，避免运行时ClassCastException。Object需要强转且无编译期检查。泛型擦除：编译后泛型信息被擦除为Object/上界，但编译期能捕获类型错误。通配符：? extends T（上界）、? super T（下界，PECS原则）。"
+        },
+        {
+          "question": "聊一下MySQL索引？最左匹配原则，如果是a、b、c的联合索引，where条件顺序是c、b、a能走索引吗？",
+          "category": "MySQL",
+          "insight": "能走索引。MySQL优化器会自动调整where条件顺序以匹配联合索引。最左匹配原则指的是索引列的逻辑顺序，不是SQL书写顺序。但如果只有where b=1 and c=1则无法走(a,b,c)索引。"
+        },
+        {
+          "question": "Redis在项目中解决了什么问题？举个例子说说你学到了什么？",
+          "category": "Redis",
+          "insight": "美团到家面试必问Redis。常见场景：缓存热点商家/商品数据、分布式锁（下单防重）、限流计数器（高峰期保护）、排行榜（ZSet）。追问：缓存与数据库一致性怎么保证→延迟双删/Canal监听binlog。"
+        },
+        {
+          "question": "cookie、session、token比较一下？如果不使用Redis，session共享问题在集群下怎么解决？",
+          "category": "Web基础",
+          "insight": "cookie客户端存储、session服务端存储、token无状态。不用Redis的session共享方案：session sticky（Nginx ip_hash）、数据库存储session、JWT无状态token。追问：JWT的缺点→无法主动失效、payload不宜过大。"
+        },
+        {
+          "question": "Spring Boot的自动配置原理？用到了哪些类加载器？双亲委派机制有什么好处？",
+          "category": "Spring",
+          "insight": "@SpringBootApplication → @EnableAutoConfiguration → AutoConfigurationImportSelector → 读取META-INF/spring.factories → 条件注解过滤（@ConditionalOnClass等）。类加载器：Bootstrap/Extension/Application。双亲委派：防止核心类被篡改，保证类唯一性。追问：Tomcat为什么打破双亲委派→每个WebApp需要隔离的类加载。"
+        },
+        {
+          "question": "讲一下策略模式？项目里怎么用的？用到了哪些自定义注解？",
+          "category": "设计模式/Spring",
+          "insight": "策略模式：定义算法族，封装各个算法，使它们可互相替换。到家场景：多种配送策略、多种支付方式、多种优惠计算规则。自定义注解 = @interface + 元注解 + AOP拦截/反射处理。Spring中常用于日志、权限、限流等横切关注点。"
+        },
+        {
+          "question": "算法题：括号平衡用什么数据结构实现？手写代码。",
+          "category": "算法",
+          "insight": "栈。遇到左括号入栈，遇到右括号检查栈顶匹配。边界：空串返回true、只有右括号返回false、多种括号混合({[。LeetCode 20原题。"
+        }
+      ]
+    },
+    {
+      "name": "二面",
+      "focus": "业务场景 + 系统设计 + 架构",
+      "duration_min": 120,
+      "questions": [
+        {
+          "question": "对于交易场景下的用户订单列表页，后端怎么去实现？包括订单数据存储怎么设计、翻页查询怎么设计？",
+          "category": "系统设计",
+          "insight": "美团外卖交易方向核心场景题。存储：订单主表+订单明细表，按用户ID分库分表。翻页：游标分页（基于订单ID或创建时间）优于offset分页（深分页性能差）。追问：分库分表后跨库查询怎么办→ES做查询层、归档冷数据。"
+        },
+        {
+          "question": "根据美团外卖的业务背景，设计一些核心数据库表，说下表名和关键字段。",
+          "category": "系统设计",
+          "insight": "核心表：用户表(user_id/phone/address)、商家表(shop_id/name/location/status)、商品表(item_id/shop_id/price/stock)、订单表(order_id/user_id/shop_id/status/total_amount/create_time)、订单明细表(detail_id/order_id/item_id/quantity/price)、骑手表(rider_id/status/location)、配送单表(delivery_id/order_id/rider_id/status/eta)。重点：订单状态机设计和索引设计。"
+        },
+        {
+          "question": "订单状态流转怎么设计？如何避免状态混乱？",
+          "category": "系统设计",
+          "insight": "状态机模式：待支付→已支付→商家接单→骑手取餐→配送中→已送达→已完成。每次状态变更校验前置状态合法性。用数据库乐观锁（version字段）或状态字段CAS防止并发状态跳变。异常状态：取消、退款、超时需要独立分支。"
+        },
+        {
+          "question": "到家业务中，如果订单量突然暴涨（比如恶劣天气），系统该怎么保护？",
+          "category": "高并发",
+          "insight": "多层防护：入口限流（令牌桶/滑动窗口）→ 非核心功能降级（推荐、评价）→ 核心链路熔断（Sentinel）→ MQ异步削峰（下单消息入队）→ 弹性扩容（K8S HPA）。核心原则：保住下单→支付→派单主链路。"
+        },
+        {
+          "question": "MySQL集群该怎么设计？主从结构具体怎么做？读写分离有什么坑？",
+          "category": "数据库架构",
+          "insight": "主从复制：binlog → relay log → SQL线程回放。读写分离的坑：主从延迟导致读到旧数据。解决：强制走主库（写后读场景）、半同步复制、延迟监控+告警。追问：分库分表方案→ShardingSphere/自研中间件，分片键选择（user_id vs order_id）。"
+        },
+        {
+          "question": "微服务怎么拆分？拆分的原则是什么？",
+          "category": "架构设计",
+          "insight": "按业务域拆分：订单域、支付域、履约域、配送域、商家域。原则：单一职责、高内聚低耦合、数据自治。注意：不要过度拆分，要考虑团队规模和运维成本。到家场景下履约和配送的边界划分是常见追问点。"
+        }
+      ]
+    }
+  ],
+  "overall_insight": "美团到家/外卖交易方向后端面试特点：一面约90分钟，重Java基础八股（集合、反射、泛型、Spring）+ 项目追问 + 简单算法；二面约2小时，重业务场景设计（订单系统、数据库表设计、翻页方案）和架构能力（高并发保护、微服务拆分、读写分离）。到家方向会额外关注即时配送场景下的时效性、订单状态一致性和高峰期稳定性。两面总时长可达3.5小时，面试节奏紧凑，一面到OC可能一周内完成。",
+  "followups": [
+    "可从该面经反向补充到家事业群题库的订单系统设计和翻页方案专项",
+    "后续可补充履约/配送调度方向的专项面经"
+  ]
+}

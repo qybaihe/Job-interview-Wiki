@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-19T16:43:00+00:00",
+  "generated_at": "2026-03-19T17:03:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 65,
+    "completed": 67,
     "companies_seeded": 8,
     "question_banks_filled": 12,
-    "interview_json_count": 45
+    "interview_json_count": 47
   },
   "queues": {
     "priority_companies": [
@@ -81,7 +81,7 @@
       "business_group": "电商事业部",
       "department": "服务端研发",
       "question_bank_ready": true,
-      "interview_json_count": 4
+      "interview_json_count": 5
     },
     {
       "company": "腾讯",
@@ -102,7 +102,7 @@
       "business_group": "到家事业群",
       "department": "服务端研发",
       "question_bank_ready": true,
-      "interview_json_count": 2
+      "interview_json_count": 3
     },
     {
       "company": "阿里巴巴",
@@ -176,14 +176,11 @@
     }
   ],
   "notes": [
+    "2026-03-20T01:03 新增美团/到家事业群/服务端研发（外卖交易方向）/后端开发暑期实习两面OC真实面经JSON（来源：知乎美团外卖交易暑期面经+牛客美团到家Java后端一二面已OC+牛客23届美团后端SSP），一面12题覆盖Java三大特性/集合体系/HashMap/List遍历删除/反射/泛型vs Object/MySQL索引最左匹配/Redis场景/cookie-session-token/Spring Boot自动配置/策略模式/括号平衡算法，二面6题覆盖订单列表页翻页设计/外卖核心数据库表设计/订单状态机/高并发保护/MySQL集群读写分离/微服务拆分。",
+    "2026-03-20T01:03 新增快手/电商事业部/服务端研发/后端开发校招三面OC综合面经JSON（来源：CSDN快手面经总结2024+CSDN快手商业化Java后端二面+知乎快手后台Java四面+知乎快手面经2024），一面8题覆盖Java并发场景/装饰-观察者模式/synchronized vs ReentrantLock+AQS/volatile/线程池参数/三线程交替打印/质因数分解/合并有序数组，二面6题覆盖项目深挖/Redis分布式锁+看门狗/电商库存扣减防超卖/Kafka vs RocketMQ/直播电商上下架+秒杀/Spring事务失效，三面3题覆盖电商订单系统设计/项目挑战/职业规划。",
+    "2026-03-20T01:03 大幅补强美团/到家事业群/服务端研发题库question-bank.md，新增两大专项共60+题：配送调度深度专项（6小节：派单与调度算法工程化6题/ETA预估与时效承诺6题/骑手位置与轨迹系统5题/运力供给与弹性调度5题/配送异常处理5题/订单交易链路深度6题）、面经追问链路整理（5条典型追问链路：Redis→缓存一致性→到家场景/集合基础→并发安全→线上问题/订单设计→分库分表→深分页/高并发保护→限流降级→恢复策略/微服务拆分→到家业务域→一致性）。",
     "2026-03-20T00:43 新增阿里巴巴/淘天集团/搜广推（阿里妈妈）/广告算法校招两面真实面经JSON（来源：牛客网阿里妈妈广告算法一面面经+CSDN 2024淘天阿里妈妈算法工程师面试题+知乎阿里妈妈社招算法面经），13题覆盖PyTorch手撕Self-Attention/Top-K高频数/二叉树遍历重建/Wide&Deep/DIN注意力机制/DIEN兴趣演化/ESMM全空间多任务/多目标梯度冲突MMOE-PLE/eCPM排序/CTR概率校准/特征交叉演进/手撕链表倒序与逆序对。",
-    "2026-03-20T00:43 补强快手/电商事业部/服务端研发题库question-bank.md，新增四大专题共40+题：电商链路专题（订单交易6题含Seata分布式事务/MQ异步下单/幂等设计/状态机、库存秒杀4题含Redis+Lua扣减/分桶设计、商品管理3题）、直播电商场景专题（直播间高并发4题含限流/HyperLogLog/实时推送/弹幕写扩散、直播交易链路3题含秒杀差异/抢券并发/售后佣金、营销风控3题）、JVM与性能调优专题（5题含G1回收/Full GC排查/ThreadLocal泄漏/IOC-AOP原理，均标注快手一面真实原题）。",
-    "2026-03-20T00:23 补强阿里巴巴/淘天集团/搜广推题库question-bank.md，新增三大专题共52题：召回专题（13题：多路召回架构/负采样策略/trigger selection/召回评估）、排序专题（18题：粗排蒸馏/精排模型演进DIN→SIM/重排多样性/GAUC/概率校准）、多目标优化专题（21题：MMOE/PLE跷跷板/ESMM样本偏差/梯度冲突PCGrad/帕累托最优/广告eCPM混排/Pacing预算平滑）。",
-    "2026-03-20T00:23 新增字节跳动/抖音电商/商业化技术（平台治理方向）/后端开发实习三面真实面经JSON（来源：牛客字节后端面经汇总+CSDN字节后端面经），13题覆盖Go goroutine GMP调度/channel底层hchan/MySQL MVCC+Next-Key Lock/Redis跳表vs红黑树/电商商品合规审核系统设计/分布式幂等/Go context级联取消/TCP拥塞控制BBR/线上超时排查止血/业务理解。",
-    "2026-03-20T00:03 新增腾讯/微信事业群/基础平台（微信支付）/后端开发秋招六面OC真实面经JSON（来源：牛客网WXG微信支付已OC面经+WXG校招后端已OC面经+WXG后台实习一二三面面经），13题覆盖Redis zset实时排名/微信付款码安全设计/虚拟物理地址/RPC项目深挖/Go slice/Redis缓存三连+分布式锁/布隆过滤器一致性/Kafka可靠性+幂等/STL vector+malloc底层/朋友圈健康码场景/Redis Delay Queue可靠性/面委会算法题。",
-    "2026-03-20T00:03 新增百度/智能云/基础架构/后端开发校招四面真实面经JSON（来源：CSDN百度提前批四面+百度ACG Java后端一面+牛客百度校招面经汇总），12题覆盖NIO/BIO/Netty/B+树索引/线程池参数/虚拟内存页表TLB/配置动态下发灰度/etcd Raft协议/多租户隔离/K8S Pod调度/Service Mesh/服务注册发现AP-CP。",
-    "2026-03-20T00:03 补强百度/智能云/基础架构题库question-bank.md，新增三大专题：配置中心专题（4分类16+题：核心设计/变更风险控制/配置与服务发现关系）、服务治理专题（4分类16+题：注册发现/流量治理/服务网格/可观测性）、多租户架构专题（3分类12+题：隔离模型/资源管理/安全审计）。",
-    "2026-03-20T00:03 补强腾讯/微信事业群/基础平台题库question-bank.md，新增追问分组（7条典型追问链路：Redis缓存三连→分布式锁→布隆过滤器/Kafka可靠性→幂等→顺序/Go slice→内存→GC/RPC深挖→负载均衡→服务治理/OS内存→虚拟地址→共享内存/微信支付场景→安全→幂等/场景设计→数据结构→极端情况）。"
+    "2026-03-20T00:43 补强快手/电商事业部/服务端研发题库question-bank.md，新增四大专题共40+题：电商链路专题（订单交易6题含Seata分布式事务/MQ异步下单/幂等设计/状态机、库存秒杀4题含Redis+Lua扣减/分桶设计、商品管理3题）、直播电商场景专题（直播间高并发4题含限流/HyperLogLog/实时推送/弹幕写扩散、直播交易链路3题含秒杀差异/抢券并发/售后佣金、营销风控3题）、JVM与性能调优专题（5题含G1回收/Full GC排查/ThreadLocal泄漏/IOC-AOP原理，均标注快手一面真实原题）。"
   ],
   "next_actions": [
     {
@@ -197,24 +194,24 @@
       "note": "已有7份面经JSON，下一步做后端和算法方向的共性题去重"
     },
     {
-      "company": "快手",
-      "business_group": "电商事业部",
-      "department": "服务端研发",
-      "role": "后端开发",
-      "action": "补1份后端开发新面经JSON（电商交易/直播场景方向）",
-      "priority": "P2",
-      "status": "pending",
-      "note": "题库已大幅补强（+40题电商链路+直播场景+JVM调优），下一步应补充电商方向的完整面经JSON"
-    },
-    {
       "company": "美团",
-      "business_group": "到家事业群",
+      "business_group": "即时零售",
       "department": "服务端研发",
       "role": "后端开发",
-      "action": "强化配送/履约/调度问题域题库",
+      "action": "补1份后端开发新面经JSON + 强化库存/ETA/仓店协同问题域",
       "priority": "P1",
       "status": "pending",
-      "note": "P1项：TODO_FIRST_BATCH要求强化配送/履约/调度问题域"
+      "note": "P1项：TODO_FIRST_BATCH要求强化库存/ETA/仓店协同问题域"
+    },
+    {
+      "company": "腾讯",
+      "business_group": "平台与内容事业群",
+      "department": "后台研发",
+      "role": "后端开发",
+      "action": "补1份后端开发新面经JSON + 强化服务治理/平台能力题库",
+      "priority": "P1",
+      "status": "pending",
+      "note": "P1项：TODO_FIRST_BATCH要求强化服务治理/平台能力题库"
     }
   ],
   "pending": []

@@ -1,0 +1,131 @@
+{
+  "company": "快手",
+  "business_group": "电商事业部",
+  "department": "服务端研发",
+  "role": "后端开发",
+  "year": 2024,
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://blog.csdn.net/weixin_66137383/article/details/135444864",
+      "https://blog.csdn.net/qq_33945246/article/details/140814062",
+      "https://zhuanlan.zhihu.com/p/86776589",
+      "https://zhuanlan.zhihu.com/p/680373564"
+    ],
+    "note": "综合CSDN快手面经总结2024（一面70min+二面60min+三面）、CSDN快手商业化Java后端二面面经、知乎快手后台Java开发四面面经（已拿意向书）、知乎快手面经2024，提取快手电商/商业化方向后端开发真实面试问题。快手面试特点：一面基础+算法占比大（算法40min），二面项目+中间件+场景设计，三面综合+HR。"
+  },
+  "interview_rounds": 3,
+  "rounds": [
+    {
+      "name": "一面",
+      "focus": "Java并发 + 设计模式 + 算法（算法占比极高）",
+      "duration_min": 70,
+      "questions": [
+        {
+          "question": "Java并发你了解哪些？平时开发有遇到过的并发场景吗？",
+          "category": "Java并发",
+          "insight": "快手一面开场题。需要结合实际场景讲：线程池处理异步任务、ConcurrentHashMap做本地缓存、CountDownLatch做并行查询聚合、CompletableFuture做异步编排。不要只背概念，要有实战经验。"
+        },
+        {
+          "question": "讲讲装饰模式和观察者模式？分别在什么场景下使用？",
+          "category": "设计模式",
+          "insight": "装饰模式：动态给对象添加职责，Java IO流是经典案例（BufferedInputStream装饰FileInputStream）。观察者模式：一对多依赖关系，状态变化时通知所有观察者。电商场景：订单状态变更通知（库存扣减、物流创建、消息推送）。Spring中的ApplicationEvent就是观察者模式。"
+        },
+        {
+          "question": "synchronized和ReentrantLock的区别？AQS原理？",
+          "category": "Java并发",
+          "insight": "synchronized：JVM层面，自动释放，非公平。ReentrantLock：API层面，手动释放，可公平/非公平，支持Condition、可中断、可超时。AQS：CLH队列变体，state变量+双向链表，acquire/release模板方法。追问：公平锁和非公平锁性能差异→非公平锁减少线程切换，吞吐量更高。"
+        },
+        {
+          "question": "volatile关键字的作用？和synchronized有什么区别？",
+          "category": "Java并发",
+          "insight": "volatile：保证可见性和有序性（禁止指令重排），不保证原子性。synchronized：三者都保证。volatile适合一写多读场景（状态标志位），synchronized适合复合操作。底层：volatile用内存屏障（StoreLoad Barrier），synchronized用monitorenter/monitorexit。"
+        },
+        {
+          "question": "线程池核心参数？拒绝策略有哪些？如何合理设置线程池大小？",
+          "category": "Java并发",
+          "insight": "7个参数：corePoolSize/maximumPoolSize/keepAliveTime/unit/workQueue/threadFactory/handler。4种拒绝策略：AbortPolicy(抛异常)/CallerRunsPolicy(调用者执行)/DiscardPolicy(丢弃)/DiscardOldestPolicy(丢弃最老)。线程数：CPU密集型=N+1，IO密集型=2N，实际需压测调整。"
+        },
+        {
+          "question": "算法题：三个线程交替打印1、2、3（循环打印到指定数）",
+          "category": "算法/并发",
+          "insight": "快手一面高频手撕题，考察并发编程实战能力。方案一：synchronized + wait/notifyAll + 状态变量轮转。方案二：三个Semaphore交替释放。方案三：ReentrantLock + 三个Condition轮转。方案四：AtomicInteger + 自旋。面试官期望至少写出两种方案。"
+        },
+        {
+          "question": "算法题：输出某个数的所有质因数分解 / 大数相关算法",
+          "category": "算法",
+          "insight": "快手算法题对数学要求较高。质因数分解：从2开始试除，每次除尽后继续，直到n=1。时间复杂度O(sqrt(n))。注意边界：n=1时无质因数，n本身是质数时直接输出。"
+        },
+        {
+          "question": "算法题：合并两个有序数组（手撕）",
+          "category": "算法",
+          "insight": "LeetCode 88原题。双指针从后往前填充（避免额外空间）。注意：nums1有足够空间容纳两个数组。边界：其中一个数组为空。时间O(m+n)，空间O(1)。"
+        }
+      ]
+    },
+    {
+      "name": "二面",
+      "focus": "项目深挖 + 中间件 + 电商场景设计",
+      "duration_min": 60,
+      "questions": [
+        {
+          "question": "自我介绍，项目描述，你负责的核心模块？遇到最大的技术难题是什么？",
+          "category": "项目",
+          "insight": "快手二面重项目深挖。面试官会追问技术选型原因、方案对比、性能数据。用STAR法则：Situation→Task→Action→Result。准备好2-3个有深度的技术难点。"
+        },
+        {
+          "question": "Redis分布式锁怎么实现？Redisson的看门狗机制？如果Redis主节点挂了锁怎么办？",
+          "category": "Redis",
+          "insight": "SET key value NX EX。Redisson看门狗：后台线程每10s续期（默认30s过期），任务完成后取消续期。主节点挂了：RedLock算法（多数节点加锁成功），但Antirez和Martin Kleppmann有争议。实际生产中更多用Zookeeper做强一致性锁。"
+        },
+        {
+          "question": "电商场景下库存扣减怎么做？如何防止超卖？",
+          "category": "电商场景",
+          "insight": "快手电商核心场景题。方案：Redis+Lua原子扣减（预扣库存）→ 下单成功后异步扣减DB库存 → 超时未支付回滚Redis库存。防超卖：Lua脚本保证原子性，DB层乐观锁（version字段）兜底。追问：热点商品→分桶库存（将一个SKU库存拆成N个桶，分散热点）。"
+        },
+        {
+          "question": "Kafka和RocketMQ的区别？各自适合什么场景？消息丢失怎么防？",
+          "category": "中间件",
+          "insight": "Kafka：高吞吐、适合日志/大数据流、分区有序。RocketMQ：事务消息、延迟消息、死信队列、适合业务消息。防丢失三板斧：生产者确认（acks=all）、Broker持久化（同步刷盘）、消费者手动提交offset。快手大量使用Kafka做日志采集和数据管道。"
+        },
+        {
+          "question": "直播电商场景下，商品上下架如何保证实时性？秒杀和普通下单有什么区别？",
+          "category": "电商场景",
+          "insight": "上下架实时性：Canal监听DB binlog → Kafka → 消费者更新缓存/ES。秒杀vs普通：秒杀需要预热库存到Redis、前端限流（验证码/答题）、服务端令牌桶限流、异步下单（MQ削峰）、库存预扣减。普通下单同步扣减即可。"
+        },
+        {
+          "question": "Spring事务在什么情况下会失效？",
+          "category": "Spring",
+          "insight": "常见失效场景：1.方法非public 2.自调用（同类方法调用，未走代理）3.异常被catch吞掉 4.抛出非RuntimeException（默认只回滚RuntimeException）5.数据库引擎不支持事务（MyISAM）6.传播机制设置不当（REQUIRES_NEW内层事务独立提交）。"
+        }
+      ]
+    },
+    {
+      "name": "三面",
+      "focus": "系统设计 + 综合能力 + 职业规划",
+      "duration_min": 45,
+      "questions": [
+        {
+          "question": "设计一个电商订单系统，从下单到支付到发货的完整链路。",
+          "category": "系统设计",
+          "insight": "核心模块：商品服务→购物车服务→订单服务→支付服务→库存服务→物流服务。关键设计点：分布式事务（Seata AT模式/TCC）、订单超时取消（延迟队列/时间轮）、幂等设计（唯一订单号）、状态机流转。"
+        },
+        {
+          "question": "你做过最有挑战的项目是什么？技术上最大的收获？",
+          "category": "项目深挖",
+          "insight": "三面主管面考察ownership和成长性。讲清楚：问题背景→分析过程→方案对比→最终选择→落地效果→复盘改进。重点展示独立思考和推动落地的能力。"
+        },
+        {
+          "question": "你对未来的技术方向有什么规划？为什么选择快手？",
+          "category": "职业规划",
+          "insight": "结合快手电商业务特点（直播电商、短视频带货、信任电商）谈技术兴趣。展示对快手技术栈的了解：大规模分布式系统、实时计算、高并发交易。"
+        }
+      ]
+    }
+  ],
+  "overall_insight": "快手电商/商业化Java后端面试三轮流程紧凑。一面特点：算法占比极高（约40分钟），Java并发和设计模式是必考项，手撕题难度中等但要求多种解法。二面转向项目深挖和电商业务场景（库存扣减、秒杀、消息队列），面试官会引导思考，答不上来会给提示。三面系统设计+综合能力，考察全链路设计和职业规划。整体风格务实，面试官普遍nice，会根据回答深度持续追问。从投递到OC约两周。",
+  "followups": [
+    "可从该面经反向补充快手电商题库的并发编程多解法专项和电商交易场景专项",
+    "后续可补充快手直播电商方向的实时推送、弹幕系统等场景面经"
+  ]
+}

@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-19T11:10:00+00:00",
+  "generated_at": "2026-03-19T11:29:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 31,
+    "completed": 32,
     "companies_seeded": 8,
     "question_banks_filled": 5,
-    "interview_json_count": 16
+    "interview_json_count": 14
   },
   "queues": {
     "priority_companies": [
@@ -32,49 +32,35 @@
       "business_group": "抖音电商",
       "department": "商业化技术",
       "question_bank_ready": true,
-      "interview_json_count": 2
+      "interview_json_count": 3
     },
     {
       "company": "腾讯",
       "business_group": "微信事业群",
       "department": "基础平台",
       "question_bank_ready": true,
-      "interview_json_count": 2
+      "interview_json_count": 3
     },
     {
       "company": "阿里巴巴",
       "business_group": "淘天集团",
       "department": "技术平台",
       "question_bank_ready": true,
-      "interview_json_count": 1
+      "interview_json_count": 2
     },
     {
       "company": "美团",
       "business_group": "到店事业群",
       "department": "后端技术",
       "question_bank_ready": true,
-      "interview_json_count": 2
+      "interview_json_count": 3
     },
     {
       "company": "拼多多",
       "business_group": "主站业务",
       "department": "服务端",
       "question_bank_ready": true,
-      "interview_json_count": 2
-    },
-    {
-      "company": "京东",
-      "business_group": "零售技术",
-      "department": "后端研发",
-      "question_bank_ready": true,
-      "interview_json_count": 4
-    },
-    {
-      "company": "百度",
-      "business_group": "智能云",
-      "department": "基础架构",
-      "question_bank_ready": true,
-      "interview_json_count": 4
+      "interview_json_count": 3
     }
   ],
   "notes": [
@@ -85,19 +71,10 @@
     "已继续强化阿里巴巴 / 淘天集团 / 搜广推 / 算法题库，将机械膨胀的返券/返账/复投/倒洗长尾问题压缩为预算、资格、回流、退出统一治理框架，并刷新下一轮推荐目标。",
     "已继续强化腾讯 / 微信事业群 / 基础平台 / 后端开发题库，将配置漂移、依赖升级、权限基线、多版本共存等分散问题进一步收敛为发布、兼容与状态收敛统一治理框架，并刷新下一轮推荐目标。",
     "已继续强化美团 / 即时零售 / 服务端研发 / 后端开发题库，将返券返账返核返池与跨主体回放类机械膨胀问题进一步收敛为逆向权益、共享供给、库存真相与恢复期止损统一治理框架，并刷新下一轮推荐目标。",
-    "已继续强化腾讯 / 平台与内容事业群 / 后台研发 / 后端开发题库，将审核状态机、消息扇出、灰度回滚、补数回灌等分散问题进一步收敛为发布、回放与状态真相统一治理框架，并刷新下一轮推荐目标。"
+    "已继续强化腾讯 / 平台与内容事业群 / 后台研发 / 后端开发题库，将审核状态机、消息扇出、灰度回滚、补数回灌等分散问题进一步收敛为发布、回放与状态真相统一治理框架，并刷新下一轮推荐目标。",
+    "已继续强化拼多多 / 多多买菜 / 服务端 / 后端开发题库，将次日达履约、库存预占回补、仓配时窗、缺货退款与成本约束等分散问题进一步收敛为交易、履约与库存真相统一治理框架，并刷新下一轮推荐目标。"
   ],
   "next_actions": [
-    {
-      "company": "拼多多",
-      "business_group": "多多买菜",
-      "department": "服务端",
-      "role": "后端开发",
-      "action": "question_bank_dedup_and_cleanup",
-      "priority": "P1",
-      "status": "ready-for-next-cleanup",
-      "last_completed_at": "2026-03-19T19:10:00+08:00"
-    },
     {
       "company": "腾讯",
       "business_group": "平台与内容事业群",
@@ -106,7 +83,17 @@
       "action": "question_bank_dedup_and_cleanup",
       "priority": "P1",
       "status": "ready-for-next-cleanup",
-      "last_completed_at": "2026-03-19T19:10:00+08:00"
+      "last_completed_at": "2026-03-19T19:29:00+08:00"
+    },
+    {
+      "company": "拼多多",
+      "business_group": "多多买菜",
+      "department": "服务端",
+      "role": "后端开发",
+      "action": "question_bank_dedup_and_cleanup",
+      "priority": "P1",
+      "status": "ready-for-next-cleanup",
+      "last_completed_at": "2026-03-19T19:29:00+08:00"
     }
   ],
   "pending": []

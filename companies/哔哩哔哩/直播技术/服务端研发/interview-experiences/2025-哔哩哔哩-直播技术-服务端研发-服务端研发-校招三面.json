@@ -1,0 +1,49 @@
+{
+  "company": "哔哩哔哩",
+  "business_group": "直播技术",
+  "department": "服务端研发",
+  "role": "服务端研发",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/enterprise/935/interview"
+    ],
+    "note": "综合多篇2024-2025年哔哩哔哩直播技术面经"
+  },
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "question": "自我介绍，介绍你做过的实时通信或音视频相关项目",
+      "insight": "B站直播面试关注候选人的实时系统和音视频技术经验。"
+    },
+    {
+      "question": "RTMP和WebRTC的区别？直播场景中为什么RTMP推流+HTTP-FLV拉流是主流方案？",
+      "insight": "直播协议是核心考点。RTMP延迟1-3秒适合推流，HTTP-FLV兼容性好适合拉流，WebRTC延迟最低但大规模分发成本高。"
+    },
+    {
+      "question": "Go的goroutine泄漏如何排查？runtime.NumGoroutine()和pprof的使用？",
+      "insight": "Go工程实践考点。goroutine泄漏常见原因：channel未关闭、context未取消、HTTP连接未关闭。用pprof的goroutine profile排查。"
+    },
+    {
+      "question": "WebSocket的握手过程？如何实现心跳保活？断线重连的策略？",
+      "insight": "实时通信基础。WebSocket通过HTTP Upgrade握手，心跳用ping/pong帧，断线重连用指数退避策略。"
+    },
+    {
+      "question": "设计一个直播间礼物系统，支持高并发送礼和实时排行榜更新",
+      "insight": "系统设计题结合直播业务。送礼用Redis原子操作计数，排行榜用zset，异步落库到MySQL，大额礼物走支付链路。"
+    },
+    {
+      "question": "Redis的发布订阅和Stream的区别？在直播消息场景中如何选择？",
+      "insight": "Redis在实时场景的应用。Pub/Sub不持久化、不支持消费确认，Stream支持持久化和消费者组，直播消息建议用Stream。"
+    },
+    {
+      "question": "算法题：用栈实现队列（LeetCode 232）",
+      "insight": "基础数据结构题。用两个栈实现，一个入栈一个出栈，出栈为空时将入栈元素全部倒入。"
+    },
+    {
+      "question": "你看B站直播吗？觉得直播技术有什么可以改进的地方？",
+      "insight": "面试官会考察对产品的理解。建议提前体验B站直播并观察技术细节。"
+    }
+  ],
+  "final_insight": "B站直播面试关注实时通信、音视频协议和高并发系统设计。Go是主要技术栈，WebSocket、RTMP等协议是核心考点。对直播产品的理解是加分项。"
+}

@@ -1,0 +1,49 @@
+{
+  "company": "蚂蚁集团",
+  "business_group": "蚂蚁技术",
+  "department": "基础架构",
+  "role": "基础架构",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/enterprise/931/interview"
+    ],
+    "note": "综合多篇2024-2025年蚂蚁集团基础架构面经"
+  },
+  "interview_rounds": 4,
+  "questions": [
+    {
+      "question": "自我介绍，介绍你做过的基础架构或中间件项目",
+      "insight": "蚂蚁基础架构面试关注候选人的底层技术深度和系统设计能力。"
+    },
+    {
+      "question": "Java中CAS的底层实现？Unsafe类如何调用CPU的cmpxchg指令？ABA问题的解决方案？",
+      "insight": "蚂蚁基础架构面试Java并发考察极深。CAS通过Unsafe调用native方法，底层是CPU的cmpxchg指令。ABA用AtomicStampedReference解决。"
+    },
+    {
+      "question": "Raft协议的选举过程？日志复制的流程？如何处理网络分区？Snapshot机制？",
+      "insight": "分布式一致性是基础架构核心考点。需要完整理解Raft的Leader选举、日志复制、安全性保证和日志压缩。"
+    },
+    {
+      "question": "Netty的内存池设计？PoolChunk、PoolSubpage、PoolArena的关系？",
+      "insight": "网络框架内核是基础架构深水区。Netty内存池借鉴jemalloc，PoolArena管理多个PoolChunk，PoolChunk用完全二叉树管理内存块。"
+    },
+    {
+      "question": "设计一个分布式消息队列，要求支持百万级TPS，消息持久化，顺序消费",
+      "insight": "系统设计题考察整体架构能力。需要考虑存储引擎（顺序写+mmap）、分区策略、副本机制、消费者组、零拷贝等。"
+    },
+    {
+      "question": "RPC框架的核心组件？如何实现服务发现？负载均衡策略有哪些？",
+      "insight": "RPC是基础架构核心组件。服务发现通过注册中心（ZK/Nacos），负载均衡包括随机、轮询、一致性哈希、最少活跃数等。"
+    },
+    {
+      "question": "手撕：实现一个跳表（SkipList）",
+      "insight": "数据结构手撕题偏底层。跳表通过多层索引实现O(logn)查找，插入时通过随机层数保持平衡。"
+    },
+    {
+      "question": "你对蚂蚁的开源项目有了解吗？SOFAStack、OceanBase、Ant Design？",
+      "insight": "了解蚂蚁的开源技术栈是加分项。建议提前阅读SOFAStack的源码和设计文档。"
+    }
+  ],
+  "final_insight": "蚂蚁基础架构面试极深，考察中间件内核、分布式系统原理和系统设计能力。Java并发、网络框架、一致性算法是核心考点。有开源贡献经历是重要加分项。"
+}

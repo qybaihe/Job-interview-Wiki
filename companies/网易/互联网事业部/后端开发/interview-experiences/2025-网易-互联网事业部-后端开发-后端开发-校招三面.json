@@ -1,0 +1,50 @@
+{
+  "company": "网易",
+  "business_group": "互联网事业部",
+  "department": "后端开发",
+  "role": "后端开发",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/enterprise/636/interview",
+      "https://xiaolincoding.com/backend_interview/"
+    ],
+    "note": "综合多篇2024-2025年网易后端面经，提取共性高频问题"
+  },
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "question": "自我介绍，然后介绍你最熟悉的项目，重点讲技术架构和你负责的模块",
+      "insight": "网易技术面第一轮从项目入手，面试官会根据项目深挖技术细节。"
+    },
+    {
+      "question": "Java中volatile关键字的作用？它能保证原子性吗？和synchronized的区别？",
+      "insight": "Java并发是网易面试高频考点。volatile保证可见性和有序性，但不保证原子性。i++操作即使用volatile修饰也不是原子的。"
+    },
+    {
+      "question": "Spring Boot的自动配置原理？@SpringBootApplication注解包含哪些注解？",
+      "insight": "Spring框架是网易Java岗必考。自动配置通过@EnableAutoConfiguration + spring.factories实现条件装配。"
+    },
+    {
+      "question": "MySQL的慢查询如何排查？explain中type字段的各个值代表什么？",
+      "insight": "数据库优化是后端核心能力。type从好到差：system > const > eq_ref > ref > range > index > ALL。"
+    },
+    {
+      "question": "Redis集群的数据分片方案？一致性哈希和哈希槽的区别？",
+      "insight": "Redis集群是分布式系统考点。Redis Cluster用16384个哈希槽，一致性哈希用于自定义分片方案。"
+    },
+    {
+      "question": "分布式事务的解决方案有哪些？TCC和Saga模式的区别？",
+      "insight": "分布式事务是高级考点。2PC、TCC、Saga、本地消息表、最大努力通知等方案各有优劣。"
+    },
+    {
+      "question": "设计一个评论系统，支持楼中楼回复、热评排序和敏感词过滤",
+      "insight": "系统设计题考察整体架构能力。需要考虑数据模型（邻接表vs闭包表）、缓存策略、异步审核等。"
+    },
+    {
+      "question": "算法题：最长无重复字符子串（LeetCode 3）",
+      "insight": "网易每轮面试都有算法题，难度中等。这道题用滑动窗口+哈希表，时间复杂度O(n)。"
+    }
+  ],
+  "final_insight": "网易面试风格偏务实，重视Java基础和工程能力。面试节奏较快，通常一周内完成所有轮次。技术面会深挖项目细节和基础知识，系统设计题偏向实际业务场景。"
+}

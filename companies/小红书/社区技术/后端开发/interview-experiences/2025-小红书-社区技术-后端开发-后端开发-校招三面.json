@@ -1,0 +1,50 @@
+{
+  "company": "小红书",
+  "business_group": "社区技术",
+  "department": "后端开发",
+  "role": "后端开发",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/enterprise/715/interview",
+      "https://www.nowcoder.com/feed/main/detail/3868674f732847148a3f34c83fec2456"
+    ],
+    "note": "综合多篇2024-2025年小红书后端面经，提取共性高频问题"
+  },
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "question": "自我介绍，介绍你最熟悉的项目，重点讲架构设计和你的贡献",
+      "insight": "小红书面试风格友好，面试官会引导候选人展开讲项目细节。"
+    },
+    {
+      "question": "Redis的zset底层实现？跳表的查找过程？为什么Redis选择跳表而不是红黑树？",
+      "insight": "Redis是小红书面试高频考点。跳表实现简单、范围查询效率高、内存友好，红黑树实现复杂且范围查询需要中序遍历。"
+    },
+    {
+      "question": "MySQL中char和varchar的区别？哪种效率更高？text类型的使用注意事项？",
+      "insight": "数据库基础题。char定长、varchar变长，char在等值查询时效率更高。text类型不能有默认值，建议单独建表存储。"
+    },
+    {
+      "question": "商品价格应该用什么数据类型存储？为什么不能用float/double？",
+      "insight": "实际业务场景题。浮点数有精度问题，应该用decimal或者用整数存储分为单位。"
+    },
+    {
+      "question": "堆和栈的区别？Java中对象一定在堆上分配吗？逃逸分析是什么？",
+      "insight": "JVM内存管理考点。JIT编译器通过逃逸分析，如果对象不会逃逸出方法，可以在栈上分配（标量替换）。"
+    },
+    {
+      "question": "ArrayList和LinkedList的区别？各自的适用场景？RandomAccess接口的作用？",
+      "insight": "Java集合基础。ArrayList基于数组，随机访问O(1)；LinkedList基于双向链表，插入删除O(1)。RandomAccess是标记接口，用于优化遍历策略。"
+    },
+    {
+      "question": "设计一个Feed流系统，如何处理大V发布内容时的扇出问题？",
+      "insight": "系统设计题结合小红书业务。推模式写扩散、拉模式读扩散，大V用拉模式、普通用户用推模式的混合方案。"
+    },
+    {
+      "question": "算法题：合并区间（LeetCode 56）",
+      "insight": "中等难度算法题。先按起始位置排序，然后遍历合并重叠区间。"
+    }
+  ],
+  "final_insight": "小红书面试风格友好，面试官注重沟通过程和思维方式。技术面重点考察Redis、MySQL、Java基础和系统设计。会结合社区产品场景出题，对产品的理解是加分项。"
+}

@@ -1,0 +1,50 @@
+{
+  "company": "华为",
+  "business_group": "2012实验室",
+  "department": "算法研究",
+  "role": "算法研究",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/enterprise/665/interview",
+      "https://zhuanlan.zhihu.com/p/715280303"
+    ],
+    "note": "综合多篇2024-2025年华为2012实验室算法面经"
+  },
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "question": "介绍你的研究课题，创新点在哪里？和SOTA方法相比有什么优势？",
+      "insight": "2012实验室面试非常重视研究深度，面试官通常是资深研究员，会从论文方法论层面深挖。"
+    },
+    {
+      "question": "Transformer中self-attention的计算复杂度是多少？如何降低长序列的计算开销？",
+      "insight": "Transformer是当前AI领域核心架构。复杂度O(n²d)，降低开销的方法包括稀疏注意力、线性注意力、Flash Attention等。"
+    },
+    {
+      "question": "BN和LN的区别？在什么场景下用哪个？为什么Transformer用LN而不是BN？",
+      "insight": "归一化方法是深度学习基础。BN在batch维度归一化，LN在特征维度归一化。Transformer用LN因为序列长度不固定，BN在小batch下不稳定。"
+    },
+    {
+      "question": "模型量化的方法有哪些？INT8量化和FP16量化的区别？量化后精度损失如何补偿？",
+      "insight": "模型部署是华为关注的重点方向。量化方法包括PTQ和QAT，INT8量化压缩比更高但精度损失更大，可以通过校准数据集和混合精度来补偿。"
+    },
+    {
+      "question": "知识蒸馏的原理？teacher和student模型的温度参数T的作用？",
+      "insight": "模型压缩技术。温度T越高，softmax输出越平滑，student模型能学到更多teacher的暗知识（dark knowledge）。"
+    },
+    {
+      "question": "手撕：实现KMeans聚类算法",
+      "insight": "算法手撕题偏向机器学习基础算法实现，要求代码规范、边界处理完善。"
+    },
+    {
+      "question": "大模型的训练中，数据并行和模型并行的区别？混合并行策略如何设计？",
+      "insight": "大模型训练是华为当前重点方向。数据并行复制模型、切分数据，模型并行切分模型。混合并行结合两者，如Megatron-LM的张量并行+流水线并行+数据并行。"
+    },
+    {
+      "question": "你对华为昇腾AI芯片和MindSpore框架有了解吗？",
+      "insight": "了解华为自研技术栈是加分项，但不是硬性要求。建议提前了解昇腾910/310芯片和MindSpore的基本概念。"
+    }
+  ],
+  "final_insight": "华为2012实验室面试偏学术风格，会深挖研究课题和论文细节。算法基础要扎实，同时要关注模型部署和工程落地能力。了解华为自研AI技术栈（昇腾、MindSpore）是加分项。"
+}

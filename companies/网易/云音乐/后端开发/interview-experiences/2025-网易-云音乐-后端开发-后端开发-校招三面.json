@@ -1,0 +1,49 @@
+{
+  "company": "网易",
+  "business_group": "云音乐",
+  "department": "后端开发",
+  "role": "后端开发",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/enterprise/636/interview"
+    ],
+    "note": "综合多篇2024-2025年网易云音乐后端面经"
+  },
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "question": "自我介绍，介绍你最熟悉的项目",
+      "insight": "网易云音乐面试从项目入手，关注候选人的工程能力和技术深度。"
+    },
+    {
+      "question": "Java中线程的生命周期？wait和sleep的区别？notify和notifyAll的区别？",
+      "insight": "Java并发基础必考。wait释放锁，sleep不释放锁。notifyAll唤醒所有等待线程，notify只唤醒一个。"
+    },
+    {
+      "question": "MySQL的索引类型有哪些？联合索引的最左前缀原则？索引下推是什么？",
+      "insight": "数据库索引是高频考点。联合索引(a,b,c)只有查询条件包含a时才能用到索引，索引下推在存储引擎层过滤减少回表。"
+    },
+    {
+      "question": "Redis的主从复制原理？哨兵模式和Cluster模式的区别？",
+      "insight": "Redis高可用方案是分布式系统考点。主从复制分全量同步和增量同步，哨兵负责故障转移，Cluster支持数据分片。"
+    },
+    {
+      "question": "消息队列如何保证消息不丢失？从生产者、Broker、消费者三个角度分析",
+      "insight": "消息可靠性是MQ核心问题。生产者确认机制、Broker持久化和副本、消费者手动提交offset。"
+    },
+    {
+      "question": "设计一个音乐播放列表的推荐系统，如何冷启动？如何处理长尾音乐？",
+      "insight": "系统设计题结合业务场景。冷启动可以用热门推荐+用户画像，长尾音乐可以用协同过滤+内容特征。"
+    },
+    {
+      "question": "算法题：前K个高频元素（LeetCode 347）",
+      "insight": "中等难度算法题。可以用小顶堆O(nlogk)或桶排序O(n)。"
+    },
+    {
+      "question": "你平时用网易云音乐吗？觉得有什么可以改进的地方？",
+      "insight": "面试官会考察对产品的理解和思考。建议提前体验产品并准备一些有深度的改进建议。"
+    }
+  ],
+  "final_insight": "网易云音乐面试重视Java基础和分布式系统能力，面试风格务实。会结合音乐产品场景出系统设计题。对产品的理解和热情是加分项。"
+}

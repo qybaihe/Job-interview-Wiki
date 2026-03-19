@@ -1,0 +1,50 @@
+{
+  "company": "华为",
+  "business_group": "终端BG",
+  "department": "软件开发",
+  "role": "软件开发",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/enterprise/665/interview",
+      "https://www.job592.com/pay/comms65289_0100008.html"
+    ],
+    "note": "综合多篇2024-2025年华为终端BG面经，提取共性高频问题"
+  },
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "question": "自我介绍，介绍你最熟悉的项目，画出架构图",
+      "insight": "华为技术面第一轮必问项目，面试官会根据架构图深挖细节，考察对系统整体的理解。"
+    },
+    {
+      "question": "C++中智能指针有哪些？shared_ptr的引用计数是线程安全的吗？循环引用怎么解决？",
+      "insight": "终端BG偏底层开发，C++基础考察较深。shared_ptr引用计数本身是原子操作，但指向的对象不是线程安全的。循环引用用weak_ptr解决。"
+    },
+    {
+      "question": "Linux进程的内存布局？栈的大小默认是多少？堆和栈的增长方向？",
+      "insight": "操作系统内存管理是终端开发重点。代码段、数据段、BSS段、堆、栈的布局要清楚，栈默认8MB，栈向低地址增长，堆向高地址增长。"
+    },
+    {
+      "question": "多线程中如何避免死锁？如果已经发生死锁如何检测？",
+      "insight": "多线程编程是终端开发核心能力。预防死锁的方法：按固定顺序加锁、超时机制、trylock。检测可以用资源分配图。"
+    },
+    {
+      "question": "Android的Activity生命周期？onSaveInstanceState在什么时候调用？",
+      "insight": "终端BG部分岗位涉及Android开发。生命周期7个回调要熟练，onSaveInstanceState在Activity可能被系统回收前调用。"
+    },
+    {
+      "question": "TCP和UDP的区别？在什么场景下选择UDP？如何基于UDP实现可靠传输？",
+      "insight": "网络基础必考。UDP适用于实时音视频、游戏等场景。基于UDP实现可靠传输可以参考QUIC协议的设计。"
+    },
+    {
+      "question": "算法题：最长回文子串（LeetCode 5）",
+      "insight": "华为每轮必考算法。这道题可以用中心扩展法O(n²)或Manacher算法O(n)。"
+    },
+    {
+      "question": "你对华为的奋斗者文化怎么看？能接受外派吗？",
+      "insight": "主管面会考察价值观匹配。华为重视奋斗者精神，建议提前了解并表达认同。"
+    }
+  ],
+  "final_insight": "华为终端BG面试偏系统底层，C/C++考察比重高，会涉及操作系统内核、内存管理、多线程等。HarmonyOS相关知识是加分项。面试流程标准化程度高，机试是硬门槛。"
+}

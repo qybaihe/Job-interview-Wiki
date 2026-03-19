@@ -1,0 +1,50 @@
+{
+  "company": "哔哩哔哩",
+  "business_group": "主站技术",
+  "department": "后端开发",
+  "role": "后端开发",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/enterprise/935/interview",
+      "https://blog.csdn.net/qq_35190492/article/details/118511961"
+    ],
+    "note": "综合多篇2024-2025年哔哩哔哩后端面经"
+  },
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "question": "自我介绍，介绍你的实习经历和项目",
+      "insight": "B站面试风格轻松，面试官会引导候选人展开讲项目细节。"
+    },
+    {
+      "question": "Go的slice扩容机制？容量小于1024时翻倍，大于1024时增长25%，这个说法准确吗？",
+      "insight": "Go基础是B站面试高频考点。Go 1.18之后扩容策略有变化，不再是简单的1024分界，而是更平滑的增长曲线。"
+    },
+    {
+      "question": "Go的channel底层实现？发送和接收的流程？channel关闭后还能读取吗？",
+      "insight": "channel是Go并发编程核心。底层是环形缓冲区+等待队列。关闭后可以继续读取剩余数据，读完后返回零值。"
+    },
+    {
+      "question": "MySQL的事务隔离级别？MVCC的实现原理？ReadView的生成时机？",
+      "insight": "数据库基础必考。RC级别每次读都生成新的ReadView，RR级别只在第一次读时生成。"
+    },
+    {
+      "question": "Redis的大key问题如何排查？如何删除大key？",
+      "insight": "Redis工程实践考点。用redis-cli --bigkeys扫描，删除大key用UNLINK异步删除避免阻塞。"
+    },
+    {
+      "question": "分布式锁的实现？Redis分布式锁的问题？如何保证锁的安全性？",
+      "insight": "分布式系统考点。Redis分布式锁用SET NX EX，问题包括：锁过期但业务未完成、主从切换丢锁。可以用Redisson的看门狗机制续期。"
+    },
+    {
+      "question": "设计一个弹幕系统，支持实时推送和历史弹幕加载",
+      "insight": "系统设计题结合B站业务。实时弹幕用WebSocket推送，历史弹幕按视频时间轴分段存储，用Redis缓存热门视频的弹幕。"
+    },
+    {
+      "question": "算法题：二叉树的层序遍历（LeetCode 102）",
+      "insight": "B站算法题难度中等。BFS用队列实现，注意每层的节点数量。"
+    }
+  ],
+  "final_insight": "B站面试风格轻松，面试官注重实际工程能力和沟通。Go是主要技术栈，Go基础考察较多。弹幕、视频播放等B站特色业务是系统设计题的常见方向。薪资在同级别公司中有竞争力。"
+}

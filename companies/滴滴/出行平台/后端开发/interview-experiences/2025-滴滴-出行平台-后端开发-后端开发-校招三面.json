@@ -1,0 +1,50 @@
+{
+  "company": "滴滴",
+  "business_group": "出行平台",
+  "department": "后端开发",
+  "role": "后端开发",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://xiaolincoding.com/backend_interview/internet_giants/didi.html",
+      "https://www.cnblogs.com/xiaolincoding/p/18360698"
+    ],
+    "note": "综合多篇2024-2025年滴滴后端面经，提取共性高频问题"
+  },
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "question": "自我介绍，介绍你最熟悉的项目",
+      "insight": "滴滴面试从项目入手，面试官会关注系统架构和高并发处理能力。"
+    },
+    {
+      "question": "TCP的拥塞控制算法？慢启动、拥塞避免、快重传、快恢复分别是什么？",
+      "insight": "网络协议是滴滴面试高频考点。慢启动指数增长，拥塞避免线性增长，快重传收到3个重复ACK立即重传，快恢复将cwnd减半。"
+    },
+    {
+      "question": "Redis的持久化机制？RDB和AOF的区别？Redis宕机后如何恢复数据？",
+      "insight": "Redis基础必考。RDB快照恢复快但可能丢数据，AOF日志完整但恢复慢。混合持久化结合两者优点。"
+    },
+    {
+      "question": "MySQL的索引优化？联合索引的最左前缀原则？什么情况下索引会失效？",
+      "insight": "数据库索引是每轮必问。索引失效场景：函数操作、隐式类型转换、LIKE左模糊、OR条件、不满足最左前缀等。"
+    },
+    {
+      "question": "Go的GMP调度模型？M、P、G分别代表什么？goroutine的调度时机？",
+      "insight": "滴滴技术栈以Go为主。G是goroutine，M是操作系统线程，P是逻辑处理器。调度时机包括：channel阻塞、系统调用、主动让出等。"
+    },
+    {
+      "question": "设计一个打车派单系统，如何实现司机和乘客的最优匹配？",
+      "insight": "系统设计题结合滴滴业务。需要考虑：地理围栏索引（GeoHash）、匹配算法（贪心/匈牙利算法）、实时位置更新、ETA预估等。"
+    },
+    {
+      "question": "操作系统中虚拟内存的作用？页面置换算法有哪些？LRU如何实现？",
+      "insight": "操作系统基础考点。虚拟内存实现进程隔离和内存扩展。页面置换：FIFO、LRU、Clock算法。LRU用哈希表+双向链表实现O(1)。"
+    },
+    {
+      "question": "算法题：最长递增子序列（LeetCode 300）",
+      "insight": "中等难度动态规划题。O(n²)的DP解法或O(nlogn)的贪心+二分解法。"
+    }
+  ],
+  "final_insight": "滴滴面试主要考察网络协议、Redis、MySQL、操作系统和算法，编程语言方面基本不深问。Go是主要技术栈，了解GMP模型是加分项。系统设计题会结合出行业务场景。"
+}

@@ -1,0 +1,49 @@
+{
+  "company": "哔哩哔哩",
+  "business_group": "推荐算法",
+  "department": "推荐算法",
+  "role": "推荐算法",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/enterprise/935/interview"
+    ],
+    "note": "综合多篇2024-2025年哔哩哔哩推荐算法面经"
+  },
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "question": "自我介绍，介绍你做过的推荐系统项目",
+      "insight": "B站推荐算法面试从项目入手，关注候选人的工程落地能力。"
+    },
+    {
+      "question": "双塔模型的原理？user塔和item塔分别输入什么特征？如何做在线serving？",
+      "insight": "双塔模型是召回阶段主力。user塔输入用户特征和行为序列，item塔输入内容特征。在线serving通过ANN检索（Faiss/HNSW）。"
+    },
+    {
+      "question": "DIN模型的核心思想？注意力机制如何建模用户兴趣？和普通的Embedding+MLP有什么区别？",
+      "insight": "DIN是排序模型经典。核心思想是用户兴趣是多样的，通过attention机制对历史行为加权，让模型关注和候选item相关的行为。"
+    },
+    {
+      "question": "视频推荐中如何利用视频内容特征？封面图、标题、标签、视频帧如何融合？",
+      "insight": "视频内容理解是B站特色。封面图用CNN/ViT提取特征，标题用BERT编码，多模态特征通过attention或gate融合。"
+    },
+    {
+      "question": "推荐系统的多样性如何保证？MMR算法的原理？DPP的原理？",
+      "insight": "多样性是推荐系统重要指标。MMR在相关性和多样性之间trade-off，DPP通过行列式点过程建模子集多样性。"
+    },
+    {
+      "question": "冷启动问题如何解决？新UP主的视频如何获得初始曝光？",
+      "insight": "冷启动是推荐系统经典问题。新内容可以用内容特征召回、探索流量池、bandit算法等方案。"
+    },
+    {
+      "question": "手撕：实现NDCG计算函数",
+      "insight": "推荐系统评估指标。NDCG = DCG / IDCG，DCG = Σ(2^rel - 1) / log2(i+1)。"
+    },
+    {
+      "question": "你看B站吗？觉得B站的推荐有什么特点？有什么可以改进的？",
+      "insight": "面试官会考察对产品的理解。B站推荐特点：社区氛围强、UP主生态、弹幕互动等。"
+    }
+  ],
+  "final_insight": "B站推荐算法面试重视工程落地能力和业务理解。视频内容理解和多模态融合是B站特色方向。对B站产品和社区文化的理解是加分项。"
+}

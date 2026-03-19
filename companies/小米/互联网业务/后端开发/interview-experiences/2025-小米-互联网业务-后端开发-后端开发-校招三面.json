@@ -1,0 +1,50 @@
+{
+  "company": "小米",
+  "business_group": "互联网业务",
+  "department": "后端开发",
+  "role": "后端开发",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/exam/company",
+      "https://github.com/0voice/Campus_recruitment_interview_questions"
+    ],
+    "note": "综合多篇2024-2025年小米后端面经"
+  },
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "question": "自我介绍，介绍你最熟悉的项目",
+      "insight": "小米面试风格务实，面试官会根据项目深挖技术细节。"
+    },
+    {
+      "question": "Java中HashMap的put流程？扩容时如何rehash？JDK8中为什么用红黑树替代链表？",
+      "insight": "Java集合是小米面试高频考点。put流程：计算hash→定位桶→链表/红黑树插入→判断扩容。链表长度>8且数组长度>=64时转红黑树。"
+    },
+    {
+      "question": "Spring Boot的自动配置原理？@Conditional注解的作用？如何自定义starter？",
+      "insight": "Spring生态是小米Java岗必考。自动配置通过spring.factories+条件装配实现，自定义starter需要写AutoConfiguration类。"
+    },
+    {
+      "question": "MySQL的binlog有几种格式？Statement和Row格式的区别？主从复制的延迟如何解决？",
+      "insight": "数据库高可用考点。Statement记录SQL语句，Row记录行变更。主从延迟可以通过并行复制、半同步复制、读写分离中间件等方案解决。"
+    },
+    {
+      "question": "Redis的缓存穿透、缓存击穿、缓存雪崩分别是什么？各自的解决方案？",
+      "insight": "缓存问题是后端面试经典。穿透用布隆过滤器，击穿用互斥锁或永不过期，雪崩用随机过期时间+多级缓存。"
+    },
+    {
+      "question": "消息队列的消息积压如何处理？消费者处理不过来怎么办？",
+      "insight": "MQ工程实践考点。临时扩容消费者、增加分区数、降级非核心消费逻辑、消息转储到临时队列。"
+    },
+    {
+      "question": "设计一个消息推送系统，支持千万级设备的实时推送",
+      "insight": "系统设计题结合小米业务。需要考虑：长连接管理、消息路由、离线消息存储、推送通道选择（自建/厂商通道）。"
+    },
+    {
+      "question": "算法题：搜索旋转排序数组（LeetCode 33）",
+      "insight": "中等难度二分查找题。关键是判断哪半部分是有序的，然后决定在哪半部分继续搜索。"
+    }
+  ],
+  "final_insight": "小米面试风格务实，重视Java基础和工程能力。Spring生态、MySQL、Redis是核心考点。系统设计题会结合小米的IoT和互联网业务场景。"
+}

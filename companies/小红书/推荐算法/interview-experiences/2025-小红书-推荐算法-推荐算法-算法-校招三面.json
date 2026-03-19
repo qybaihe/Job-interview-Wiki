@@ -1,0 +1,50 @@
+{
+  "company": "小红书",
+  "business_group": "推荐算法",
+  "department": "推荐算法",
+  "role": "推荐算法",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/enterprise/715/interview",
+      "https://blog.csdn.net/2401_83173765/article/details/148292651"
+    ],
+    "note": "综合多篇2024-2025年小红书推荐算法面经"
+  },
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "question": "自我介绍，介绍你做过的推荐系统项目，重点讲模型选型和效果",
+      "insight": "小红书算法面试从项目入手，关注候选人的工程落地能力和业务理解。"
+    },
+    {
+      "question": "推荐系统的召回阶段有哪些常见策略？双塔模型的原理？如何做负采样？",
+      "insight": "召回是推荐系统第一步。双塔模型分别编码user和item，通过向量相似度召回。负采样策略包括随机采样、热度采样、hard negative等。"
+    },
+    {
+      "question": "DeepFM和DCN的区别？特征交叉的方式有什么不同？",
+      "insight": "排序模型是推荐算法核心。DeepFM用FM做显式二阶交叉+DNN做隐式高阶交叉，DCN用Cross Network做显式高阶交叉。"
+    },
+    {
+      "question": "多任务学习中MMOE的原理？Expert网络和Gate网络各自的作用？",
+      "insight": "多任务学习是推荐系统热点。MMOE通过多个Expert共享底层表示，Gate网络为每个任务动态分配Expert权重。"
+    },
+    {
+      "question": "小红书的内容是图文+视频混合的，多模态特征如何融合到推荐模型中？",
+      "insight": "多模态是小红书特色。可以用CLIP提取图文特征，通过attention或gate机制融合到推荐模型中。"
+    },
+    {
+      "question": "AB实验中如何判断结果是否显著？p-value和置信区间的含义？",
+      "insight": "AB实验是推荐系统迭代的基础。p-value < 0.05表示统计显著，置信区间不包含0表示效果显著。"
+    },
+    {
+      "question": "手撕：实现AUC计算函数",
+      "insight": "算法手撕题偏向机器学习工程。AUC可以通过排序后计算正样本排名之和来实现。"
+    },
+    {
+      "question": "你对小红书的推荐有什么观察？觉得有什么可以改进的地方？",
+      "insight": "面试官会考察对产品的理解。建议提前深度使用小红书并观察推荐策略的特点。"
+    }
+  ],
+  "final_insight": "小红书推荐算法面试重视工程落地能力和业务理解。多模态理解是小红书特色方向，了解CLIP等模型是加分项。面试风格友好，注重讨论和思维过程。"
+}

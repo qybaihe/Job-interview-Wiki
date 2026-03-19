@@ -1,0 +1,49 @@
+{
+  "company": "滴滴",
+  "business_group": "地图与导航",
+  "department": "算法",
+  "role": "算法",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/enterprise/927/interview"
+    ],
+    "note": "综合多篇2024-2025年滴滴地图算法面经"
+  },
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "question": "自我介绍，介绍你做过的地图或路径规划相关项目",
+      "insight": "滴滴地图算法面试关注候选人的图算法和地理信息系统能力。"
+    },
+    {
+      "question": "Dijkstra算法的时间复杂度？如何用优先队列优化？A*算法的启发函数如何设计？",
+      "insight": "最短路径算法是地图算法核心。Dijkstra用优先队列优化到O(ElogV)，A*的启发函数通常用曼哈顿距离或欧几里得距离。"
+    },
+    {
+      "question": "GeoHash的编码原理？如何用GeoHash做附近搜索？边界问题如何处理？",
+      "insight": "GeoHash是地理索引基础。通过交替对经纬度二分编码，附近搜索需要查询周围8个格子解决边界问题。"
+    },
+    {
+      "question": "ETA预估的技术方案？如何结合历史数据和实时路况？模型选型？",
+      "insight": "ETA是滴滴核心业务。通常分段预估：路段级别用历史统计+实时路况，全程用深度学习模型（如WDR）。"
+    },
+    {
+      "question": "地图匹配算法的原理？HMM在GPS轨迹匹配中如何应用？",
+      "insight": "地图匹配是导航基础。HMM的观测概率用GPS点到路段的距离，转移概率用路段间的连通性和距离。"
+    },
+    {
+      "question": "时间序列预测中LSTM和Transformer的对比？在交通流预测中哪个更好？",
+      "insight": "交通流预测是滴滴研究方向。Transformer并行计算效率高，但交通流有空间依赖，STGCN等图+时序模型效果更好。"
+    },
+    {
+      "question": "手撕：实现Dijkstra最短路径算法",
+      "insight": "图算法手撕题。用优先队列（最小堆）实现，注意处理已访问节点和距离更新。"
+    },
+    {
+      "question": "你对滴滴的出行业务有什么了解？地图技术在出行中的核心作用？",
+      "insight": "面试官会考察对业务的理解。地图是出行的基础设施，路径规划、ETA、派单都依赖地图能力。"
+    }
+  ],
+  "final_insight": "滴滴地图算法面试重视图算法、地理信息系统和时空数据分析能力。Dijkstra/A*、GeoHash、HMM地图匹配是核心考点。了解出行业务场景是加分项。"
+}

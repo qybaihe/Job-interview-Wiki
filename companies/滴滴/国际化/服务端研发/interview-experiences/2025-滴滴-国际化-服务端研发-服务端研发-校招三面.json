@@ -1,0 +1,49 @@
+{
+  "company": "滴滴",
+  "business_group": "国际化",
+  "department": "服务端研发",
+  "role": "服务端研发",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/enterprise/927/interview"
+    ],
+    "note": "综合多篇2024-2025年滴滴国际化服务端面经"
+  },
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "question": "自我介绍，介绍你最熟悉的项目",
+      "insight": "滴滴国际化面试关注候选人的工程能力和国际化技术经验。"
+    },
+    {
+      "question": "Go的GMP调度模型？goroutine的栈空间如何管理？栈扩容和缩容的机制？",
+      "insight": "Go是滴滴主要技术栈。goroutine初始栈2KB，按需扩容（连续栈复制），GC时检测缩容。"
+    },
+    {
+      "question": "分布式系统中如何实现多地域多活？数据同步的方案？如何处理冲突？",
+      "insight": "多活架构是国际化核心技术。数据同步可以用异步复制+冲突检测，冲突解决策略包括最后写入胜出、向量时钟等。"
+    },
+    {
+      "question": "多时区处理的最佳实践？服务端应该存储什么格式的时间？",
+      "insight": "国际化技术考点。服务端统一存储UTC时间戳，展示时根据用户时区转换。避免使用本地时间存储。"
+    },
+    {
+      "question": "MySQL的utf8和utf8mb4的区别？为什么国际化场景必须用utf8mb4？",
+      "insight": "多语言存储基础。utf8最多3字节，不支持emoji等4字节字符。utf8mb4支持完整的Unicode字符集。"
+    },
+    {
+      "question": "CDN在国际化场景中如何优化？如何选择CDN节点？GSLB的原理？",
+      "insight": "海外访问优化是国际化重点。GSLB通过DNS解析将用户引导到最近的CDN节点，结合延迟探测和健康检查。"
+    },
+    {
+      "question": "算法题：两数之和（LeetCode 1）+ 环形链表检测（LeetCode 141）",
+      "insight": "滴滴算法题难度中等。两数之和用哈希表O(n)，环形链表用快慢指针。"
+    },
+    {
+      "question": "你对滴滴的国际化业务有什么了解？海外出行市场和国内有什么不同？",
+      "insight": "面试官会考察对业务的理解。海外市场的支付方式、法规合规、用户习惯都和国内不同。"
+    }
+  ],
+  "final_insight": "滴滴国际化面试关注跨地域部署、多活架构和国际化技术方案。Go是主要技术栈，多时区、多语言、多币种处理是特色考点。"
+}

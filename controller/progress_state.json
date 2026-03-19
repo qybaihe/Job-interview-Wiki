@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-19T04:04:00+00:00",
+  "generated_at": "2026-03-19T05:30:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
@@ -7,7 +7,7 @@
     "completed": 27,
     "companies_seeded": 8,
     "question_banks_filled": 5,
-    "interview_json_count": 9
+    "interview_json_count": 14
   },
   "queues": {
     "priority_companies": [

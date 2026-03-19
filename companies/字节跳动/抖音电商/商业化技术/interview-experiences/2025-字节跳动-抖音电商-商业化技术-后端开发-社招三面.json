@@ -1,0 +1,67 @@
+{
+  "company": "字节跳动",
+  "business_group": "抖音电商",
+  "department": "商业化技术",
+  "role": "后端开发",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://blog.csdn.net/qq_45444343/article/details/145870931",
+      "https://blog.csdn.net/m0_61702109/article/details/141537688",
+      "https://blog.csdn.net/lightupworld/article/details/123813919"
+    ],
+    "note": "综合多篇2024-2025年字节后端面经，涉及抖音电商/商业化方向，提取共性高频问题"
+  },
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "question": "项目中用到了哪些常用的Web组件？字节这边技术栈以Go为主，你如何看待语言切换？",
+      "insight": "字节后端面试不太深挖Java语言特性，更关注中间件和系统设计能力。面试官会通过这个问题判断候选人的技术广度和适应性。"
+    },
+    {
+      "question": "Kafka如何保证不会重复消费？Kafka消费组的结构是怎样的？如何保证消息有序性？",
+      "insight": "消息队列是字节后端高频考点。需要从消费者offset提交机制、幂等消费、partition与consumer group的关系来系统回答。"
+    },
+    {
+      "question": "Redis的数据结构有哪些？Redis持久化机制是什么？RDB和AOF的区别？",
+      "insight": "Redis基础必考。要能说清楚5种基本数据结构的底层实现（SDS、ziplist、skiplist等），以及RDB快照和AOF日志的优劣取舍。"
+    },
+    {
+      "question": "MySQL索引底层数据结构是什么？为什么用B+树而不是红黑树？聚簇索引和非聚簇索引的区别？",
+      "insight": "数据库索引是每轮必问。要从磁盘IO次数、范围查询效率、叶子节点链表等角度解释B+树的优势。"
+    },
+    {
+      "question": "TCP四次挥手流程？为什么要有TIME_WAIT状态？TIME_WAIT持续多久？",
+      "insight": "网络基础高频题。TIME_WAIT的2MSL等待是为了确保最后一个ACK到达对端，以及让旧连接的残留报文在网络中消失。"
+    },
+    {
+      "question": "进程间通信的方式有哪些？Linux中管道的底层原理是什么？",
+      "insight": "操作系统基础。要能列举管道、消息队列、共享内存、信号量、socket等方式，并说清管道的内核缓冲区实现。"
+    },
+    {
+      "question": "Linux中select和epoll的原理和区别？epoll的边缘触发和水平触发有什么不同？",
+      "insight": "IO多路复用是字节后端重点。select的fd_set轮询 vs epoll的事件驱动回调，以及ET模式下必须一次读完数据的要求。"
+    },
+    {
+      "question": "Java线程池的核心参数有哪些？运行原理是什么？如何确定线程池线程数大小？",
+      "insight": "虽然字节以Go为主，但Java岗仍会问线程池。核心参数7个（corePoolSize、maximumPoolSize、keepAliveTime、unit、workQueue、threadFactory、handler），线程数取决于CPU密集型还是IO密集型。"
+    },
+    {
+      "question": "如何设计一个哈希表？哈希冲突的解决方式？如果链表太长怎么办？",
+      "insight": "数据结构设计题。从哈希函数选择、开放寻址vs链地址法、链表转红黑树（Java8 HashMap的treeify阈值8）来回答。"
+    },
+    {
+      "question": "算法题：链表表示的两个数相加（LeetCode 2）",
+      "insight": "字节每轮必考算法，难度中等偏上。这道题注意进位处理和两个链表长度不同的情况。"
+    },
+    {
+      "question": "JVM内存分配与回收过程？Full GC什么时候触发？如何排查线上GC问题？",
+      "insight": "从对象创建（TLAB → Eden → Survivor → Old）到垃圾回收（可达性分析 → 标记清除/整理/复制）完整描述。Full GC触发条件包括老年代空间不足、Metaspace不足、System.gc()等。"
+    },
+    {
+      "question": "输入一个URL到页面展示，整个过程发生了什么？数据是如何拷贝到网卡的？",
+      "insight": "经典综合题，字节喜欢追问到内核层面。除了DNS→TCP→HTTP→渲染的标准流程，还要能说清用户态到内核态的数据拷贝、DMA传输等细节。"
+    }
+  ],
+  "final_insight": "字节后端面试特点：不深挖Java语言特性，重点考察中间件（Redis/Kafka/MySQL）、操作系统、网络基础和系统设计。每轮必考算法题，难度LeetCode中等。面试节奏快，一面到三面可能在一周内完成。商业化技术方向会额外关注高并发场景下的投放系统设计。"
+}

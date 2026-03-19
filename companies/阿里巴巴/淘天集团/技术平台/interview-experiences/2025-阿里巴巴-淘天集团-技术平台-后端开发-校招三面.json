@@ -1,0 +1,67 @@
+{
+  "company": "阿里巴巴",
+  "business_group": "淘天集团",
+  "department": "技术平台",
+  "role": "后端开发",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/enterprise/23798",
+      "https://www.nowcoder.com/discuss/651191631479123968",
+      "https://github.com/hdgaadd/JavaSouth"
+    ],
+    "note": "综合多篇2024-2025年阿里/淘天集团后端面经，提取共性高频问题。阿里面试重视系统设计和分布式架构"
+  },
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "question": "项目介绍：系统有哪些模块？每个模块用了哪些技术？数据怎么流转的？画一下系统架构图。",
+      "insight": "阿里一面项目拷打非常深入，面试官可能让你在纸上画架构图。要能清晰描述请求链路、数据流向、各组件职责。"
+    },
+    {
+      "question": "Spring的IOC和AOP原理？Bean的生命周期？循环依赖如何解决？",
+      "insight": "阿里Java岗Spring是必考项。IOC通过BeanFactory/ApplicationContext管理Bean，AOP通过动态代理（JDK/CGLIB）实现。循环依赖通过三级缓存解决（singletonObjects→earlySingletonObjects→singletonFactories）。"
+    },
+    {
+      "question": "分布式事务有哪些解决方案？2PC、TCC、Saga、本地消息表的优缺点？你们项目中用的哪种？",
+      "insight": "阿里分布式架构核心题。2PC强一致但阻塞，TCC灵活但开发成本高，Saga适合长事务，本地消息表最终一致性。阿里内部有Seata框架。"
+    },
+    {
+      "question": "Dubbo的服务注册与发现流程？负载均衡策略有哪些？服务降级和熔断怎么做？",
+      "insight": "阿里RPC框架必考。注册中心（Zookeeper/Nacos）、负载均衡（随机/轮询/一致性哈希/最少活跃）、Sentinel做限流熔断。"
+    },
+    {
+      "question": "MySQL分库分表后，分布式ID如何生成？雪花算法的原理？时钟回拨怎么处理？",
+      "insight": "阿里数据量大，分布式ID是实际问题。雪花算法：1位符号+41位时间戳+10位机器ID+12位序列号。时钟回拨可以等待或用Leaf等方案。"
+    },
+    {
+      "question": "消息队列如何保证消息不丢失？生产者、Broker、消费者三端分别怎么保证？",
+      "insight": "阿里MQ（RocketMQ）是核心中间件。生产者：同步发送+重试。Broker：同步刷盘+主从同步。消费者：手动ACK+幂等消费。"
+    },
+    {
+      "question": "JVM调优经验？线上出现OOM怎么排查？常用的JVM监控工具有哪些？",
+      "insight": "阿里重视线上实战经验。排查流程：jmap dump堆内存→MAT/VisualVM分析大对象→定位代码泄漏点。监控工具：Arthas、jstat、jstack、Prometheus+Grafana。"
+    },
+    {
+      "question": "高并发场景下如何设计一个订单系统？从下单到支付的完整链路？如何保证数据一致性？",
+      "insight": "阿里系统设计核心题。下单链路：风控校验→库存预扣（Redis）→创建订单（DB）→发送MQ→支付回调→确认扣库存。一致性通过最终一致性+补偿机制保证。"
+    },
+    {
+      "question": "Redis集群模式了解吗？哨兵和Cluster的区别？数据分片策略？节点宕机如何处理？",
+      "insight": "阿里Redis用量大。哨兵负责主从切换，Cluster负责数据分片（16384个slot）。节点宕机：从节点自动failover升主。"
+    },
+    {
+      "question": "设计模式在项目中的应用？策略模式、责任链模式、观察者模式分别在什么场景下使用？",
+      "insight": "阿里喜欢结合实际场景考设计模式。策略模式：多种营销活动计算逻辑。责任链：审批流程、过滤器链。观察者：订单状态变更通知。"
+    },
+    {
+      "question": "微服务架构下，服务间调用链路很长，如何做链路追踪？如何定位慢接口？",
+      "insight": "阿里微服务治理题。链路追踪：SkyWalking/Zipkin/鹰眼，通过TraceId串联全链路。慢接口定位：日志+监控+Arthas在线诊断。"
+    },
+    {
+      "question": "算法题：二叉搜索树的第K大节点（剑指Offer 54）",
+      "insight": "阿里算法题难度中等偏简单，但要求代码规范、边界处理完善。这道题用反向中序遍历（右→根→左），第K个访问的就是答案。"
+    }
+  ],
+  "final_insight": "阿里/淘天后端面试特点：非常重视系统设计和分布式架构（分布式事务、消息队列、微服务治理），项目拷打深入且时间长。Java基础和Spring框架是必考项，但更看重候选人在实际项目中的架构思考和问题解决能力。面试风格偏务实，喜欢追问'你们项目中是怎么做的'、'遇到过什么线上问题'。技术平台方向会额外关注中间件原理和性能优化。"
+}

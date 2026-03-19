@@ -1,0 +1,68 @@
+{
+  "company": "拼多多",
+  "business_group": "主站业务",
+  "department": "服务端",
+  "role": "后端开发",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://blog.csdn.net/m0_60259116/article/details/144834929",
+      "https://blog.csdn.net/m0_67645544/article/details/131612365",
+      "https://blog.csdn.net/starbxx/article/details/103523491",
+      "https://blog.csdn.net/2401_84023579/article/details/137703994"
+    ],
+    "note": "综合多篇2024-2025年拼多多服务端Java后端面经，提取共性高频问题。PDD面试流程：两轮技术面+HR面，一面侧重八股+项目，二面侧重场景题+系统设计"
+  },
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "question": "自我介绍+项目拷打（约30分钟）：项目架构、模块划分、数据流转、遇到的难点和解决方案",
+      "insight": "拼多多一面项目拷打时间很长，面试官会追问技术选型的原因、为什么不用其他方案、实际遇到的线上问题。建议提前画好项目架构图，准备2-3个有深度的技术难点。"
+    },
+    {
+      "question": "Redis缓存与数据库一致性策略有哪几种？先update再delete的不一致场景举例？delete失败怎么办？",
+      "insight": "拼多多非常重视缓存一致性。要能说清Cache Aside、Read/Write Through、Write Behind三种策略，以及延迟双删、消息队列重试删除等补偿方案。先update再delete的问题：读请求在delete之前读到旧缓存。"
+    },
+    {
+      "question": "MySQL的隔离级别有哪些？MVCC的实现原理？RR级别下如何解决幻读？",
+      "insight": "数据库事务必考。四个隔离级别（RU/RC/RR/Serializable），MVCC通过undo log版本链+ReadView实现，RR下通过间隙锁（Gap Lock）解决幻读。"
+    },
+    {
+      "question": "Java线程池的作用？核心参数？拒绝策略有哪些？",
+      "insight": "线程池是Java基础高频题。重点说清任务提交流程：core → queue → max → reject。四种拒绝策略：AbortPolicy、CallerRunsPolicy、DiscardPolicy、DiscardOldestPolicy。"
+    },
+    {
+      "question": "HashMap底层数据结构？JDK8做了什么优化？ConcurrentHashMap怎么实现线程安全？",
+      "insight": "Java容器必考。JDK8的HashMap：数组+链表+红黑树（链表长度>8且数组长度>=64时转红黑树）。ConcurrentHashMap从JDK7的Segment分段锁改为JDK8的CAS+synchronized锁单个Node。"
+    },
+    {
+      "question": "Java对象一定都在堆上吗？什么是逃逸分析？什么是标量替换？",
+      "insight": "JVM进阶题。如果JIT编译器通过逃逸分析发现对象不会逃逸出方法，可以进行栈上分配或标量替换，避免堆分配和GC压力。"
+    },
+    {
+      "question": "分库分表的策略有哪些？水平分表和垂直分表的区别？分表后如何做跨表查询？",
+      "insight": "拼多多数据量大，分库分表是高频场景题。水平分表按某个字段（如user_id）取模分散数据，垂直分表按业务拆分字段。跨表查询可以用分布式查询中间件或冗余数据。"
+    },
+    {
+      "question": "Java中乐观锁和悲观锁的区别？CAS的原子性如何保证？ABA问题怎么解决？",
+      "insight": "并发编程基础。CAS通过CPU的cmpxchg指令保证原子性。ABA问题用版本号（AtomicStampedReference）解决。"
+    },
+    {
+      "question": "场景题：设计一个秒杀系统，如何处理高并发下的库存扣减？",
+      "insight": "拼多多二面重点考场景设计。秒杀系统要点：前端限流（按钮置灰、验证码）→ 网关层限流 → Redis预扣库存 → 消息队列异步下单 → 数据库最终扣减。库存用Redis的decr原子操作，防止超卖。"
+    },
+    {
+      "question": "快排的时间复杂度推导？跳表的时间复杂度推导？两者推理过程有什么不同？",
+      "insight": "拼多多喜欢考算法复杂度的推导过程，不只是背结论。快排平均O(nlogn)通过递归树分析，跳表O(logn)通过层数期望分析。"
+    },
+    {
+      "question": "算法题：实现LRU缓存（LeetCode 146）",
+      "insight": "拼多多算法题难度中等，LRU是高频题。用HashMap+双向链表实现，get和put都是O(1)。"
+    },
+    {
+      "question": "一个Java读代码题：函数传参对象，在函数内部修改对象属性和重新赋值引用，最终结果是什么？",
+      "insight": "考察Java值传递的本质。Java只有值传递，传对象时传的是引用的副本。修改对象属性会影响原对象，但重新赋值引用不会影响原引用。"
+    }
+  ],
+  "final_insight": "拼多多后端面试特点：流程轻量（两轮技术+HR），但每轮密度高。一面重八股+项目深挖（30分钟项目拷打），二面重场景设计+系统设计。算法题每轮一道，难度LeetCode中等。面试节奏极快，下午一面晚上就可能约二面。场景题是拉开差距的关键，建议重点准备秒杀、库存、分布式锁等电商场景。"
+}

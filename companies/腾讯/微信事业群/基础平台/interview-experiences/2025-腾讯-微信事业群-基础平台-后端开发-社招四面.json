@@ -1,0 +1,68 @@
+{
+  "company": "腾讯",
+  "business_group": "微信事业群",
+  "department": "基础平台",
+  "role": "后端开发",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/enterprise/138/interview",
+      "https://zhuanlan.zhihu.com/p/634200989",
+      "https://www.cnblogs.com/bigsai/p/15024058.html",
+      "https://cloud.tencent.com/developer/article/1560422"
+    ],
+    "note": "综合多篇2024-2025年腾讯后台开发面经，涉及微信事业群/基础平台方向。腾讯面试流程较慢，技术面隔一周，HR面再隔一周"
+  },
+  "interview_rounds": 4,
+  "questions": [
+    {
+      "question": "自我介绍与背景。作为后台开发，你目前最擅长的开发语言是什么？有没有用过Go或Python？",
+      "insight": "腾讯后台开发技术栈以C++和Go为主，Java岗相对少。面试官通过这个问题判断候选人的语言广度和转语言意愿。"
+    },
+    {
+      "question": "Java的垃圾收集（GC）有没有了解？判断条件和回收算法？比较成熟的垃圾收集器有哪些？启动Java进程时通常配置哪些GC？",
+      "insight": "腾讯会从GC概念一路追问到实际配置。要能说清可达性分析、标记清除/整理/复制算法、CMS和G1的区别、JVM启动参数如-XX:+UseG1GC。"
+    },
+    {
+      "question": "用过Java的线程池吗？讲讲核心参数和工作流程。线程池的队列满了会怎样？",
+      "insight": "线程池是Java并发基础。重点：任务提交流程（core→queue→max→reject），以及不同队列类型（LinkedBlockingQueue无界 vs ArrayBlockingQueue有界）对行为的影响。"
+    },
+    {
+      "question": "Redis某个key访问量飙高怎么办？热key问题如何解决？",
+      "insight": "腾讯喜欢考极端场景。热key解决方案：本地缓存（Caffeine/Guava）兜底、key分片（key_1/key_2/key_3随机读）、读写分离从节点分摊读压力。"
+    },
+    {
+      "question": "MySQL事务隔离级别是如何实现的？MVCC的ReadView机制？RC和RR下ReadView的区别？",
+      "insight": "腾讯数据库考得深。RC每次select生成新ReadView，RR只在第一次select时生成ReadView并复用。这就是为什么RR能实现可重复读。"
+    },
+    {
+      "question": "Redis为什么是单线程？为什么这么快？Redis6.0引入的多线程是做什么的？",
+      "insight": "经典题但腾讯会追问到6.0。单线程避免锁竞争+内存操作+IO多路复用。6.0的多线程只用于网络IO读写，命令执行仍是单线程。"
+    },
+    {
+      "question": "TCP和UDP的区别？客户端分别通过TCP和UDP发三个包，服务端会收到几个包？",
+      "insight": "腾讯网络题有深度。TCP是字节流，三个包可能被合并（粘包）或拆分，服务端recv次数不确定。UDP是数据报，三个包就是三个独立的数据报。"
+    },
+    {
+      "question": "连接断开有几种判定方式？心跳机制如何设计？",
+      "insight": "腾讯IM/微信背景下的实战题。判定方式：FIN正常关闭、RST异常关闭、TCP keepalive探测、应用层心跳。应用层心跳更灵活可控。"
+    },
+    {
+      "question": "虚拟内存与物理内存的区别？为什么需要虚拟内存？页表的作用？TLB是什么？",
+      "insight": "操作系统基础。虚拟内存提供进程隔离、地址空间统一、按需加载。TLB是页表的高速缓存，减少地址转换的内存访问次数。"
+    },
+    {
+      "question": "进程和线程的区别？何时使用多线程，何时使用多进程？协程了解吗？",
+      "insight": "腾讯会追问到实际选型。CPU密集型用多进程（利用多核），IO密集型用多线程或协程。Go的goroutine就是协程的典型应用。"
+    },
+    {
+      "question": "程序CPU占用率较高，如何排查？",
+      "insight": "实战运维题。Linux下：top定位进程→top -Hp定位线程→jstack打印线程栈→分析热点代码。也可以用perf、arthas等工具。"
+    },
+    {
+      "question": "算法题：重排链表（LeetCode 143）",
+      "insight": "腾讯算法题难度中等。这道题的思路：找中点→反转后半段→交替合并。考察链表操作的基本功。"
+    }
+  ],
+  "final_insight": "腾讯后台开发面试特点：流程较慢（每轮间隔约一周），但考察深度大。基础占六成、业务占四成。场景题偏向极端情况（热key、高并发、连接异常），操作系统和网络问得比其他大厂更深。微信事业群/基础平台方向会额外关注IM消息链路、长连接管理、配置下发等场景。面试官风格偏学术，喜欢追问原理和底层实现。"
+}

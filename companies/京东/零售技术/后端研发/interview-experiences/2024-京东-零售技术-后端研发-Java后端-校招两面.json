@@ -1,0 +1,84 @@
+{
+  "company": "京东",
+  "business_group": "零售技术",
+  "department": "后端研发",
+  "role": "后端开发（Java）",
+  "source": {
+    "type": "real",
+    "urls": [
+      "https://www.nowcoder.com/feed/main/detail/af95ef3f1d2e433d8ea880a7b87b0fad",
+      "https://www.nowcoder.com/feed/main/detail/6e95d414154046268f31d14c0110fe5c",
+      "https://blog.csdn.net/2401_84424972/article/details/137939254"
+    ],
+    "note": "综合2024-2025年京东零售后端开发Java岗真实面经（牛客网京东零售后端一面面经+京东JDY一面面经+CSDN京东四面面经），提取一面+二面完整流程。京东零售面试通常2-3轮技术面+HR面，一面偏Java基础八股深挖，二面偏项目+中间件+系统设计。"
+  },
+  "interview_rounds": 2,
+  "questions": [
+    {
+      "question": "说一下哈希表的实现原理？为什么链表长度为8时要转换成红黑树？",
+      "round": 1,
+      "insight": "京东零售一面开场高频题。HashMap：数组+链表+红黑树。为什么是8：泊松分布下链表长度达到8的概率极低（约千万分之六），此时转红黑树查询从O(n)优化到O(logn)。追问：为什么退化阈值是6而不是8（避免频繁转换的性能抖动）。"
+    },
+    {
+      "question": "什么情况会破坏双亲委派机制？说一下SPI和热加载。",
+      "round": 1,
+      "insight": "京东零售一面JVM高频题。破坏场景：①SPI机制（JDBC、SLF4J）通过Thread.currentThread().getContextClassLoader()让父加载器委托子加载器加载②Tomcat自定义WebAppClassLoader优先加载应用类③OSGi模块化④热部署（自定义ClassLoader重新加载修改后的类）。SPI核心：ServiceLoader通过线程上下文类加载器打破双亲委派。"
+    },
+    {
+      "question": "说一下Java内存模型？为什么要这么划分？会出现哪些问题？",
+      "round": 1,
+      "insight": "JMM（Java Memory Model）：主内存+工作内存。划分原因：CPU缓存与主存速度差异，需要缓存一致性协议。问题：可见性（volatile解决）、原子性（synchronized/CAS解决）、有序性（happens-before规则）。注意区分JMM和JVM运行时数据区（堆、栈、方法区等）。"
+    },
+    {
+      "question": "线程池有哪些参数？说说每一个参数的作用。关于锁了解多少？",
+      "round": 1,
+      "insight": "京东零售必考。7个核心参数：corePoolSize（核心线程数）、maximumPoolSize（最大线程数）、keepAliveTime（空闲线程存活时间）、unit（时间单位）、workQueue（任务队列）、threadFactory（线程工厂）、handler（拒绝策略：AbortPolicy/CallerRunsPolicy/DiscardPolicy/DiscardOldestPolicy）。锁：synchronized锁升级（偏向锁→轻量级锁→重量级锁）、ReentrantLock公平/非公平、读写锁、StampedLock。"
+    },
+    {
+      "question": "事务ACID特性都是怎么实现的？",
+      "round": 1,
+      "insight": "京东零售一面MySQL深挖题。A原子性：undo log（回滚日志）。C一致性：由AID共同保证。I隔离性：MVCC + 锁机制。D持久性：redo log（重做日志）+ 双写缓冲区。追问：redo log和binlog的两阶段提交（prepare→commit），保证crash recovery时数据一致。"
+    },
+    {
+      "question": "慢查询了解多少？怎么定位和优化？",
+      "round": 1,
+      "insight": "京东零售业务场景强相关。定位：开启slow_query_log→EXPLAIN分析执行计划→看type（ALL全表扫描最差）、key（是否命中索引）、rows（扫描行数）、Extra（Using filesort/Using temporary需优化）。优化：加合适索引、避免SELECT *、避免函数操作索引列、分页优化（延迟关联）、覆盖索引减少回表。"
+    },
+    {
+      "question": "分库分表了解多少？会存在什么问题？",
+      "round": 1,
+      "insight": "京东零售大数据量核心题。水平分表：按业务key（用户ID/订单ID）取模或range分片。问题：①跨库JOIN（冗余字段/应用层聚合/宽表）②分布式事务（Seata/TCC/最终一致性）③全局唯一ID（雪花算法/Leaf）④跨分片分页（归并排序/禁止深分页）⑤数据迁移和扩容（一致性哈希/双写迁移）。"
+    },
+    {
+      "question": "Redis会丢数据吗？怎么保证数据不丢？",
+      "round": 1,
+      "insight": "会。RDB快照有时间窗口丢失；AOF取决于刷盘策略（always/everysec/no）。保证不丢：①AOF everysec最多丢1秒②开启混合持久化（RDB+AOF增量）③主从复制+哨兵/Cluster保证高可用④关键数据双写数据库兜底。追问：Redis主从切换时数据丢失怎么办（等待从节点同步完成再切换/半同步复制）。"
+    },
+    {
+      "question": "项目中用的什么垃圾回收器？为什么用G1？和CMS有什么差别？",
+      "round": 2,
+      "insight": "京东零售二面项目深挖。G1 vs CMS：①G1基于Region分区，CMS基于分代②G1可预测停顿时间（-XX:MaxGCPauseMillis），CMS不可控③G1整体标记-整理无碎片，CMS标记-清除有碎片④G1适合大堆（6G+），CMS适合中小堆。选G1的理由：零售业务堆内存大、对停顿敏感、需要可预测的GC时间。"
+    },
+    {
+      "question": "Redis+Lua预检怎么做的？秒杀补充缓存时怎么保证Redis和数据库的一致性？",
+      "round": 2,
+      "insight": "京东零售二面业务场景题。Lua预检：将库存判断+扣减封装在Lua脚本中原子执行（EVAL），避免并发超卖。缓存一致性：先更新缓存再更新数据库（因为Redis还要继续用于预检）。追问：更新数据库失败怎么办→发MQ消息异步补偿，监听消息回滚缓存或重试数据库写入。"
+    },
+    {
+      "question": "项目里乐观锁的粒度是什么？跳表怎么实现的？",
+      "round": 2,
+      "insight": "京东零售二面项目追问。乐观锁粒度：行级（version字段）vs 字段级（只CAS特定字段）。京东库存场景通常用行级乐观锁（UPDATE ... SET stock=stock-1, version=version+1 WHERE id=? AND version=?）。跳表：多层有序链表，每层是下层的索引，查询O(logn)，Redis的ZSet底层实现。"
+    },
+    {
+      "question": "讲一个你参与过的高并发交易或库存项目，遇到了什么问题？怎么解决的？",
+      "round": 2,
+      "insight": "京东零售二面核心项目题。期望STAR结构：业务背景（大促/秒杀/日常高峰）→遇到的问题（超卖/性能瓶颈/数据不一致）→你的方案（缓存预扣+MQ异步+数据库兜底/分库分表/限流降级）→量化结果（QPS提升/错误率下降/响应时间优化）。要体现技术判断力，不能只堆技术名词。"
+    },
+    {
+      "question": "手撕：LRU缓存实现（LeetCode 146）",
+      "round": 2,
+      "insight": "京东零售二面手撕高频题。HashMap + 双向链表实现O(1)的get和put。关键：自定义双向链表节点（key+value+prev+next），维护头尾哨兵节点，get时移到头部，put时淘汰尾部。注意：删除节点时要同时从HashMap和链表中移除。"
+    }
+  ],
+  "final_insight": "京东零售后端开发Java岗面试特点：一面重基础八股深挖（HashMap、JVM类加载、JMM、线程池参数、MySQL ACID实现、慢查询优化、分库分表、Redis持久化），每个知识点都会层层追问到底层原理，不接受表面回答。二面偏项目和业务场景（GC选型理由、Redis Lua原子操作、缓存一致性、乐观锁粒度、高并发库存方案），手撕一道中等算法。京东零售特别关注大数据量处理（分库分表）、缓存与数据库一致性、库存扣减方案等零售核心场景。面试节奏较快，技术面通常1-2周内完成。"
+}

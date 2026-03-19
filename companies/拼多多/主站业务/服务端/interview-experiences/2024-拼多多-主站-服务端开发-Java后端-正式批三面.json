@@ -1,0 +1,83 @@
+{
+  "company": "拼多多",
+  "business_group": "主站业务",
+  "department": "服务端",
+  "role": "服务端开发（Java）",
+  "source": {
+    "type": "real",
+    "urls": [
+      "https://www.nowcoder.com/discuss/663137883238260736",
+      "https://zhuanlan.zhihu.com/p/719953976"
+    ],
+    "note": "2024秋招正式批拼多多服务端开发Java岗真实面经，timeline：一面8.17、二面8.23、三面8.29、HR面9.6。三轮技术面+HR面，一面偏基础八股+并发场景，二面偏项目深挖+中间件+场景设计，三面偏系统设计+开放题+综合素质。"
+  },
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "question": "同步和异步的理解以及各自的使用场景？",
+      "round": 1,
+      "insight": "拼多多一面开场基础题。同步：调用方阻塞等待结果返回，适合强一致性场景（支付扣款、库存扣减）。异步：调用方不等待，通过回调/Future/MQ获取结果，适合削峰、解耦、非核心链路（发短信、写日志）。追问点：异步带来的问题（数据一致性、异常处理、链路追踪）。"
+    },
+    {
+      "question": "并行情况下，查询MySQL后运算，再更新MySQL的值，如何保证串行性？（n个线程同时++，希望得到n）",
+      "round": 1,
+      "insight": "经典并发场景题。方案一：数据库乐观锁（version字段CAS更新）。方案二：分布式锁（Redis setnx / Redisson）。方案三：数据库悲观锁（SELECT ... FOR UPDATE）。方案四：原子SQL（UPDATE SET val = val + 1）。面试官期望对比各方案的性能和适用场景，以及CAS的ABA问题。"
+    },
+    {
+      "question": "Redis分布式锁怎么实现？有什么问题？如何解决？",
+      "round": 1,
+      "insight": "承接上题深入追问。基础实现：SET key value NX EX。问题：①锁过期但业务未完成（看门狗续期/Redisson watchdog）②主从切换锁丢失（RedLock方案）③可重入性（Redisson用hash结构+计数器）。面试官会追问RedLock的争议（Martin Kleppmann vs Antirez）。"
+    },
+    {
+      "question": "MySQL可重复读隔离级别下会出现幻读吗？MVCC是怎么解决的？",
+      "round": 1,
+      "insight": "拼多多高频MySQL题。快照读通过MVCC（ReadView + undo log）避免幻读；当前读通过间隙锁（Gap Lock）+ 临键锁（Next-Key Lock）防止幻读。要能说清楚ReadView的创建时机：RC每次SELECT创建新ReadView，RR只在第一次SELECT创建。"
+    },
+    {
+      "question": "有了undo log为什么还需要redo log？不能直接undo log + 最新数据刷盘吗？",
+      "round": 1,
+      "insight": "深入追问MySQL日志体系。redo log保证持久性（crash recovery），是顺序写性能高；undo log保证原子性（回滚）。如果只靠刷盘，随机IO性能差且无法保证crash时的数据完整性。WAL（Write-Ahead Logging）机制：先写redo log再刷数据页，崩溃后通过redo log重放恢复。"
+    },
+    {
+      "question": "打开一个HTTPS网址，从输入URL到页面展示，整个过程发生了什么？重点讲网络层。",
+      "round": 1,
+      "insight": "经典综合题但拼多多侧重网络层。DNS解析→TCP三次握手→TLS握手（证书验证、密钥协商）→HTTP请求→服务端处理→响应返回→浏览器渲染。追问点：TLS 1.2 vs 1.3握手差异（1.3只需1-RTT）、HTTPS中间人攻击防护、证书链验证过程。"
+    },
+    {
+      "question": "RocketMQ的消息是怎么存储的？如何保证消息不丢失？",
+      "round": 2,
+      "insight": "拼多多二面中间件深挖。存储：CommitLog顺序写 + ConsumeQueue索引。不丢失三板斧：①生产者同步发送+重试 ②Broker同步刷盘+主从同步复制 ③消费者手动ACK+消费失败重试队列。追问：异步刷盘和同步刷盘的性能差异、消息堆积怎么处理。"
+    },
+    {
+      "question": "对象一定都在堆上分配吗？什么情况下不在堆上？",
+      "round": 2,
+      "insight": "JVM进阶题。不一定：①逃逸分析后标量替换（对象拆解为基本类型放栈上）②TLAB（Thread Local Allocation Buffer，本质还是堆但线程私有区域）。JIT编译器通过逃逸分析判断对象是否逃逸出方法，未逃逸的可以栈上分配，减少GC压力。"
+    },
+    {
+      "question": "ThreadLocal的原理？为什么会内存泄漏？怎么解决？",
+      "round": 2,
+      "insight": "拼多多高频并发题。每个Thread持有ThreadLocalMap，key是ThreadLocal的弱引用，value是强引用。GC回收ThreadLocal后key变null但value还在→内存泄漏。解决：用完必须调remove()。线程池场景下尤其危险，因为线程复用导致ThreadLocal不会被自动清理。"
+    },
+    {
+      "question": "设计一个秒杀系统，从前端到后端完整链路怎么做？",
+      "round": 2,
+      "insight": "拼多多二面核心场景题。前端：按钮防抖+验证码+CDN静态化。接入层：Nginx限流+IP/用户级限流。应用层：本地缓存预判库存+Redis预扣减+MQ异步下单。数据层：乐观锁扣库存+订单落库。追问：热点商品缓存击穿怎么办（互斥锁+本地缓存）、如何防止超卖（Redis Lua原子扣减）。"
+    },
+    {
+      "question": "项目中遇到过线上故障吗？怎么排查和止损的？",
+      "round": 3,
+      "insight": "拼多多三面偏综合能力。期望回答框架：发现（监控告警/用户反馈）→定位（日志/链路追踪/arthas）→止损（降级/限流/回滚）→根因分析→复盘改进。要有具体案例，不能空谈方法论。"
+    },
+    {
+      "question": "你觉得你做过的项目中最有技术挑战的是什么？你是怎么解决的？",
+      "round": 3,
+      "insight": "拼多多三面主管面经典开放题。考察技术深度和解决问题的能力。回答要有STAR结构：背景→挑战点→你的方案→量化结果。避免只说'用了XX技术'，要说清楚为什么选这个方案、对比了哪些替代方案、最终效果如何。"
+    },
+    {
+      "question": "手撕：最长回文子串（LeetCode 5）",
+      "round": 2,
+      "insight": "拼多多二面手撕算法。中心扩展法O(n²)最稳：遍历每个字符作为中心，分别处理奇数和偶数长度回文。Manacher算法O(n)是加分项但不强求。注意边界处理和字符串为空的情况。"
+    }
+  ],
+  "final_insight": "拼多多服务端开发正式批面试流程：三轮技术面（各约45-60min）+HR面。一面侧重Java基础（并发、MySQL日志体系、网络协议）+并发场景题（多线程安全更新、分布式锁），追问深度大，尤其MySQL的MVCC和日志体系会层层追问。二面侧重中间件（RocketMQ存储和可靠性）+JVM进阶（逃逸分析、ThreadLocal）+系统设计（秒杀系统完整链路），手撕一道中等算法。三面偏综合素质和项目深挖，考察解决问题的思路和技术判断力。整体节奏快，一面到HR面约3周。"
+}

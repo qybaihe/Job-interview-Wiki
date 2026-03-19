@@ -1,0 +1,141 @@
+{
+  "company": "快手",
+  "business_group": "电商事业部",
+  "department": "服务端研发",
+  "role": "后端开发",
+  "year": 2024,
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/discuss/486354378278957056",
+      "https://blog.csdn.net/2301_77162959/article/details/131316058",
+      "https://blog.csdn.net/weixin_41922289/article/details/106464464",
+      "https://blog.csdn.net/weixin_66137383/article/details/135444864"
+    ],
+    "note": "综合牛客网快手Java开发一面二面三面(OC)面经、CSDN快手春招Java面经及快手面经总结(2024)，提取真实面试问题。三面流程：一面Java基础+集合+并发，二面MySQL+Redis+项目，三面系统设计+项目深挖。"
+  },
+  "interview_rounds": 3,
+  "rounds": [
+    {
+      "name": "一面",
+      "focus": "Java集合 + 并发 + Redis + MySQL基础",
+      "duration_min": 80,
+      "questions": [
+        {
+          "question": "了解哪些集合？HashMap和TreeMap的区别？",
+          "category": "Java集合",
+          "insight": "HashMap：基于哈希表，O(1)查找，无序。TreeMap：基于红黑树，O(logN)查找，key有序。TreeMap适合需要排序的场景（排行榜、范围查询）。"
+        },
+        {
+          "question": "HashMap JDK8与JDK7区别？HashMap为什么线程不安全？JDK1.7中的HashMap死循环问题？",
+          "category": "Java集合",
+          "insight": "JDK8变化：数组+链表+红黑树、尾插法、hash扰动简化、resize优化（高低位链表）。JDK7头插法在并发resize时形成环形链表导致死循环。JDK8虽改为尾插法解决了死循环，但put仍有数据覆盖风险。"
+        },
+        {
+          "question": "ConcurrentHashMap怎么保证线程安全？JDK7和JDK8实现有什么区别？",
+          "category": "Java并发",
+          "insight": "JDK7：Segment分段锁（ReentrantLock），每个Segment独立加锁。JDK8：CAS+synchronized锁单个Node，粒度更细，并发度更高。JDK8还引入了红黑树优化长链表。"
+        },
+        {
+          "question": "HashMap在JDK1.8中什么时候转红黑树？为什么是8？",
+          "category": "Java集合",
+          "insight": "链表长度>8且数组长度>=64时转红黑树。为什么是8：泊松分布下链表长度达到8的概率约为千万分之六，是性能和空间的平衡点。红黑树节点占用空间是链表节点的2倍。"
+        },
+        {
+          "question": "Redis速度快的原因？单线程会有什么问题？IO多路复用epoll模型的过程？",
+          "category": "Redis",
+          "insight": "快的原因：内存操作、单线程无锁竞争、IO多路复用、高效数据结构。单线程问题：大key操作阻塞、CPU无法利用多核（Redis 6.0引入多线程IO）。epoll：epoll_create→epoll_ctl注册fd→epoll_wait等待就绪事件，基于回调而非轮询。"
+        },
+        {
+          "question": "CAS与ABA问题？什么时候出现ABA问题？怎么解决？",
+          "category": "Java并发",
+          "insight": "CAS：Compare And Swap，乐观锁机制。ABA问题：线程1读到A，线程2改A→B→A，线程1 CAS成功但值已被改过。解决：AtomicStampedReference（版本号）。实际场景：链表头节点被替换后又换回来。"
+        },
+        {
+          "question": "CMS垃圾收集器的过程？CMS与G1的区别？",
+          "category": "JVM",
+          "insight": "CMS四阶段：初始标记(STW)→并发标记→重新标记(STW)→并发清除。vs G1：CMS标记-清除有碎片，G1标记-整理无碎片；CMS只能老年代，G1分Region跨代；G1可预测停顿时间。CMS在JDK14被移除。"
+        },
+        {
+          "question": "MySQL索引为什么树高度越高效率越低？B+树为什么比B树好？",
+          "category": "MySQL",
+          "insight": "树高度=磁盘IO次数。B+树非叶子节点只存key不存data→单节点容纳更多key→树更矮→IO更少。B+树叶子节点双向链表→范围查询高效。3层B+树约可存2000万行数据。"
+        },
+        {
+          "question": "MySQL事务ACID？幻读怎么解决？",
+          "category": "MySQL",
+          "insight": "ACID：原子性(undo log)、一致性(目标)、隔离性(MVCC+锁)、持久性(redo log)。幻读解决：RR级别下MVCC+间隙锁(Gap Lock)。当前读用间隙锁防止其他事务插入，快照读用MVCC读历史版本。"
+        },
+        {
+          "question": "让三个线程顺序执行的方法？说多种。",
+          "category": "Java并发",
+          "insight": "方法：1.Thread.join() 2.单线程线程池(newSingleThreadExecutor) 3.CountDownLatch 4.Semaphore 5.Lock+Condition 6.volatile标志位。面试官会一直追问，尽量多说几种。"
+        },
+        {
+          "question": "手撕：全排列的思路？二分查找（手撕）",
+          "category": "算法",
+          "insight": "全排列：回溯法，used数组标记已选元素，递归到长度等于数组长度时收集结果。二分查找：注意边界条件（left<=right vs left<right），mid计算防溢出（left+(right-left)/2）。"
+        }
+      ]
+    },
+    {
+      "name": "二面",
+      "focus": "项目深挖 + 分布式 + 中间件",
+      "duration_min": 60,
+      "questions": [
+        {
+          "question": "自我介绍，项目描述，项目中你负责的核心模块？",
+          "category": "项目",
+          "insight": "快手二面重项目。面试官会深挖你做的最复杂的模块，追问技术选型原因、遇到的问题、如何解决。准备好STAR法则描述。"
+        },
+        {
+          "question": "负载均衡相关你了解的？客户端负载均衡和服务端负载均衡怎么做的？",
+          "category": "分布式",
+          "insight": "服务端：Nginx（轮询/加权轮询/ip_hash/least_conn）。客户端：Ribbon/LoadBalancer（从注册中心拉取服务列表，本地选择）。追问：一致性哈希的原理和虚拟节点的作用。"
+        },
+        {
+          "question": "Kafka和RocketMQ的比较？各自适合什么场景？",
+          "category": "中间件",
+          "insight": "Kafka：高吞吐、适合日志/大数据流、分区有序。RocketMQ：事务消息、延迟消息、死信队列、适合业务消息。快手大量使用Kafka做日志采集和数据管道。"
+        },
+        {
+          "question": "Redis布隆过滤器原理？误判率怎么算？",
+          "category": "Redis",
+          "insight": "多个hash函数映射到bit数组。查询时所有位都为1则可能存在（有误判），任一位为0则一定不存在（无漏判）。误判率≈(1-e^(-kn/m))^k，k=hash函数数，n=元素数，m=bit数组大小。"
+        },
+        {
+          "question": "Go两个协程顺序打印1-100？（或Java两个线程交替打印奇偶数）",
+          "category": "并发编程",
+          "insight": "Java方案：synchronized+wait/notify，或两个Semaphore交替释放，或LockSupport.park/unpark。核心是两个线程的同步协调机制。"
+        }
+      ]
+    },
+    {
+      "name": "三面",
+      "focus": "系统设计 + 项目深挖 + 综合能力",
+      "duration_min": 50,
+      "questions": [
+        {
+          "question": "系统设计：设计一个停车场系统，使用面向对象的方法，手写代码。",
+          "category": "系统设计",
+          "insight": "考察OOP建模能力。核心对象：ParkingLot/ParkingFloor/ParkingSpot/Vehicle/Ticket。设计模式：策略模式（不同车型分配策略）、单例模式（ParkingLot）。追问：高并发下车位分配怎么做→分布式锁/CAS。"
+        },
+        {
+          "question": "你做过最有挑战的项目是什么？遇到最大的技术难题？怎么解决的？",
+          "category": "项目深挖",
+          "insight": "三面主管面重点考察ownership和解决问题的能力。要讲清楚：问题背景→分析过程→方案对比→最终选择→落地效果→复盘改进。"
+        },
+        {
+          "question": "你对未来的技术方向有什么规划？为什么选择快手？",
+          "category": "职业规划",
+          "insight": "结合快手业务特点（短视频、直播电商、推荐系统）谈技术兴趣。展示对快手技术栈的了解（大规模分布式系统、实时计算、高并发）。"
+        }
+      ]
+    }
+  ],
+  "overall_insight": "快手电商Java后端校招面试三轮流程紧凑（一面到OC约两周）。一面偏Java基础硬功夫，集合源码（HashMap/ConcurrentHashMap）、并发（CAS/AQS/线程协调）、Redis原理、MySQL索引是必考项，手撕难度中等。二面转向项目和分布式中间件，负载均衡、消息队列对比、布隆过滤器等实战题较多。三面系统设计+项目深挖，考察OOP建模和综合解决问题能力。整体风格务实，面试官会根据回答深度持续追问。",
+  "followups": [
+    "可从该面经反向抽题补充快手电商题库的Java集合源码和并发专项",
+    "后续可补充快手电商方向的业务场景题（直播电商、商品管理、订单履约）"
+  ]
+}

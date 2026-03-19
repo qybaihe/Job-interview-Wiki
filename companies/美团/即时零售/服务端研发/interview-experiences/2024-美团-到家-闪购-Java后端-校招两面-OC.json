@@ -1,0 +1,132 @@
+{
+  "company": "美团",
+  "business_group": "即时零售/到家",
+  "department": "服务端研发",
+  "role": "后端开发",
+  "year": 2024,
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/discuss/472457234488840192",
+      "https://www.iamshuaidi.com/4301.html"
+    ],
+    "note": "综合2024年牛客网美团到家Java后端一二面面经（已OC）及帅地玩编程美团优选后端面经，提取真实面试问题。一面偏Java基础+框架+数据库，二面偏项目深挖+分布式+系统设计。"
+  },
+  "interview_rounds": 2,
+  "rounds": [
+    {
+      "name": "一面",
+      "focus": "Java基础 + Spring框架 + 数据库 + Redis",
+      "duration_min": 60,
+      "questions": [
+        {
+          "question": "项目里用Redis主要做什么？遇到过什么问题？怎么解决的？",
+          "category": "Redis/项目",
+          "insight": "面试官从简历切入，重点考察Redis实际使用经验。回答要结合项目说缓存场景、数据一致性问题（延迟双删/Canal）、缓存穿透/击穿/雪崩的实际处理。"
+        },
+        {
+          "question": "Cookie、Session、Token比较一下？如果不使用Redis，集群下Session共享怎么解决？",
+          "category": "Web基础",
+          "insight": "Cookie客户端存储、Session服务端存储、Token无状态。不用Redis的Session共享方案：Session Sticky（Nginx ip_hash）、Session复制（Tomcat集群广播）、数据库存储。面试官想看你对分布式会话的理解深度。"
+        },
+        {
+          "question": "Spring Boot的自动配置原理？用到了哪些类加载器？双亲委派机制有什么好处？",
+          "category": "Spring/JVM",
+          "insight": "@EnableAutoConfiguration→spring.factories→条件装配（@ConditionalOnClass等）。类加载器：Bootstrap/Extension/Application。双亲委派好处：避免类重复加载、保证核心类安全（防止自定义java.lang.String）。"
+        },
+        {
+          "question": "讲一下策略模式？项目里用到了哪些设计模式？",
+          "category": "设计模式",
+          "insight": "策略模式：定义算法族，封装每个算法，使它们可互换。项目中常见：支付方式选择、优惠券计算策略、消息推送渠道选择。面试官会追问和工厂模式的区别。"
+        },
+        {
+          "question": "项目里用到了哪些注解？有没有自定义注解？怎么实现的？",
+          "category": "Spring/Java",
+          "insight": "常用注解：@Autowired/@Resource/@Transactional/@Async等。自定义注解：@interface定义+@Retention+@Target，配合AOP拦截实现（如自定义@RateLimit限流注解）。"
+        },
+        {
+          "question": "HashMap的结构是什么？JDK8有什么变化？为什么线程不安全？",
+          "category": "Java集合",
+          "insight": "数组+链表+红黑树（JDK8）。JDK8变化：尾插法（解决JDK7头插法死循环）、红黑树优化（链表长度>8且数组长度>64转红黑树）。线程不安全：put时可能数据覆盖、resize时可能丢数据。"
+        },
+        {
+          "question": "Java反射机制聊一下？泛型聊一下？为什么传泛型，不能传Object吗？",
+          "category": "Java基础",
+          "insight": "反射：运行时获取类信息、调用方法、访问字段。泛型vs Object：泛型提供编译期类型检查，避免强转ClassCastException，代码更安全。泛型擦除：编译后泛型信息被擦除为Object/上界。"
+        },
+        {
+          "question": "MySQL联合索引的最左匹配原则？如果是a、b、c的联合索引，where条件顺序是c、b、a能走索引吗？",
+          "category": "MySQL",
+          "insight": "能走索引。MySQL优化器会自动调整where条件顺序以匹配索引。最左匹配是指索引列的使用必须从最左列开始，但SQL中条件的书写顺序不影响。追问：where a=1 and c=3能走索引吗？→只能用到a列。"
+        },
+        {
+          "question": "下单和扣库存的分布式事务怎么保证的？",
+          "category": "分布式",
+          "insight": "常见方案：本地消息表+MQ最终一致性、TCC（Try-Confirm-Cancel）、Seata AT模式。美团内部常用本地消息表方案。面试官会追问：如果消息丢了怎么办→定时任务补偿扫描。"
+        },
+        {
+          "question": "Java中hashCode和equals方法为什么需要一起重写？",
+          "category": "Java基础",
+          "insight": "HashMap等容器先用hashCode定位桶，再用equals判断相等。如果只重写equals不重写hashCode，两个逻辑相等的对象可能落在不同桶里，导致HashMap行为异常。契约：equals相等→hashCode必须相等。"
+        },
+        {
+          "question": "Collections下的接口以及队列常用方法？Map下的子类？为什么需要LinkedHashMap？TreeMap的应用场景？",
+          "category": "Java集合",
+          "insight": "List/Set/Queue/Deque。LinkedHashMap：保持插入顺序或访问顺序（LRU缓存实现）。TreeMap：基于红黑树，key有序，适合范围查询、排行榜等场景。"
+        },
+        {
+          "question": "手撕：括号平衡判断（用什么数据结构实现）",
+          "category": "算法",
+          "insight": "栈。遍历字符串，左括号入栈，右括号与栈顶匹配则弹出，最终栈空则平衡。LeetCode 20原题。"
+        }
+      ]
+    },
+    {
+      "name": "二面",
+      "focus": "项目深挖 + JVM + 分布式 + 系统设计",
+      "duration_min": 50,
+      "questions": [
+        {
+          "question": "JVM常用的垃圾回收器有哪些？新生代和老年代垃圾回收器有什么不同？",
+          "category": "JVM",
+          "insight": "新生代：Serial/ParNew/Parallel Scavenge（复制算法）。老年代：Serial Old/CMS/Parallel Old（标记-清除/标记-整理）。G1/ZGC跨代。面试官常追问CMS和G1的区别、什么时候用G1。"
+        },
+        {
+          "question": "为什么新生代用标记复制算法？",
+          "category": "JVM",
+          "insight": "新生代对象朝生夕灭，存活率低（通常<10%），复制算法只需复制少量存活对象，效率高。老年代存活率高，复制成本大，所以用标记-清除或标记-整理。"
+        },
+        {
+          "question": "AQS是怎么阻塞线程的？说一下Reentrantlock的公平锁和非公平锁？",
+          "category": "Java并发",
+          "insight": "AQS用CLH队列+LockSupport.park()阻塞线程。公平锁：按FIFO顺序获取锁，hasQueuedPredecessors()检查队列。非公平锁：直接CAS抢锁，抢不到再排队。非公平锁吞吐量更高（减少线程切换）。"
+        },
+        {
+          "question": "操作系统为什么有内核态和用户态？",
+          "category": "操作系统",
+          "insight": "安全隔离：防止用户程序直接操作硬件/内存。用户态权限受限，需要通过系统调用（syscall）切换到内核态执行特权操作。上下文切换有开销，所以要减少不必要的系统调用。"
+        },
+        {
+          "question": "MySQL底层结构和隔离级别？线程中的异常如何处理？",
+          "category": "MySQL/Java",
+          "insight": "InnoDB架构：Buffer Pool/Redo Log/Undo Log/Binlog。线程异常处理：try-catch、UncaughtExceptionHandler、Future.get()捕获。线程池中未捕获异常会导致线程销毁重建。"
+        },
+        {
+          "question": "为什么数据库需要意向锁？",
+          "category": "MySQL",
+          "insight": "意向锁是表级锁，用于快速判断表中是否有行锁。没有意向锁时，加表锁需要逐行检查是否有行锁，效率极低。意向锁让表锁和行锁的兼容性判断变成O(1)。"
+        },
+        {
+          "question": "手撕：有序数组第一个出现的目标数字的下标（二分法寻找左边界）",
+          "category": "算法",
+          "insight": "标准二分查找左边界模板。找到target后不返回，继续收缩右边界（right=mid-1），最终left即为第一个出现位置。注意边界检查。"
+        }
+      ]
+    }
+  ],
+  "overall_insight": "美团到家/即时零售方向Java后端校招面试特点：一面覆盖面广，Java基础（集合、反射、泛型）+ Spring框架（自动配置、AOP、注解）+ 数据库（索引、事务）+ Redis（实际使用经验）是必考项。二面偏深度，JVM（GC算法、回收器选型）、并发（AQS、锁机制）、分布式事务是重点。两面都有手撕，难度LeetCode Easy-Medium。面试官风格务实，喜欢从项目切入追问技术细节，特别关注分布式场景下的一致性问题。",
+  "followups": [
+    "后续可补充美团闪购/即时零售方向的业务场景题（库存、履约、调度）",
+    "可从该面经反向抽题补充即时零售题库的Java基础和分布式专项"
+  ]
+}

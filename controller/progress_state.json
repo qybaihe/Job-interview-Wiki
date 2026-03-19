@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-20T06:04:00+08:00",
+  "generated_at": "2026-03-20T06:24:00+08:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 96,
+    "completed": 97,
     "companies_seeded": 8,
     "question_banks_filled": 13,
-    "interview_json_count": 74
+    "interview_json_count": 75
   },
   "queues": {
     "priority_companies": [
@@ -179,22 +179,15 @@
       "business_group": "云与智慧产业事业群",
       "department": "基础架构",
       "question_bank_ready": true,
-      "interview_json_count": 1
+      "interview_json_count": 2
     }
   ],
   "notes": [
+    "2026-03-20T06:24 新增腾讯/CSIG/基础架构/后台开发社招面经JSON（来源：CSDN腾讯CSIG社招面经Java转Go+CSDN腾讯CSIG-腾讯云后台开发面经已offer），两面覆盖项目深挖（线程池调优/异步调度框架设计/分库分表/竞态处理）、Go语言深度（GMP/GC/channel/sync包源码）、工程实践（重构策略/灰度发布Schema兼容/线上排查/QPS优化）、开放式系统设计（分布式故障定位/连接管理）。社招特点：不考八股，全程围绕项目展开。CSIG面经从1份校招扩展到2份（校招+社招）。",
+    "2026-03-20T06:24 补强腾讯/CSIG/基础架构题库question-bank.md，新增社招专项（15题）覆盖项目深挖方向（5题）、工程实践（7题）、分布式故障定位（3题），新增系统设计题2道（异步任务调度框架+多租户资源隔离）。题库从80+题扩展到97+题。",
+    "2026-03-20T06:24 补强快手/商业化/后端研发题库question-bank.md，新增广告系统深度专题（28题），覆盖CTR/CVR预估工程化（5题）、竞价机制深度（5题）、预算控制系统（5题）、广告召回与索引（4题）、广告计费与反作弊（4题）、广告系统高可用与性能（4题），新增系统设计题2道（广告特征服务+A/B实验平台）。题库从120行扩展到170+行，广告系统方向从7题扩展到35题。",
     "2026-03-20T06:04 新增腾讯/CSIG/基础架构/后端开发面经JSON（来源：CSDN腾讯CSIG-腾讯云-后台开发面经已offer+知乎csig腾讯云暑期实习面经+牛客腾讯云社招Golang面经），三面覆盖Go语言深度（GMP调度/GC三色标记/channel/context）、云原生技术栈（K8s组件与Pod创建流程/etcd Raft选举与脑裂/Docker隔离机制）、MySQL底层（B+树/MVCC/索引优化）。CSIG面试特色：Go+云原生是核心区分度。",
-    "2026-03-20T06:04 新增腾讯/CSIG/基础架构题库question-bank.md（80+题），覆盖Go语言基础（15题）、云原生K8s/etcd/Docker（22题）、MySQL（11题）、Redis（7题）、分布式系统（7题）、计算机网络（6题）、Linux系统（5题）、算法手撕（7题）、系统设计（4题）。CSIG方向从零到完整题库。",
-    "2026-03-20T06:04 新增阿里/淘天/搜广推/搜索算法面经JSON（来源：牛客淘宝主搜索算法团队校招JD+阿里技术博客电商搜索算法演进+CSDN电商搜索语义检索+知乎电商搜索QP+GitHub搜索系统算法解析），两面覆盖Query理解全链路（纠错/分词/词权重/NER/改写/类目预测/意图识别）、搜索召回（字面vs语义/DPSR双塔）、搜索相关性、搜索排序（位置偏置/冷启动）、大模型+搜索新方向。填补搜广推搜索方向面经空白。",
-    "2026-03-20T06:04 补强阿里/淘天/搜广推题库question-bank.md，新增搜索算法专题（27题），覆盖Query理解QP全链路（7题）、搜索召回（5题）、搜索相关性（4题）、搜索排序（4题）、大模型+搜索（4题）、搜索评估（3题）。搜广推题库从104题扩展到131题。",
-    "2026-03-20T05:44 新增阿里妈妈广告算法社招一面面经JSON（来源：牛客2024-01-17面经），10题覆盖推荐系统全链路架构/各阶段优化指标/召回算法演进/Attention机制/概率智力题（抛硬币期望）/最长公共子串DP。社招面试特点：覆盖面广，概率题是阿里妈妈特色。",
-    "2026-03-20T05:44 新增腾讯WXG小程序客户端日常实习四面OC面经JSON（来源：chiichen个人博客2024-01-30），四轮面试覆盖Rust/C++语言深度对比/所有权机制/glibc vs musl/ELF加载/JWT/LRU Cache/Ring Buffer/内存泄漏工具原理。WXG客户端方向特色：重编程语言理解深度和系统编程基础。",
-    "2026-03-20T05:44 补强阿里搜广推题库question-bank.md，新增概率与智力题专题（2题）。",
-    "2026-03-20T05:44 补强腾讯WXG基础平台题库question-bank.md，新增编程语言深度题专项（Rust vs C++对比4题、系统编程3题、客户端方向算法题4题）。",
-    "2026-03-20T05:24 新增快手/商业化/后端研发/25春招Java后端二面面经JSON（来源：牛客2025.03.20快手商业部门Java后端春招面经），12题覆盖Int/Integer/equals/hashCode/wait/sleep/DCL单例volatile/链表区间翻转/SQL聚合/索引失效/深浅拷贝/分布式锁。面试特点：不看简历，纯Java基础+SQL+手撕。",
-    "2026-03-20T05:24 新增百度/文心大模型/推理平台/后端开发实习一面面经JSON（来源：牛客百度大模型平台后端实习一面+知乎2024 NLP大模型校招面经），10题覆盖项目深挖/Prompt优化/SFT微调方法/Raft协议/Raft网络分区Pre-Vote/五层网络模型/TCP IP分层。面试特点：项目深挖+大模型工程+分布式协议深度。",
-    "2026-03-20T05:24 补强快手/商业化/后端研发题库question-bank.md，新增Java基础补充（7题）、设计模式补充（2题）、SQL实操（3题）、手撕代码补充（1题）。",
-    "2026-03-20T05:24 补强百度/文心大模型/推理平台题库question-bank.md，新增大模型工程实操（5题）、分布式协议深度（4题）、计算机网络补充（3题）。"
+    "2026-03-20T06:04 新增腾讯/CSIG/基础架构题库question-bank.md（80+题），覆盖Go语言基础（15题）、云原生K8s/etcd/Docker（22题）、MySQL（11题）、Redis（7题）、分布式系统（7题）、计算机网络（6题）、Linux系统（5题）、算法手撕（7题）、系统设计（4题）。CSIG方向从零到完整题库。"
   ],
   "next_actions": [
     {
@@ -208,34 +201,14 @@
       "note": "已有7份面经JSON，下一步做后端和算法方向的共性题去重"
     },
     {
-      "company": "腾讯",
-      "business_group": "云与智慧产业事业群",
-      "department": "基础架构",
-      "role": "后端开发",
-      "action": "补1份CSIG社招面经（侧重系统设计和大规模分布式）",
-      "priority": "P1",
-      "status": "pending",
-      "note": "已有1份校招面经JSON+完整题库，社招面经更侧重系统设计深度"
-    },
-    {
       "company": "阿里巴巴",
       "business_group": "淘天集团",
       "department": "搜广推",
       "role": "搜索算法",
       "action": "补1份搜索算法社招面经（侧重搜索架构设计和大规模索引优化）",
-      "priority": "P2",
+      "priority": "P1",
       "status": "pending",
       "note": "已有7份面经JSON（含搜索方向1份），搜索方向社招面经可深化系统设计"
-    },
-    {
-      "company": "快手",
-      "business_group": "商业化",
-      "department": "后端研发",
-      "role": "后端开发",
-      "action": "补1份社招面经+广告系统深度专题（CTR/竞价/预算控制）",
-      "priority": "P2",
-      "status": "pending",
-      "note": "已有2份面经JSON（校招三面+春招二面），社招面经更侧重系统设计"
     },
     {
       "company": "百度",
@@ -246,6 +219,26 @@
       "priority": "P2",
       "status": "pending",
       "note": "已有2份面经JSON（校招三面+实习一面），推理引擎方向需深化"
+    },
+    {
+      "company": "京东",
+      "business_group": "零售技术",
+      "department": "后端研发",
+      "role": "后端开发",
+      "action": "补1份后端开发新样板+零售交易/库存/履约专题题库",
+      "priority": "P1",
+      "status": "pending",
+      "note": "已有6份面经JSON+完整题库，可补强零售业务场景题"
+    },
+    {
+      "company": "百度",
+      "business_group": "智能云",
+      "department": "基础架构",
+      "role": "后端开发",
+      "action": "补1份后端开发新样板+配置中心/服务治理/多租户专题",
+      "priority": "P1",
+      "status": "pending",
+      "note": "已有6份面经JSON+完整题库，可补强云平台基础架构场景题"
     }
   ],
   "pending": []

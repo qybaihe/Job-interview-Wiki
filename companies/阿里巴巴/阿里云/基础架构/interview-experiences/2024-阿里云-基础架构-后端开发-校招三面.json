@@ -1,0 +1,64 @@
+{
+  "company": "阿里巴巴",
+  "business_group": "阿里云",
+  "department": "基础架构",
+  "role": "后端开发",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/enterprise/1742/interview",
+      "https://leetcode.cn/discuss/post/3162334/a-li-yun-san-mian-liang-jing-by-wt171072-33q3/",
+      "https://ac.nowcoder.com/discuss/397362",
+      "https://www.nowcoder.com/discuss/460015526380666880"
+    ],
+    "note": "综合多篇2023-2024年阿里云后端面经，涉及阿里云诚云、基础设施事业部、云原生等方向，提取共性高频问题。阿里云面试节奏偏快，一面简历评估面，二面正式技术面，三面主管面。"
+  },
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "question": "RocketMQ 在项目中怎么用的？如何保证消息不丢失？如何保证不重复消费？",
+      "insight": "阿里云一面高频题，MQ 是阿里系核心中间件。不丢失：生产者同步发送 + Broker 同步刷盘 + 消费者手动 ACK。不重复消费：消费端幂等（唯一 ID + 数据库去重表或 Redis set）。追问点：RocketMQ 的组成（NameServer、Broker、Producer、Consumer）。"
+    },
+    {
+      "question": "MySQL 事务隔离级别有哪些？脏读、幻读、不可重复读分别是什么？",
+      "insight": "阿里云一面基础必考。四个级别：Read Uncommitted → Read Committed → Repeatable Read（MySQL 默认）→ Serializable。RR 级别下通过 MVCC + Next-Key Lock 解决幻读。"
+    },
+    {
+      "question": "ES 怎么部署的？规格什么样？数据量多大？数据到 ES 是怎么流转的？",
+      "insight": "阿里云一面会结合项目追问 ES 实战经验。常见流转路径：MySQL → Canal → MQ → ES。部署关注点：分片数、副本数、JVM 堆大小（不超过 32G）、冷热分离。"
+    },
+    {
+      "question": "缓存是如何刷新的？怎么保证缓存刷新成功？缓存和数据库一致性怎么解决？",
+      "insight": "阿里云一面必问。常见方案：Cache Aside Pattern（先更新 DB 再删缓存）、延迟双删、binlog 监听异步刷新。保证刷新成功：重试机制 + MQ 补偿 + 对账任务。"
+    },
+    {
+      "question": "怎么设计高可用的系统？你会从什么方面考虑？追问：异地容灾怎么实现？",
+      "insight": "阿里云二面核心架构题。高可用维度：服务集群（多实例 + 负载均衡）、数据库高可用（主从 + 故障切换）、ES 集群、缓存集群、MQ 集群。异地容灾：数据同步（DTS/Canal）、流量调度（DNS/GSLB）、单元化部署。"
+    },
+    {
+      "question": "HTTPS 的握手过程？TCP 三次握手四次挥手？",
+      "insight": "阿里云一面网络基础。HTTPS：TCP 握手 → TLS 握手（Client Hello → Server Hello + 证书 → 密钥交换 → 对称加密通信）。TCP 追问：为什么握手三次不是两次？TIME_WAIT 的作用？"
+    },
+    {
+      "question": "MySQL 索引底层实现？为什么用 B+ 树不用 B 树？聚簇索引和非聚簇索引的区别？",
+      "insight": "阿里云一面数据库必考。B+ 树优势：叶子节点链表便于范围查询、非叶子节点只存 key 可以存更多索引、树高更低 IO 次数更少。聚簇索引叶子节点存完整行数据，非聚簇存主键值（回表）。"
+    },
+    {
+      "question": "Spring 的启动流程？AOP 原理？JDK 动态代理和 CGLIB 代理的区别？事务传播机制？",
+      "insight": "阿里云一面二面都会问 Spring。AOP 底层：有接口用 JDK 动态代理（基于反射），无接口用 CGLIB（基于字节码生成子类）。事务传播：REQUIRED（默认，加入当前事务）、REQUIRES_NEW（新建事务）等七种。追问：Spring 事务什么情况会失效？"
+    },
+    {
+      "question": "Redis 数据结构有哪些？持久化方式？删除策略？Redis 挂了怎么办？",
+      "insight": "阿里云二面深入追问 Redis。五种基础结构 + Stream/Bitmap 等。持久化：RDB（快照）+ AOF（追加日志）+ 混合持久化。删除策略：惰性删除 + 定期删除。Redis 挂了：哨兵自动故障转移、Cluster 模式、降级到数据库。"
+    },
+    {
+      "question": "JVM 垃圾回收算法？常用的垃圾收集器？项目中 GC 调优做过吗？",
+      "insight": "阿里云二面 JVM 相关。算法：标记-清除、标记-整理、复制算法、分代收集。收集器：CMS（低延迟）、G1（大堆）、ZGC（超低延迟）。调优经验：堆大小设置、新生代老年代比例、GC 日志分析。"
+    },
+    {
+      "question": "算法题：二叉树最大路径和，要求从头到尾实现（包括构造树和测试用例）。",
+      "insight": "阿里云一面手撕题，LeetCode 124 原题但要求更完整。递归思路：对每个节点计算经过它的最大路径和，同时维护全局最大值。注意负数路径要舍弃（取 max(0, 子树贡献)）。"
+    }
+  ],
+  "final_insight": "阿里云后端面试特点：一面偏简历评估 + 基础八股（网络、数据库、Java 基础、Spring），二面正式技术面会深入追问中间件实战（RocketMQ、ES、Redis）和架构设计（高可用、异地容灾），三面主管面偏项目深度和技术视野。阿里云方向特别关注分布式系统设计、中间件原理和云基础设施相关能力。算法题难度中等，但可能要求完整实现（含建树和测试用例）。面试周期较快，一面到三面可能一两周内完成。"
+}

@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-19T12:09:00+00:00",
+  "generated_at": "2026-03-19T12:03:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 36,
+    "completed": 38,
     "companies_seeded": 8,
     "question_banks_filled": 5,
-    "interview_json_count": 20
+    "interview_json_count": 22
   },
   "queues": {
     "priority_companies": [
@@ -96,6 +96,20 @@
       "department": "搜广推",
       "question_bank_ready": true,
       "interview_json_count": 2
+    },
+    {
+      "company": "美团",
+      "business_group": "到家事业群",
+      "department": "服务端研发",
+      "question_bank_ready": true,
+      "interview_json_count": 2
+    },
+    {
+      "company": "阿里巴巴",
+      "business_group": "阿里云",
+      "department": "基础架构",
+      "question_bank_ready": true,
+      "interview_json_count": 2
     }
   ],
   "notes": [
@@ -109,23 +123,26 @@
     "2026-03-19T19:43 新增阿里/淘天/搜广推/推荐算法校招三面真实面经JSON（来源：牛客、CSDN、博客园多篇2023-2024面经聚合），含13道真实面试题。",
     "2026-03-19T19:43 补强字节跳动/商业化技术题库，新增Go语言专项（10题）和网络协议深入（5题）。",
     "2026-03-19T19:43 彻底清洗阿里/淘天/搜广推算法题库，从膨胀的300+行收敛到精炼的120行，去除大量机械重复的'返券/返账/返核/返池'变体，新增推荐模型专项（DIN/DIEN/SIM/MMoE/PLE/ESMM）和手撕代码真题。",
-    "2026-03-19T20:09 已继续强化字节跳动 / 抖音电商 / 商业化技术 / 后端开发题库，将预算扣减、账单口径、修数回放、灰度发布与规则回滚等分散问题进一步收敛为商业化资金真相、账期恢复与规则止损统一框架。"
+    "2026-03-19T20:03 新增美团/到家事业群/服务端研发/后端开发真实面经JSON（来源：牛客、CSDN多篇2022-2024面经聚合），含10道真实面试题，覆盖cookie/session/token、Spring Boot自动配置、策略模式、Redis、数据库表设计、微服务拆分等。",
+    "2026-03-19T20:03 新增阿里云/基础架构/后端开发真实面经JSON（来源：牛客、LeetCode多篇2023-2024面经聚合），含11道真实面试题，覆盖RocketMQ、ES、MySQL事务隔离、Spring、Redis、高可用设计、异地容灾等。",
+    "2026-03-19T20:03 补强阿里云/基础架构题库，新增RocketMQ专项（5题）、ES专项（4题）、Spring专项（4题）、Redis专项（4题）、网络协议专项（3题），均来自面经真题。",
+    "2026-03-19T20:03 补强美团/到家事业群题库，新增Java基础八股专项（第14节），含Java语言基础、集合并发、JVM、Spring、数据库、Redis、网络协议、场景设计题、手撕算法共9个子节40+题，均来自面经真题。"
   ],
   "next_actions": [
     {
-      "company": "美团",
-      "business_group": "到家事业群",
-      "department": "服务端研发",
+      "company": "京东",
+      "business_group": "物流技术",
+      "department": "平台研发",
       "role": "后端开发",
       "action": "search_real_interview_json",
       "priority": "P1",
       "status": "pending"
     },
     {
-      "company": "阿里巴巴",
-      "business_group": "阿里云",
-      "department": "基础架构",
-      "role": "后端开发",
+      "company": "百度",
+      "business_group": "核心搜索",
+      "department": "推荐策略",
+      "role": "算法",
       "action": "search_real_interview_json",
       "priority": "P1",
       "status": "pending"

@@ -123,13 +123,44 @@
 
 ---
 
-## 9. 常见基础题
+## 9. 常见基础题（含面经真题补充）
 
 - Java 并发、内存模型、线程池、锁优化如何理解？
-- JVM、GC、对象晋升、内存泄漏如何排查？
+- JVM、GC、对象晋升、内存泄漏如何排查？常用垃圾收集器（CMS/G1/ZGC）各自适合什么场景？
 - MySQL 事务隔离级别、锁、索引、主从复制有什么常见坑？
 - Redis、消息队列、分布式锁、配置中心、注册中心怎么选型？
 - Linux、网络、TCP、磁盘 IO、系统调优的常见排障方式有哪些？
+
+### 9.1 RocketMQ 专项（面经高频）
+- RocketMQ 在项目中怎么用的？使用场景有哪些（削峰、解耦、异步）？
+- 如何保证消息不丢失？（生产者同步发送 + Broker 同步刷盘 + 消费者手动 ACK）
+- 如何保证不重复消费？（消费端幂等：唯一 ID + 去重表或 Redis set）
+- RocketMQ 的架构组成？NameServer、Broker、Producer、Consumer 各自的角色？
+- 事务消息的实现原理？半消息是什么？
+
+### 9.2 Elasticsearch 专项（面经高频）
+- ES 怎么部署的？分片数、副本数、JVM 堆大小怎么设置？
+- 数据到 ES 的流转路径？（MySQL → Canal → MQ → ES）
+- ES 的倒排索引原理？分词器怎么选？
+- ES 深度分页问题怎么解决？（scroll / search_after）
+
+### 9.3 Spring 专项（面经高频）
+- Spring 的启动流程？Bean 的生命周期？
+- AOP 原理？JDK 动态代理和 CGLIB 代理的区别？
+- Spring 事务传播机制有哪几种？事务什么情况会失效？（自调用、异常被吞、非 public 方法）
+- Spring Boot 自动配置原理？@EnableAutoConfiguration 做了什么？
+
+### 9.4 Redis 专项（面经高频）
+- Redis 五种基础数据结构及底层实现？
+- 持久化方式：RDB vs AOF vs 混合持久化？
+- 删除策略：惰性删除 + 定期删除？内存淘汰策略有哪些？
+- Redis 挂了怎么办？哨兵 vs Cluster？
+- 缓存一致性怎么解决？Cache Aside / 延迟双删 / binlog 异步刷新？
+
+### 9.5 网络协议专项（面经高频）
+- HTTPS 握手过程？TLS 1.2 和 1.3 的区别？
+- TCP 三次握手四次挥手？为什么握手三次不是两次？TIME_WAIT 的作用？
+- select / poll / epoll 的区别？epoll 为什么高效？
 
 ---
 

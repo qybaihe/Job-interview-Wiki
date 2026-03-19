@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-19T18:43:00+00:00",
+  "generated_at": "2026-03-19T19:04:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 76,
+    "completed": 77,
     "companies_seeded": 8,
     "question_banks_filled": 12,
-    "interview_json_count": 55
+    "interview_json_count": 56
   },
   "queues": {
     "priority_companies": [
@@ -95,7 +95,7 @@
       "business_group": "淘天集团",
       "department": "搜广推",
       "question_bank_ready": true,
-      "interview_json_count": 4
+      "interview_json_count": 5
     },
     {
       "company": "美团",
@@ -176,12 +176,12 @@
     }
   ],
   "notes": [
+    "2026-03-20T03:04 新增阿里巴巴/淘天集团/搜广推/搜索推荐算法校招两面真实面经JSON（来源：CSDN万字推荐算法岗面经总结+CSDN推荐算法面经整理+CSDN 2024推荐算法实习面经+牛客阿里淘天推荐算法一面），一面7题覆盖DeepFM vs Wide&Deep/召回精排链路/双塔负采样/L1 L2正则化/AUC物理意义/注意力机制/手撕字符串去空格，二面7题覆盖多目标优化CTR局限/ESMM样本选择偏差/MMoE vs PLE跷跷板效应/DIN target attention与DIEN/线上RT排查与灰度回滚/AUC涨线上不涨/手撕子数组和等于k。",
+    "2026-03-20T03:04 补强阿里巴巴/淘天集团/搜广推算法题库question-bank.md，新增三大专题：(1)大模型+搜广推融合专题（大模型在召回排序中的应用/多模态embedding/MIM/LLM推荐局限性，含3条追问链路）；(2)特征交叉模型演进追问链（FM→DeepFM→xDeepFM→DCN→DCN-V2演进/Wide&Deep系列追问，含3条追问链路）；(3)离线在线一致性与实验专题（AUC涨线上不涨/AB实验设计/模型校准，含3条追问链路）。",
     "2026-03-20T02:43 新增百度/智能云/基础架构/后端开发校招两面真实面经JSON（来源：牛客2024百度Java后端一二面+CSDN 2025百度校招Java后端+CSDN百度后端面经），一面5题覆盖秒杀系统设计/十万并发处理/超买超卖/事务并行与MySQL锁/索引设计与最左前缀，二面6题覆盖HTTP报文与TLS握手/TCP滑动窗口与拥塞控制/Linux日志排查/进程状态与IPC/Redis数据类型与高并发原理/OOM排查与String不可继承+3道手撕算法。",
     "2026-03-20T02:43 补强百度/智能云/基础架构题库question-bank.md，新增面经真题专项：秒杀与高并发场景设计（4题）、MySQL锁与事务深挖（4题）、网络协议深挖（4题）、Linux与线上排查（4题）、3条追问链路。",
     "2026-03-20T02:43 新增腾讯/微信事业群/基础平台/后端开发2024校招两面真实面经JSON（来源：牛客腾讯24校招Java后端面经+CSDN腾讯24校招一面+CSDN 2024腾讯后端校招实习面经+牛客腾讯Java社招面经），一面7题覆盖GC机制与GC Root/垃圾收集器G1 vs CMS/线程池设计/HashMap实现与扩容/ArrayList vs LinkedList/Redis分布式锁主从丢锁/进程线程与虚拟内存，二面4题覆盖项目深挖30min+/12306架构设计/哲学家就餐/手撕环形链表II。",
-    "2026-03-20T02:43 补强腾讯/微信事业群/基础平台题库question-bank.md，新增面经真题专项：JVM与GC连环问（5题）、并发编程与线程池（4题）、集合与数据结构（5题）、场景设计题（4题）、操作系统经典题（3题）、4条追问链路。",
-    "2026-03-20T02:23 新增京东/零售技术/后端研发/后端开发校招三面v2真实面经JSON（来源：牛客2024京东零售Java后端两篇面经），一面6题覆盖MQ发奖失败补偿/分布式锁setNX底层/Redis高性能IO多路复用/热key风险与JD-hotkey/RabbitMQ原理/手撕O(nlogn)排序，二面10题覆盖限流算法设计/Redis单线程vs多线程/10亿数据外部排序/责任链模式/servlet生命周期/Spring事务嵌套与失效/JVM内存模型volatile/HashMap扩容原理/Cglib vs JDK动态代理/类加载双亲委派，三面1题综合面。",
-    "2026-03-20T02:23 补强京东/零售技术/后端研发题库question-bank.md，新增面经真题专项：MQ项目实战与失败补偿（3题）、Redis分布式锁与热key深挖（4题）、RabbitMQ原理与对比（3题）、Spring事务嵌套与动态代理（3题）、3条追问链路。"
+    "2026-03-20T02:43 补强腾讯/微信事业群/基础平台题库question-bank.md，新增面经真题专项：JVM与GC连环问（5题）、并发编程与线程池（4题）、集合与数据结构（5题）、场景设计题（4题）、操作系统经典题（3题）、4条追问链路。"
   ],
   "next_actions": [
     {
@@ -193,16 +193,6 @@
       "priority": "P0",
       "status": "pending",
       "note": "已有7份面经JSON，下一步做后端和算法方向的共性题去重"
-    },
-    {
-      "company": "阿里巴巴",
-      "business_group": "淘天集团",
-      "department": "搜广推",
-      "role": "算法",
-      "action": "补1份算法新样板+召回/排序/多目标优化专题",
-      "priority": "P0",
-      "status": "pending",
-      "note": "TODO_FIRST_BATCH P0项：补1份算法新样板，给算法题库补充召回/排序/多目标优化专题小节"
     },
     {
       "company": "美团",
@@ -223,6 +213,16 @@
       "priority": "P1",
       "status": "pending",
       "note": "TODO_FIRST_BATCH P1项：补1份后端开发新样板，强化库存/ETA/仓店协同问题域"
+    },
+    {
+      "company": "腾讯",
+      "business_group": "平台与内容事业群",
+      "department": "后台研发",
+      "role": "后端开发",
+      "action": "补1份后端开发新样板+服务治理/平台能力题库",
+      "priority": "P1",
+      "status": "pending",
+      "note": "TODO_FIRST_BATCH P1项：补1份后端开发新样板，强化服务治理/平台能力题库"
     }
   ],
   "pending": []

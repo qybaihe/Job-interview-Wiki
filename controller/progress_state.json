@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-03-19T00:38:00+00:00",
+  "generated_at": "2026-03-19T00:58:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 18,
+    "completed": 19,
     "companies_seeded": 8,
     "question_banks_filled": 5,
     "interview_json_count": 9
@@ -315,19 +315,10 @@
     "已继续强化美团 / 到店事业群 / 后端技术 / 后端开发题库，新增商家履约真相来源、核销幂等、资金口径对账、逆向退款边界、商家配置变更收敛等框架题，并同步更新下一轮推荐目标。",
     "已继续强化腾讯 / 平台与内容事业群 / 后台研发 / 后端开发题库，新增审核状态机、依赖降级、热点写放大、跨团队接入治理等框架题，并同步更新下一轮推荐目标。",
     "已继续强化阿里巴巴 / 淘天集团 / 搜广推 / 算法题库，新增商业化状态机、清算校正、托管/自然流量边界、扶持配额治理与样本防污染框架题，并同步更新下一轮推荐目标。",
-    "已继续强化字节跳动 / 抖音电商 / 商业化技术 / 后端开发题库，新增投放变更灰度、实验开关污染、批量配置误操作与跨环境配置发布治理框架题，并同步更新下一轮推荐目标。"
+    "已继续强化字节跳动 / 抖音电商 / 商业化技术 / 后端开发题库，新增投放变更灰度、实验开关污染、批量配置误操作与跨环境配置发布治理框架题，并同步更新下一轮推荐目标。",
+    "已继续强化美团 / 到店事业群 / 后端技术 / 后端开发题库，新增商家配置变更发布、门店营业状态切换、搜索承接口径收敛与事故止损治理框架题，并刷新下一轮推荐目标。"
   ],
   "next_actions": [
-    {
-      "company": "美团",
-      "business_group": "到店事业群",
-      "department": "后端技术",
-      "role": "后端开发",
-      "action": "question_bank_dedup_and_cleanup",
-      "priority": "P1",
-      "status": "ready-for-next-cleanup",
-      "last_completed_at": "2026-03-19T08:38:00+08:00"
-    },
     {
       "company": "腾讯",
       "business_group": "平台与内容事业群",
@@ -336,7 +327,17 @@
       "action": "question_bank_dedup_and_cleanup",
       "priority": "P1",
       "status": "ready-for-next-cleanup",
-      "last_completed_at": "2026-03-19T08:38:00+08:00"
+      "last_completed_at": "2026-03-19T08:58:00+08:00"
+    },
+    {
+      "company": "字节跳动",
+      "business_group": "抖音电商",
+      "department": "商业化技术",
+      "role": "后端开发",
+      "action": "question_bank_dedup_and_cleanup",
+      "priority": "P1",
+      "status": "ready-for-next-cleanup",
+      "last_completed_at": "2026-03-19T08:58:00+08:00"
     }
   ],
   "pending": []

@@ -1,0 +1,79 @@
+{
+  "company": "拼多多",
+  "business_group": "主站业务",
+  "department": "服务端",
+  "role": "服务端开发（Java）",
+  "source": {
+    "type": "real",
+    "urls": [
+      "https://blog.csdn.net/m0_60259116/article/details/144834929",
+      "https://blog.csdn.net/starbxx/article/details/103523491",
+      "https://www.nowcoder.com/discuss/353159557444739072"
+    ],
+    "note": "2025秋招拼多多服务端开发Java岗真实面经，综合CSDN 2025拼多多后端秋招面经+CSDN拼多多服务端开发Java面经+牛客拼多多服务端面经。两轮技术面+HR面，一面侧重八股+项目+Redis深挖，二面侧重场景题+中间件+系统设计+算法。"
+  },
+  "interview_rounds": 2,
+  "questions": [
+    {
+      "question": "项目中为什么要引入缓存？为什么要保证强一致性？",
+      "round": 1,
+      "insight": "拼多多一面项目切入点。引入缓存原因：①减轻数据库压力②降低接口响应时间③应对高并发读场景。为什么要强一致性：电商核心链路（库存、价格、优惠券）如果缓存和DB不一致，会导致超卖、价格错误、重复领券等资损问题。面试官期望你能结合业务场景说清楚一致性的必要性，而不是空谈技术。"
+    },
+    {
+      "question": "缓存一致性策略有哪几种？先update再delete的不一致场景举例？delete失败怎么办？",
+      "round": 1,
+      "insight": "拼多多一面Redis深挖链路。常见策略：①Cache Aside（旁路缓存：先更新DB再删缓存）②Read/Write Through③Write Behind。先update再delete不一致场景：线程A更新DB→线程B读缓存命中旧值→线程A删缓存，在A删缓存前B读到的是脏数据；更极端：A更新DB成功但删缓存前宕机。delete失败处理：①重试机制（消息队列异步重试）②订阅binlog（Canal监听变更自动删缓存）③设置缓存过期时间兜底。"
+    },
+    {
+      "question": "Java中对象作为函数参数传递，修改对象属性后原对象会变吗？（读代码题）",
+      "round": 1,
+      "insight": "拼多多一面Java基础。Java是值传递：基本类型传值的副本，引用类型传引用的副本（指向同一对象）。所以函数内修改对象属性→原对象会变；但函数内让引用指向新对象→原对象不变。常见陷阱：String是不可变对象，函数内拼接不影响原引用；Integer等包装类也是不可变的。面试官会给具体代码让你说输出结果。"
+    },
+    {
+      "question": "手撕：直播间峰值在线人数问题，要求O(n)时间复杂度",
+      "round": 1,
+      "insight": "拼多多一面手撕场景算法。输入：每个用户的进入时间和离开时间（秒级），求一天内同时在线人数的峰值。O(n)思路：差分数组法，对于每个用户在inputTime处+1、outputTime处-1，最后对数组求前缀和取最大值。如果时间范围是一天86400秒，开一个86400大小的数组即可。注意边界：进入和离开同一秒算在线。"
+    },
+    {
+      "question": "HashMap和TreeMap的区别？TreeMap查询写入的时间复杂度？ConcurrentHashMap怎么实现线程安全？",
+      "round": 1,
+      "insight": "拼多多一面Java集合。HashMap：基于哈希表，无序，O(1)查询。TreeMap：基于红黑树，按key有序，O(logn)查询和写入。ConcurrentHashMap线程安全：JDK7用Segment分段锁，JDK8用CAS+synchronized锁单个Node（桶级别锁粒度更细）。追问：HashMap多线程问题（JDK7死循环、JDK8数据覆盖）、CAS的ABA问题。"
+    },
+    {
+      "question": "CAS和synchronized有什么区别？都用synchronized不行么？",
+      "round": 1,
+      "insight": "CAS（Compare And Swap）：乐观锁，无锁机制，适合竞争不激烈的场景，CPU自旋开销。synchronized：悲观锁，JDK6后有锁升级（偏向锁→轻量级锁→重量级锁）。都用synchronized的问题：①轻量级竞争场景下synchronized有锁升级和上下文切换开销②CAS更轻量，适合简单的原子操作（AtomicInteger等）。但CAS有ABA问题和自旋空转问题，高竞争下反而不如synchronized。"
+    },
+    {
+      "question": "RocketMQ、分布式锁、ThreadLocal分别讲一下？",
+      "round": 2,
+      "insight": "拼多多二面八股连环。RocketMQ：CommitLog顺序写+ConsumeQueue索引，支持事务消息、延迟消息、顺序消息。分布式锁：Redis SET NX EX + Redisson看门狗续期 + 可重入（hash结构+计数器）。ThreadLocal：每个Thread持有ThreadLocalMap，key是弱引用，用完必须remove()防止内存泄漏，线程池场景尤其危险。面试官会挑一个深入追问。"
+    },
+    {
+      "question": "对象一定都在堆上分配吗？什么情况下不在堆上？",
+      "round": 2,
+      "insight": "拼多多二面JVM进阶。不一定：①逃逸分析+标量替换（JIT编译器判断对象未逃逸出方法，将对象拆解为基本类型放栈上）②TLAB（Thread Local Allocation Buffer，堆上的线程私有分配区域，减少多线程竞争）。触发条件：-XX:+DoEscapeAnalysis开启逃逸分析（JDK8默认开启），-XX:+EliminateAllocations开启标量替换。"
+    },
+    {
+      "question": "设计一个秒杀系统，如何处理高并发下的库存扣减？",
+      "round": 2,
+      "insight": "拼多多二面核心场景题。完整链路：前端（按钮防抖+验证码+CDN静态化）→接入层（Nginx限流+用户级限流）→应用层（本地缓存预判库存+Redis Lua原子扣减+MQ异步下单）→数据层（乐观锁扣库存+订单落库）。库存扣减关键：Redis Lua脚本保证判断+扣减原子性，不能先GET再DECR。追问：热点商品缓存击穿（互斥锁+本地缓存）、超卖防护、MQ消费失败补偿。"
+    },
+    {
+      "question": "如果有一个TOP K问题，海量数据中找出出现频率最高的K个元素，怎么做？",
+      "round": 2,
+      "insight": "拼多多二面经典场景题。方案一：HashMap统计频率+最小堆维护TopK，时间O(nlogK)空间O(n)。方案二：如果数据量太大内存放不下，先用Hash分桶到多个小文件，每个文件内部统计TopK，再合并。方案三：近似算法Count-Min Sketch（适合流式数据）。面试官期望你能分析不同数据规模下的方案选择。"
+    },
+    {
+      "question": "JVM堆内存分区？对象什么时候进入老年代？G1和ZGC的区别？",
+      "round": 2,
+      "insight": "堆分区：新生代（Eden+S0+S1）+老年代。对象进入老年代：①年龄达到阈值（默认15次Minor GC）②大对象直接进老年代③动态年龄判断（Survivor中相同年龄对象总大小超过Survivor一半）④Survivor放不下。G1：Region化分区，可预测停顿时间，Mixed GC。ZGC：着色指针+读屏障，几乎全程并发，停顿时间<10ms，适合超大堆（TB级）和低延迟场景。"
+    },
+    {
+      "question": "手撕：LRU缓存实现（LeetCode 146）",
+      "round": 2,
+      "insight": "拼多多二面高频手撕。用HashMap+双向链表实现O(1)的get和put。HashMap存key→Node映射，双向链表维护访问顺序（最近访问的放头部，淘汰尾部）。关键操作：get时将节点移到头部，put时如果满了删除尾部节点。注意：dummy head和tail简化边界处理。也可以直接用LinkedHashMap（accessOrder=true）但面试官通常要求手写。"
+    }
+  ],
+  "final_insight": "拼多多服务端开发2025秋招面试流程：两轮技术面（各约45-60min）+HR面。一面侧重项目深挖+Redis缓存一致性深挖链路（从为什么引入缓存→一致性策略→失败处理，层层追问）+Java基础（集合、并发、值传递）+手撕场景算法（直播间峰值O(n)）。二面侧重八股连环（RocketMQ+分布式锁+ThreadLocal一起问）+JVM进阶（逃逸分析、G1/ZGC）+场景题（秒杀系统、TopK）+手撕LRU。整体特点：一面Redis追问链路很深，二面场景题比重大，手撕算法每轮必有。拼多多面试节奏快，追问深度大，尤其缓存一致性和并发场景是必考项。"
+}

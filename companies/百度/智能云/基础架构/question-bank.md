@@ -19,6 +19,21 @@
 - 如何做多租户隔离与资源配额？
 - 如何评估一个基础服务的可用性 SLA/SLO？
 
+## 大数据与云原生
+- Hadoop、HDFS、MapReduce原理？数据怎么备份？Reducer怎么和Mapper交流？
+- HDFS文件结构？NameNode和DataNode的职责？默认数据块大小？
+- K8S架构？Master和Node各有哪些组件？Ingress的作用？
+- Pod的生命周期？Pending/Running/Succeeded/Failed各代表什么？
+- 容器和虚拟机的区别？Docker的分层存储原理？
+
+## Java基础深挖
+- 往Set中存自定义对象需要注意什么？hashCode和equals的关系？
+- 公平锁和非公平锁怎么设置？ReentrantLock底层AQS原理？
+- 流量控制在哪一层？TCP流量控制和拥塞控制的区别？
+- 回表查询是什么？如何用覆盖索引避免回表？
+- 数据库隔离级别有哪些？MVCC的ReadView在不同隔离级别下的创建时机？
+- RPC和HTTP的区别？为什么内部服务间优先用RPC？
+
 ## 算法题
 - LRU / LFU 缓存实现
 - 二叉树层序遍历 / 最近公共祖先

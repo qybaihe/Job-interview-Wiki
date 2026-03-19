@@ -1,0 +1,72 @@
+{
+  "company": "百度",
+  "business_group": "智能云",
+  "department": "基础架构",
+  "role": "后端开发",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/feed/main/detail/a39d6cd931f147a9972b867535e124ab",
+      "https://blog.csdn.net/2401_84573447/article/details/138231899",
+      "https://blog.csdn.net/Javashiyi/article/details/119419809",
+      "https://zhuanlan.zhihu.com/p/577241076"
+    ],
+    "note": "综合2021-2024年百度后端开发校招/社招面经，涵盖搜索架构、AI工具开发等部门。百度面试通常2-3轮技术面+主管面，一面偏八股广度覆盖，二面偏底层原理和实践能力，三面偏项目深度和职业规划。"
+  },
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "question": "手撕算法：只包含0、1、2数字的数组进行排序；层序遍历二叉树；求数组所有子集。",
+      "insight": "百度一面上来先手撕算法是常见模式，通常2-3道。荷兰国旗问题用三指针O(n)解决；层序遍历用BFS+队列；子集用回溯或位运算。百度看重代码工程能力，要求写完整可运行代码。"
+    },
+    {
+      "question": "前后端如何交互？RPC和HTTP的区别？为什么内部服务间用RPC？",
+      "insight": "百度内部大量使用bRPC框架。RPC优势：序列化效率高（protobuf vs JSON）、支持长连接和连接池、服务发现和负载均衡内置。HTTP优势：通用性强、跨语言、适合对外API。"
+    },
+    {
+      "question": "为什么用Redis和MongoDB做缓存？为什么用etcd做分布式同步？数据量过大怎么办？",
+      "insight": "百度基础架构面试会深挖存储选型。Redis适合热数据缓存（KV、排行榜），MongoDB适合文档型数据（日志、配置）。etcd基于Raft一致性协议，适合服务发现和配置管理。数据量大：分片、持久化、上云对象存储。"
+    },
+    {
+      "question": "Hadoop、HDFS、MapReduce原理？数据怎么备份？文件结构？Reducer怎么和Mapper交流？",
+      "insight": "百度搜索架构部必考大数据基础。HDFS三副本备份，NameNode管理元数据，DataNode存储数据块（默认128MB）。MapReduce：Map输出→Shuffle（分区、排序、合并）→Reduce聚合。Mapper通过中间文件和网络传输与Reducer交流。"
+    },
+    {
+      "question": "K8S架构？Ingress是什么？Pod的生命周期？",
+      "insight": "百度智能云岗位高频考点。K8S架构：Master（API Server、Scheduler、Controller Manager、etcd）+ Node（kubelet、kube-proxy、容器运行时）。Ingress是七层负载均衡入口，管理外部HTTP/HTTPS访问。Pod生命周期：Pending→Running→Succeeded/Failed。"
+    },
+    {
+      "question": "讲讲你了解的设计模式？在项目中怎么用的？",
+      "insight": "百度一面常规题。重点掌握：单例（DCL+volatile）、工厂（抽象工厂）、策略（替代if-else）、观察者（事件驱动）、责任链（过滤器链）、模板方法（流程编排）。结合项目实例回答加分。"
+    },
+    {
+      "question": "什么是回表查询？如何避免回表？覆盖索引是什么？",
+      "insight": "MySQL索引基础。回表：通过二级索引找到主键，再通过主键索引找到完整行数据。避免回表：使用覆盖索引（查询列都在索引中）。联合索引设计时把常查询的列放进索引，减少回表次数。"
+    },
+    {
+      "question": "怎么设置公平锁和非公平锁？ReentrantLock的实现原理？",
+      "insight": "new ReentrantLock(true)为公平锁，false为非公平锁（默认）。公平锁按FIFO排队，非公平锁允许插队（吞吐量更高）。底层基于AQS（AbstractQueuedSynchronizer），通过state变量和CLH队列实现。"
+    },
+    {
+      "question": "往Set中存自定义对象需要注意什么？",
+      "insight": "必须重写hashCode()和equals()方法。HashSet基于HashMap，先用hashCode定位桶，再用equals判断是否重复。如果只重写equals不重写hashCode，相同对象可能被存入不同桶导致重复。"
+    },
+    {
+      "question": "流量控制是在哪一层进行的？TCP的流量控制和拥塞控制区别？",
+      "insight": "流量控制在传输层（TCP）。流量控制：接收方通过滑动窗口告知发送方自己的接收能力，防止接收方缓冲区溢出。拥塞控制：发送方感知网络拥塞程度（慢启动、拥塞避免、快重传、快恢复），防止网络过载。"
+    },
+    {
+      "question": "JVM内存模型讲一下？介绍每个区域的作用？哪些区域会发生OOM？",
+      "insight": "堆（对象实例，GC主战场）、方法区/元空间（类信息、常量池）、虚拟机栈（栈帧、局部变量表）、本地方法栈（Native方法）、程序计数器（唯一不会OOM的区域）。堆、方法区、栈（StackOverflow）都可能OOM。"
+    },
+    {
+      "question": "手撕：求一棵树中距离最长的两个节点（树的直径）。",
+      "insight": "百度二面算法题偏数据结构。树的直径：两次BFS或DFS。方法一：任选节点BFS找最远点u，再从u BFS找最远点v，u到v即直径。方法二：DFS递归，每个节点维护左右子树最大深度之和，取全局最大值。"
+    },
+    {
+      "question": "数据库隔离级别有哪些？MySQL默认是哪个？MVCC原理？",
+      "insight": "四个隔离级别：读未提交、读已提交、可重复读（MySQL默认）、串行化。MVCC通过undo log版本链+ReadView实现。可重复读下ReadView在事务首次读时创建，读已提交下每次读都创建新ReadView。"
+    }
+  ],
+  "final_insight": "百度后端面试特点：一面八股覆盖面广但不深（Java基础、数据库、网络、设计模式），每轮必有手撕算法（通常2-3道，要求完整可运行代码）。二面注重底层原理和实践能力，会深入问存储选型、分布式系统、K8S等。百度搜索架构和智能云方向会额外考察大数据（Hadoop/Spark）和云原生（K8S/Docker）。面试节奏快，流程可能一周内完成。面试官风格差异较大，有的非常细致，有的比较随意。"
+}

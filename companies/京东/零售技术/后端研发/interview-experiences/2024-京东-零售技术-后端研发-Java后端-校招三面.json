@@ -1,0 +1,71 @@
+{
+  "company": "京东",
+  "business_group": "零售技术",
+  "department": "后端研发",
+  "role": "后端开发",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://leetcode.cn/circle/discuss/BYxmPe/",
+      "https://www.iamshuaidi.com/31033.html",
+      "https://www.nowcoder.com/discuss/353158423439155200"
+    ],
+    "note": "综合2021-2024年京东零售Java后端校招面经，提取共性高频问题。京东零售面试通常2-3轮技术面+HR面，一面偏基础八股，二面偏项目深挖和系统设计，三面偏综合和开放题。"
+  },
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "question": "如何保证Redis和数据库的一致性？延时双删的时间精度怎么确定？",
+      "insight": "京东零售核心场景题。延时双删：先删缓存→更新DB→延迟再删缓存。时间精度取决于主从同步延迟，通常几百毫秒。面试官会追问：如果删除失败怎么办？（答：重试机制+消息队列异步补偿）"
+    },
+    {
+      "question": "说说MQ的原理，怎么保证消息接收顺序？对比其他MQ有什么区别，怎么选型？",
+      "insight": "京东大量使用JMQ（内部MQ），面试会考RocketMQ/Kafka对比。顺序消息：同一业务key路由到同一队列。选型考虑：吞吐量（Kafka>RocketMQ）、事务消息（RocketMQ）、延迟消息、消息回溯等。"
+    },
+    {
+      "question": "HashMap结构、存储、碰撞、扩容？扩容前多大？扩容是怎么让原来的数据均匀分布的？扩容后多大？",
+      "insight": "京东Java岗必考且追问很深。默认容量16，负载因子0.75，阈值12时扩容到32。扩容时通过(e.hash & oldCap)==0判断元素在原位还是原位+oldCap，实现均匀分布，避免rehash。"
+    },
+    {
+      "question": "ArrayList、LinkedList、HashSet区别和使用场景？线程安全吗？HashSet为什么是无序的？",
+      "insight": "集合框架基础。ArrayList基于数组随机访问O(1)，LinkedList基于双向链表插入删除O(1)，HashSet基于HashMap无序不重复。线程安全替代：CopyOnWriteArrayList、ConcurrentHashMap.newKeySet()。"
+    },
+    {
+      "question": "线程创建方式有几种？为什么有Runnable还要Callable？线程池Java创建有几种？创建线程池的参数有什么？",
+      "insight": "4种创建方式：Thread、Runnable、Callable+FutureTask、线程池。Callable可以返回结果和抛异常。线程池7个核心参数：corePoolSize、maximumPoolSize、keepAliveTime、unit、workQueue、threadFactory、handler。"
+    },
+    {
+      "question": "说说类加载过程？双亲委派模型的好处？什么情况下需要打破双亲委派？",
+      "insight": "加载→验证→准备→解析→初始化。双亲委派好处：避免类重复加载、保证核心API安全。打破场景：SPI机制（JDBC）、热部署（Tomcat自定义ClassLoader）、OSGi模块化。"
+    },
+    {
+      "question": "设计一个限流算法，思路是什么？",
+      "insight": "京东零售高并发场景核心。常见算法：固定窗口、滑动窗口、漏桶、令牌桶。面试官期望对比优缺点：固定窗口有临界突发问题，滑动窗口更精确但内存开销大，令牌桶允许突发流量，漏桶平滑输出。"
+    },
+    {
+      "question": "为什么在处理业务的时候使用多线程，Redis却是单线程的？IO多路复用机制是怎么样的？",
+      "insight": "Redis单线程避免上下文切换和锁竞争，瓶颈在网络IO而非CPU。IO多路复用：select/poll/epoll，Redis用epoll，事件驱动，单线程处理多连接。Redis 6.0引入多线程处理网络IO，命令执行仍单线程。"
+    },
+    {
+      "question": "如何对10亿个数据进行排序？",
+      "insight": "大数据排序经典题。内存放不下→外部排序：分块读入内存排序→写入临时文件→多路归并。优化：增大内存缓冲区、使用败者树优化多路归并、SSD随机读写。"
+    },
+    {
+      "question": "Spring事务能嵌套吗？事务传播行为有哪些？",
+      "insight": "可以嵌套，通过传播行为控制。7种传播行为重点掌握：REQUIRED（默认，加入当前事务）、REQUIRES_NEW（新建事务）、NESTED（嵌套事务，savepoint）。注意：同类方法调用事务失效问题（AOP代理）。"
+    },
+    {
+      "question": "JVM内存模型？堆区和栈区的区别？在数据结构中两者的区别？",
+      "insight": "JVM内存：堆（对象实例）、栈（局部变量、方法调用）、方法区（类信息、常量池）、程序计数器、本地方法栈。堆是线程共享GC管理，栈是线程私有自动释放。数据结构中：堆是完全二叉树用于优先队列，栈是LIFO结构。"
+    },
+    {
+      "question": "Cglib和JDK动态代理的区别？如何应用？",
+      "insight": "JDK代理基于接口（Proxy+InvocationHandler），Cglib基于继承（生成子类）。Spring AOP默认：有接口用JDK代理，无接口用Cglib。SpringBoot 2.x默认全用Cglib。Cglib不能代理final类和方法。"
+    },
+    {
+      "question": "某个材料需要进行多项审批，这个流程会用到什么设计模式？",
+      "insight": "责任链模式（Chain of Responsibility）。每个审批节点是一个Handler，依次传递。京东内部大量使用责任链处理订单流程、风控规则链。也可结合状态模式管理审批状态流转。"
+    }
+  ],
+  "final_insight": "京东零售Java后端面试特点：一面重基础八股（集合、并发、JVM、MySQL），追问深度较大，尤其HashMap和线程池参数会层层追问。二面偏项目和系统设计，会问缓存一致性、MQ选型、限流等实际场景。三面偏综合能力和设计模式应用。算法题难度中等，LeetCode中等难度为主。京东面试节奏较快，一面到offer通常1-2周。零售部门特别关注高并发、大数据量处理和缓存相关问题。"
+}

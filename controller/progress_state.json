@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-03-19T10:53:00+00:00",
+  "generated_at": "2026-03-19T11:10:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 30,
+    "completed": 31,
     "companies_seeded": 8,
     "question_banks_filled": 5,
     "interview_json_count": 16
@@ -81,26 +81,32 @@
     "2026-03-19T18:53 新增京东/零售技术/后端研发真实面经JSON（来源：leetcode.cn、iamshuaidi.com、nowcoder多篇2021-2024校招面经聚合），含13道真实面试题。",
     "2026-03-19T18:53 新增百度/智能云/基础架构真实面经JSON（来源：nowcoder、CSDN、知乎多篇2021-2024校招面经聚合），含13道真实面试题。",
     "2026-03-19T18:53 补强京东/零售技术/后端研发题库，新增并发与JVM（7题）、设计模式与场景（3题）分组。",
-    "2026-03-19T18:53 补强百度/智能云/基础架构题库，新增大数据与云原生（5题）、Java基础深挖（6题）分组。"
+    "2026-03-19T18:53 补强百度/智能云/基础架构题库，新增大数据与云原生（5题）、Java基础深挖（6题）分组。",
+    "已继续强化阿里巴巴 / 淘天集团 / 搜广推 / 算法题库，将机械膨胀的返券/返账/复投/倒洗长尾问题压缩为预算、资格、回流、退出统一治理框架，并刷新下一轮推荐目标。",
+    "已继续强化腾讯 / 微信事业群 / 基础平台 / 后端开发题库，将配置漂移、依赖升级、权限基线、多版本共存等分散问题进一步收敛为发布、兼容与状态收敛统一治理框架，并刷新下一轮推荐目标。",
+    "已继续强化美团 / 即时零售 / 服务端研发 / 后端开发题库，将返券返账返核返池与跨主体回放类机械膨胀问题进一步收敛为逆向权益、共享供给、库存真相与恢复期止损统一治理框架，并刷新下一轮推荐目标。",
+    "已继续强化腾讯 / 平台与内容事业群 / 后台研发 / 后端开发题库，将审核状态机、消息扇出、灰度回滚、补数回灌等分散问题进一步收敛为发布、回放与状态真相统一治理框架，并刷新下一轮推荐目标。"
   ],
   "next_actions": [
     {
-      "company": "快手",
-      "business_group": "电商事业部",
-      "department": "服务端研发",
+      "company": "拼多多",
+      "business_group": "多多买菜",
+      "department": "服务端",
       "role": "后端开发",
-      "action": "search_real_interview_json",
+      "action": "question_bank_dedup_and_cleanup",
       "priority": "P1",
-      "status": "pending"
+      "status": "ready-for-next-cleanup",
+      "last_completed_at": "2026-03-19T19:10:00+08:00"
     },
     {
       "company": "腾讯",
       "business_group": "平台与内容事业群",
       "department": "后台研发",
       "role": "后端开发",
-      "action": "search_real_interview_json",
+      "action": "question_bank_dedup_and_cleanup",
       "priority": "P1",
-      "status": "pending"
+      "status": "ready-for-next-cleanup",
+      "last_completed_at": "2026-03-19T19:10:00+08:00"
     }
   ],
   "pending": []

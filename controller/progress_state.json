@@ -4,10 +4,10 @@
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 52,
+    "completed": 54,
     "companies_seeded": 8,
     "question_banks_filled": 11,
-    "interview_json_count": 36
+    "interview_json_count": 37
   },
   "queues": {
     "priority_companies": [
@@ -39,7 +39,7 @@
       "business_group": "微信事业群",
       "department": "基础平台",
       "question_bank_ready": true,
-      "interview_json_count": 4
+      "interview_json_count": 5
     },
     {
       "company": "阿里巴巴",
@@ -176,11 +176,12 @@
     }
   ],
   "notes": [
-    "2026-03-19T22:23 新增快手/商业化/后端研发/Java后端校招三面OC真实面经JSON（来源：牛客网快手商业化技术-广告投放Java开发三面OC面经+CSDN快手商业化Java后端二面面经+牛客快手社招Java后端面经聚合），一面10题覆盖Redis过期策略/事务/哨兵Raft/网络HTTP3-QUIC/MySQL索引MVCC/手撕，二面8题覆盖G1/ThreadLocal/分布式锁/一致性/场景设计，三面主管面含广告投放系统设计。",
-    "2026-03-19T22:23 新增快手/商业化/后端研发题库question-bank.md（8大分类：网络/MySQL/Redis/Java并发/JVM/分布式/广告系统专项/手撕代码），含商业化方向专项（广告投放链路、RTB竞价、预算控制、CTR预估）。",
-    "2026-03-19T22:23 新增百度/文心大模型/推理平台/后端开发校招三面真实面经JSON（来源：牛客网百度2024-2025校招后端面经+CSDN百度提前批四面面经+Glassdoor百度SWE面经聚合），一面8题覆盖项目/Redis二次缓存/OS进程线程/网络TCP/MySQL B+树/JVM GC/HashMap/手撕，二面7题覆盖并发线程池/MQ/微服务/Docker K8s/大模型推理优化/LRU，三面系统设计含大模型推理服务平台设计。",
-    "2026-03-19T22:23 新增百度/文心大模型/推理平台题库question-bank.md（10大分类：OS/网络/MySQL/Redis/Java并发/分布式/云原生容器化/大模型推理专项/手撕代码/系统设计），含推理平台方向专项（KV Cache/Continuous Batching/PagedAttention/量化/FlashAttention/FastDeploy/昆仑芯片）。",
-    "2026-03-19T22:23 已继续清洗拼多多/主站业务/服务端题库，将秒杀、拼团、资格校验等分散问题收敛为统一治理框架。",
+    "2026-03-19T22:43 新增腾讯/微信事业群/基础平台/客户端开发实习三面OC真实面经JSON（来源：牛客网26届WXG基础微信客户端实习面经+WXG客户端iOS基础面安卓两面面经+CSDN WXG客户端一面二面凉经+WXG客户端一面面委面经+WXG视频号PC客户端面经聚合），一面7题覆盖RunLoop/FPS优化/架构模式/卡顿检测/色彩矩阵/LFU手撕/项目场景，二面4题覆盖网络协议/事件分发/引用类型/排序算法，三面纯项目深挖。",
+    "2026-03-19T22:43 补强字节跳动/抖音电商/商业化技术题库question-bank.md广告系统专项（20题6大分类：广告投放链路与架构/竞价机制与计费模型/预算控制与消耗平滑/频次控制与用户体验/广告数据与归因/广告系统设计题），含eCPM公式、GSP/VCG竞价、Pacing策略、频次控制分布式实现、广告归因与反作弊。",
+    "2026-03-19T22:23 新增快手/商业化/后端研发/Java后端校招三面OC真实面经JSON。",
+    "2026-03-19T22:23 新增快手/商业化/后端研发题库question-bank.md。",
+    "2026-03-19T22:23 新增百度/文心大模型/推理平台/后端开发校招三面真实面经JSON。",
+    "2026-03-19T22:23 新增百度/文心大模型/推理平台题库question-bank.md。",
     "2026-03-19T22:03 新增字节跳动/抖音主站/推荐架构/后端开发校招三面真实面经JSON。",
     "2026-03-19T22:03 新增拼多多/Temu/服务端/后端开发校招三面真实面经JSON。",
     "2026-03-19T22:03 新增字节跳动/抖音主站/推荐架构题库question-bank.md。",
@@ -191,24 +192,24 @@
   ],
   "next_actions": [
     {
-      "company": "字节跳动",
-      "business_group": "商业化技术",
-      "department": "广告投放",
-      "role": "后端开发",
-      "action": "补强question-bank专项题（广告系统高频题）",
+      "company": "阿里巴巴",
+      "business_group": "淘天集团",
+      "department": "搜广推",
+      "role": "算法",
+      "action": "search_real_interview_json",
       "priority": "P0",
       "status": "pending",
-      "note": "P0项：字节商业化已有5份JSON但题库可补强广告系统专项"
+      "note": "P0项：淘天搜广推算法方向仅2份JSON，需补强真实面经"
     },
     {
       "company": "腾讯",
       "business_group": "微信事业群",
       "department": "基础平台",
-      "role": "客户端开发",
-      "action": "search_real_interview_json",
+      "role": "后端开发",
+      "action": "补强question-bank追问链路",
       "priority": "P0",
       "status": "pending",
-      "note": "P0项：腾讯WXG客户端开发面经补强"
+      "note": "P0项：WXG后端题库可补充Go语言专项和微信IM场景题"
     }
   ],
   "pending": []

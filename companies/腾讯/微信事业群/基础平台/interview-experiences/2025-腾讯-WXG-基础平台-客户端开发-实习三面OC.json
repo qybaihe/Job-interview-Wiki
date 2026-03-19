@@ -1,0 +1,81 @@
+{
+  "company": "腾讯",
+  "business_group": "微信事业群",
+  "department": "基础平台",
+  "role": "客户端开发",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/discuss/733080037259325440",
+      "https://www.nowcoder.com/discuss/353157688660008960",
+      "https://blog.csdn.net/weixin_42719570/article/details/104966639",
+      "https://www.nowcoder.com/discuss/353158361166323712",
+      "https://blog.csdn.net/weixin_42837024/article/details/120722412"
+    ],
+    "note": "综合2024-2025年腾讯WXG基础平台/基础微信客户端开发多篇真实面经（牛客网26届实习面经、WXG客户端iOS基础面安卓两面面经、WXG客户端一面二面凉经、WXG客户端一面+面委面经、WXG视频号PC客户端面经）。WXG客户端面试特点：一面超长可达140分钟以项目场景为主，iOS方向会考C++/OC底层，Android方向考事件分发和性能监控，网络协议是必考项。26届实习面经为2025年2月最新数据。"
+  },
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "round": 1,
+      "question": "RunLoop原理？接触过的定时器以及区别？NSTimer在滑动时为什么会失效？",
+      "insight": "26届实习一面真题。NSTimer默认运行在NSDefaultRunLoopMode，滑动UIScrollView时RunLoop切换到UITrackingRunLoopMode导致Timer不触发。解决方案：将Timer加入NSRunLoopCommonModes。面试官会追问RunLoop与线程的关系、RunLoop的六种Observer状态。"
+    },
+    {
+      "round": 1,
+      "question": "列表框架FPS优化：cell复用、计算属性缓存、CPU/GPU优化分别怎么做？",
+      "insight": "26届实习一面真题。需要从多个层面回答：cell复用机制（dequeueReusableCell）、提前计算cell高度并缓存、图片异步解码、减少离屏渲染（圆角用贝塞尔曲线而非cornerRadius+masksToBounds）、减少透明图层混合。面试官看重你是否有实际优化经验和量化指标。"
+    },
+    {
+      "round": 1,
+      "question": "常见架构设计模式（MVC/MVP/MVVM）以及优缺点？组件化、优雅代码的设计思想？",
+      "insight": "26届实习一面+多篇面经反复出现。MVC：Controller臃肿；MVP：Presenter解耦但易膨胀；MVVM：数据绑定自动更新UI。微信Android端大量使用MVVM+组件化。追问方向：组件间通信方案（路由/协议/中间件）、如何处理循环依赖。"
+    },
+    {
+      "round": 1,
+      "question": "检测卡顿的策略有哪些？如何区分主线程阻塞、锁竞争和I/O问题？",
+      "insight": "26届实习一面真题。常见方案：CADisplayLink监测帧率、子线程ping主线程检测超时、RunLoop Observer监听kCFRunLoopBeforeWaiting和kCFRunLoopAfterWaiting之间的耗时。区分手段：主线程堆栈采样分析调用栈特征。"
+    },
+    {
+      "round": 1,
+      "question": "色彩空间滤镜、色彩矩阵是什么？OC中#import和#include的区别？",
+      "insight": "26届实习一面真题。色彩矩阵是4x5矩阵用于RGBA变换实现滤镜效果（亮度/对比度/饱和度调整）。#import是OC特有的，自动防止重复包含（等价于#include + #pragma once），#include是C/C++标准预处理指令需要手动加头文件保护。"
+    },
+    {
+      "round": 1,
+      "question": "手撕：LFU缓存（LeetCode 460 Hard），要求用set自定义排序实现。",
+      "insight": "WXG客户端一面算法题，多篇面经反复出现LFU。需要维护频次和时间戳两个维度排序。HashMap+频次桶+双向链表实现O(1)。企业微信客户端一面也考过LFU（map+set实现），追问如何优化到O(1)。WXG一面算法难度偏高。"
+    },
+    {
+      "round": 1,
+      "question": "项目深挖+拓展场景题（约120分钟）：结合你的项目出4-5个场景题让你现场思考和设计方案。",
+      "insight": "WXG客户端一面最大特点是超长项目拷打（100-140分钟）。面试官不是简单问你做了什么，而是基于你的项目延伸出新场景让你设计。比如做过网络库就问弱网优化、做过图片加载就问内存治理。准备时要对每个项目想3-5个可能的延伸场景。"
+    },
+    {
+      "round": 2,
+      "question": "七层网络模型各层有什么协议？HTTP和HTTPS的区别？TLS握手过程？TCP和UDP的区别？",
+      "insight": "WXG二面网络必考题，多篇面经反复出现。物理层/数据链路层(ARP)/网络层(IP/ICMP)/传输层(TCP/UDP)/会话层/表示层/应用层(HTTP/FTP/DNS)。HTTPS=HTTP+TLS，追问：证书链验证、对称/非对称加密、前向安全性、中间人攻击防护。微信作为IM产品，网络协议是核心考察项。"
+    },
+    {
+      "round": 2,
+      "question": "Android事件分发机制？dispatchTouchEvent→onInterceptTouchEvent→onTouchEvent的完整流程？滑动冲突如何解决？",
+      "insight": "WXG二面Android方向高频题。外部拦截法：父View在onInterceptTouchEvent中判断是否拦截；内部拦截法：子View通过requestDisallowInterceptTouchEvent控制父View是否拦截。微信聊天列表+侧滑删除就是典型滑动冲突场景。"
+    },
+    {
+      "round": 2,
+      "question": "Java四种引用类型（强/软/弱/虚）分别在什么场景下使用？Handler内存泄漏的经典解法？",
+      "insight": "WXG二面基础题。强引用：普通对象，GC不回收；软引用：内存不足时回收，适合缓存；弱引用：下次GC即回收，Handler泄漏经典解法用WeakReference持有Activity；虚引用：跟踪GC时机。"
+    },
+    {
+      "round": 2,
+      "question": "熟悉什么排序算法？时间复杂度？稳定性？面向对象三大特性？指针和引用的区别？",
+      "insight": "企业微信客户端二面真题。WXG二面偏基础知识广度，约60分钟，覆盖面广但深度适中。C++方向会追问指针和引用的底层实现差异、内存堆和栈的区别。"
+    },
+    {
+      "round": 3,
+      "question": "纯项目深挖（约50分钟）：你项目中有什么闪光点？值得你讲的技术亮点是什么？",
+      "insight": "WXG三面完全围绕项目，不问八股。面试官想看你是否真正理解自己做的东西。准备时要想清楚：技术难点是什么、方案为什么比其他方案好、重新做会怎么改进、方案的局限性是什么。三面约50分钟，是决定是否进面委的关键轮。"
+    }
+  ],
+  "final_insight": "腾讯WXG基础平台客户端面试2024-2025年特点：一面超长（100-140分钟），以项目场景题为主，面试官基于你的项目不断延伸新场景；二面偏基础知识广度（架构模式、网络协议、语言底层、事件机制），约60分钟；三面纯项目深挖看技术亮点和思考深度，约50分钟。26届实习面经显示iOS方向重点考RunLoop、FPS优化、卡顿检测、色彩处理、组件化设计；Android方向考事件分发、内存管理、Handler机制。网络协议（长连接、心跳、弱网优化）是所有方向必考项。算法题难度偏高，LFU/LRU是高频题。通过三面后进入面委轮（微信特有），由跨部门总监级面试官进行定岗定级。"
+}

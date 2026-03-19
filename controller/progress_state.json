@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-19T11:29:00+00:00",
+  "generated_at": "2026-03-19T11:49:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
@@ -99,17 +99,19 @@
     "2026-03-19T19:23 新增快手/电商事业部/服务端研发真实面经JSON（来源：nowcoder、maimai、paicoding多篇2023-2024校招面经聚合），含11道真实面试题。",
     "2026-03-19T19:23 新增腾讯/平台与内容事业群/后台研发真实面经JSON（来源：nowcoder、一亩三分地、studygolang、CSDN多篇2021-2024校招面经聚合），含11道真实面试题。",
     "2026-03-19T19:23 补强快手/电商事业部/服务端研发题库，新增Java基础深挖（10题）、OOP系统设计题（2题）、算法题（5题）。",
-    "2026-03-19T19:23 补强腾讯/平台与内容事业群/后台研发题库，新增网络基础（5题）、操作系统基础（3题）、算法真题（5题）。"
+    "2026-03-19T19:23 补强腾讯/平台与内容事业群/后台研发题库，新增网络基础（5题）、操作系统基础（3题）、算法真题（5题）。",
+    "2026-03-19T19:49 已继续强化腾讯 / 平台与内容事业群 / 后台研发 / 后端开发题库，将高并发、未读态、索引刷新、补数回放与灰度回滚等分散问题进一步收敛为主状态、衍生状态与恢复期统一治理框架。"
   ],
   "next_actions": [
     {
-      "company": "阿里巴巴",
-      "business_group": "淘天集团",
-      "department": "搜广推",
-      "role": "算法",
-      "action": "search_real_interview_json",
-      "priority": "P0",
-      "status": "pending"
+      "company": "腾讯",
+      "business_group": "平台与内容事业群",
+      "department": "后台研发",
+      "role": "后端开发",
+      "action": "question_bank_dedup_and_cleanup",
+      "priority": "P1",
+      "status": "ready-for-next-cleanup",
+      "last_completed_at": "2026-03-19T19:49:00+08:00"
     },
     {
       "company": "字节跳动",

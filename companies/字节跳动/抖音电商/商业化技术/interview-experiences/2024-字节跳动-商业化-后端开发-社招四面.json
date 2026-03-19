@@ -1,0 +1,86 @@
+{
+  "company": "字节跳动",
+  "business_group": "抖音电商",
+  "department": "商业化技术",
+  "role": "后端开发",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://blog.csdn.net/weixin_53170315/article/details/113918152",
+      "https://blog.csdn.net/weixin_42329812/article/details/140261060",
+      "https://blog.csdn.net/weixin_43647509/article/details/131378801",
+      "https://www.nowcoder.com/feed/main/detail/6c7884b0ccee4c8480de39e4be6494ce",
+      "https://www.nowcoder.com/discuss/353233587073810432"
+    ],
+    "note": "综合2021-2024年字节跳动商业化/后端社招面经，来源包括CSDN、牛客多篇真实面经。字节后端面试通常3-4轮技术面+HR面，每轮必考算法题（1-2道），一面偏基础广度，二面偏项目深度和中间件原理，三面偏系统设计和架构思维。技术栈以Go为主，也接受Java背景转Go。"
+  },
+  "interview_rounds": 4,
+  "questions": [
+    {
+      "round": 1,
+      "question": "算法题：链表表示的两个数相加。",
+      "insight": "字节一面开场先手撕算法是标准流程。这道题本质是模拟CPU加法器，逐位相加处理进位。面试官不要求运行，但要求代码完整、逻辑清晰。LeetCode 2原题。"
+    },
+    {
+      "round": 1,
+      "question": "HTTPS的过程讲一下，SSL/TLS握手的原理是什么？",
+      "insight": "字节一面网络基础必考。回答要覆盖：DNS解析→TCP三次握手→TLS握手（Client Hello、Server Hello、证书验证、密钥交换、对称加密通信）。面试官可能追问证书链验证、前向安全性。"
+    },
+    {
+      "round": 1,
+      "question": "进程与线程的区别？听说过协程吗？说一说。",
+      "insight": "字节以Go为主要技术栈，协程（goroutine）是必考点。进程是资源分配单位，线程是调度单位，协程是用户态轻量级线程。Go的goroutine由GMP调度器管理，初始栈仅2KB，可轻松创建百万级。"
+    },
+    {
+      "round": 1,
+      "question": "虚拟地址和物理地址的区别？如何寻址？",
+      "insight": "操作系统基础题。虚拟地址通过页表映射到物理地址，MMU负责转换。追问方向：TLB快表、多级页表、缺页中断、写时复制（COW）。"
+    },
+    {
+      "round": 2,
+      "question": "TCP四次挥手过程？TIME_WAIT发生在哪一方？TIME_WAIT过多如何处理？",
+      "insight": "字节二面网络深入题。TIME_WAIT在主动关闭方，持续2MSL。过多处理：调整内核参数（tcp_tw_reuse、tcp_tw_recycle）、连接池复用、负载均衡。面试官可能追问为什么不是三次挥手。"
+    },
+    {
+      "round": 2,
+      "question": "用的什么RPC框架？原理是什么？协议是什么？",
+      "insight": "字节内部使用自研的Kitex（Go）和Thrift协议。RPC原理：客户端stub→序列化→网络传输→服务端stub→反序列化→调用。追问方向：服务发现、负载均衡、熔断降级、超时重试。"
+    },
+    {
+      "round": 2,
+      "question": "你的项目中，接口调用如何保证幂等？",
+      "insight": "商业化场景（广告计费、订单扣款）对幂等要求极高。常见方案：唯一请求ID+去重表、数据库唯一索引、Redis SETNX、状态机。面试官会追问分布式场景下的幂等保证。"
+    },
+    {
+      "round": 2,
+      "question": "数据库的事务性质（ACID），InnoDB是如何实现的？MySQL中数据的存储结构？",
+      "insight": "A通过undo log实现，C通过redo log+undo log实现，I通过MVCC+锁实现，D通过redo log实现。InnoDB使用B+树作为索引结构，聚簇索引叶子节点存完整行数据，二级索引叶子节点存主键值。"
+    },
+    {
+      "round": 2,
+      "question": "算法题：LeetCode 42 接雨水。",
+      "insight": "字节二面算法题难度通常比一面高。接雨水经典解法：双指针O(n)时间O(1)空间，或单调栈O(n)。面试官看重思路清晰度和代码工程质量。"
+    },
+    {
+      "round": 3,
+      "question": "微服务需要注意些什么？你的项目中如何保证分布式事务的一致性？",
+      "insight": "字节三面偏架构和系统设计。微服务注意点：服务拆分粒度、服务发现、链路追踪、熔断降级、分布式事务。分布式事务方案：TCC、Saga、本地消息表、最终一致性。商业化场景通常用最终一致性+补偿机制。"
+    },
+    {
+      "round": 3,
+      "question": "Redis如何实现分布式锁？有什么问题？如何解决？",
+      "insight": "SETNX+过期时间是基础方案，问题：锁过期但业务未完成、主从切换丢锁。解决：Redlock算法、看门狗续期（Redisson）。面试官可能追问Redis集群下分布式锁的可靠性。"
+    },
+    {
+      "round": 3,
+      "question": "秒杀系统如何设计？乐观锁会不会产生数据不一致性问题？",
+      "insight": "字节商业化方向高频系统设计题。秒杀核心：前端限流→网关层削峰→Redis预扣库存→MQ异步下单→数据库最终扣减。乐观锁（CAS/版本号）在高并发下会大量重试，通常配合队列串行化。"
+    },
+    {
+      "round": 3,
+      "question": "分布式锁怎么实现？怎么解决集群的QPS限定在某一个范围内？",
+      "insight": "限流方案：令牌桶、漏桶、滑动窗口。分布式限流：Redis+Lua脚本实现令牌桶，或使用Sentinel等中间件。字节内部有自研的流量控制组件。"
+    }
+  ],
+  "final_insight": "字节跳动商业化后端面试特点：每轮必考1-2道算法题（LeetCode中等偏上），一面覆盖计算机基础（网络、OS、语言），二面深入中间件原理和项目经验（MySQL、Redis、RPC、MQ），三面偏系统设计和架构思维（秒杀、分布式事务、微服务治理）。技术栈以Go为主，但Java背景也可以面，进去后大概率转Go。商业化方向特别关注高并发、幂等、计费准确性和广告投放链路稳定性。面试节奏快，一周内可能完成全部技术面。"
+}

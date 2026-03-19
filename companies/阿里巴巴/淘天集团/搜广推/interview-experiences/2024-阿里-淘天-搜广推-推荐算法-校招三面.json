@@ -1,0 +1,86 @@
+{
+  "company": "阿里巴巴",
+  "business_group": "淘天集团",
+  "department": "搜广推",
+  "role": "算法",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/feed/main/detail/42a595a9d68d43a1b1a34f341f05d3a6",
+      "https://www.nowcoder.com/enterprise/134/interview",
+      "https://www.nowcoder.com/experience/645",
+      "https://blog.csdn.net/weixin_40920183/article/details/125195462",
+      "https://www.cnblogs.com/coder-duibai/p/16350247.html"
+    ],
+    "note": "综合2023-2024年阿里淘天集团推荐算法校招面经，来源包括牛客、CSDN、博客园多篇真实面经。淘天搜广推算法面试通常2-3轮技术面，一面偏推荐模型基础和机器学习理论，二面偏模型架构深度理解和工程链路，三面偏业务理解和系统设计。每轮都有手撕代码环节。"
+  },
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "round": 1,
+      "question": "对推荐模型了解多少？介绍下DeepFM。",
+      "insight": "淘天搜广推一面高频开场题。DeepFM = FM（二阶特征交叉）+ DNN（高阶特征交叉），共享Embedding层，无需手工特征工程。追问方向：和Wide&Deep的区别（Wide部分需要手工交叉特征，FM不需要）、FM的计算复杂度优化（从O(kn²)到O(kn)）。"
+    },
+    {
+      "round": 1,
+      "question": "推荐和广告有什么区别？",
+      "insight": "考察业务理解。推荐优化用户体验（点击率、停留时长、长期留存），广告优化商业收益（eCPM = pCTR × bid），广告有出价和预算约束。追问：搜索和推荐的区别（搜索有明确query意图，推荐是主动分发）。"
+    },
+    {
+      "round": 1,
+      "question": "L1和L2正则化的区别？为什么L1能产生稀疏解？",
+      "insight": "机器学习基础必考。L1（Lasso）在原点不可导，梯度下降时参数容易被推到0，产生稀疏解，适合特征选择。L2（Ridge）使参数趋近于0但不等于0，防止过拟合。几何解释：L1约束区域是菱形，与等高线交点更容易落在坐标轴上。"
+    },
+    {
+      "round": 1,
+      "question": "介绍一下常用的注意力机制，什么场景适合self-attention？",
+      "insight": "推荐算法高频题。常见注意力：加性注意力（Bahdanau）、点积注意力（Luong）、多头注意力（Transformer）。Self-attention适合序列内部建模（用户行为序列），DIN用的是target attention（候选商品对历史行为加权）。"
+    },
+    {
+      "round": 1,
+      "question": "attention和全连接有什么区别？",
+      "insight": "考察对模型本质的理解。全连接的权重是固定参数，attention的权重是动态计算的（依赖输入）。Attention可以看作动态加权的全连接，能根据不同输入自适应调整权重分配。"
+    },
+    {
+      "round": 1,
+      "question": "介绍一下AUC的物理意义，如果在现在基础上再增加一批全正样本，AUC值如何变化？",
+      "insight": "AUC = 随机取一个正样本和一个负样本，模型对正样本打分高于负样本的概率。增加一批全正样本：如果这批正样本的预测分数分布和原来一样，AUC不变；如果这批正样本分数偏低（模型预测不好），AUC会下降。关键是理解AUC只关注正负样本的相对排序。"
+    },
+    {
+      "round": 1,
+      "question": "手撕代码：字符串去空格。",
+      "insight": "淘天一面手撕题偏简单，重点看代码风格和边界处理。双指针原地操作即可。面试官可能追问时间空间复杂度。"
+    },
+    {
+      "round": 2,
+      "question": "BN的可学习参数？作用？xDeepFM介绍？DCN的架构？",
+      "insight": "二面考察模型架构深度。BN有γ（缩放）和β（偏移）两个可学习参数，作用是加速训练、缓解梯度消失。xDeepFM引入CIN（Compressed Interaction Network）显式建模有界阶特征交叉。DCN用Cross Network自动学习特征交叉，每层交叉阶数+1。"
+    },
+    {
+      "round": 2,
+      "question": "Wide&Deep和DeepFM区别？这一系列模型出现是为了解决什么问题？",
+      "insight": "核心问题是特征交叉的自动化和高阶化。Wide&Deep的Wide部分需要手工设计交叉特征，DeepFM用FM替代Wide实现自动二阶交叉。演进路线：LR→FM→DeepFM→DCN→xDeepFM，逐步解决手工特征工程和高阶交叉问题。"
+    },
+    {
+      "round": 2,
+      "question": "长序列建模的方法？DIN架构实现细节？SIM改进了什么问题？",
+      "insight": "阿里自研模型系列是淘天面试重点。DIN用target attention对用户历史行为加权，解决兴趣多样性问题。DIEN加入GRU建模兴趣演化。SIM（Search-based Interest Model）解决超长序列（万级）的计算效率问题，先用GSU（General Search Unit）检索相关子序列，再用ESU（Exact Search Unit）精排。"
+    },
+    {
+      "round": 2,
+      "question": "召回、粗排、精排的链路？多任务学习MMoE的认识？介绍ESMM。",
+      "insight": "搜广推全链路理解是二面核心。召回（多路：协同过滤、双塔、规则）→粗排（轻量模型快速筛选）→精排（复杂模型精确排序）→重排（多样性、业务规则）。MMoE用多个Expert+Gate实现多任务参数共享，PLE进一步区分任务特有和共享Expert。ESMM利用CVR=CTCVR/CTR解决CVR预估的样本选择偏差问题。"
+    },
+    {
+      "round": 2,
+      "question": "SSB（样本选择偏差）是什么？如何解决？",
+      "insight": "CVR预估只能在点击样本上训练，但推断时要对全部曝光样本预测，导致训练和推断分布不一致。解决方案：ESMM（全空间建模）、因果推断方法（IPS加权）、数据增强。这是搜广推算法面试的区分度题。"
+    },
+    {
+      "round": 2,
+      "question": "算法题：树的直径；子数组和等于k的数目。",
+      "insight": "二面算法题难度中等。树的直径：两次BFS或DFS后序遍历取左右子树最大深度之和。子数组和等于k：前缀和+哈希表，O(n)时间。"
+    }
+  ],
+  "final_insight": "阿里淘天搜广推算法面试特点：一面考察推荐模型基础（FM/DeepFM/DIN系列）、机器学习理论（正则化、AUC、损失函数）和基础编码能力。二面深入模型架构（DCN/xDeepFM/SIM/MMoE/ESMM）、全链路理解（召回→粗排→精排→重排）和工程落地问题（样本偏差、特征一致性、在线推断延迟）。三面偏业务理解和系统设计。阿里自研模型系列（DIN→DIEN→SIM）是高频考点，建议重点准备。面试节奏相对从容，每轮约45-60分钟。"
+}

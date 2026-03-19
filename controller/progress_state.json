@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-19T11:49:00+00:00",
+  "generated_at": "2026-03-19T11:43:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 34,
+    "completed": 36,
     "companies_seeded": 8,
     "question_banks_filled": 5,
-    "interview_json_count": 18
+    "interview_json_count": 20
   },
   "queues": {
     "priority_companies": [
@@ -32,7 +32,7 @@
       "business_group": "抖音电商",
       "department": "商业化技术",
       "question_bank_ready": true,
-      "interview_json_count": 3
+      "interview_json_count": 4
     },
     {
       "company": "腾讯",
@@ -89,6 +89,13 @@
       "department": "后台研发",
       "question_bank_ready": true,
       "interview_json_count": 3
+    },
+    {
+      "company": "阿里巴巴",
+      "business_group": "淘天集团",
+      "department": "搜广推",
+      "question_bank_ready": true,
+      "interview_json_count": 2
     }
   ],
   "notes": [
@@ -96,30 +103,30 @@
     "2026-03-19T18:53 新增百度/智能云/基础架构真实面经JSON。",
     "2026-03-19T18:53 补强京东题库、百度题库。",
     "2026-03-19T19:29 已继续强化阿里/淘天/搜广推、腾讯/微信/基础平台、美团/即时零售、腾讯/PCG/后台研发、拼多多/多多买菜题库清洗与收敛。",
-    "2026-03-19T19:23 新增快手/电商事业部/服务端研发真实面经JSON（来源：nowcoder、maimai、paicoding多篇2023-2024校招面经聚合），含11道真实面试题。",
-    "2026-03-19T19:23 新增腾讯/平台与内容事业群/后台研发真实面经JSON（来源：nowcoder、一亩三分地、studygolang、CSDN多篇2021-2024校招面经聚合），含11道真实面试题。",
-    "2026-03-19T19:23 补强快手/电商事业部/服务端研发题库，新增Java基础深挖（10题）、OOP系统设计题（2题）、算法题（5题）。",
-    "2026-03-19T19:23 补强腾讯/平台与内容事业群/后台研发题库，新增网络基础（5题）、操作系统基础（3题）、算法真题（5题）。",
-    "2026-03-19T19:49 已继续强化腾讯 / 平台与内容事业群 / 后台研发 / 后端开发题库，将高并发、未读态、索引刷新、补数回放与灰度回滚等分散问题进一步收敛为主状态、衍生状态与恢复期统一治理框架。"
+    "2026-03-19T19:23 新增快手/电商事业部/服务端研发真实面经JSON。",
+    "2026-03-19T19:23 新增腾讯/平台与内容事业群/后台研发真实面经JSON。",
+    "2026-03-19T19:43 新增字节跳动/商业化/后端开发社招四面真实面经JSON（来源：CSDN、牛客多篇2021-2024面经聚合），含13道真实面试题。",
+    "2026-03-19T19:43 新增阿里/淘天/搜广推/推荐算法校招三面真实面经JSON（来源：牛客、CSDN、博客园多篇2023-2024面经聚合），含13道真实面试题。",
+    "2026-03-19T19:43 补强字节跳动/商业化技术题库，新增Go语言专项（10题）和网络协议深入（5题）。",
+    "2026-03-19T19:43 彻底清洗阿里/淘天/搜广推算法题库，从膨胀的300+行收敛到精炼的120行，去除大量机械重复的'返券/返账/返核/返池'变体，新增推荐模型专项（DIN/DIEN/SIM/MMoE/PLE/ESMM）和手撕代码真题。"
   ],
   "next_actions": [
     {
-      "company": "腾讯",
-      "business_group": "平台与内容事业群",
-      "department": "后台研发",
+      "company": "美团",
+      "business_group": "到家事业群",
+      "department": "服务端研发",
       "role": "后端开发",
-      "action": "question_bank_dedup_and_cleanup",
+      "action": "search_real_interview_json",
       "priority": "P1",
-      "status": "ready-for-next-cleanup",
-      "last_completed_at": "2026-03-19T19:49:00+08:00"
+      "status": "pending"
     },
     {
-      "company": "字节跳动",
-      "business_group": "抖音电商",
-      "department": "商业化技术",
+      "company": "阿里巴巴",
+      "business_group": "阿里云",
+      "department": "基础架构",
       "role": "后端开发",
-      "action": "supplement_question_bank_and_json",
-      "priority": "P0",
+      "action": "search_real_interview_json",
+      "priority": "P1",
       "status": "pending"
     }
   ],

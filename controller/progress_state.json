@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-20T07:24:00+08:00",
+  "generated_at": "2026-03-20T07:44:00+08:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 103,
+    "completed": 105,
     "companies_seeded": 8,
     "question_banks_filled": 13,
-    "interview_json_count": 79
+    "interview_json_count": 81
   },
   "queues": {
     "priority_companies": [
@@ -39,7 +39,7 @@
       "business_group": "微信事业群",
       "department": "基础平台",
       "question_bank_ready": true,
-      "interview_json_count": 9
+      "interview_json_count": 10
     },
     {
       "company": "阿里巴巴",
@@ -95,7 +95,7 @@
       "business_group": "淘天集团",
       "department": "搜广推",
       "question_bank_ready": true,
-      "interview_json_count": 7
+      "interview_json_count": 8
     },
     {
       "company": "美团",
@@ -183,31 +183,21 @@
     }
   ],
   "notes": [
-    "2026-03-20T07:24 新增字节跳动/抖音电商/商业化技术/Go后端社招三面面经JSON（来源：CSDN+牛客+腾讯云开发者社区多篇字节商业化Go后端社招面经综合），三面覆盖Go语言深度（GMP调度/channel实现/GC三色标记/goroutine栈管理）、广告系统设计（投放链路/竞价机制/预算Pacing/实时特征系统）、架构设计（全链路延迟控制/压测/Go大规模应用经验）。字节商业化面经从7份扩展到8份。",
-    "2026-03-20T07:24 新增美团/到家事业群/服务端研发（履约调度方向）/后端开发春招两面面经JSON（来源：牛客美团到家履约面经+CSDN美团后端面经综合），两面覆盖JVM深度（JIT编译/GC调优/内存模型）、集合源码（HashMap全链路）、履约业务场景（骑手调度/ETA预估/运力管理）、系统设计（订单超时取消/分库分表异构索引/性能排查）。美团到家面经从4份扩展到5份。",
-    "2026-03-20T07:24 补强字节跳动/抖音电商/商业化技术题库question-bank.md，新增「Go语言Runtime深度专项（社招高频追问）」15题（编号11-25），覆盖GMP调度深度（栈管理/syscall处理/Work Stealing/GOMAXPROCS）、Channel与并发模式深度（关闭语义/select实现/worker pool/sync原语）、GC调优与内存管理深度（GOGC/pprof/sync.Pool/内存分配器）、Go工程实践追问链路（JSON序列化/context传递/优雅退出）。",
-    "2026-03-20T07:24 补强美团/到家事业群/服务端研发题库question-bank.md，新增三个专项：「JVM深度追问专项」（JIT编译/GC调优深度/内存模型与并发，12题）、「订单超时与延迟任务专项」（超时取消方案对比/分库分表异构索引/Spring事务失效，8题）。",
-    "2026-03-20T07:04 补强字节跳动/抖音电商/商业化技术后端题库question-bank.md，新增「后端×算法共性题交叉索引（去重清洗）」专题。",
-    "2026-03-20T07:04 补强阿里巴巴/淘天集团/搜广推算法题库question-bank.md，新增「搜索广告专题」18题。"
+    "2026-03-20T07:44 新增阿里巴巴/淘天集团/搜广推（阿里妈妈-搜索广告）/搜索广告算法工程师社招三面面经JSON（来源：CSDN 2024淘天阿里妈妈算法面经+知乎阿里妈妈社招面经+个人博客2024秋招面经+阿里妈妈搜索广告预估模型技术博客），三面覆盖搜索广告全链路（query理解→召回→粗排→精排→竞价机制）、CTR模型演进、query改写与LLM应用、GSP/Deep GSP竞价机制、COLD粗排优化、CTR校准、AB实验设计、从零搭建广告系统规划。搜广推面经从7份扩展到8份。",
+    "2026-03-20T07:44 新增腾讯/微信事业群/基础平台（消息与存储方向）/后端开发社招四面面经JSON（来源：牛客腾讯后台社招六面面经+知乎腾讯社招面试全流程+腾讯云微信后台架构文章+Go语言中文网腾讯后端面经+牛客WXG校招后端OC面经），四面覆盖C++虚函数/Go GMP调度、TCP/UDP协议设计、Redis渐进式rehash、IM消息同步模型（读扩散vs写扩散）、微信自研存储架构、亿级长连接管理、MySQL MVCC与慢查询排查、面委会项目深挖。微信基础平台面经从9份扩展到10份。",
+    "2026-03-20T07:44 补强阿里巴巴/淘天集团/搜广推算法题库算法-question-bank.md，新增「搜索广告专项（阿里妈妈社招高频）」第16节，包含搜索广告全链路（5题）、Query理解与改写（5题）、广告竞价机制（5题）、CTR校准与广告特有问题（5题）、搜索广告粗排优化（4题）、追问链路（4条），共24题+4条追问链。",
+    "2026-03-20T07:44 补强腾讯/微信事业群/基础平台后端题库question-bank.md，新增「IM消息系统与存储架构专项（社招高频追问）」，包含消息同步模型（5题）、长连接管理与接入层（5题）、自研存储与一致性（5题）、协程与高性能网络编程（4题）、Go语言深度（6题）、系统设计题IM方向（4题），共29题。",
+    "2026-03-20T07:24 新增字节跳动/抖音电商/商业化技术/Go后端社招三面面经JSON。",
+    "2026-03-20T07:24 新增美团/到家事业群/服务端研发（履约调度方向）/后端开发春招两面面经JSON。"
   ],
   "next_actions": [
-    {
-      "company": "阿里巴巴",
-      "business_group": "淘天集团",
-      "department": "搜广推",
-      "role": "搜索算法",
-      "action": "补1份搜索广告方向社招面经JSON（侧重搜索广告架构设计和LLM改写落地）",
-      "priority": "P1",
-      "status": "pending",
-      "note": "已有7份面经JSON+搜索广告专题题库，下一步补社招面经JSON深化系统设计"
-    },
     {
       "company": "百度",
       "business_group": "文心大模型",
       "department": "推理平台",
       "role": "后端开发",
       "action": "补1份推理优化方向面经+vLLM/TensorRT-LLM/KV Cache专题",
-      "priority": "P2",
+      "priority": "P1",
       "status": "pending",
       "note": "已有2份面经JSON（校招三面+实习一面），推理引擎方向需深化"
     },
@@ -217,19 +207,9 @@
       "department": "推荐算法",
       "role": "推荐算法",
       "action": "补1份推荐系统社招面经+大模型与推荐结合专题",
-      "priority": "P2",
-      "status": "pending",
-      "note": "已有3份面经JSON，推荐+大模型方向是2025热点"
-    },
-    {
-      "company": "腾讯",
-      "business_group": "微信事业群",
-      "department": "基础平台",
-      "role": "后端开发",
-      "action": "补1份微信后端社招面经JSON（侧重消息系统/存储/高可用）",
       "priority": "P1",
       "status": "pending",
-      "note": "已有9份面经JSON，微信后端方向可深化消息系统和存储设计"
+      "note": "已有3份面经JSON，推荐+大模型方向是2025热点"
     },
     {
       "company": "美团",
@@ -240,6 +220,26 @@
       "priority": "P2",
       "status": "pending",
       "note": "已有4份面经JSON+完整题库，即时零售方向可深化"
+    },
+    {
+      "company": "字节跳动",
+      "business_group": "抖音主站",
+      "department": "推荐架构",
+      "role": "后端开发",
+      "action": "补1份推荐架构方向社招面经+推荐系统工程化专题",
+      "priority": "P2",
+      "status": "pending",
+      "note": "已有2份面经JSON，推荐架构方向面经偏少"
+    },
+    {
+      "company": "拼多多",
+      "business_group": "Temu",
+      "department": "服务端",
+      "role": "后端开发",
+      "action": "补1份Temu跨境电商方向面经+国际化架构专题",
+      "priority": "P2",
+      "status": "pending",
+      "note": "已有2份面经JSON，Temu是拼多多增长引擎，跨境电商方向值得深化"
     }
   ],
   "pending": []

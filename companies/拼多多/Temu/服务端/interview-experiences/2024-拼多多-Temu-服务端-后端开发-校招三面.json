@@ -1,0 +1,101 @@
+{
+  "company": "拼多多",
+  "business_group": "Temu",
+  "department": "服务端",
+  "role": "后端开发",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/feed/main/detail/564786e2eef743f6a179314de0c4fee3",
+      "https://blog.csdn.net/m0_60259116/article/details/144834929",
+      "https://www.nowcoder.com/feed/main/detail/a43f3fb185be46e39a6ef0b67b049e09",
+      "https://www.nowcoder.com/discuss/353157177680535552",
+      "https://www.nowcoder.com/discuss/500175",
+      "https://blog.csdn.net/starbxx/article/details/103523491"
+    ],
+    "note": "综合2024-2025年拼多多Temu/跨境方向服务端校招面经（牛客、CSDN多篇）。其中一篇明确标注岗位为'服务端开发，部门做拼多多海外版Temu'。拼多多Temu服务端面试通常2-3轮技术面，一面偏Java基础+项目拷打+八股追问，二面偏实习深挖+中间件+场景设计，三面主管面偏项目和职业规划。Temu方向会关注跨境电商场景（多币种、多时区、国际化链路）。"
+  },
+  "verification_status": "real-aggregated-from-public-posts",
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "round": "一面",
+      "question": "数据库索引是什么数据结构？索引是不是越多越好？为什么？",
+      "category": "MySQL",
+      "insight": "来自明确标注Temu部门的牛客面经。B+树索引。索引不是越多越好：写入时需维护索引（INSERT/UPDATE/DELETE变慢）、占用磁盘空间、优化器选择索引有开销。建议：高频查询列建索引，低基数列（如性别）不建，联合索引代替多个单列索引。"
+    },
+    {
+      "round": "一面",
+      "question": "MySQL可能出现什么并发相关问题？举个例子说可重复读下的幻读问题。",
+      "category": "MySQL",
+      "insight": "来自2025拼多多秋招面经。并发问题：脏读、不可重复读、幻读。可重复读下幻读示例：事务A两次SELECT COUNT(*)，中间事务B INSERT了一行并提交，事务A两次结果不同。InnoDB通过MVCC+间隙锁（Gap Lock）解决大部分幻读场景。"
+    },
+    {
+      "round": "一面",
+      "question": "MySQL是怎么解决并发问题的？MVCC+UndoLog的原理？有了UndoLog为啥还需要RedoLog？",
+      "category": "MySQL",
+      "insight": "MVCC：每行记录隐藏列（trx_id、roll_pointer），ReadView判断可见性。UndoLog：记录修改前的数据，用于回滚和MVCC快照读。RedoLog：保证持久性（WAL机制），UndoLog+最新数据刷盘不可靠（随机IO、部分写），RedoLog是顺序写且有Checkpoint机制。"
+    },
+    {
+      "round": "一面",
+      "question": "volatile变量分别进行读写时，线程的工作内存与主内存的具体交互流程？",
+      "category": "Java并发",
+      "insight": "来自拼多多服务端一面真题。volatile读：从主内存刷新到工作内存（load→read→use）。volatile写：从工作内存刷回主内存（assign→store→write）。volatile保证可见性（内存屏障）和有序性（禁止指令重排），但不保证原子性。"
+    },
+    {
+      "round": "一面",
+      "question": "Redis缓存一致性策略有哪几种？先update再delete的不一致场景？delete失败怎么办？",
+      "category": "Redis",
+      "insight": "来自2025拼多多秋招面经。策略：Cache Aside（旁路缓存）、Read/Write Through、Write Behind。先更新DB再删缓存的不一致：删缓存失败导致脏数据。解决：重试机制（消息队列异步重试）、Canal监听binlog删缓存、设置过期时间兜底。"
+    },
+    {
+      "round": "一面",
+      "question": "Java读代码题：函数传参对象，改来改去的结果是什么？",
+      "category": "Java基础",
+      "insight": "考察Java值传递。Java只有值传递：基本类型传值副本，引用类型传引用副本（指向同一对象）。在方法内修改对象属性会影响原对象，但重新赋值引用不会影响原引用。"
+    },
+    {
+      "round": "一面",
+      "question": "手撕：删除有序数组中的重复项（LeetCode 26）",
+      "category": "手撕代码",
+      "insight": "来自拼多多服务端一面。双指针：慢指针指向不重复序列末尾，快指针遍历数组，遇到不同元素就复制到慢指针位置。注意：PDD的IDE没有任何提示，比较考验基础，且只能让面试官调试和运行。"
+    },
+    {
+      "round": "一面",
+      "question": "1-9这九个数字，写成三个三位数，不能有重复数字，第二个数是第一个数的二倍，第三个数是第一个数的三倍。",
+      "category": "手撕代码",
+      "insight": "来自明确标注Temu部门的面经。枚举/回溯：第一个数范围123-329（因为3倍不超过987），枚举第一个数，检查二倍和三倍是否满足条件（9个数字各用一次）。答案如：192, 384, 576。"
+    },
+    {
+      "round": "二面",
+      "question": "重点拷打实习项目的难点。项目中引入缓存的原因？为什么要保证强一致性？",
+      "category": "项目/系统设计",
+      "insight": "拼多多二面重点拷打实习和项目。引入缓存：降低DB压力、提升响应速度。Temu跨境场景下强一致性需求：商品价格、库存、汇率等数据不能出现不一致，否则影响交易正确性和用户体验。"
+    },
+    {
+      "round": "二面",
+      "question": "手撕阻塞队列，进一步优化要求支持：超过指定等待时间则返回。",
+      "category": "手撕代码",
+      "insight": "来自拼多多服务端二面。用ReentrantLock+Condition实现：put时队列满则await，take时队列空则await。超时版本用await(timeout, TimeUnit)。考察对JUC的理解深度。"
+    },
+    {
+      "round": "二面",
+      "question": "分表和分库的区别？什么时候分表什么时候分库？",
+      "category": "MySQL/系统设计",
+      "insight": "来自2025拼多多秋招面经。分表：单表数据量大（>2000万行），拆分到多张表减少单表压力。分库：单库连接数/IO瓶颈，拆分到多个数据库实例。Temu跨境场景：按地区分库（美区、欧区），按商品ID分表。"
+    },
+    {
+      "round": "二面",
+      "question": "白板推二分查找平均时间复杂度的公式。讲讲快排时间复杂度和跳表时间复杂度推理不一样的地方。",
+      "category": "算法分析",
+      "insight": "来自2025拼多多秋招面经。二分查找平均O(logN)：每次排除一半，T(N)=T(N/2)+1。快排平均O(NlogN)：每次划分期望均匀，T(N)=2T(N/2)+O(N)。跳表O(logN)：概率分析，每层期望跳过一半节点。区别在于快排是确定性递归分析，跳表是概率期望分析。"
+    },
+    {
+      "round": "三面",
+      "question": "主管面：聊项目整体架构、个人贡献、技术选型理由、职业规划。",
+      "category": "主管面",
+      "insight": "拼多多三面通常是主管面/电话面，30-40分钟。不深入技术细节，重点考察：项目全局视角、技术决策能力、沟通表达、团队协作、职业规划。Temu方向可能问对跨境电商的理解和兴趣。"
+    }
+  ],
+  "final_insight": "拼多多Temu服务端面试2-3轮技术面，一面重Java基础和MySQL深度追问（MVCC、RedoLog/UndoLog、缓存一致性是近年高频），代码题在无提示IDE上完成。二面偏项目深挖和场景设计（分库分表、阻塞队列手写），会考察算法复杂度推导能力。三面主管面聊项目和职业规划。Temu方向会关注跨境电商特有场景（多币种结算、国际化链路、跨地域数据一致性）。整体面试节奏快，技术追问深度大，代码能力要求高。"
+}

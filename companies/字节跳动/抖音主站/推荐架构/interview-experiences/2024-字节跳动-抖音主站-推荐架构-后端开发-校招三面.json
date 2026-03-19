@@ -1,0 +1,126 @@
+{
+  "company": "字节跳动",
+  "business_group": "抖音主站",
+  "department": "推荐架构",
+  "role": "后端开发",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/discuss/353233587073810432",
+      "https://www.nowcoder.com/discuss/508938171514687488",
+      "https://www.nowcoder.com/discuss/374103",
+      "https://www.nowcoder.com/feed/main/detail/742257c2ead94976a08d8a7256c841de",
+      "https://www.nowcoder.com/discuss/353158180500873216",
+      "https://blog.csdn.net/lightupworld/article/details/123813919",
+      "https://zhuanlan.zhihu.com/p/574959647"
+    ],
+    "note": "综合2022-2025年字节跳动抖音后端/推荐架构方向校招及社招面经（牛客、CSDN、知乎多篇），提取共性高频问题。字节后端面试通常三轮技术面，每轮必有手撕算法，一面偏基础（网络/OS/数据库），二面偏中间件和系统设计，三面偏项目深挖和开放性问题。推荐架构方向会额外关注推荐系统链路、高可用架构、大规模数据处理。字节面试不太问Spring/Java框架，更关注计算机基础和中间件原理。"
+  },
+  "verification_status": "real-aggregated-from-public-posts",
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "round": "一面",
+      "question": "HTTP通过什么保证安全传输？HTTPS的解析过程？",
+      "category": "网络",
+      "insight": "字节一面必考网络。HTTPS = HTTP + TLS。TLS握手：ClientHello→ServerHello+证书→密钥交换（ECDHE/RSA）→对称加密通信。面试官会追问TLS1.2和TLS1.3的区别（1.3减少一个RTT）。"
+    },
+    {
+      "round": "一面",
+      "question": "说一下应用层中使用UDP协议的应用？TCP？UDP+TCP？",
+      "category": "网络",
+      "insight": "UDP：DNS、DHCP、RTP（视频流）、QUIC。TCP：HTTP、FTP、SMTP。UDP+TCP：DNS（小查询UDP，大查询/区域传输TCP）。字节推荐架构方向会关注QUIC协议在抖音视频传输中的应用。"
+    },
+    {
+      "round": "一面",
+      "question": "进程和线程的区别？进程的调度算法有哪些？",
+      "category": "操作系统",
+      "insight": "进程是资源分配单位，线程是CPU调度单位。调度算法：FCFS、SJF、优先级调度、时间片轮转、多级反馈队列。Linux默认CFS（完全公平调度器）。面试官可能追问协程和线程的区别。"
+    },
+    {
+      "round": "一面",
+      "question": "数据库索引为什么不用红黑树？B+树的特性？联合索引的最左匹配原则？",
+      "category": "MySQL",
+      "insight": "字节一面高频题。红黑树高度大，磁盘IO多；B+树矮胖，一个节点对应一个磁盘页（16KB），3层B+树可存约2000万行。B+树特性：叶子节点有序链表、非叶子节点只存索引。联合索引(a,b,c)遵循最左匹配，WHERE a=1 AND c=3只用到a的索引。"
+    },
+    {
+      "round": "一面",
+      "question": "Redis数据结构有哪些？Redis持久化机制？Redis为什么能处理高并发？",
+      "category": "Redis",
+      "insight": "5种基础：String、List、Hash、Set、ZSet。持久化：RDB（快照）和AOF（追加日志），4.0+混合持久化。高并发原因：单线程避免上下文切换、IO多路复用（epoll）、内存操作、高效数据结构。字节面试官会追问ZSet底层跳表实现。"
+    },
+    {
+      "round": "一面",
+      "question": "MySQL索引底层实现？聚簇索引与非聚簇索引的区别？索引失效的场景？",
+      "category": "MySQL",
+      "insight": "InnoDB聚簇索引：叶子节点存完整行数据，主键索引即聚簇索引。非聚簇索引（二级索引）：叶子节点存主键值，需要回表。索引失效：对索引列函数操作、隐式类型转换、LIKE '%xx'、OR连接非索引列、不满足最左匹配。"
+    },
+    {
+      "round": "一面",
+      "question": "手撕算法：重排链表（LeetCode 143）",
+      "category": "手撕代码",
+      "insight": "字节每轮必考手撕。思路：找中点（快慢指针）→反转后半段→交替合并。时间O(N)空间O(1)。字节要求代码Bug-free，建议在牛客IDE上多练。"
+    },
+    {
+      "round": "二面",
+      "question": "a是主键索引，b是普通索引，对b查询索引怎么走？什么是覆盖索引？",
+      "category": "MySQL",
+      "insight": "对b查询：先走b的二级索引找到主键值，再回表走主键索引取完整行。如果SELECT的列都在b索引中（覆盖索引），则不需要回表。EXPLAIN中Extra显示Using index即为覆盖索引。"
+    },
+    {
+      "round": "二面",
+      "question": "Kafka相关：如何保证不会重复消费？Kafka消费组结构？如何保证消息有序性？",
+      "category": "消息队列",
+      "insight": "字节推荐架构方向高频。防重复消费：消费端幂等（唯一ID+去重表/Redis）。消费组：一个Partition只能被同组一个Consumer消费。有序性：同一key发到同一Partition，单Partition内有序。面试官会追问Kafka为什么吞吐高（顺序写磁盘、零拷贝、批量压缩）。"
+    },
+    {
+      "round": "二面",
+      "question": "Redis的ZSet实现？跳表的时间复杂度？为什么用跳表不用红黑树？",
+      "category": "Redis",
+      "insight": "ZSet底层：元素少时ziplist，元素多时skiplist+dict。跳表查询/插入/删除平均O(logN)。跳表优于红黑树的原因：实现简单、范围查询友好（ZRANGEBYSCORE）、并发友好（局部锁）。"
+    },
+    {
+      "round": "二面",
+      "question": "哈希表是什么？HashMap的实现？链地址法和探测法的优缺点？",
+      "category": "数据结构",
+      "insight": "HashMap：数组+链表+红黑树（JDK8）。链地址法：冲突元素挂链表，删除方便，装载因子可>1。开放探测法：线性探测/二次探测/双重哈希，缓存友好但删除麻烦，装载因子需<1。面试官会追问扩容机制和并发问题。"
+    },
+    {
+      "round": "二面",
+      "question": "输入一个URL到页面展示的全过程？数据是如何拷贝到网卡的？",
+      "category": "网络/操作系统",
+      "insight": "DNS解析→TCP三次握手→TLS握手→HTTP请求→服务器处理→HTTP响应→浏览器渲染。数据拷贝到网卡：应用层write→内核socket缓冲区→网卡DMA拷贝。零拷贝优化：sendfile系统调用跳过用户态拷贝。"
+    },
+    {
+      "round": "二面",
+      "question": "手撕算法：LeetCode 134 加油站 / LeetCode 860 柠檬水找零",
+      "category": "手撕代码",
+      "insight": "字节面试官喜欢把LeetCode原题包装成字节业务场景。加油站：贪心，记录总油量和当前油量，当前油量<0则从下一站重新开始。柠檬水找零：贪心模拟，优先用大面额找零。"
+    },
+    {
+      "round": "三面",
+      "question": "fork()函数的作用？计算机启动时内存做了什么？虚拟内存的原理？",
+      "category": "操作系统",
+      "insight": "字节三面偏底层原理。fork()创建子进程，写时复制（COW）。启动过程：BIOS→Bootloader→内核加载→init进程。虚拟内存：页表映射虚拟地址到物理地址，TLB加速，缺页中断触发换页。"
+    },
+    {
+      "round": "三面",
+      "question": "JVM内存分配与回收的完整过程？Full GC触发条件？如何排查线上OOM？",
+      "category": "JVM",
+      "insight": "对象分配：TLAB→Eden→Survivor→Old。回收：Minor GC（新生代）→Major GC（老年代）→Full GC（全堆）。Full GC触发：老年代空间不足、Metaspace不足、System.gc()、CMS并发失败。排查OOM：-XX:+HeapDumpOnOutOfMemoryError + MAT分析。"
+    },
+    {
+      "round": "三面",
+      "question": "TCP为什么可靠？TCP和UDP的区别？",
+      "category": "网络",
+      "insight": "TCP可靠性：序列号+确认应答、超时重传、流量控制（滑动窗口）、拥塞控制（慢启动/拥塞避免/快重传/快恢复）。TCP面向连接、可靠、字节流；UDP无连接、不可靠、数据报。推荐架构方向会关注UDP在实时推荐场景的应用。"
+    },
+    {
+      "round": "三面",
+      "question": "消息队列的作用？Kafka怎么保证消息有序性？MCP是什么？",
+      "category": "中间件/新技术",
+      "insight": "MQ作用：解耦、异步、削峰。Kafka有序性：单Partition内有序，业务上通过key路由保证同一业务消息到同一Partition。MCP（Model Context Protocol）是2024年新兴的AI模型上下文协议，字节面试官开始关注候选人对新技术的了解。"
+    }
+  ],
+  "final_insight": "字节跳动抖音主站/推荐架构后端面试三轮技术面，每轮必有手撕算法（LeetCode中等难度为主）。一面偏计算机基础（网络协议、OS、MySQL索引），二面偏中间件深度（Redis数据结构、Kafka原理、系统设计），三面偏底层原理和开放性问题（JVM、OS内核、新技术趋势）。字节不太问Spring/Java框架，更看重计算机基础功底和代码能力。推荐架构方向会额外关注高吞吐系统设计、推荐链路架构、大规模数据处理。面试节奏快，90分钟一面是常态，代码要求Bug-free。"
+}

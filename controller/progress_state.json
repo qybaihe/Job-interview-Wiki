@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-19T13:57:00+00:00",
+  "generated_at": "2026-03-19T14:03:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 48,
+    "completed": 50,
     "companies_seeded": 8,
-    "question_banks_filled": 7,
-    "interview_json_count": 32
+    "question_banks_filled": 9,
+    "interview_json_count": 34
   },
   "queues": {
     "priority_companies": [
@@ -145,35 +145,53 @@
       "department": "服务端研发",
       "question_bank_ready": true,
       "interview_json_count": 2
-    }
-  ],
-  "notes": [
-    "2026-03-19T21:43 新增美团/即时零售(到家)/服务端研发/Java后端校招两面真实面经JSON（来源：牛客网2024美团到家面经+帅地玩编程美团优选面经聚合），一面12题覆盖Redis/Spring/MySQL/集合/设计模式/手撕，二面7题覆盖JVM/并发/分布式/MySQL深度。",
-    "2026-03-19T21:43 新增快手/电商事业部/服务端研发/Java后端校招三面真实面经JSON（来源：牛客网+CSDN多篇2024快手Java面经聚合），一面11题覆盖集合源码/并发/Redis/MySQL/CMS/手撕，二面5题覆盖项目/负载均衡/MQ/布隆过滤器，三面3题覆盖系统设计/项目深挖。",
-    "2026-03-19T21:43 彻底清洗美团/即时零售/服务端研发题库：从375行机械膨胀压缩至约130行精炼题库，删除数百条重复变体题，保留统一治理框架（第8节），新增面经真题专项（第13节）。",
-    "2026-03-19T21:43 精简美团/即时零售样板JSON：从25KB压缩至3.5KB，删除冗余搜索模板和机械膨胀的insight文本。",
-    "2026-03-19T21:57 已执行 orchestrate tick，拦截脚本回写低水位状态，并在合并远端新增产出后保留更高水位统计，避免调度状态被错误回退。"
-  ],
-  "next_actions": [
+    },
     {
       "company": "字节跳动",
       "business_group": "抖音主站",
       "department": "推荐架构",
-      "role": "后端开发",
-      "action": "search_real_interview_json",
-      "priority": "P2",
-      "status": "pending",
-      "note": "P0/P1已全部完成，推进P2：字节抖音主站推荐架构后端面经"
+      "question_bank_ready": true,
+      "interview_json_count": 1
     },
     {
       "company": "拼多多",
       "business_group": "Temu",
       "department": "服务端",
+      "question_bank_ready": true,
+      "interview_json_count": 1
+    }
+  ],
+  "notes": [
+    "2026-03-19T22:03 新增字节跳动/抖音主站/推荐架构/后端开发校招三面真实面经JSON（来源：牛客网+CSDN+知乎2022-2025年多篇字节抖音后端面经聚合），一面6题覆盖网络/OS/MySQL/Redis/手撕，二面5题覆盖MySQL深度/Kafka/数据结构/手撕，三面4题覆盖OS底层/JVM/网络/MQ。",
+    "2026-03-19T22:03 新增拼多多/Temu/服务端/后端开发校招三面真实面经JSON（来源：牛客网明确标注Temu部门面经+CSDN 2024-2025拼多多秋招面经聚合），一面7题覆盖MySQL深度/volatile/Redis一致性/Java基础/手撕，二面4题覆盖项目深挖/阻塞队列手写/分库分表/复杂度分析，三面主管面。",
+    "2026-03-19T22:03 新增字节跳动/抖音主站/推荐架构题库question-bank.md（8大分类：网络/OS/MySQL/Redis/Kafka/Java/系统设计/手撕代码），含推荐架构方向专项（推荐链路、Feed流、AB实验）。",
+    "2026-03-19T22:03 新增拼多多/Temu/服务端题库question-bank.md（8大分类：MySQL/Redis/Java基础/并发/JVM/场景设计/复杂度分析/手撕代码），含Temu跨境方向专项（多币种、国际化链路）。",
+    "2026-03-19T21:57 已执行 orchestrate tick，拦截脚本回写低水位状态，并在合并远端新增产出后保留更高水位统计，避免调度状态被错误回退。",
+    "2026-03-19T21:43 新增美团/即时零售(到家)/服务端研发/Java后端校招两面真实面经JSON。",
+    "2026-03-19T21:43 新增快手/电商事业部/服务端研发/Java后端校招三面真实面经JSON。",
+    "2026-03-19T21:43 彻底清洗美团/即时零售/服务端研发题库。",
+    "2026-03-19T21:43 精简美团/即时零售样板JSON。"
+  ],
+  "next_actions": [
+    {
+      "company": "快手",
+      "business_group": "商业化",
+      "department": "后端研发",
       "role": "后端开发",
       "action": "search_real_interview_json",
       "priority": "P2",
       "status": "pending",
-      "note": "P2项：拼多多Temu服务端后端面经"
+      "note": "P2项：快手商业化后端面经"
+    },
+    {
+      "company": "百度",
+      "business_group": "文心大模型",
+      "department": "推理平台",
+      "role": "后端开发",
+      "action": "search_real_interview_json",
+      "priority": "P2",
+      "status": "pending",
+      "note": "P2项：百度文心大模型推理平台后端面经"
     }
   ],
   "pending": []

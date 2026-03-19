@@ -1,0 +1,77 @@
+{
+  "company": "腾讯",
+  "business_group": "微信事业群",
+  "department": "基础平台",
+  "role": "客户端开发",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://blog.csdn.net/weixin_42719570/article/details/104966639",
+      "https://blog.csdn.net/weixin_40335368/article/details/115374116",
+      "https://blog.csdn.net/qq_33235287/article/details/137433822",
+      "https://leetcode.cn/discuss/post/3467527/mian-shi-jing-yan-teng-xun-wxgyi-er-mian-ojw4/",
+      "https://chiichen.github.io/posts/%E6%9D%82%E8%B0%88/%E9%9D%A2%E7%BB%8F/%E8%85%BE%E8%AE%AFWXG%E6%97%A5%E5%B8%B8%E5%AE%9E%E4%B9%A0%E9%9D%A2%E7%BB%8F.html",
+      "https://www.iamshuaidi.com/tencent-android"
+    ],
+    "note": "综合2020-2025年腾讯WXG客户端开发多篇真实面经（CSDN、力扣、个人博客），涵盖Android/iOS方向。WXG客户端面试特点：一面超长（可达140分钟），以项目+场景题为主；二面偏基础知识；三面纯项目深挖；面委轮由跨部门总监级面试官考核。微信支付、小程序、公众号等模块的面试官可能交叉面试。"
+  },
+  "interview_rounds": 4,
+  "questions": [
+    {
+      "round": 1,
+      "question": "项目深挖+拓展场景题（约120分钟）：结合你的项目出4-5个场景题让你现场思考和设计方案。",
+      "insight": "WXG客户端一面最大特点是超长项目拷打。面试官不是简单问你做了什么，而是基于你的项目延伸出新的场景让你设计。比如你做过人脸识别项目，面试官会问如何优化识别速度、如何处理弱光环境、如何做端侧模型压缩。准备时要对每个项目想3-5个可能的延伸场景。"
+    },
+    {
+      "round": 1,
+      "question": "介绍传输层业务：一个报文从一端到另一端会经历哪些过程？",
+      "insight": "WXG对网络基础要求很高（微信本身是IM产品）。需要讲清楚：应用层封装→传输层分段（TCP/UDP）→网络层IP封装→数据链路层帧封装→物理层传输→逐层解封装。面试官可能追问TCP拥塞控制、Nagle算法、长连接心跳。"
+    },
+    {
+      "round": 1,
+      "question": "虚函数表是共享的吗？同一个类的不同对象的虚函数表指针指向哪里？",
+      "insight": "WXG客户端（尤其iOS方向）会考C++底层。每个类有自己的一张虚函数表，但同一个类的不同对象共享同一张虚函数表，虚函数表指针（vptr）指向同一个vtable。面试官可能追问多继承下的虚函数表布局、菱形继承问题。"
+    },
+    {
+      "round": 1,
+      "question": "算法题：LFU缓存（LeetCode 460 Hard），要求用set自定义排序实现。",
+      "insight": "WXG一面算法题难度偏高。LFU需要维护频次和时间戳两个维度的排序。用HashMap+自定义排序的set实现，或者用HashMap+双向链表+频次桶。面试官看重代码工程质量和边界处理。"
+    },
+    {
+      "round": 2,
+      "question": "MVC、MVP、MVVM三种架构模式的区别？你在项目中用的是哪种？为什么？",
+      "insight": "WXG二面偏基础知识广度。MVC：Controller臃肿，View和Model耦合；MVP：Presenter解耦View和Model，但Presenter容易膨胀；MVVM：数据绑定自动更新UI，适合复杂交互。微信Android端大量使用MVVM+组件化架构。"
+    },
+    {
+      "round": 2,
+      "question": "七层网络模型，分别有什么协议？HTTP和HTTPS的区别？UDP和TCP的区别？",
+      "insight": "WXG二面网络题覆盖面广。物理层、数据链路层（ARP）、网络层（IP/ICMP）、传输层（TCP/UDP）、会话层、表示层、应用层（HTTP/FTP/DNS）。HTTPS = HTTP + TLS，追问方向：证书验证、对称/非对称加密、中间人攻击防护。"
+    },
+    {
+      "round": 2,
+      "question": "Android事件分发机制是怎样的？滑动冲突如何解决？",
+      "insight": "事件分发三个关键方法：dispatchTouchEvent→onInterceptTouchEvent→onTouchEvent。滑动冲突解决：外部拦截法（父View在onInterceptTouchEvent中判断）和内部拦截法（子View通过requestDisallowInterceptTouchEvent控制）。微信聊天列表+侧滑删除就是典型场景。"
+    },
+    {
+      "round": 2,
+      "question": "Java的四种引用类型？强引用、软引用、弱引用、虚引用分别在什么场景下使用？",
+      "insight": "强引用：普通对象引用，GC不回收；软引用：内存不足时回收，适合缓存；弱引用：下次GC即回收，适合防止内存泄漏（如WeakHashMap）；虚引用：随时可能被回收，用于跟踪对象被GC的时机。Handler内存泄漏的经典解法就是用弱引用持有Activity。"
+    },
+    {
+      "round": 3,
+      "question": "纯项目深挖（约50分钟）：你项目中有什么闪光点？值得你讲的技术亮点是什么？",
+      "insight": "WXG三面完全围绕项目，不问八股。面试官想看你是否真正理解自己做的东西，而不是照着简历念。准备时要想清楚：这个项目的技术难点是什么、你的方案为什么比其他方案好、如果重新做你会怎么改进、这个方案的局限性是什么。"
+    },
+    {
+      "round": 4,
+      "question": "面委轮（面试委员会）：跨部门总监级面试官，黑盒面试。考察综合能力、技术深度和潜力。",
+      "insight": "面委是微信特有的面试轮次，面试官最低总监级别，且跨部门（面试者不知道面试官是谁）。面委会对能力进行再次考核用于定岗定级。问题风格不固定，可能是技术深挖、系统设计、职业规划或开放性问题。有候选人反馈面委会连续安排两场。"
+    },
+    {
+      "round": 2,
+      "question": "算法题：棋盘上马走到某个点的最短走法。",
+      "insight": "BFS经典变体。马的8个方向移动，用BFS求最短路径。注意边界处理和visited数组防止重复访问。WXG二面算法题难度中等，但要求代码完整、逻辑清晰。"
+    }
+  ],
+  "final_insight": "腾讯WXG客户端面试特点：一面超长（100-140分钟），以项目场景题为主，面试官会基于你的项目不断延伸新场景；二面偏基础知识广度（架构模式、网络、语言底层、事件机制）；三面纯项目深挖，看技术亮点和思考深度；面委轮是微信特有的跨部门总监级考核，用于定岗定级。整体风格：项目占七成、基础占三成，非常看重你是否真正理解自己做的东西。iOS方向会额外考C++/OC底层，Android方向会考事件分发、内存优化、性能监控。微信作为IM产品，网络协议（长连接、心跳、弱网优化）是必考项。"
+}

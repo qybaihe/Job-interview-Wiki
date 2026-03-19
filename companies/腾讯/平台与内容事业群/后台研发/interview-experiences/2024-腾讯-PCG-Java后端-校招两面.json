@@ -1,0 +1,103 @@
+{
+  "company": "腾讯",
+  "business_group": "平台与内容事业群",
+  "department": "后台研发",
+  "role": "后端开发",
+  "year": 2024,
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/feed/main/detail/8682e4ae96114b588995ecad345bf31c",
+      "https://www.nowcoder.com/enterprise/138/interview",
+      "https://www.mianshiya.com/question/1850815937968607233"
+    ],
+    "note": "综合2024年牛客网腾讯24校招Java后端一二面面经及面试鸭腾讯PCG Java面经，提取真实面试问题。一面偏Java基础+数据结构+手撕，二面偏项目深挖+分布式+Spring+MySQL。"
+  },
+  "interview_rounds": 2,
+  "rounds": [
+    {
+      "name": "一面",
+      "focus": "Java基础 + 数据结构 + 手撕算法",
+      "duration_min": 55,
+      "questions": [
+        {
+          "question": "自我介绍，然后介绍你最擅长的开发语言？有没有用过Go或Python？",
+          "category": "开场",
+          "insight": "腾讯PCG后台开发技术栈偏Go和C++，即使投Java岗也会问是否了解其他语言。面试官想看技术广度和学习意愿。"
+        },
+        {
+          "question": "Java的垃圾收集（GC）了解吗？谈谈判断条件和回收算法。成熟的垃圾收集器有哪些？启动Java进程时通常配置哪些收集器？",
+          "category": "JVM",
+          "insight": "判断条件：可达性分析（GC Roots）。回收算法：标记-清除、标记-复制、标记-整理。常用收集器：CMS（低延迟）、G1（大堆、可预测停顿）、ZGC（超低延迟）。面试官追问实际配置经验，说明PCG重视工程落地而非纯背诵。"
+        },
+        {
+          "question": "用过Java的线程池吗？讲讲线程池的核心参数和工作流程。",
+          "category": "Java并发",
+          "insight": "7个核心参数：corePoolSize、maximumPoolSize、keepAliveTime、unit、workQueue、threadFactory、handler。工作流程：核心线程→队列→最大线程→拒绝策略。面试官常追问：队列选LinkedBlockingQueue还是SynchronousQueue？拒绝策略怎么选？"
+        },
+        {
+          "question": "HashMap和ConcurrentHashMap的区别？ConcurrentHashMap怎么保证线程安全？",
+          "category": "Java集合",
+          "insight": "JDK7 ConcurrentHashMap用Segment分段锁，JDK8改为CAS+synchronized锁单个桶节点。size()方法：JDK8用baseCount+CounterCell数组，类似LongAdder思路，不加全局锁。"
+        },
+        {
+          "question": "链表反转，要求用递归的方法实现。",
+          "category": "算法/手撕",
+          "insight": "LeetCode 206原题。递归思路：先递归到链表末尾，回溯时反转指针。base case：head==null || head.next==null。时间O(n)空间O(n)。面试官明确要求递归，说明PCG面试会限定解法考察递归思维。"
+        }
+      ]
+    },
+    {
+      "name": "二面",
+      "focus": "项目深挖 + 分布式 + Spring + MySQL",
+      "duration_min": 50,
+      "questions": [
+        {
+          "question": "拷打项目（项目深挖，追问架构设计、技术选型和难点）。",
+          "category": "项目",
+          "insight": "腾讯二面项目深挖是重头戏，面试官会顺着项目一路追问到底层实现。要能讲清楚：为什么这么设计、遇到什么问题、怎么解决的、有没有更好的方案。"
+        },
+        {
+          "question": "两个后端程序通过TCP进行数据传输，是否有可能有数据丢失？",
+          "category": "网络",
+          "insight": "TCP本身保证可靠传输（重传、确认、校验），但应用层仍可能丢数据：接收方read前进程崩溃（内核缓冲区数据丢失）、发送方write后未flush、连接异常断开时发送缓冲区残留数据。面试官考察对TCP可靠性边界的理解深度。"
+        },
+        {
+          "question": "怎么创建一个线程池？线程池参数怎么配置？",
+          "category": "Java并发",
+          "insight": "推荐用ThreadPoolExecutor手动创建，不用Executors工厂方法（避免OOM）。配置原则：CPU密集型→核心数+1，IO密集型→核心数*2。队列大小要有上限，拒绝策略根据业务选择CallerRunsPolicy或自定义。"
+        },
+        {
+          "question": "设置缓存区大小为8，根据最近五分钟访问次数排序，替换次数最少的缓存属于哪种缓存算法？",
+          "category": "数据结构/缓存",
+          "insight": "LFU（Least Frequently Used，最不经常使用）。注意和LRU（最近最少使用）的区别：LRU按时间淘汰，LFU按频率淘汰。'最近五分钟'是时间窗口限定的LFU变体。面试官考察缓存淘汰策略的理解。"
+        },
+        {
+          "question": "介绍一下Spring的事务隔离级别？",
+          "category": "Spring",
+          "insight": "Spring事务隔离级别对应数据库隔离级别：DEFAULT（使用数据库默认）、READ_UNCOMMITTED、READ_COMMITTED、REPEATABLE_READ、SERIALIZABLE。Spring通过@Transactional(isolation=...)设置。面试官常追问：Spring事务传播行为有哪些？REQUIRED和REQUIRES_NEW的区别？"
+        },
+        {
+          "question": "解释一下IoC和AOP？",
+          "category": "Spring",
+          "insight": "IoC（控制反转）：对象创建和依赖注入由容器管理，降低耦合。实现方式：构造器注入、setter注入、字段注入。AOP（面向切面编程）：将横切关注点（日志、事务、权限）从业务逻辑中分离。实现：JDK动态代理（接口）、CGLIB（类）。"
+        },
+        {
+          "question": "MySQL联合索引(a,b,c)相当于创建了哪些索引？什么情况下会走索引，什么情况下不走？",
+          "category": "MySQL",
+          "insight": "相当于创建了(a)、(a,b)、(a,b,c)三个索引。最左匹配原则：where a=1走索引，where a=1 and b=2走索引，where b=2不走索引。范围查询后的列不走索引：where a=1 and b>2 and c=3，c不走索引。面试官常追问：where a=1 and c=3能走索引吗？→只用到a列。"
+        },
+        {
+          "question": "分布式CAP理论了解吗？你的项目里是怎么做取舍的？",
+          "category": "分布式",
+          "insight": "CAP：一致性(Consistency)、可用性(Availability)、分区容错性(Partition tolerance)，三者不可兼得。互联网系统通常选AP（高可用+分区容错），通过最终一致性补偿。面试官追问：你的项目里哪些场景选了CP，哪些选了AP？"
+        }
+      ]
+    }
+  ],
+  "overall_insight": "腾讯PCG 2024校招Java后端面试特点：一面覆盖Java基础（GC、线程池、集合）和手撕算法，难度适中但会限定解法（如要求递归）。二面项目深挖是重头戏，同时覆盖网络底层（TCP可靠性边界）、缓存算法（LFU vs LRU）、Spring框架（事务、IoC、AOP）和MySQL索引。面试官风格灵活，按实际使用场景提问而非纯八股，PCG面试流程极快，一二面可能间隔很短。",
+  "followups": [
+    "可从该面经反向抽题补充PCG题库的缓存算法专项和TCP可靠性边界专项",
+    "后续可补充PCG三面（总监面/HR面）的面经数据"
+  ]
+}

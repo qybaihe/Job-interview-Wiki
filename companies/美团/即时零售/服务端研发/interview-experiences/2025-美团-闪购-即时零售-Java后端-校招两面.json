@@ -1,0 +1,109 @@
+{
+  "company": "美团",
+  "business_group": "即时零售",
+  "department": "服务端研发",
+  "role": "后端开发",
+  "year": 2025,
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://blog.csdn.net/weixin_54118935/article/details/149570157",
+      "https://www.nowcoder.com/feed/main/detail/cab2ca60f7b44cf384770617d75e1c82",
+      "https://www.nowcoder.com/enterprise/179/interview"
+    ],
+    "note": "综合2024-2025年CSDN美团闪购测开面经（含即时零售业务场景题）、牛客网美团日常Java一面二面面经，提取与即时零售/闪购服务端后端开发相关的真实面试问题。一面偏Java基础+八股，二面偏分布式+业务场景。"
+  },
+  "interview_rounds": 2,
+  "rounds": [
+    {
+      "name": "一面",
+      "focus": "Java基础 + 数据库 + Redis + 手撕",
+      "duration_min": 55,
+      "questions": [
+        {
+          "question": "你理解的泛型是什么？解决了什么问题？",
+          "category": "Java基础",
+          "insight": "泛型提供编译期类型检查，避免运行时ClassCastException。解决的问题：类型安全、代码复用、消除强制类型转换。面试官常追问泛型擦除：编译后泛型信息被擦除为Object或上界，所以运行时无法获取泛型实际类型。"
+        },
+        {
+          "question": "Java线程定义了哪些状态？如何流转的？等待和阻塞有什么区别？什么时候进入？",
+          "category": "Java并发",
+          "insight": "6种状态：NEW、RUNNABLE、BLOCKED、WAITING、TIMED_WAITING、TERMINATED。BLOCKED：等待获取synchronized锁。WAITING：调用wait()/join()/LockSupport.park()主动等待。区别：BLOCKED是被动等锁，WAITING是主动放弃CPU等通知。"
+        },
+        {
+          "question": "Java里的反射了解过吗？介绍一下。用反射创建出一个字符串对象要经过几步？",
+          "category": "Java基础",
+          "insight": "反射：运行时获取类信息、调用方法、访问字段。创建字符串对象步骤：1.Class.forName(\"java.lang.String\")获取Class对象 2.getConstructor(String.class)获取构造器 3.newInstance(\"hello\")创建实例。面试官考察反射API的实际使用。"
+        },
+        {
+          "question": "Java基本数据类型有哪些？int多少位？怎么实现一个方法输入int转换成byte数组？",
+          "category": "Java基础",
+          "insight": "8种基本类型：byte(8)/short(16)/int(32)/long(64)/float(32)/double(64)/char(16)/boolean。int转byte数组：通过位移操作，依次取高位到低位的每8位。new byte[]{(byte)(n>>24),(byte)(n>>16),(byte)(n>>8),(byte)n}。"
+        },
+        {
+          "question": "Spring对象注入有哪些方法？除了用注解呢？",
+          "category": "Spring",
+          "insight": "注解方式：@Autowired、@Resource、@Inject。非注解方式：XML配置（<bean>+<property>或<constructor-arg>）、Java Config（@Bean方法参数注入）、setter注入。面试官追问非注解方式说明考察Spring基础功底。"
+        },
+        {
+          "question": "MySQL有什么结构索引，底层是什么？索引失效的情况有哪些？",
+          "category": "MySQL",
+          "insight": "InnoDB默认B+树索引。底层：非叶子节点存key，叶子节点存数据（聚簇索引）或主键（二级索引），叶子节点双向链表连接。索引失效：对索引列使用函数/运算、隐式类型转换、LIKE以%开头、OR条件中有非索引列、不满足最左匹配。"
+        },
+        {
+          "question": "项目里用Redis主要做什么？遇到过什么问题？怎么解决的？",
+          "category": "Redis/项目",
+          "insight": "美团面试喜欢从项目切入Redis。常见场景：缓存热点数据、分布式锁、计数器、排行榜。常见问题：缓存一致性（延迟双删/Canal）、缓存穿透（布隆过滤器）、缓存击穿（互斥锁/永不过期）。要结合项目具体场景回答。"
+        },
+        {
+          "question": "手撕：多线程交替打印问题（如三个线程交替打印ABC）。",
+          "category": "算法/手撕",
+          "insight": "经典并发编程题。方案：1.synchronized+wait/notify 2.ReentrantLock+Condition 3.Semaphore信号量。关键是控制线程执行顺序。美团一面手撕偏实际工程场景。"
+        }
+      ]
+    },
+    {
+      "name": "二面",
+      "focus": "分布式 + 业务场景 + 系统设计",
+      "duration_min": 50,
+      "questions": [
+        {
+          "question": "分布式CAP理论了解吗？在即时零售场景下，订单和库存系统分别倾向CP还是AP？",
+          "category": "分布式",
+          "insight": "订单系统偏CP（不能出现重复下单、支付异常）。库存系统偏AP+最终一致性（允许短时间库存不准，通过异步对账修正）。面试官考察对CAP在真实业务中的取舍理解。"
+        },
+        {
+          "question": "即时零售场景下，下单和扣库存的分布式事务怎么保证？如果消息丢了怎么办？",
+          "category": "分布式事务",
+          "insight": "美团闪购核心场景题。方案：本地消息表+MQ最终一致性。下单服务将订单创建和库存扣减消息写入本地事务表，然后发送到Kafka。库存服务消费消息进行幂等扣减。消息丢失兜底：定时任务扫描本地消息表，重发未确认消息。"
+        },
+        {
+          "question": "如何设计一个高并发的排队系统，如何解决公平性和安全性？",
+          "category": "系统设计",
+          "insight": "即时零售大促场景题。排队系统设计：Redis有序集合（score=进入时间）保证公平性。安全性：限流（令牌桶）、防刷（用户维度频率限制）、幂等（排队token唯一性）。高并发：分桶排队、异步出队、削峰填谷。"
+        },
+        {
+          "question": "深度分页为什么慢？怎么优化？在订单列表场景下怎么处理？",
+          "category": "MySQL",
+          "insight": "LIMIT offset,size需要扫描offset+size行再丢弃前offset行。优化方案：1.游标分页（where id > last_id limit size）2.延迟关联（先查主键再回表）3.搜索引擎（ES）。订单列表场景：按时间倒序+游标分页最常用。"
+        },
+        {
+          "question": "门店库存和平台库存不一致时如何处理？超卖了怎么办？",
+          "category": "业务场景/库存",
+          "insight": "即时零售核心痛点。库存同步：门店POS系统定时/事件驱动同步到平台。超卖处理：1.下单时Redis预扣减+DB最终确认 2.超卖后自动触发缺货取消+用户补偿 3.门店盘点校准。面试官考察对即时零售库存链路的理解。"
+        },
+        {
+          "question": "项目里遇到过什么技术难点？怎么解决的？如果重做一次你会怎么优化？",
+          "category": "项目深挖",
+          "insight": "美团二面必问项目深挖。要讲清楚：问题背景→技术方案→实施过程→最终效果→反思优化。面试官看重的是解决问题的思路和复盘能力，而不是项目本身有多复杂。"
+        }
+      ]
+    }
+  ],
+  "overall_insight": "美团即时零售/闪购方向2025年后端面试特点：一面覆盖Java基础（泛型、反射、线程状态、基本类型）、Spring（注入方式）、MySQL（索引结构与失效）和Redis（项目实际使用），手撕偏并发编程。二面重点考察分布式事务（本地消息表+MQ）、即时零售业务场景（库存一致性、超卖处理、排队系统）和系统设计能力。面试官风格务实，喜欢从项目切入追问技术细节，特别关注即时零售场景下的库存准确性和分布式一致性问题。",
+  "followups": [
+    "可从该面经反向抽题补充即时零售题库的Java基础八股专项",
+    "后续可补充美团闪购三面（主管面）的面经数据",
+    "可继续搜索美团即时零售方向的ETA预估和调度系统面试题"
+  ]
+}

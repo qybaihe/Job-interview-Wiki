@@ -1,0 +1,99 @@
+{
+  "company": "阿里巴巴",
+  "business_group": "淘天集团",
+  "department": "搜推智能产品事业部",
+  "role": "算法（多模态大模型方向）",
+  "source": {
+    "type": "single",
+    "urls": [
+      "https://blog.csdn.net/2401_84033492/article/details/146443533"
+    ],
+    "note": "2025年春招阿里淘天集团搜推智能产品事业部多模态大模型算法岗真实面经，来源CSDN。三轮技术面，一面偏多模态基础模型八股，二面偏Transformer与RLHF深度理解，三面偏项目深挖与行业认知。整体氛围轻松，面试官引导性强。"
+  },
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "round": 1,
+      "question": "介绍一下CLIP。",
+      "insight": "多模态基础高频题。CLIP（Contrastive Language-Image Pre-training）通过对比学习将图像和文本映射到同一嵌入空间，使用图像编码器（ViT/ResNet）和文本编码器（Transformer）分别提取特征，训练目标是最大化匹配图文对的余弦相似度、最小化不匹配对。追问方向：CLIP的zero-shot能力来源、对比学习的温度参数作用。"
+    },
+    {
+      "round": 1,
+      "question": "了解LoRA吗，LoRA微调的原理是什么？",
+      "insight": "大模型微调必考。LoRA（Low-Rank Adaptation）在预训练权重矩阵旁边插入低秩分解矩阵 A·B（r << d），训练时只更新A和B，冻结原始权重。优势：参数量极小（通常<1%）、推理时可合并回原权重无额外延迟。追问：LoRA的秩r如何选择、QLoRA的量化策略。"
+    },
+    {
+      "round": 1,
+      "question": "了解哪些多模态大模型，简要介绍几个。",
+      "insight": "考察知识面广度。常见模型：BLIP/BLIP2（Salesforce）、LLaVA（视觉指令微调）、Qwen-VL（阿里）、InternVL（上海AI Lab）、GPT-4V（OpenAI）。回答时按架构演进线索组织：早期CLIP对比学习→BLIP统一理解生成→LLaVA/Qwen-VL视觉语言对齐→GPT-4o原生多模态。"
+    },
+    {
+      "round": 1,
+      "question": "BLIP的三个损失函数分别是什么，数据是怎样清洗的？",
+      "insight": "BLIP三个损失：ITC（Image-Text Contrastive，对比学习对齐）、ITM（Image-Text Matching，二分类判断图文是否匹配）、LM（Language Modeling，给定图像生成文本描述）。数据清洗：BLIP提出CapFilt方法，用Captioner生成合成描述，用Filter过滤噪声图文对，在web-scale噪声数据上实现自举式清洗。"
+    },
+    {
+      "round": 1,
+      "question": "BLIP2相对于BLIP有哪些改进，BLIP3又有哪些改进？",
+      "insight": "BLIP2核心改进：引入Q-Former（Querying Transformer）作为轻量级桥接模块，用可学习的query tokens从冻结的视觉编码器中提取视觉特征，再输入冻结的LLM。两阶段训练：第一阶段视觉-语言表示学习，第二阶段视觉-语言生成学习。BLIP3（xGen-MM）改进：更大规模数据、更灵活的视觉token压缩、支持交错图文输入。"
+    },
+    {
+      "round": 1,
+      "question": "Qwen-VL的三个训练流程分别是什么，有什么作用？",
+      "insight": "Qwen-VL三阶段训练：(1) 视觉编码器预训练（大规模图文对对齐视觉-语言表示）；(2) 多任务预训练（在图文理解、OCR、定位等多任务上联合训练，解冻全部参数）；(3) 指令微调（SFT阶段，用对话格式数据提升指令跟随能力）。每阶段逐步从通用视觉理解过渡到交互式多模态对话。"
+    },
+    {
+      "round": 1,
+      "question": "视觉编码器和LLM连接时，使用BLIP2中Q-Former那种复杂的Adaptor好还是LLaVA中简单的MLP好？",
+      "insight": "开放讨论题。Q-Former优势：可压缩视觉token数量、信息提取更精细；劣势：训练复杂、引入额外参数。MLP优势：简单高效、端到端训练更稳定、LLaVA实验表明简单线性投影已足够；劣势：视觉token数量多、推理开销大。实践趋势：越来越多工作（LLaVA-1.5、InternVL）倾向简单MLP + 更强视觉编码器。"
+    },
+    {
+      "round": 1,
+      "question": "代码：实现多头自注意力。",
+      "insight": "手撕高频题。核心步骤：(1) 线性投影得到Q/K/V；(2) 按head数拆分；(3) 缩放点积注意力 softmax(QK^T/√d_k)V；(4) 拼接多头输出；(5) 最终线性投影。注意mask处理和维度变换。"
+    },
+    {
+      "round": 2,
+      "question": "了解Transformer吗，编码器和解码器的注意力有什么区别？除以√d_k的原因是什么？",
+      "insight": "编码器用双向自注意力（每个token看到全部上下文），解码器用因果自注意力（mask未来token）+ 交叉注意力（attend到编码器输出）。除以√d_k：当d_k较大时，QK^T的方差为d_k，点积值会很大导致softmax梯度极小（进入饱和区），缩放后方差归一化为1，梯度更稳定。"
+    },
+    {
+      "round": 2,
+      "question": "后来有哪些经典的基于Transformer的语言模型？Qwen相比原始Transformer有哪些结构改动？Qwen2又有哪些改进？",
+      "insight": "经典模型线：BERT（encoder-only）→ GPT系列（decoder-only）→ T5（encoder-decoder）→ LLaMA → Qwen。Qwen改动：RoPE位置编码、SwiGLU激活函数、RMSNorm替代LayerNorm、无bias。Qwen2改进：GQA（Grouped Query Attention）替代MHA降低KV cache开销、滑动窗口注意力、更大训练数据和更长上下文支持。"
+    },
+    {
+      "round": 2,
+      "question": "了解RLHF吗，DPO和PPO有什么区别，Loss是什么样的，各自的优缺点？",
+      "insight": "PPO（Proximal Policy Optimization）：先训练奖励模型，再用RL优化策略模型，需要4个模型（policy/ref/reward/critic），训练复杂但灵活。DPO（Direct Preference Optimization）：直接从偏好数据优化策略，将奖励模型隐式嵌入损失函数 L = -log σ(β(log π(y_w)/π_ref(y_w) - log π(y_l)/π_ref(y_l)))，只需2个模型，训练简单稳定但缺乏在线探索。"
+    },
+    {
+      "round": 2,
+      "question": "介绍一下CLIP，还了解什么其他的对比学习方法？",
+      "insight": "二面再问CLIP说明重视程度。其他对比学习：SimCLR（视觉自监督，数据增强+NT-Xent损失）、MoCo（动量编码器+队列）、ALIGN（噪声图文对大规模对比学习）、SigLIP（用sigmoid替代softmax的对比损失，去除全局归一化）。"
+    },
+    {
+      "round": 2,
+      "question": "开放题：了解哪些多模态大模型，目前多模态大模型最大的问题是什么？",
+      "insight": "考察行业洞察。当前主要问题：(1) 幻觉（生成与图像不符的描述）；(2) 细粒度视觉理解不足（小物体、空间关系、计数）；(3) 视频理解的长序列建模；(4) 训练数据质量与规模的平衡；(5) 推理效率（视觉token过多导致推理慢）。"
+    },
+    {
+      "round": 2,
+      "question": "代码：LeetCode 1143 最长公共子序列。",
+      "insight": "经典DP题。dp[i][j]表示text1前i个字符和text2前j个字符的LCS长度。转移：若text1[i-1]==text2[j-1]则dp[i][j]=dp[i-1][j-1]+1，否则dp[i][j]=max(dp[i-1][j], dp[i][j-1])。时间O(mn)，空间可优化到O(min(m,n))。"
+    },
+    {
+      "round": 3,
+      "question": "详细过项目，了解哪些大模型和多模态大模型，聊大模型发展历程。",
+      "insight": "三面偏宏观认知。发展线索：Transformer(2017) → BERT/GPT(2018-2019) → GPT-3 scaling law(2020) → InstructGPT/ChatGPT RLHF(2022) → GPT-4多模态(2023) → o1推理模型(2024)。多模态线：CLIP → BLIP → LLaVA/Qwen-VL → GPT-4V/o → 原生多模态。面试官关注的是对技术演进脉络的理解深度，而非罗列模型名。"
+    },
+    {
+      "round": 3,
+      "question": "平常有尝试过训练大模型吗？",
+      "insight": "考察动手能力。即使规模小也要能说清楚：用什么框架（HuggingFace Transformers/DeepSpeed/Megatron）、什么数据、什么硬件、遇到什么工程问题（OOM、loss spike、分布式通信）。如果没有完整训练经验，可以聊微调经验（LoRA/QLoRA/全参数SFT）。"
+    }
+  ],
+  "result": "未明确",
+  "year": 2025,
+  "season": "春招"
+}

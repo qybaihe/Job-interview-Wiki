@@ -1,0 +1,130 @@
+{
+  "company": "京东",
+  "business_group": "物流技术",
+  "department": "平台研发",
+  "role": "后端开发",
+  "year": 2025,
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/feed/main/detail/6cf7e2e683a442f4ba66507a70e63486",
+      "https://www.nowcoder.com/enterprise/12305/interview",
+      "https://www.nowcoder.com/discuss/353158423439155200",
+      "https://www.nowcoder.com/discuss/353158996603379712"
+    ],
+    "note": "综合2024-2025年牛客京东物流后端开发校招面经（含京东物流后端一面、京东正式批Java一二面、京东物流Java开发一二面），提取与物流平台研发后端开发相关的真实面试问题。一面偏项目深挖+基础八股，二面偏分布式架构+业务场景+开放性问题。"
+  },
+  "interview_rounds": 2,
+  "rounds": [
+    {
+      "name": "一面",
+      "focus": "项目深挖 + Java基础 + 数据库 + 缓存",
+      "duration_min": 45,
+      "questions": [
+        {
+          "question": "介绍你的项目，下单功能怎么做的？前后端怎么交互？",
+          "category": "项目",
+          "insight": "京东物流一面非常重视项目，面试官会顺着你讲的内容深挖。建议提前准备好项目中的核心链路（下单→支付→履约），讲清楚前后端交互方式（RESTful/RPC）、核心接口设计和异常处理。"
+        },
+        {
+          "question": "缓存和数据库一致性怎么保证？你项目里用了什么方案？",
+          "category": "Redis/缓存",
+          "insight": "常见方案：Cache Aside Pattern（先更新DB再删缓存）、延迟双删、Canal监听binlog异步更新缓存。面试官会追问：删缓存失败怎么办？（重试+MQ补偿）。京东物流订单量大，缓存一致性是实际生产痛点。"
+        },
+        {
+          "question": "缓存穿透、缓存击穿、缓存雪崩分别是什么？怎么解决？",
+          "category": "Redis/缓存",
+          "insight": "穿透：查不存在的数据（布隆过滤器/缓存空值）。击穿：热点key过期瞬间大量请求打到DB（互斥锁/永不过期+异步刷新）。雪崩：大量key同时过期（随机过期时间/多级缓存）。京东物流面试常从项目中的Redis使用切入追问这三个问题。"
+        },
+        {
+          "question": "下单功能有什么需要注意的？并发安全怎么解决？",
+          "category": "项目/并发",
+          "insight": "核心关注：库存超卖（分布式锁/乐观锁/Redis预扣减）、重复下单（幂等设计/唯一订单号）、支付回调异常（状态机+补偿）。面试官期望你结合实际项目讲，不要只说理论。"
+        },
+        {
+          "question": "设计一个限流算法，思路是什么？",
+          "category": "系统设计",
+          "insight": "常见算法：固定窗口、滑动窗口、漏桶、令牌桶。面试官期望你讲清楚每种算法的优缺点和适用场景。令牌桶适合突发流量，漏桶适合平滑限流。京东物流大促场景下限流是核心能力。"
+        },
+        {
+          "question": "IO多路复用机制是怎么样的？select/poll/epoll的区别？",
+          "category": "网络/操作系统",
+          "insight": "select：fd数组有上限（1024），每次调用需要拷贝fd集合到内核。poll：链表存储无上限，但仍需遍历。epoll：红黑树+就绪链表，事件驱动，O(1)获取就绪fd。面试官可能追问epoll的ET和LT模式区别。"
+        },
+        {
+          "question": "MySQL的连接类型有哪些？左连接如果第二张表是空的，输出是什么？",
+          "category": "MySQL",
+          "insight": "连接类型：INNER JOIN、LEFT JOIN、RIGHT JOIN、FULL JOIN、CROSS JOIN。LEFT JOIN第二张表为空时，左表所有行保留，右表字段全部为NULL。这个细节题区分度高，很多人只知道概念不知道边界情况。"
+        },
+        {
+          "question": "栈和队列的区别？除了先进先出/先进后出还有什么？",
+          "category": "数据结构",
+          "insight": "除了访问顺序，还可以从以下角度回答：底层实现（数组/链表）、应用场景（栈：函数调用栈/表达式求值/DFS；队列：BFS/消息队列/任务调度）、变体（双端队列Deque、优先队列PriorityQueue）、时间复杂度。"
+        },
+        {
+          "question": "Spring事务能嵌套吗？事务传播行为有哪些？",
+          "category": "Spring",
+          "insight": "Spring支持7种事务传播行为：REQUIRED（默认，加入当前事务）、REQUIRES_NEW（新建事务）、NESTED（嵌套事务，savepoint）、SUPPORTS、NOT_SUPPORTED、MANDATORY、NEVER。嵌套事务用NESTED，内层回滚不影响外层。面试官常追问@Transactional失效场景（自调用、非public方法、异常被catch）。"
+        },
+        {
+          "question": "JVM内存模型？堆区和栈区的区别？",
+          "category": "JVM",
+          "insight": "堆：存对象实例，线程共享，GC管理。栈：存局部变量和方法调用帧，线程私有，自动分配释放。面试官可能追问：方法区/元空间存什么？字符串常量池在哪？"
+        }
+      ]
+    },
+    {
+      "name": "二面",
+      "focus": "分布式架构 + 业务场景 + DDD + 开放性问题",
+      "duration_min": 40,
+      "questions": [
+        {
+          "question": "你们公司的异常处理框架是怎么样的？全局异常处理怎么做？",
+          "category": "工程实践",
+          "insight": "Java/Spring项目：@ControllerAdvice + @ExceptionHandler全局捕获。Go项目：middleware统一recover。面试官考察你对生产级异常处理的理解：异常分类（业务异常/系统异常）、错误码规范、日志记录、告警联动。"
+        },
+        {
+          "question": "DDD领域驱动设计了解吗？在物流场景下怎么划分领域？",
+          "category": "架构设计",
+          "insight": "DDD核心概念：限界上下文、聚合根、实体、值对象、领域事件。物流场景划分：订单域、库存域、履约域、运单域、结算域。面试官考察你对复杂业务建模的能力。京东物流二面高频题，建议提前准备。"
+        },
+        {
+          "question": "如何对10亿个数据进行排序？",
+          "category": "系统设计/算法",
+          "insight": "外部排序：将数据分块加载到内存排序，再多路归并。具体方案：1.分成N个小文件，每个文件内存排序 2.用最小堆做K路归并 3.输出到结果文件。面试官可能追问：如果内存只有1GB怎么办？如何优化IO？"
+        },
+        {
+          "question": "某个材料需要进行多项审批，这个流程会用到什么设计模式？",
+          "category": "设计模式",
+          "insight": "责任链模式（Chain of Responsibility）：每个审批节点是一个Handler，依次传递。也可以用状态模式（State Pattern）管理审批状态流转。面试官提示了责任链模式，说明京东物流内部审批流程用到了这个模式。"
+        },
+        {
+          "question": "volatile关键字的作用？和synchronized有什么区别？",
+          "category": "Java并发",
+          "insight": "volatile：保证可见性和禁止指令重排序，不保证原子性。synchronized：保证可见性、原子性和有序性。区别：volatile是轻量级同步，适合状态标志位；synchronized是重量级锁，适合临界区保护。面试官可能追问：DCL单例为什么需要volatile？"
+        },
+        {
+          "question": "大模型相关的开放性问题：你对大模型在物流场景的应用有什么看法？",
+          "category": "开放性问题",
+          "insight": "京东物流二面会问大模型相关的开放性问题。可以从以下角度回答：智能客服（对话式查件）、路径规划优化（结合LLM做多约束求解）、仓储拣货策略优化、异常订单智能分类。不需要深入技术细节，展示思考广度即可。"
+        },
+        {
+          "question": "servlet的生命周期？",
+          "category": "Java Web",
+          "insight": "init()→service()→destroy()。init()在第一次请求时调用（或配置load-on-startup提前加载），service()处理每次请求（根据HTTP方法分发到doGet/doPost），destroy()在容器关闭时调用。虽然现在Spring Boot很少直接用Servlet，但底层原理仍是面试考点。"
+        },
+        {
+          "question": "如果让你设计一个物流订单状态流转系统，你会怎么做？",
+          "category": "系统设计",
+          "insight": "核心设计点：1.状态机建模（有限状态机FSM，定义合法状态转移） 2.事件驱动（MQ推送状态变更事件） 3.幂等保证（状态+版本号防重复流转） 4.异常处理（卡单检测+人工干预入口） 5.可观测性（状态流转日志+监控告警）。京东物流面试高频系统设计题。"
+        }
+      ]
+    }
+  ],
+  "overall_insight": "京东物流后端开发2024-2025校招面试特点：一面以项目深挖为主，面试官会顺着你讲的项目追问技术细节（缓存一致性、并发安全、数据库），不会刻意为难，体验较好。二面偏架构和开放性问题，DDD领域驱动设计是高频考点，同时会问大模型在物流场景的应用等开放性问题。整体风格务实，不压力面试，面试官会引导你回答。京东物流特别关注：订单状态流转、缓存与数据库一致性、限流设计、DDD建模能力。",
+  "followups": [
+    "可继续搜索京东物流社招高级工程师面经，补充架构设计和稳定性建设方向",
+    "可补充京东物流三面（主管面/HR面）的面经数据",
+    "可从该面经反向抽题补充物流平台题库的DDD和大模型应用专项"
+  ]
+}

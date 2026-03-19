@@ -1,0 +1,113 @@
+{
+  "company": "百度",
+  "business_group": "核心搜索",
+  "department": "推荐策略",
+  "role": "算法",
+  "year": 2025,
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/feed/main/detail/f22e75e6112f4595b7448f1de39a0159",
+      "https://www.nowcoder.com/discuss/353156673047044096",
+      "https://www.nowcoder.com/discuss/581545"
+    ],
+    "note": "综合牛客网百度推荐算法实习一二面面经、百度推荐策略部二面面经、百度算法三面面经(已offer)，提取两轮面试真实问题。一面偏ML基础+Transformer+推荐评估指标，二面偏项目深挖+因果推断+评估指标+手撕。百度推荐策略实习面试近年重心从传统ML转向深度学习模型理解和推荐系统评估能力。"
+  },
+  "interview_rounds": 2,
+  "rounds": [
+    {
+      "name": "一面",
+      "focus": "ML基础 + Transformer + 推荐系统 + 评估指标",
+      "duration_min": 60,
+      "questions": [
+        {
+          "question": "介绍自己的项目，项目相关问题（方法/论文的创新点在哪）",
+          "category": "项目",
+          "insight": "百度推荐策略一面开场必问项目，面试官会追问论文创新点和实验设计。准备好用一句话概括核心贡献，再展开技术细节。"
+        },
+        {
+          "question": "协方差和相关系数是什么？它们的关系是什么？",
+          "category": "数学基础",
+          "insight": "协方差衡量两个变量的线性相关程度，Cov(X,Y)=E[(X-μX)(Y-μY)]。相关系数=Cov(X,Y)/(σX·σY)，是标准化后的协方差，取值[-1,1]。相关系数消除了量纲影响，更适合比较不同变量对之间的相关强度。"
+        },
+        {
+          "question": "L1范数和L2范数的区别？",
+          "category": "机器学习基础",
+          "insight": "L1（Lasso）：参数绝对值之和，产生稀疏解（特征选择），在坐标轴上有尖角使得部分权重精确为0。L2（Ridge）：参数平方和，使权重趋近于0但不等于0，防止过拟合。L1适合高维稀疏特征，L2适合特征都有用但需要防止过大权重的场景。"
+        },
+        {
+          "question": "谈谈Sigmoid和ReLU，ReLU函数在0点的梯度怎么处理？",
+          "category": "深度学习基础",
+          "insight": "Sigmoid：输出(0,1)，梯度消失问题严重（两端饱和区梯度趋近0）。ReLU：x>0时梯度为1，解决梯度消失；x<0时梯度为0（Dead ReLU问题）。0点梯度工程上通常设为0或1（次梯度），实际训练中恰好等于0的概率极低。变体：LeakyReLU在x<0时给小斜率。"
+        },
+        {
+          "question": "Transformer和RNN的区别？",
+          "category": "深度学习模型",
+          "insight": "核心区别：RNN顺序处理无法并行，Transformer通过Self-Attention并行处理全序列。Transformer捕获长距离依赖更强（Attention直接连接任意位置），RNN依赖隐状态传递会信息衰减。Transformer计算复杂度O(n²d)，RNN为O(nd²)，序列短时Transformer更快。"
+        },
+        {
+          "question": "谈谈Transformer多头注意力机制，多头注意力和普通注意力的区别？从普通注意力换成多头注意力会导致参数暴涨吗？",
+          "category": "深度学习模型",
+          "insight": "多头注意力：将Q/K/V分成h个头，每个头维度d_k=d_model/h，各头独立做Attention后拼接再线性变换。参数量：单头Attention需要3个d×d矩阵+1个输出矩阵=4d²；多头同样是4d²（因为每个头维度缩小了h倍，h个头加起来总参数不变）。所以参数不会暴涨，但多头能从不同子空间捕获不同语义关系。"
+        },
+        {
+          "question": "Transformer可以并行训练吗？Transformer可以处理双向输入吗？",
+          "category": "深度学习模型",
+          "insight": "训练时：Encoder可以完全并行（所有位置同时计算Attention）；Decoder用Teacher Forcing也可以并行（用mask遮住未来位置）。推理时Decoder必须自回归逐步生成。双向输入：Encoder天然双向（BERT），Decoder通过causal mask只能看左侧（GPT）。"
+        },
+        {
+          "question": "了解哪些工业界在用的推荐系统？",
+          "category": "推荐系统",
+          "insight": "典型系统：YouTube DNN（召回+排序两阶段）、阿里DIN/DIEN（用户兴趣建模）、美团多目标排序、抖音推荐（多目标+多场景）。工业界通用架构：召回→粗排→精排→重排，每层模型和特征不同。面试官考察你对工业推荐系统的整体认知。"
+        },
+        {
+          "question": "了解AUC吗？讲讲NDCG。除了序列推荐，推荐系统还有哪些topic？",
+          "category": "评估指标",
+          "insight": "AUC：ROC曲线下面积，衡量模型区分正负样本的能力，等价于随机正样本得分高于随机负样本的概率。NDCG：归一化折损累积增益，考虑排序位置的加权（位置越靠前权重越大），适合评估排序质量。推荐topic：协同过滤、基于内容推荐、知识图谱推荐、多目标优化、冷启动、Bandit探索、因果推断去偏、对话式推荐、跨域推荐。"
+        },
+        {
+          "question": "手撕：Leetcode 74 搜索二维矩阵",
+          "category": "算法",
+          "insight": "矩阵每行递增且下一行首元素大于上一行末元素，可展开为一维有序数组做二分查找。坐标映射：mid→matrix[mid/n][mid%n]。时间O(log(m*n))。也可以从右上角出发做Z字搜索O(m+n)。"
+        }
+      ]
+    },
+    {
+      "name": "二面",
+      "focus": "项目深挖 + 因果推断 + 评估指标 + 手撕",
+      "duration_min": 60,
+      "questions": [
+        {
+          "question": "介绍项目，深挖项目细节",
+          "category": "项目",
+          "insight": "二面项目追问更深入，会问实验设计、baseline对比、消融实验结论。如果做过因果推断相关工作会被重点追问。"
+        },
+        {
+          "question": "讲讲因果推断（候选人有相关研究方向）",
+          "category": "因果推断",
+          "insight": "推荐系统中因果推断用于去除混杂偏差（如位置偏差、流行度偏差）。常见方法：IPW（逆倾向加权）、Doubly Robust、因果图/do-calculus、反事实推理。百度搜索推荐团队近年关注因果推断在去偏和策略评估中的应用。"
+        },
+        {
+          "question": "讲讲Recall、MRR和NDCG",
+          "category": "评估指标",
+          "insight": "Recall@K：前K个结果中命中的正样本占所有正样本的比例，衡量召回覆盖度。MRR（Mean Reciprocal Rank）：第一个正确结果排名的倒数的均值，适合只关心第一个正确答案的场景（如问答、导航型搜索）。NDCG：考虑所有位置的相关性加权，适合多级相关性评估。三者侧重不同：Recall看覆盖，MRR看首个命中位置，NDCG看整体排序质量。"
+        },
+        {
+          "question": "手撕：二叉搜索树转为有序数组",
+          "category": "算法",
+          "insight": "BST中序遍历即为有序序列。递归写法：inorder(root.left)→收集root.val→inorder(root.right)。迭代写法：用栈模拟，先一路向左压栈，弹出时收集值再转向右子树。时间O(n)，空间O(h)。"
+        },
+        {
+          "question": "概率题：男性得色盲的概率是5%，女性得色盲的概率是0.25%，求一个人是色盲的前提下是男性的概率",
+          "category": "概率统计",
+          "insight": "贝叶斯公式：P(男|色盲)=P(色盲|男)P(男)/P(色盲)。假设P(男)=P(女)=0.5，P(色盲)=0.05×0.5+0.0025×0.5=0.02625。P(男|色盲)=0.025/0.02625≈95.2%。百度推荐策略面试常考概率题，考察贝叶斯思维。"
+        }
+      ]
+    }
+  ],
+  "overall_insight": "百度核心搜索推荐策略算法实习面试两轮，节奏紧凑。一面覆盖ML基础（L1/L2、激活函数）、Transformer细节（多头注意力参数量、并行性、双向性）、推荐系统认知和评估指标（AUC/NDCG），手撕中等难度。二面偏项目深挖和因果推断等前沿方向，评估指标会更细致地追问Recall/MRR/NDCG的区别和适用场景，概率题考贝叶斯公式。整体风格注重基础功底和对推荐系统的系统性理解，不只考模型八股，更看重你能否把知识串联起来。",
+  "followups": [
+    "可从该面经反向补充百度推荐策略题库的因果推断去偏专题",
+    "后续可补充百度搜索推荐方向的大模型+推荐结合面经"
+  ]
+}

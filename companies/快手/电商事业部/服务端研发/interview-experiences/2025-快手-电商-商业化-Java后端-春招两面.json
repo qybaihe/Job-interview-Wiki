@@ -1,0 +1,118 @@
+{
+  "company": "快手",
+  "business_group": "电商事业部",
+  "department": "服务端研发",
+  "role": "后端开发",
+  "year": 2025,
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/feed/main/detail/56c3c6e07c9848dca76820a9a41a36c0",
+      "https://www.nowcoder.com/feed/main/detail/c3a36a8e0c774ac0a1bca12630ebd7f3",
+      "https://www.nowcoder.com/feed/main/detail/dc39fc4dfad64839b25d33c2f54b418f"
+    ],
+    "note": "综合牛客网2025春招快手商业部门Java后端二面面经（2025.03.20）和快手Java后端开发工程师一二三面经，提取两轮面试真实问题。一面偏Java基础八股（Integer缓存、equals/hashCode、单例模式、volatile、索引失效、深浅拷贝），二面偏项目深挖（流量回放AOP、Java Agent、ES选型、特征搜集）。快手2025春招商业部门Java后端面试风格：一面不看简历直接考最基础的Java知识，二面基本全程问项目。"
+  },
+  "interview_rounds": 2,
+  "rounds": [
+    {
+      "name": "一面",
+      "focus": "Java基础 + MySQL + 并发 + 手撕",
+      "duration_min": 60,
+      "questions": [
+        {
+          "question": "Int和Integer区别？Int a = 1000, Integer b = 1000; a == b 是false还是true？",
+          "category": "Java基础",
+          "insight": "int是基本类型，Integer是包装类。a==b时Integer会自动拆箱为int比较，所以是true。但如果两个都是Integer：Integer a=1000, Integer b=1000; a==b是false（超出-128~127缓存范围，是两个不同对象）。Integer缓存池（IntegerCache）范围-128~127，这个范围内的Integer对象会被复用。"
+        },
+        {
+          "question": "==和equals()区别？equals()和hashCode()需要同时重写的原因？",
+          "category": "Java基础",
+          "insight": "==比较引用地址（基本类型比较值），equals()默认也是比较地址（Object实现），但String等类重写了equals比较内容。必须同时重写的原因：HashMap等集合先用hashCode定位桶，再用equals判断相等。如果只重写equals不重写hashCode，两个equals为true的对象可能落在不同桶里，导致HashMap行为异常（put进去get不出来）。契约：equals相等→hashCode必须相等；hashCode相等→equals不一定相等。"
+        },
+        {
+          "question": "Object中wait()和notify()的作用？Thread中sleep()和wait()的区别？",
+          "category": "Java并发",
+          "insight": "wait()释放锁并进入等待状态，notify()唤醒一个等待线程。sleep() vs wait()：sleep()不释放锁，wait()释放锁；sleep()是Thread静态方法，wait()是Object方法；sleep()时间到自动恢复，wait()需要notify/notifyAll唤醒；wait()必须在synchronized块中调用。"
+        },
+        {
+          "question": "手写单例模式，为什么要用volatile？",
+          "category": "设计模式",
+          "insight": "双重检查锁（DCL）单例需要volatile修饰instance。原因：new操作分三步（1.分配内存 2.初始化对象 3.引用指向内存），JVM可能指令重排为1→3→2，导致其他线程拿到未初始化的对象。volatile禁止指令重排，保证可见性和有序性。"
+        },
+        {
+          "question": "索引失效的场景有哪些？",
+          "category": "MySQL",
+          "insight": "常见索引失效场景：1.对索引列使用函数/计算（WHERE YEAR(create_time)=2024）2.隐式类型转换（varchar列用int查询）3.LIKE以%开头 4.联合索引不满足最左前缀 5.OR条件中有非索引列 6.NOT IN/NOT EXISTS 7.IS NULL/IS NOT NULL（取决于数据分布）8.优化器判断全表扫描更快时。"
+        },
+        {
+          "question": "深拷贝和浅拷贝的区别？",
+          "category": "Java基础",
+          "insight": "浅拷贝：复制对象本身，但引用类型字段仍指向原对象（共享引用）。深拷贝：递归复制所有引用类型字段，完全独立。实现深拷贝：1.序列化/反序列化 2.递归clone 3.JSON转换（Jackson/Gson）。Java的Object.clone()默认是浅拷贝。"
+        },
+        {
+          "question": "手撕：遍历一次，翻转从第m到第n个链表节点",
+          "category": "算法",
+          "insight": "Leetcode 92 反转链表II。一次遍历：用dummy节点，先走到第m-1个节点（pre），然后用头插法依次将m+1到n的节点插到pre后面。关键：维护pre、cur、next三个指针，每次将cur.next摘出插到pre后面，循环n-m次。时间O(n)空间O(1)。"
+        },
+        {
+          "question": "SQL题：表有学生名、科目名、成绩三列。1）查找学生名字和成绩总和；2）查找张姓学生的名字和最高成绩",
+          "category": "SQL",
+          "insight": "1) SELECT 学生名, SUM(成绩) FROM 表 GROUP BY 学生名; 2) SELECT 学生名, MAX(成绩) FROM 表 WHERE 学生名 LIKE '张%' GROUP BY 学生名; 快手一面SQL题难度不高，但要求写得准确无误，注意GROUP BY和聚合函数的配合。"
+        }
+      ]
+    },
+    {
+      "name": "二面",
+      "focus": "项目深挖 + 技术选型 + 中间件",
+      "duration_min": 60,
+      "questions": [
+        {
+          "question": "面试官部门介绍 + 自我介绍，追问部门具体业务",
+          "category": "项目",
+          "insight": "快手二面开场面试官会先介绍自己部门业务（商业化/电商/广告），然后让你自我介绍。面试官会根据你的经历选择深挖方向。"
+        },
+        {
+          "question": "讲一下实习经历，流量回放为什么要用AOP？如果不使用Spring框架，有其他实现思路吗？了解Java Agent吗？",
+          "category": "项目深挖",
+          "insight": "AOP实现业务无入侵的流量录制/回放。不用Spring的替代方案：Java Agent（通过Instrumentation API在类加载时修改字节码）、AspectJ编译期织入、动态代理（JDK Proxy/CGLIB）。Java Agent可以在不修改源码的情况下增强任意类，适合APM、链路追踪、流量录制等场景。面试官考察你对AOP本质的理解深度。"
+        },
+        {
+          "question": "为什么选用ES做持久化，不能用DB或者HBase吗？",
+          "category": "技术选型",
+          "insight": "ES优势：原生分布式、支持PB级数据、全文检索+结构化查询、近实时搜索。DB（MySQL）：延迟不满足要求，单表数据量大时性能下降。HBase：能用但会引入新的外部依赖，且HBase更适合随机读写而非复杂查询。选型要结合具体场景：数据量、查询模式、延迟要求、运维成本。"
+        },
+        {
+          "question": "特征搜集数据量有多大？数据链路怎么设计的？",
+          "category": "项目深挖",
+          "insight": "面试官追问数据规模和链路设计。要能说清楚：日数据量级（百万/千万/亿级）、采集方式（SDK埋点/日志采集/Kafka）、存储选型（ES/ClickHouse/Hive）、实时vs离线链路、数据质量保障（去重/校验/补偿）。"
+        },
+        {
+          "question": "创建线程的方式有哪些？怎么用Runnable实现Callable的功能？",
+          "category": "Java并发",
+          "insight": "创建线程：1.继承Thread 2.实现Runnable 3.实现Callable+FutureTask 4.线程池。Runnable实现Callable功能：用FutureTask包装，或者自己封装一个带返回值的Runnable（通过共享变量/AtomicReference存结果）。本质区别：Callable有返回值和异常声明，Runnable没有。"
+        },
+        {
+          "question": "阻塞队列有哪些？底层是链表/数组的阻塞队列怎么上锁？",
+          "category": "Java并发",
+          "insight": "常见阻塞队列：ArrayBlockingQueue（数组，有界，一把ReentrantLock）、LinkedBlockingQueue（链表，可选有界，两把锁putLock/takeLock）、PriorityBlockingQueue（堆，无界）、SynchronousQueue（无容量，直接传递）、DelayQueue（延迟元素）。ArrayBlockingQueue用一把锁+两个Condition（notEmpty/notFull），LinkedBlockingQueue用两把锁提高并发度（生产和消费可以同时进行）。"
+        },
+        {
+          "question": "ThreadLocal的作用及可能的危害？ThreadLocal底层原理？",
+          "category": "Java并发",
+          "insight": "作用：线程隔离的局部变量，典型场景：数据库连接、用户上下文、日期格式化。危害：线程池中线程复用导致ThreadLocal值残留（数据污染）、内存泄漏（ThreadLocalMap的Entry是弱引用key但强引用value，key被GC后value无法回收）。底层：每个Thread持有一个ThreadLocalMap，key是ThreadLocal对象（弱引用），value是存储的值。使用后必须调用remove()。"
+        },
+        {
+          "question": "HashMap和ConcurrentHashMap的底层区别？Java里面有哪些锁，它们的区别？synchronized关键字原理？",
+          "category": "Java并发",
+          "insight": "HashMap非线程安全，ConcurrentHashMap JDK8用CAS+synchronized锁Node。锁分类：乐观锁/悲观锁、公平锁/非公平锁、可重入锁/不可重入锁、共享锁/排他锁、偏向锁/轻量级锁/重量级锁。synchronized原理：对象头Mark Word中的锁标志位，锁升级过程：无锁→偏向锁（单线程）→轻量级锁（CAS自旋）→重量级锁（OS Mutex）。"
+        }
+      ]
+    }
+  ],
+  "overall_insight": "快手2025春招商业部门（电商/广告）Java后端面试两轮。一面特点鲜明：不看简历，直接考最基础的Java知识（Integer缓存、equals/hashCode、wait/sleep、单例volatile、索引失效、深浅拷贝），手撕链表+SQL，难度不高但要求准确。二面风格转变为基本全程问项目，深挖技术选型（AOP vs Java Agent、ES vs DB vs HBase）、数据链路设计，穿插Java并发深度题（阻塞队列上锁机制、ThreadLocal原理、锁升级）。整体节奏快，面试官务实，注重工程理解而非纯八股背诵。",
+  "followups": [
+    "可从该面经反向补充快手电商题库的Java Agent和字节码增强专题",
+    "后续可补充快手商业化方向的广告系统和计费链路面试题"
+  ]
+}

@@ -107,6 +107,26 @@
 - 直播间刷单/薅羊毛的风控策略？用户维度、设备维度、IP维度的限购怎么实现？
 - 优惠叠加规则引擎设计：满减+折扣+优惠券如何计算最优组合？
 
+## Java Agent与字节码增强专题（真实面经高频）
+
+> 来源：牛客2025春招快手商业部门Java后端二面面经，面试官从AOP追问到Java Agent。
+
+### Java Agent基础
+- Java Agent是什么？和Spring AOP有什么本质区别？
+- Java Agent的两种加载方式：premain（启动时）和agentmain（运行时attach）分别适合什么场景？
+- Instrumentation API的核心方法？addTransformer和retransformClasses分别做什么？
+- Java Agent在生产环境中的典型应用：APM（SkyWalking/Pinpoint）、链路追踪、流量录制回放、热修复。
+
+### 字节码增强
+- 常见字节码操作框架：ASM、Javassist、ByteBuddy的区别和适用场景？
+- ByteBuddy为什么在Java Agent场景中更流行？（API友好、性能好、支持Java新版本）
+- 字节码增强和JDK动态代理/CGLIB代理的区别？为什么Agent场景不能用Spring AOP？
+- 如果不使用Spring框架，实现业务无入侵的流量录制有哪些方案？（Java Agent + ByteBuddy、AspectJ编译期织入、ServiceMesh Sidecar）
+
+### 追问链路
+- AOP原理 → JDK动态代理 vs CGLIB → 为什么Spring AOP不能增强非Spring管理的类 → Java Agent可以 → Instrumentation API → 字节码增强框架选型
+- 流量回放为什么用AOP → 不用Spring怎么做 → Java Agent → premain vs agentmain → 生产环境attach的风险
+
 ## JVM与性能调优专题（真实面经高频）
 - G1垃圾回收的过程？初始标记→并发标记→最终标记→筛选回收各阶段做了什么？（快手一面真实原题）
 - G1和CMS的区别？为什么快手选择G1？Region划分的优势？

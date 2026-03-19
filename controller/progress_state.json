@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-19T13:05:00+00:00",
+  "generated_at": "2026-03-19T13:10:00+00:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
@@ -61,83 +61,6 @@
       "department": "服务端",
       "question_bank_ready": true,
       "interview_json_count": 3
-    },
-    {
-      "company": "京东",
-      "business_group": "零售技术",
-      "department": "后端研发",
-      "question_bank_ready": true,
-      "interview_json_count": 4
-    },
-    {
-      "company": "百度",
-      "business_group": "智能云",
-      "department": "基础架构",
-      "question_bank_ready": true,
-      "interview_json_count": 4
-    },
-    {
-      "company": "快手",
-      "business_group": "电商事业部",
-      "department": "服务端研发",
-      "question_bank_ready": true,
-      "interview_json_count": 3
-    },
-    {
-      "company": "腾讯",
-      "business_group": "平台与内容事业群",
-      "department": "后台研发",
-      "question_bank_ready": true,
-      "interview_json_count": 3
-    },
-    {
-      "company": "阿里巴巴",
-      "business_group": "淘天集团",
-      "department": "搜广推",
-      "question_bank_ready": true,
-      "interview_json_count": 2
-    },
-    {
-      "company": "美团",
-      "business_group": "到家事业群",
-      "department": "服务端研发",
-      "question_bank_ready": true,
-      "interview_json_count": 2
-    },
-    {
-      "company": "阿里巴巴",
-      "business_group": "阿里云",
-      "department": "基础架构",
-      "question_bank_ready": true,
-      "interview_json_count": 2
-    },
-    {
-      "company": "京东",
-      "business_group": "物流技术",
-      "department": "平台研发",
-      "question_bank_ready": true,
-      "interview_json_count": 3
-    },
-    {
-      "company": "百度",
-      "business_group": "核心搜索",
-      "department": "推荐策略",
-      "question_bank_ready": true,
-      "interview_json_count": 2
-    },
-    {
-      "company": "快手",
-      "business_group": "主站业务",
-      "department": "推荐算法",
-      "question_bank_ready": true,
-      "interview_json_count": 2
-    },
-    {
-      "company": "拼多多",
-      "business_group": "多多买菜",
-      "department": "服务端",
-      "question_bank_ready": true,
-      "interview_json_count": 2
     }
   ],
   "notes": [
@@ -162,7 +85,8 @@
     "2026-03-19T20:43 新增拼多多/多多买菜/服务端/后端开发校招两面真实面经JSON（来源：牛客、CSDN、博客园、SegmentFault多篇2023-2025面经聚合），含13道真实面试题，覆盖HashMap/ConcurrentHashMap、CAS、ThreadLocal、RocketMQ、分布式锁、逃逸分析、TOP K、秒杀设计、概率题等。",
     "2026-03-19T20:43 补强快手/主站业务/推荐算法题库，新增面经真题专项（第9节），含项目深挖、模型算法、召回基础、手撕代码共4个子节15+题。",
     "2026-03-19T20:43 补强拼多多/多多买菜/服务端题库，新增面经真题专项（第14节），含Java集合并发、JVM、中间件、网络、场景设计、手撕代码共6个子节18+题。",
-    "2026-03-19T21:05 已继续强化快手 / 主站业务 / 推荐算法题库，将点击率、完播率、冷启动、流量扶持、审核联动与异常放量回滚等分散问题进一步收敛为内容主状态、探索预算与生态止损统一治理框架。"
+    "2026-03-19T21:05 已继续强化快手 / 主站业务 / 推荐算法题库，将点击率、完播率、冷启动、流量扶持、审核联动与异常放量回滚等分散问题进一步收敛为内容主状态、探索预算与生态止损统一治理框架。",
+    "2026-03-19T21:10 已继续强化字节跳动 / 抖音电商 / 商业化技术 / 后端开发题库，将预算扣减、状态机、审核回流、灰度发布、修数回放与代理商代投等重复问题进一步收敛为商业化资金真相、发布治理与恢复期止损统一框架。"
   ],
   "next_actions": [
     {

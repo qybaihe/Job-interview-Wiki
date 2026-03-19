@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-20T07:04:00+08:00",
+  "generated_at": "2026-03-20T07:24:00+08:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 101,
+    "completed": 103,
     "companies_seeded": 8,
     "question_banks_filled": 13,
-    "interview_json_count": 77
+    "interview_json_count": 79
   },
   "queues": {
     "priority_companies": [
@@ -32,7 +32,7 @@
       "business_group": "抖音电商",
       "department": "商业化技术",
       "question_bank_ready": true,
-      "interview_json_count": 7
+      "interview_json_count": 8
     },
     {
       "company": "腾讯",
@@ -102,7 +102,7 @@
       "business_group": "到家事业群",
       "department": "服务端研发",
       "question_bank_ready": true,
-      "interview_json_count": 4
+      "interview_json_count": 5
     },
     {
       "company": "阿里巴巴",
@@ -183,12 +183,12 @@
     }
   ],
   "notes": [
-    "2026-03-20T07:04 补强字节跳动/抖音电商/商业化技术后端题库question-bank.md，新增「后端×算法共性题交叉索引（去重清洗）」专题，系统梳理后端和算法两份题库中6大重叠主题（广告链路、竞价机制、预算Pacing、反作弊、频次控制、素材审核），标注各自侧重点差异和去重建议，附独有高频题对照表和面试准备建议。",
-    "2026-03-20T07:04 补强阿里巴巴/淘天集团/搜广推算法题库question-bank.md，新增「搜索广告专题（阿里妈妈直通车/搜索广告方向）」18题（编号132-149），覆盖搜索广告vs信息流广告区别（3题）、搜索广告召回两阶段架构（3题）、LLM在搜索广告中的应用（3题）、CTR模型稠密化Deeper方向（3题）、多模态Embedding应用（3题）、搜索广告系统设计题（3题）。来源：阿里妈妈搜索广告2024大模型思考与实践、阿里妈妈搜索广告预估模型2021实践、牛客面经、GitHub仓库。",
-    "2026-03-20T06:44 新增京东/零售技术/产研/后端开发春招三面面经JSON（来源：牛客网2025春招京东零售产研后端开发面经已OC），三面覆盖手撕算法（三选一）、ZooKeeper选型、protobuf序列化优势与原理、TCP粘包拆包、项目深挖（HashMap/多线程/JVM调优）、HRBP面。京东零售面经从6份扩展到7份。",
-    "2026-03-20T06:44 新增百度/智能云/基础平台/后端开发校招社招两面面经JSON（来源：牛客百度社招话题+百度秋招面经+CSDN百度智能云面经），两面覆盖HashMap+ConcurrentHashMap分段锁追问链路、微服务架构设计、protobuf选型、TCP拥塞控制、K8s扩缩容、Docker多阶段构建、工厂方法模式、CI/CD pipeline、配置中心容灾、服务治理平台设计。百度智能云面经从6份扩展到7份。",
-    "2026-03-20T06:44 补强百度/智能云/基础架构题库question-bank.md，新增云原生工程实践专题（16题），覆盖Docker镜像优化（4题）、K8s扩缩容与调度（4题）、CI/CD工程素养（4题）、追问链路（3条）。",
-    "2026-03-20T06:44 补强京东/零售技术/后端研发题库question-bank.md，新增网络协议与序列化专题（17题），覆盖序列化协议选型（4题）、TCP协议深挖（4题）、分布式协调与服务发现（4题）、集合框架与面向接口编程（4题）、追问链路（3条）。"
+    "2026-03-20T07:24 新增字节跳动/抖音电商/商业化技术/Go后端社招三面面经JSON（来源：CSDN+牛客+腾讯云开发者社区多篇字节商业化Go后端社招面经综合），三面覆盖Go语言深度（GMP调度/channel实现/GC三色标记/goroutine栈管理）、广告系统设计（投放链路/竞价机制/预算Pacing/实时特征系统）、架构设计（全链路延迟控制/压测/Go大规模应用经验）。字节商业化面经从7份扩展到8份。",
+    "2026-03-20T07:24 新增美团/到家事业群/服务端研发（履约调度方向）/后端开发春招两面面经JSON（来源：牛客美团到家履约面经+CSDN美团后端面经综合），两面覆盖JVM深度（JIT编译/GC调优/内存模型）、集合源码（HashMap全链路）、履约业务场景（骑手调度/ETA预估/运力管理）、系统设计（订单超时取消/分库分表异构索引/性能排查）。美团到家面经从4份扩展到5份。",
+    "2026-03-20T07:24 补强字节跳动/抖音电商/商业化技术题库question-bank.md，新增「Go语言Runtime深度专项（社招高频追问）」15题（编号11-25），覆盖GMP调度深度（栈管理/syscall处理/Work Stealing/GOMAXPROCS）、Channel与并发模式深度（关闭语义/select实现/worker pool/sync原语）、GC调优与内存管理深度（GOGC/pprof/sync.Pool/内存分配器）、Go工程实践追问链路（JSON序列化/context传递/优雅退出）。",
+    "2026-03-20T07:24 补强美团/到家事业群/服务端研发题库question-bank.md，新增三个专项：「JVM深度追问专项」（JIT编译/GC调优深度/内存模型与并发，12题）、「订单超时与延迟任务专项」（超时取消方案对比/分库分表异构索引/Spring事务失效，8题）。",
+    "2026-03-20T07:04 补强字节跳动/抖音电商/商业化技术后端题库question-bank.md，新增「后端×算法共性题交叉索引（去重清洗）」专题。",
+    "2026-03-20T07:04 补强阿里巴巴/淘天集团/搜广推算法题库question-bank.md，新增「搜索广告专题」18题。"
   ],
   "next_actions": [
     {
@@ -212,16 +212,6 @@
       "note": "已有2份面经JSON（校招三面+实习一面），推理引擎方向需深化"
     },
     {
-      "company": "美团",
-      "business_group": "到家事业群",
-      "department": "服务端研发",
-      "role": "后端开发",
-      "action": "补1份配送/履约/调度方向面经+补强问题域题库",
-      "priority": "P1",
-      "status": "pending",
-      "note": "已有4份面经JSON+完整题库，配送调度方向可深化"
-    },
-    {
       "company": "快手",
       "business_group": "主站业务",
       "department": "推荐算法",
@@ -232,14 +222,24 @@
       "note": "已有3份面经JSON，推荐+大模型方向是2025热点"
     },
     {
-      "company": "字节跳动",
-      "business_group": "抖音电商",
-      "department": "商业化技术",
+      "company": "腾讯",
+      "business_group": "微信事业群",
+      "department": "基础平台",
       "role": "后端开发",
-      "action": "补1份新的后端面经JSON（侧重Go语言深度+广告链路工程设计）",
+      "action": "补1份微信后端社招面经JSON（侧重消息系统/存储/高可用）",
       "priority": "P1",
       "status": "pending",
-      "note": "后端×算法去重已完成，下一步补新面经扩展后端方向覆盖"
+      "note": "已有9份面经JSON，微信后端方向可深化消息系统和存储设计"
+    },
+    {
+      "company": "美团",
+      "business_group": "即时零售",
+      "department": "服务端研发",
+      "role": "后端开发",
+      "action": "补1份即时零售/闪购方向面经+ETA与仓店协同专题补强",
+      "priority": "P2",
+      "status": "pending",
+      "note": "已有4份面经JSON+完整题库，即时零售方向可深化"
     }
   ],
   "pending": []

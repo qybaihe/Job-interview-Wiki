@@ -60,6 +60,33 @@
 9. Go 的 interface 底层实现？空接口和非空接口有什么区别？
 10. Go 的内存逃逸分析是什么？什么情况下变量会逃逸到堆上？
 
+## Go 语言 Runtime 深度专项（社招高频追问）
+
+> 来源：2025年字节商业化Go后端社招面经提取，覆盖GMP调度细节、channel实现、GC调优、内存管理等runtime层面的深度追问。
+
+### GMP 调度深度
+11. Goroutine 的栈初始大小是多少？栈扩容和缩容的触发条件和实现机制？连续栈（continuous stack）和分段栈（segmented stack）的区别？
+12. 当一个 Goroutine 执行系统调用（syscall）阻塞时，GMP 模型如何处理？M 和 P 会发生什么？
+13. Work Stealing 机制的具体过程？一个 P 的本地队列为空时，它会按什么顺序去找新的 G？（本地队列→全局队列→其他P的本地队列→网络轮询器）
+14. GOMAXPROCS 设置为 CPU 核数就是最优的吗？什么场景下需要调大或调小？
+
+### Channel 与并发模式深度
+15. 向一个已关闭的 channel 发送数据会怎样？从已关闭的 channel 接收数据会怎样？如何优雅地关闭 channel？
+16. select 语句的底层实现？多个 case 同时就绪时如何选择？default 分支的作用？
+17. 用 channel 实现一个 worker pool（工作池）模式？如何控制并发数和优雅退出？
+18. sync.WaitGroup、sync.Once、sync.Pool 分别解决什么问题？sync.Pool 在广告系统中的典型应用场景？
+
+### GC 调优与内存管理深度
+19. Go GC 的 GOGC 参数是什么？默认值 100 代表什么含义？如何根据业务场景调整？
+20. 如何用 pprof 定位 Go 程序的内存泄漏？常见的内存泄漏场景有哪些？（goroutine 泄漏、time.After 在循环中、全局 map 未清理）
+21. sync.Pool 的对象什么时候会被回收？为什么不能用 sync.Pool 做持久缓存？
+22. Go 的内存分配器（tcmalloc 风格）的分层结构？mcache、mcentral、mheap 分别是什么？
+
+### Go 工程实践追问链路
+23. Go 的 JSON 序列化为什么慢？有哪些高性能替代方案？（sonic、easyjson、code-gen）在广告系统高 QPS 场景下如何选择？
+24. Go 的 context 在微服务调用链中如何传递 trace_id？如果下游服务不支持 context 怎么办？
+25. Go 程序的优雅退出怎么实现？如何保证退出时正在处理的请求不丢失？（signal.Notify + context cancel + graceful shutdown）
+
 ## 网络与协议深入
 1. TCP 三次握手和四次挥手的详细过程？TIME_WAIT 状态的作用和处理？
 2. HTTP/1.1、HTTP/2、HTTP/3 的核心区别？

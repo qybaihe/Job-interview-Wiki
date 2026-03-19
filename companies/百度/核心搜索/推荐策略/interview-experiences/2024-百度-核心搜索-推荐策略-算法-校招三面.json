@@ -1,0 +1,86 @@
+{
+  "company": "百度",
+  "business_group": "核心搜索",
+  "department": "推荐策略",
+  "role": "算法",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://blog.csdn.net/2201_75499313/article/details/139372738",
+      "https://www.nowcoder.com/discuss/353158189334077440",
+      "https://www.nowcoder.com/discuss/451999",
+      "https://blog.csdn.net/weixin_41888257/article/details/107676846",
+      "https://blog.csdn.net/qq_34205146/article/details/107737260"
+    ],
+    "note": "综合2023-2024年百度搜索/推荐策略算法岗校招面经（CSDN、牛客多篇），提取三轮面试真实问题。一面偏分布式训练和模型基础，二面偏模型细节和工程能力，三面偏项目深挖和开放性问题。百度搜索推荐策略岗近年面试重点已从传统ML转向大模型+推荐结合。"
+  },
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "round": 1,
+      "question": "DeepSpeed的ZeRO-2中对哪部分进行分片？训练过程中这部分是如何通信的？",
+      "insight": "ZeRO-2分片优化器状态和梯度（不分片模型参数）。前向传播正常，反向传播时梯度通过Reduce-Scatter聚合后各rank只保留自己负责的分片，优化器更新后通过All-Gather广播参数。百度搜索团队做LLM训练，分布式训练是核心考点。"
+    },
+    {
+      "round": 1,
+      "question": "详细讲解DeepSpeed ZeRO-3中前向传播、反向传播、优化过程中模型参数、梯度、优化器状态的通信。",
+      "insight": "ZeRO-3三者全分片。前向时All-Gather收集完整参数→计算→释放非本分片参数；反向时同样All-Gather参数→计算梯度→Reduce-Scatter梯度；优化器只更新本分片。通信量约等于DDP的1.5倍但显存大幅降低。"
+    },
+    {
+      "round": 1,
+      "question": "ZeRO-1相比ZeRO-2快在哪里？从通信量和通信次数角度分析。",
+      "insight": "ZeRO-1只分片优化器状态，梯度不分片，反向传播时用All-Reduce（而非Reduce-Scatter+All-Gather），通信次数更少。ZeRO-2多了梯度分片的Reduce-Scatter步骤，但省显存。面试官考察你对通信开销的量化理解。"
+    },
+    {
+      "round": 2,
+      "question": "Transformer中一个decoder层的参数量怎么计算？",
+      "insight": "Self-Attention: 4*d*d（Q/K/V/O各d*d）；Cross-Attention（如有）: 同上；FFN: 2*d*d_ff + 偏置；LayerNorm: 2*d（scale+bias）×层数。以LLaMA为例d=4096, d_ff=11008，单层约2亿参数。"
+    },
+    {
+      "round": 2,
+      "question": "了解KV Cache吗？为什么只缓存Key和Value而不缓存Query？",
+      "insight": "自回归生成时，历史token的K/V不变可复用，但当前token的Q每步都不同。缓存K/V避免重复计算attention，是推理加速的关键。面试官会追问KV Cache的显存占用和长序列下的优化（如GQA、MQA）。"
+    },
+    {
+      "round": 2,
+      "question": "Temperature参数的作用是什么？",
+      "insight": "Temperature缩放logits后再softmax：T>1分布更平滑（更随机），T<1分布更尖锐（更确定），T→0退化为greedy。搜索推荐场景中temperature影响多样性和相关性的平衡。"
+    },
+    {
+      "round": 2,
+      "question": "分布式集合通信中AllReduce是怎么实现的？",
+      "insight": "常见实现：Ring AllReduce（分chunk沿环传递，2*(N-1)/N通信量）和Tree AllReduce。NCCL默认用Ring。面试官可能追问：AllReduce = ReduceScatter + AllGather，以及带宽瓶颈分析。"
+    },
+    {
+      "round": 3,
+      "question": "你的LLM微调项目，数据配比是怎么做的？训练硬件、耗时？为什么选这个基座模型？",
+      "insight": "三面问项目非常细。数据配比要讲清楚不同任务数据的比例和采样策略；硬件要说清GPU型号、数量、并行策略；基座选择要有理由（参数量、中文能力、license）。百度三面面试官可能是技术主管，关注工程落地能力。"
+    },
+    {
+      "round": 3,
+      "question": "Transformer中FFN的结构？为什么先升维再降维？",
+      "insight": "FFN = Linear(d→4d) + 激活 + Linear(4d→d)。升维是为了在更高维空间做非线性变换，增加模型表达能力；降维是为了保持残差连接的维度一致。LLaMA用SwiGLU变体，升维比例约2.67x。"
+    },
+    {
+      "round": 3,
+      "question": "讲一下Self-Instruct？RoPE为什么有效？",
+      "insight": "Self-Instruct：用LLM自身生成指令数据来微调自己，降低人工标注成本。RoPE通过旋转矩阵编码相对位置，内积自然包含相对位置信息，且具有远程衰减特性。面试官追问：虚数的实部虚部存在转换关系，为什么仍可用于RoPE？答：旋转操作作用在相邻维度对上，本质是2D旋转，不要求维度独立。"
+    },
+    {
+      "round": 1,
+      "question": "介绍下实习经历中召回侧做了哪些优化？召回策略和召回模型分别做了什么？",
+      "insight": "百度推荐策略面试必问召回。策略优化：热门召回、协同过滤、标签召回的融合和去重；模型优化：双塔模型特征工程、负采样策略、hard negative mining。面试官期望你能讲清楚线上效果和AB实验结论。"
+    },
+    {
+      "round": 2,
+      "question": "说一下MMoE模型。门控、专家、塔分别是什么？",
+      "insight": "MMoE是多任务学习模型：多个Expert网络共享底层表示，每个Task有独立的Gate（softmax权重）选择Expert输出的加权组合，再经过各自的Tower输出预测。相比Shared-Bottom，MMoE缓解任务冲突。面试官可能追问PLE（渐进式分层提取）的改进。"
+    },
+    {
+      "round": 2,
+      "question": "手撕：降序二维矩阵中查找target是否存在，要求O(m+n)。",
+      "insight": "从右上角出发：当前值>target向左移，<target向下移。百度算法面试手撕题难度中等偏易，但要求思路清晰、代码bug-free。"
+    }
+  ],
+  "final_insight": "百度核心搜索/推荐策略算法岗面试特点：近年重心从传统搜广推模型（双塔、MMoE、DIN）转向大模型训练与推理（DeepSpeed、KV Cache、RoPE），但搜索业务理解（召回、排序、多目标优化）仍是基本盘。一面偏分布式训练细节，二面偏模型原理和手撕代码，三面偏项目深挖和开放性讨论。面试节奏快，提前批从投递到OC可能只需1-2周。985硕+一作论文是常见背景。"
+}

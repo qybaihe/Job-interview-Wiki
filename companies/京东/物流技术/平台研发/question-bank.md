@@ -119,7 +119,46 @@
 
 ---
 
-## 10. 使用建议
+## 10. 面经真题专项（来源：帅地玩编程、CSDN、牛客 2023-2024）
+
+### 10.1 JVM 深挖
+- JVM运行在32位与64位机器上效率有什么区别？（压缩指针OOP、寻址空间、GC压力）
+- JVM什么时候堆溢出、什么时候栈溢出、什么时候方法区溢出？
+- 了解G1回收器吗？Region、Humongous、Mixed GC、SATB并发标记怎么理解？
+- JVM怎么调优？（堆大小、GC算法选择、GC日志分析、内存泄漏排查、线程dump）
+- 字符串变量存在哪里？方法的地址存在哪里？
+
+### 10.2 Java 语言细节
+- StringBuilder是晚于StringBuffer出现的，既然有了StringBuffer为什么还要有StringBuilder？
+- Java反射为什么慢？是method.invoke慢还是所有方法都慢？
+- 闭锁（CountDownLatch）与栅栏（CyclicBarrier）有什么区别？
+- Java中用过哪些队列？有什么区别？（ArrayBlockingQueue、LinkedBlockingQueue、PriorityQueue、DelayQueue）
+- @Transactional注解的实现原理？研究过Spring源码吗？
+
+### 10.3 中间件与数据库
+- Redis大key或大value怎么优化？（拆分、压缩、UNLINK异步删除）
+- 什么是Redis雪崩？怎么解决？
+- MySQL binlog是干什么用的？slave复制master的binlog时是单线程还是多线程？为什么？
+- MySQL表的垂直拆分和水平拆分分别是什么？
+- MySQL数据量达到多大查询就慢了？需要怎么优化？
+- MySQL查看执行计划时key_len字段的长度是怎么计算的？
+- MySQL组合索引最左原则是怎么遵循的？
+
+### 10.4 消息队列与微服务
+- RabbitMQ是怎么保证数据一致性的？（持久化+confirm+手动ACK）
+- Kafka是怎么保证队列有序的？（Partition内有序+key路由）
+- RabbitMQ与Kafka的区别？
+- SpringCloud与Dubbo的区别？
+
+### 10.5 网络与设计模式
+- 网络七层与网络四层模型，每层是干什么的？
+- TCP与HTTP的区别与联系？TCP三次握手过程？
+- 用过哪些设计模式？装饰者模式、策略模式怎么用？
+- 什么是Tomcat多实例？
+
+---
+
+## 11. 使用建议
 
 - 这份题库适合先覆盖京东物流技术 / 平台研发 / 后端开发方向的共性问题。
 - 后续如果补到真实公开面经，优先反向生成：

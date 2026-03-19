@@ -1,0 +1,89 @@
+{
+  "company": "京东",
+  "business_group": "物流技术",
+  "department": "平台研发",
+  "role": "后端开发",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.iamshuaidi.com/31029.html",
+      "https://blog.csdn.net/lzxlfly/article/details/90319586",
+      "https://www.nowcoder.com/discuss/353159479996915712"
+    ],
+    "note": "综合京东物流Java高级工程师社招面经（帅地玩编程、CSDN、牛客），提取三轮面试真实问题。一面偏基础八股深挖，二面偏架构与数据库优化，三面偏软素质与职业规划。"
+  },
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "round": 1,
+      "question": "JVM运行在32位与64位机器上效率有什么区别？",
+      "insight": "冷门但考察深度。64位JVM指针占用更大（压缩指针OOP可缓解），内存寻址空间更大但可能导致GC压力增大。面试官借此考察你对JVM底层的理解程度。"
+    },
+    {
+      "round": 1,
+      "question": "JVM什么时候堆溢出、什么时候栈溢出、什么时候方法区（永久区）溢出？",
+      "insight": "堆溢出：对象创建过多且GC无法回收（OOM）；栈溢出：递归过深或线程栈空间不足（StackOverflow）；方法区溢出：动态生成大量类（如CGLib代理、大量JSP编译）。京东物流面试对JVM内存模型追问很深。"
+    },
+    {
+      "round": 1,
+      "question": "了解G1回收器吗？说说是怎么回事。",
+      "insight": "G1将堆划分为多个Region，兼顾吞吐和低停顿。核心概念：Region、Humongous、Mixed GC、SATB并发标记、可预测停顿时间模型。京东物流大数据量场景下G1是常用选择。"
+    },
+    {
+      "round": 1,
+      "question": "Java反射为什么慢？是method.invoke慢还是所有方法都慢？",
+      "insight": "反射慢的原因：安全检查、参数装箱拆箱、无法JIT内联优化。主要慢在Method.invoke的安全检查和动态分派，setAccessible(true)可跳过安全检查提速。不是所有反射操作都慢，Class.forName和getMethod有缓存。"
+    },
+    {
+      "round": 1,
+      "question": "Redis大key或大value怎么优化？",
+      "insight": "大key拆分：Hash分桶、List分段；大value压缩或拆分存储；定期扫描bigkeys；删除用UNLINK异步删除避免阻塞。京东物流订单数据量大，大key问题是实际生产痛点。"
+    },
+    {
+      "round": 1,
+      "question": "MySQL binlog是干什么用的？slave复制master的binlog时是单线程还是多线程？为什么？",
+      "insight": "binlog用于主从复制和数据恢复。MySQL 5.6前IO线程单线程拉取、SQL线程单线程回放；5.7+支持多线程并行复制（基于组提交或WRITESET）。单线程回放是早期主从延迟的主要原因。"
+    },
+    {
+      "round": 1,
+      "question": "RabbitMQ是怎么保证数据一致性的？Kafka是怎么保证队列有序的？两者有什么区别？",
+      "insight": "RabbitMQ：持久化+confirm机制+手动ACK。Kafka有序性：同一Partition内有序，通过key路由保证业务有序。区别：RabbitMQ偏事务消息和复杂路由，Kafka偏高吞吐日志流。京东物流大量使用MQ做订单状态流转。"
+    },
+    {
+      "round": 1,
+      "question": "SpringCloud与Dubbo的区别？",
+      "insight": "SpringCloud是微服务全家桶（注册发现、配置中心、网关、熔断），基于HTTP/REST；Dubbo专注RPC，基于TCP性能更高。京东内部有JSF（类Dubbo），面试考察你对微服务架构选型的理解。"
+    },
+    {
+      "round": 1,
+      "question": "闭锁（CountDownLatch）与栅栏（CyclicBarrier）有什么区别？",
+      "insight": "CountDownLatch一次性，等待N个事件完成后放行；CyclicBarrier可重用，N个线程互相等待到齐后同时执行。物流系统中多任务并行汇总场景常用。"
+    },
+    {
+      "round": 2,
+      "question": "JVM怎么调优？",
+      "insight": "面试官期望全面分析：堆大小设置、GC算法选择（G1/ZGC）、GC日志分析、内存泄漏排查（MAT/jmap）、线程dump分析、JIT编译优化。京东物流高并发场景下JVM调优是必备技能。"
+    },
+    {
+      "round": 2,
+      "question": "用过哪些设计模式？装饰者模式、策略模式怎么用？",
+      "insight": "装饰者：Java IO流体系（BufferedInputStream包装FileInputStream）；策略：支付方式选择、物流路由策略。面试官希望你结合实际项目讲，不要只背定义。"
+    },
+    {
+      "round": 2,
+      "question": "MySQL从哪些方面优化？",
+      "insight": "面试官期望从多层面回答：SQL优化（慢查询、执行计划）、索引优化（最左匹配、覆盖索引）、分库分表、读写分离、内存碎片整理（OPTIMIZE TABLE）、Linux内核参数调优（vm.swappiness、IO调度器）。越详细越好。"
+    },
+    {
+      "round": 2,
+      "question": "MySQL查看执行计划时key_len字段的长度是怎么计算的？",
+      "insight": "key_len = 字段类型字节数 + 是否允许NULL（+1）+ 变长字段长度前缀（varchar +2）。例如varchar(255) utf8mb4 NOT NULL = 255*4+2=1022。这个细节题区分度很高，大部分人只看type和key。"
+    },
+    {
+      "round": 3,
+      "question": "（非技术面）随便聊，不许聊工作相关的东西。",
+      "insight": "京东物流三面是部门leader面，通过闲聊观察你的性格、价值观和稳定性。面试官会从你的回答中判断：是否热爱技术、是否有持续学习习惯、离职原因是否合理、家庭是否稳定。回答要真实但有策略。"
+    }
+  ],
+  "final_insight": "京东物流Java后端社招面试特点：一面由技术组长主导，30道左右基础题快速扫描，JVM、Redis、MySQL、MQ、并发工具包追问很深，同时考察表达能力；二面由架构师主导，偏设计模式、数据库优化和JVM调优，期望全面深入的回答；三面由部门leader主导，纯聊天考察软素质和稳定性。整体节奏快，一面到三面可能在同一天完成。物流技术岗特别关注高并发、消息队列和分布式一致性。"
+}

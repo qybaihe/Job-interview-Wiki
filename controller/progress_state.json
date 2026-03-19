@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-20T05:44:00+08:00",
+  "generated_at": "2026-03-20T06:04:00+08:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 93,
+    "completed": 96,
     "companies_seeded": 8,
-    "question_banks_filled": 12,
-    "interview_json_count": 72
+    "question_banks_filled": 13,
+    "interview_json_count": 74
   },
   "queues": {
     "priority_companies": [
@@ -95,7 +95,7 @@
       "business_group": "淘天集团",
       "department": "搜广推",
       "question_bank_ready": true,
-      "interview_json_count": 6
+      "interview_json_count": 7
     },
     {
       "company": "美团",
@@ -173,9 +173,20 @@
       "department": "推理平台",
       "question_bank_ready": true,
       "interview_json_count": 2
+    },
+    {
+      "company": "腾讯",
+      "business_group": "云与智慧产业事业群",
+      "department": "基础架构",
+      "question_bank_ready": true,
+      "interview_json_count": 1
     }
   ],
   "notes": [
+    "2026-03-20T06:04 新增腾讯/CSIG/基础架构/后端开发面经JSON（来源：CSDN腾讯CSIG-腾讯云-后台开发面经已offer+知乎csig腾讯云暑期实习面经+牛客腾讯云社招Golang面经），三面覆盖Go语言深度（GMP调度/GC三色标记/channel/context）、云原生技术栈（K8s组件与Pod创建流程/etcd Raft选举与脑裂/Docker隔离机制）、MySQL底层（B+树/MVCC/索引优化）。CSIG面试特色：Go+云原生是核心区分度。",
+    "2026-03-20T06:04 新增腾讯/CSIG/基础架构题库question-bank.md（80+题），覆盖Go语言基础（15题）、云原生K8s/etcd/Docker（22题）、MySQL（11题）、Redis（7题）、分布式系统（7题）、计算机网络（6题）、Linux系统（5题）、算法手撕（7题）、系统设计（4题）。CSIG方向从零到完整题库。",
+    "2026-03-20T06:04 新增阿里/淘天/搜广推/搜索算法面经JSON（来源：牛客淘宝主搜索算法团队校招JD+阿里技术博客电商搜索算法演进+CSDN电商搜索语义检索+知乎电商搜索QP+GitHub搜索系统算法解析），两面覆盖Query理解全链路（纠错/分词/词权重/NER/改写/类目预测/意图识别）、搜索召回（字面vs语义/DPSR双塔）、搜索相关性、搜索排序（位置偏置/冷启动）、大模型+搜索新方向。填补搜广推搜索方向面经空白。",
+    "2026-03-20T06:04 补强阿里/淘天/搜广推题库question-bank.md，新增搜索算法专题（27题），覆盖Query理解QP全链路（7题）、搜索召回（5题）、搜索相关性（4题）、搜索排序（4题）、大模型+搜索（4题）、搜索评估（3题）。搜广推题库从104题扩展到131题。",
     "2026-03-20T05:44 新增阿里妈妈广告算法社招一面面经JSON（来源：牛客2024-01-17面经），10题覆盖推荐系统全链路架构/各阶段优化指标/召回算法演进/Attention机制/概率智力题（抛硬币期望）/最长公共子串DP。社招面试特点：覆盖面广，概率题是阿里妈妈特色。",
     "2026-03-20T05:44 新增腾讯WXG小程序客户端日常实习四面OC面经JSON（来源：chiichen个人博客2024-01-30），四轮面试覆盖Rust/C++语言深度对比/所有权机制/glibc vs musl/ELF加载/JWT/LRU Cache/Ring Buffer/内存泄漏工具原理。WXG客户端方向特色：重编程语言理解深度和系统编程基础。",
     "2026-03-20T05:44 补强阿里搜广推题库question-bank.md，新增概率与智力题专题（2题）。",
@@ -201,20 +212,20 @@
       "business_group": "云与智慧产业事业群",
       "department": "基础架构",
       "role": "后端开发",
-      "action": "补1份CSIG后端面经+云原生/K8s专题",
+      "action": "补1份CSIG社招面经（侧重系统设计和大规模分布式）",
       "priority": "P1",
       "status": "pending",
-      "note": "CSIG方向目前面经为空，需补充"
+      "note": "已有1份校招面经JSON+完整题库，社招面经更侧重系统设计深度"
     },
     {
       "company": "阿里巴巴",
       "business_group": "淘天集团",
       "department": "搜广推",
-      "role": "算法",
-      "action": "补1份搜索算法面经（区别于推荐/广告方向）",
-      "priority": "P1",
+      "role": "搜索算法",
+      "action": "补1份搜索算法社招面经（侧重搜索架构设计和大规模索引优化）",
+      "priority": "P2",
       "status": "pending",
-      "note": "搜广推已有6份面经JSON，但搜索方向面经缺失"
+      "note": "已有7份面经JSON（含搜索方向1份），搜索方向社招面经可深化系统设计"
     },
     {
       "company": "快手",

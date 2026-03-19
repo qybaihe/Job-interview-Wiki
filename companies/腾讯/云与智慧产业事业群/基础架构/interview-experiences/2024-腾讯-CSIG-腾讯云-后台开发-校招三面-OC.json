@@ -1,0 +1,127 @@
+{
+  "company": "腾讯",
+  "business_group": "云与智慧产业事业群",
+  "department": "基础架构",
+  "role": "后端开发",
+  "year": 2024,
+  "season": "春招/暑期实习",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://blog.csdn.net/weixin_47277170/article/details/116011627",
+      "https://zhuanlan.zhihu.com/p/692788236",
+      "https://blog.csdn.net/weixin_45479187/article/details/105966769",
+      "https://www.nowcoder.com/discuss/422921"
+    ],
+    "note": "综合CSDN腾讯CSIG-腾讯云-后台开发面经（已offer）、知乎csig腾讯云暑期实习面经、CSDN腾讯CSIG暑期后端实习面经（已offer）、牛客腾讯云社招Golang面经。CSIG后端面试特点：Go语言深度考察、云原生技术栈（K8s/etcd/Docker）、项目深挖、MySQL底层原理。"
+  },
+  "interview_rounds": 3,
+  "rounds": [
+    {
+      "name": "一面",
+      "focus": "Go语言基础 + MySQL底层 + 项目深挖",
+      "duration_min": 80,
+      "questions": [
+        {
+          "question": "说一说JSON这种数据格式，除了JSON你还知道其他什么数据传输的格式？",
+          "category": "基础知识",
+          "insight": "JSON（文本、可读性好、体积大）、Protobuf（二进制、体积小、需要IDL定义）、XML（文本、冗余大）、MessagePack（二进制JSON）、Thrift。CSIG云服务场景下Protobuf使用广泛，追问序列化/反序列化性能对比。"
+        },
+        {
+          "question": "Go怎么获取第三方的包并管理？go module了解吗？",
+          "category": "Go语言",
+          "insight": "go mod init初始化模块，go get获取依赖，go.mod记录依赖版本，go.sum记录校验哈希。Go Module替代了早期的GOPATH和vendor模式。追问：go mod tidy的作用（清理未使用依赖、补充缺失依赖）、replace指令的使用场景。"
+        },
+        {
+          "question": "Go的协程机制，Go为什么高并发？",
+          "category": "Go语言",
+          "insight": "高频真题。Goroutine是用户态轻量级线程，初始栈仅2KB（可动态增长），创建和切换成本远低于OS线程。GMP调度模型：G（goroutine）、M（OS线程）、P（逻辑处理器）。P的数量默认等于CPU核数，M和G是多对多关系。高并发原因：(1)goroutine轻量，可轻松创建百万级；(2)GMP调度器实现work stealing和hand off，充分利用多核；(3)netpoller实现网络IO的非阻塞复用。"
+        },
+        {
+          "question": "Go的垃圾回收机制？三色标记法？STW？",
+          "category": "Go语言",
+          "insight": "高频真题。Go使用并发三色标记-清除GC。三色：白色（未访问）、灰色（已访问但子对象未扫描）、黑色（已访问且子对象已扫描）。写屏障（write barrier）保证并发标记的正确性。Go 1.8+使用混合写屏障（插入+删除写屏障），大幅减少STW时间到亚毫秒级。STW只在GC开始标记和标记终止两个短暂阶段。追问：如何调优GC（GOGC环境变量控制触发频率）。"
+        },
+        {
+          "question": "了解MySQL吗？执行引擎有哪些？索引底层结构是什么？",
+          "category": "MySQL",
+          "insight": "InnoDB（支持事务、行锁、MVCC，默认引擎）和MyISAM（不支持事务、表锁、全文索引）。索引底层：B+树。B+树vs B树优势：(1)叶子节点形成有序链表，范围查询高效；(2)非叶子节点只存key不存data，单节点能存更多key，树更矮，IO次数更少；(3)所有数据都在叶子节点，查询路径长度一致。"
+        },
+        {
+          "question": "索引优化的一些原则？为什么索引不能超过5个？",
+          "category": "MySQL",
+          "insight": "索引优化原则：最左前缀匹配、覆盖索引减少回表、避免在索引列上使用函数/计算、选择区分度高的列建索引、联合索引列顺序按区分度从高到低。索引数量限制原因：每个索引都是一棵B+树，占用磁盘空间；INSERT/UPDATE/DELETE需要维护所有索引，索引越多写入越慢。5个不是硬性限制，是经验值，需要根据读写比例权衡。"
+        },
+        {
+          "question": "了解MVCC吗？如何实现的？",
+          "category": "MySQL",
+          "insight": "MVCC（多版本并发控制）通过undo log版本链 + ReadView实现。每行记录有隐藏列：trx_id（最近修改的事务ID）、roll_pointer（指向undo log的指针）。ReadView包含：m_ids（活跃事务ID列表）、min_trx_id、max_trx_id、creator_trx_id。读取时沿版本链找到第一个对当前事务可见的版本。RC隔离级别每次SELECT创建新ReadView，RR隔离级别只在第一次SELECT创建。"
+        },
+        {
+          "question": "如何实现分布式锁？Redis和ZooKeeper的方案各有什么优缺点？",
+          "category": "分布式",
+          "insight": "Redis方案：SET key value NX EX（原子设置+过期），释放用Lua脚本保证原子性。优点：性能高；缺点：主从切换可能丢锁（Redlock方案解决但争议大）。ZooKeeper方案：创建临时顺序节点，最小序号获得锁，释放时删除节点。优点：强一致性、自动释放（session断开临时节点自动删除）；缺点：性能较低、依赖ZK集群。"
+        }
+      ]
+    },
+    {
+      "name": "二面",
+      "focus": "云原生技术栈 + 项目深挖 + 系统设计",
+      "duration_min": 60,
+      "questions": [
+        {
+          "question": "etcd是什么？如何保持高可用性？选举机制？脑裂如何解决？",
+          "category": "云原生",
+          "insight": "CSIG高频真题。etcd是分布式KV存储，基于Raft共识算法。高可用：奇数节点部署（3/5/7），多数派存活即可服务。Raft选举：follower超时未收到心跳→变candidate→发起投票→获得多数票成为leader。脑裂解决：Raft的多数派机制天然防止脑裂，网络分区时只有包含多数节点的分区能选出leader并提供写服务；少数派分区的旧leader因无法获得多数确认而自动降级。追问：etcd的MVCC实现、watch机制。"
+        },
+        {
+          "question": "K8s有哪些常用组件？发起一个Pod创建请求的完整流程？",
+          "category": "云原生",
+          "insight": "CSIG高频真题。核心组件：API Server（集群入口，认证授权）、etcd（数据存储）、Controller Manager（维护集群状态，如Deployment/ReplicaSet控制器）、Scheduler（Pod调度到Node）、kubelet（Node上的代理，管理Pod生命周期）、kube-proxy（Service网络代理）。Pod创建流程：kubectl→API Server（认证/准入控制/持久化到etcd）→Scheduler watch到未调度Pod→选择Node→更新Pod的nodeName→kubelet watch到分配给自己的Pod→拉取镜像→创建容器→上报状态。"
+        },
+        {
+          "question": "K8s中Pod之间如何通信？Service的实现原理？",
+          "category": "云原生",
+          "insight": "Pod间通信：同Node的Pod通过Linux bridge/veth pair直接通信；跨Node通过CNI插件（Flannel/Calico）实现overlay网络或BGP路由。Service原理：kube-proxy维护iptables/IPVS规则，将Service的ClusterIP流量转发到后端Pod。三种模式：userspace（早期，性能差）、iptables（默认，规则多时性能下降）、IPVS（大规模集群推荐，基于内核级负载均衡）。"
+        },
+        {
+          "question": "Docker容器和虚拟机的区别？容器的隔离机制？",
+          "category": "云原生",
+          "insight": "容器共享宿主机内核，通过Linux Namespace（PID/Network/Mount/UTS/IPC/User）实现资源隔离，通过Cgroups限制资源使用（CPU/内存/IO）。虚拟机通过Hypervisor虚拟化硬件，每个VM有独立内核。容器优势：启动快（秒级vs分钟级）、资源占用少、密度高。虚拟机优势：隔离性更强（内核级隔离）、安全性更高。追问：Docker的分层存储（UnionFS/OverlayFS）。"
+        },
+        {
+          "question": "项目中遇到过线上问题吗？如何排查网络问题？常用Linux命令？",
+          "category": "工程实践",
+          "insight": "网络排查常用命令：ping（连通性）、traceroute（路由路径）、netstat/ss（连接状态）、tcpdump（抓包分析）、curl（HTTP请求测试）、dig/nslookup（DNS解析）、iptables -L（防火墙规则）。排查思路：先确认连通性→检查DNS解析→检查端口监听→抓包分析协议层→检查防火墙/安全组规则。"
+        },
+        {
+          "question": "Redis的数据结构有哪些？zset的底层实现？",
+          "category": "Redis",
+          "insight": "五种基本类型：String、List、Hash、Set、ZSet。ZSet底层：元素少时用ziplist（压缩列表），元素多时用skiplist（跳表）+ dict（哈希表）。跳表支持O(logN)的范围查询和插入，dict支持O(1)的按member查score。追问：为什么用跳表不用红黑树（实现简单、范围查询友好、并发友好）。"
+        }
+      ]
+    },
+    {
+      "name": "三面（HR面）",
+      "focus": "职业规划 + 团队匹配 + 个人特质",
+      "duration_min": 30,
+      "questions": [
+        {
+          "question": "为什么选择腾讯CSIG？对云计算方向的理解？",
+          "category": "职业规划",
+          "insight": "考察对CSIG业务的了解程度。CSIG主要做To B业务：腾讯云、企业微信、腾讯会议、智慧产业等。可以从云原生、AI+云、产业互联网等角度回答。"
+        },
+        {
+          "question": "实习时间能保证多久？未来的职业规划？",
+          "category": "个人情况",
+          "insight": "CSIG实习一般要求至少3个月，越长越好。职业规划围绕云计算/基础架构方向展开即可。"
+        }
+      ]
+    }
+  ],
+  "overall_insight": "腾讯CSIG后台开发面试特点：(1)Go语言是核心考察点（GMP调度、GC三色标记、channel、context），即使简历写Java也会问Go；(2)云原生技术栈是CSIG特色（K8s架构与组件、etcd/Raft、Docker隔离机制、容器网络），区别于其他事业群；(3)MySQL底层原理必考（B+树索引、MVCC、事务隔离级别）；(4)项目深挖占比大，面试官会沿着项目技术点DFS到底层。整体难度中等偏上，喜欢深挖底层原理。",
+  "followups": [
+    "可补充CSIG社招面经，社招更侧重系统设计和大规模分布式系统经验",
+    "可补充腾讯云数据库/存储方向的专项面经"
+  ]
+}

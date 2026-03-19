@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-19T20:24:00+00:00",
+  "generated_at": "2026-03-20T04:44:00+08:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 85,
+    "completed": 87,
     "companies_seeded": 8,
     "question_banks_filled": 12,
-    "interview_json_count": 64
+    "interview_json_count": 66
   },
   "queues": {
     "priority_companies": [
@@ -130,14 +130,14 @@
       "business_group": "主站业务",
       "department": "推荐算法",
       "question_bank_ready": true,
-      "interview_json_count": 2
+      "interview_json_count": 3
     },
     {
       "company": "拼多多",
       "business_group": "多多买菜",
       "department": "服务端",
       "question_bank_ready": true,
-      "interview_json_count": 2
+      "interview_json_count": 3
     },
     {
       "company": "美团",
@@ -176,12 +176,15 @@
     }
   ],
   "notes": [
+    "2026-03-20T04:44 新增快手/主站业务/推荐算法/推荐算法工程师25秋招面经JSON（来源：CSDN 25秋招快手推荐算法工程师面经+快手推荐算法工程师三面回顾+大白智能快手算法面经），8题覆盖项目深挖/LC856括号分数/LC496下一个更大元素/LC200岛屿数量/LC5最长回文子串/半监督打标场景设计/数据挖掘ML数据科学关系。面试特点：项目深挖占比极高，coding难度中等偏上，八股问得少。",
+    "2026-03-20T04:44 新增拼多多/多多买菜/服务端/服务端研发工程师社招三面面经JSON（来源：SegmentFault社招面经+CSDN实习面经两篇），14题覆盖TiDB/RocksDB/LSM树/TLAB PLAB CAS分配/指针压缩原理/类加载类隔离/多态重载字节码/SpringBoot自动装配SPI/Spring事务JDBC实现/MySQL行溢出溢出页/Redis SSD内存编码优化/系统10倍100倍扩容/单例volatile/栈实现线程安全队列/二叉树节点距离/跳表实现/数据库设计。一面难度极高追问到底，后几轮偏业务设计。",
+    "2026-03-20T04:44 补强快手/主站业务/推荐算法题库question-bank.md，新增9.5节25秋招真题（LC856/LC496/项目深挖模式）和9.6节三面回顾真题（LC200/LC5/半监督打标/ML概念辨析）。",
+    "2026-03-20T04:44 补强拼多多/多多买菜/服务端题库question-bank.md，新增14.7节JVM深度追问（TLAB/PLAB/指针压缩/类隔离/字节码）、14.8节存储引擎深度（TiDB/LSM/行溢出/溢出页）、14.9节Spring中间件深度（自动装配/SPI/事务/Redis编码）、14.10节系统设计软技能（方案说服力/10x100x扩容/DCL单例/线程安全队列/LCA距离）、14.11节数据库设计（跳表/索引设计/表设计）。",
     "2026-03-20T04:24 新增百度/核心搜索/推荐策略/算法实习两面真实面经JSON（来源：牛客百度推荐算法实习一二面+百度推荐策略部二面面经+百度算法三面面经），一面10题覆盖协方差与相关系数/L1 L2范数/Sigmoid ReLU梯度/Transformer vs RNN/多头注意力参数量/并行训练与双向输入/工业推荐系统/AUC NDCG/手撕搜索二维矩阵，二面5题覆盖因果推断/Recall MRR NDCG对比/BST转有序数组/贝叶斯概率题。",
-    "2026-03-20T04:24 补强百度/核心搜索/推荐策略题库question-bank.md，新增第10节「因果推断与去偏专题」：(1)因果推断基础4题（混杂变量/RCT/因果vs相关）；(2)去偏方法5题（IPW/Doubly Robust/位置偏差/曝光偏差/流行度偏差）；(3)反事实推理与策略评估3题（OPE/IPS估计器）；(4)3条追问链路。新增第11节「推荐系统评估指标专题」7题（AUC/GAUC/NDCG/MRR/Recall@K/MAP/离线vs线上gap）。",
-    "2026-03-20T04:24 新增快手/电商事业部/服务端研发/2025春招商业化Java后端两面真实面经JSON（来源：牛客2025春招快手商业部门Java后端二面+快手Java后端开发工程师一二三面经），一面8题覆盖Int vs Integer缓存/equals hashCode/wait sleep/单例volatile/索引失效/深浅拷贝/反转链表II/SQL聚合，二面8题覆盖流量回放AOP vs Java Agent/ES vs DB vs HBase选型/线程创建方式/阻塞队列上锁机制/ThreadLocal原理与危害/HashMap ConcurrentHashMap/锁分类与synchronized原理。",
-    "2026-03-20T04:24 补强快手/电商事业部/服务端研发题库question-bank.md，新增「Java Agent与字节码增强专题」：(1)Java Agent基础4题（premain/agentmain/Instrumentation API/生产应用）；(2)字节码增强4题（ASM/Javassist/ByteBuddy/Agent vs AOP区别）；(3)2条追问链路。",
-    "2026-03-20T04:04 新增阿里巴巴/阿里云/基础架构/后端开发Java一面二面真实面经JSON（来源：CSDN阿里云Java后台一面二面面经+牛客阿里云团队B二面面经），一面7题覆盖String/StringBuilder/StringBuffer区别/ArrayList vs LinkedList/HashMap原理hash碰撞多线程问题/ConcurrentHashMap JDK1.8优化/CAS与ABA问题/MySQL存储引擎InnoDB vs MyISAM/MySQL索引B+树联合索引最左前缀，二面4题覆盖IAM权限系统RBAC设计/分布式数据一致性方案/高可用云资源管理系统设计/最大技术挑战。",
-    "2026-03-20T04:04 新增阿里巴巴/阿里云/基础架构/后端开发Go云原生三面真实面经JSON（来源：帅地编程阿里Go岗社招面经+zoux86博客阿里容器云研发校招面经+SegmentFault蚂蚁Go后端社招面经），一面4题覆盖K8s整体架构组件职责/容器vs虚拟机隔离机制/StatefulSet vs Deployment/K8s Scheduler大规模扩展，二面3题覆盖Pod创建完整流程/云平台项目深挖/Go GMP调度模型，三面2题覆盖多租户容器平台资源隔离调度设计/蓄水池采样算法。",
+    "2026-03-20T04:24 补强百度/核心搜索/推荐策略题库question-bank.md，新增第10节「因果推断与去偏专题」和第11节「推荐系统评估指标专题」。",
+    "2026-03-20T04:24 新增快手/电商事业部/服务端研发/2025春招商业化Java后端两面真实面经JSON。",
+    "2026-03-20T04:04 新增阿里巴巴/阿里云/基础架构/后端开发Java一面二面真实面经JSON。",
+    "2026-03-20T04:04 新增阿里巴巴/阿里云/基础架构/后端开发Go云原生三面真实面经JSON。",
     "2026-03-20T04:04 补强阿里巴巴/阿里云/基础架构题库question-bank.md，新增第12节「资源调度、容量治理与稳定性工程专项」。"
   ],
   "next_actions": [
@@ -196,34 +199,44 @@
       "note": "已有7份面经JSON，下一步做后端和算法方向的共性题去重"
     },
     {
-      "company": "快手",
-      "business_group": "主站业务",
-      "department": "推荐算法",
-      "role": "算法",
-      "action": "补1份算法新样板+推荐系统/内容分发/大模型专题",
-      "priority": "P2",
-      "status": "pending",
-      "note": "TODO_FIRST_BATCH P2项：补1份算法新样板，强化推荐系统/内容分发/大模型专题"
-    },
-    {
-      "company": "拼多多",
-      "business_group": "多多买菜",
-      "department": "服务端",
-      "role": "后端开发",
-      "action": "补1份后端开发新样板+社区团购/仓配协同/次日达问题域",
-      "priority": "P2",
-      "status": "pending",
-      "note": "TODO_FIRST_BATCH P2项：补1份后端开发新样板，强化社区团购/仓配协同/次日达问题域"
-    },
-    {
       "company": "字节跳动",
       "business_group": "抖音主站",
       "department": "推荐架构",
       "role": "后端开发",
       "action": "补1份后端/算法面经+推荐架构题库",
-      "priority": "P3",
+      "priority": "P2",
       "status": "pending",
       "note": "目录扩展项：仅1份面经JSON，需补充真实面经和题库"
+    },
+    {
+      "company": "拼多多",
+      "business_group": "Temu",
+      "department": "服务端",
+      "role": "后端开发",
+      "action": "补1份Temu服务端面经+跨境电商/国际化系统专题",
+      "priority": "P2",
+      "status": "pending",
+      "note": "仅1份面经JSON，Temu方向需补充跨境电商特有问题"
+    },
+    {
+      "company": "快手",
+      "business_group": "商业化",
+      "department": "后端研发",
+      "role": "后端开发",
+      "action": "补1份商业化后端面经+广告系统/计费/投放专题",
+      "priority": "P2",
+      "status": "pending",
+      "note": "仅1份面经JSON，需补充广告系统方向真实面经"
+    },
+    {
+      "company": "百度",
+      "business_group": "文心大模型",
+      "department": "推理平台",
+      "role": "算法/后端",
+      "action": "补1份大模型推理面经+推理优化/量化/部署专题",
+      "priority": "P3",
+      "status": "pending",
+      "note": "仅1份面经JSON，大模型推理方向需补充"
     }
   ],
   "pending": []

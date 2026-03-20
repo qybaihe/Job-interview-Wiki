@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-20T07:44:00+08:00",
+  "generated_at": "2026-03-20T08:04:00+08:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 105,
+    "completed": 107,
     "companies_seeded": 8,
     "question_banks_filled": 13,
-    "interview_json_count": 81
+    "interview_json_count": 82
   },
   "queues": {
     "priority_companies": [
@@ -130,7 +130,7 @@
       "business_group": "主站业务",
       "department": "推荐算法",
       "question_bank_ready": true,
-      "interview_json_count": 3
+      "interview_json_count": 4
     },
     {
       "company": "拼多多",
@@ -183,41 +183,24 @@
     }
   ],
   "notes": [
-    "2026-03-20T07:44 新增阿里巴巴/淘天集团/搜广推（阿里妈妈-搜索广告）/搜索广告算法工程师社招三面面经JSON（来源：CSDN 2024淘天阿里妈妈算法面经+知乎阿里妈妈社招面经+个人博客2024秋招面经+阿里妈妈搜索广告预估模型技术博客），三面覆盖搜索广告全链路（query理解→召回→粗排→精排→竞价机制）、CTR模型演进、query改写与LLM应用、GSP/Deep GSP竞价机制、COLD粗排优化、CTR校准、AB实验设计、从零搭建广告系统规划。搜广推面经从7份扩展到8份。",
-    "2026-03-20T07:44 新增腾讯/微信事业群/基础平台（消息与存储方向）/后端开发社招四面面经JSON（来源：牛客腾讯后台社招六面面经+知乎腾讯社招面试全流程+腾讯云微信后台架构文章+Go语言中文网腾讯后端面经+牛客WXG校招后端OC面经），四面覆盖C++虚函数/Go GMP调度、TCP/UDP协议设计、Redis渐进式rehash、IM消息同步模型（读扩散vs写扩散）、微信自研存储架构、亿级长连接管理、MySQL MVCC与慢查询排查、面委会项目深挖。微信基础平台面经从9份扩展到10份。",
-    "2026-03-20T07:44 补强阿里巴巴/淘天集团/搜广推算法题库算法-question-bank.md，新增「搜索广告专项（阿里妈妈社招高频）」第16节，包含搜索广告全链路（5题）、Query理解与改写（5题）、广告竞价机制（5题）、CTR校准与广告特有问题（5题）、搜索广告粗排优化（4题）、追问链路（4条），共24题+4条追问链。",
-    "2026-03-20T07:44 补强腾讯/微信事业群/基础平台后端题库question-bank.md，新增「IM消息系统与存储架构专项（社招高频追问）」，包含消息同步模型（5题）、长连接管理与接入层（5题）、自研存储与一致性（5题）、协程与高性能网络编程（4题）、Go语言深度（6题）、系统设计题IM方向（4题），共29题。",
+    "2026-03-20T08:04 新增快手/主站业务/推荐算法/推荐算法工程师社招三面面经JSON（来源：牛客网2024年快手推荐算法多篇面经汇总），三面覆盖项目深挖（召回相关性分档、精排target attention、SIM原理）、推荐系统架构全链路、大模型+推荐前沿（OneRec生成式推荐、MoE、DPO偏好对齐）、多目标优化（MMoE/PLE）、场景设计（用户时长vs生态健康平衡）、coding（LC4两有序数组中位数Hard+手写Transformer）。快手推荐算法面经从3份扩展到4份。",
+    "2026-03-20T08:04 补强百度/文心大模型/推理平台题库question-bank.md，新增「推理引擎深度专项（vLLM/TensorRT-LLM/KV Cache，社招高频追问）」，包含KV Cache原理与优化（8题）、PagedAttention与显存管理（6题）、Continuous Batching与调度（5题）、推理加速技术综合（7题）、推理框架对比与选型（5题）、追问链路（4条），共31题+4条追问链。覆盖vLLM PagedAttention、KV Cache量化/复用/驱逐、FlashAttention/FlashDecoding、Speculative Decoding、MoE推理、百度FastDeploy/昆仑芯适配。",
+    "2026-03-20T08:04 补强快手/主站业务/推荐算法题库question-bank.md，新增「大模型与推荐系统结合专项（2025社招高频热点）」第11节，包含生成式推荐基础（5题）、OneRec架构与技术细节（6题）、大模型技术在推荐中的应用（5题）、工程挑战与落地经验（4题）、追问链路（3条），共20题+3条追问链。覆盖OneRec端到端架构、RQ-KMeans Tokenizer、MoE/DPO/ECPO、SKAI训练系统、Scaling Law验证。",
+    "2026-03-20T07:44 新增阿里巴巴/淘天集团/搜广推（阿里妈妈-搜索广告）/搜索广告算法工程师社招三面面经JSON。",
+    "2026-03-20T07:44 新增腾讯/微信事业群/基础平台（消息与存储方向）/后端开发社招四面面经JSON。",
+    "2026-03-20T07:44 补强阿里巴巴/淘天集团/搜广推算法题库，新增搜索广告专项24题+4条追问链。",
+    "2026-03-20T07:44 补强腾讯/微信事业群/基础平台后端题库，新增IM消息系统与存储架构专项29题。",
     "2026-03-20T07:24 新增字节跳动/抖音电商/商业化技术/Go后端社招三面面经JSON。",
     "2026-03-20T07:24 新增美团/到家事业群/服务端研发（履约调度方向）/后端开发春招两面面经JSON。"
   ],
   "next_actions": [
-    {
-      "company": "百度",
-      "business_group": "文心大模型",
-      "department": "推理平台",
-      "role": "后端开发",
-      "action": "补1份推理优化方向面经+vLLM/TensorRT-LLM/KV Cache专题",
-      "priority": "P1",
-      "status": "pending",
-      "note": "已有2份面经JSON（校招三面+实习一面），推理引擎方向需深化"
-    },
-    {
-      "company": "快手",
-      "business_group": "主站业务",
-      "department": "推荐算法",
-      "role": "推荐算法",
-      "action": "补1份推荐系统社招面经+大模型与推荐结合专题",
-      "priority": "P1",
-      "status": "pending",
-      "note": "已有3份面经JSON，推荐+大模型方向是2025热点"
-    },
     {
       "company": "美团",
       "business_group": "即时零售",
       "department": "服务端研发",
       "role": "后端开发",
       "action": "补1份即时零售/闪购方向面经+ETA与仓店协同专题补强",
-      "priority": "P2",
+      "priority": "P1",
       "status": "pending",
       "note": "已有4份面经JSON+完整题库，即时零售方向可深化"
     },
@@ -227,7 +210,7 @@
       "department": "推荐架构",
       "role": "后端开发",
       "action": "补1份推荐架构方向社招面经+推荐系统工程化专题",
-      "priority": "P2",
+      "priority": "P1",
       "status": "pending",
       "note": "已有2份面经JSON，推荐架构方向面经偏少"
     },
@@ -237,9 +220,29 @@
       "department": "服务端",
       "role": "后端开发",
       "action": "补1份Temu跨境电商方向面经+国际化架构专题",
-      "priority": "P2",
+      "priority": "P1",
       "status": "pending",
       "note": "已有2份面经JSON，Temu是拼多多增长引擎，跨境电商方向值得深化"
+    },
+    {
+      "company": "百度",
+      "business_group": "文心大模型",
+      "department": "推理平台",
+      "role": "后端开发",
+      "action": "补1份推理平台社招面经JSON（侧重vLLM/Continuous Batching/GPU调度实战）",
+      "priority": "P2",
+      "status": "pending",
+      "note": "已有2份面经JSON+深度题库（含31题推理引擎专项），下一步补社招实战面经"
+    },
+    {
+      "company": "快手",
+      "business_group": "主站业务",
+      "department": "推荐算法",
+      "role": "推荐算法",
+      "action": "补1份推荐系统工程化方向面经（特征平台/在线serving/AB实验平台）",
+      "priority": "P2",
+      "status": "pending",
+      "note": "已有4份面经JSON+深度题库（含20题大模型+推荐专项），工程化方向可继续深化"
     }
   ],
   "pending": []

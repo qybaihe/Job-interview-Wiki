@@ -116,6 +116,57 @@
 - TCP/IP分别属于哪一层？TCP/IP协议族的含义？
 - ARP协议的工作层次？ARP欺骗的原理和防范？
 
+## 推理引擎深度专项（vLLM / TensorRT-LLM / KV Cache，社招高频追问）
+
+> 来源：知乎「大模型面试整理(二)—模型推理相关问题」、GitHub LLMs_interview_notes / llm_interview_note 仓库、CSDN「大模型推理百倍加速之KV cache篇」「LLM推理的Attention计算和KV Cache优化」、80aj.com「大模型面试100问03：推理与部署篇」、百度FastDeploy开源文档
+
+### KV Cache 原理与优化（8题）
+- KV Cache 的核心原理是什么？为什么自回归生成中每一步只需要计算新 token 的 Q，而 K/V 可以复用之前的缓存？
+- 单个 token 的 KV Cache 占用多少显存？给出计算公式（2 × hidden_dim × num_layers × dtype_bytes），以 13B 模型 FP16 为例算一下。
+- KV Cache 的显存占用和哪些因素相关？batch size、序列长度、模型层数、hidden_dim 分别如何影响？
+- KV Cache 量化有哪些方案？FP8 / INT8 量化对推理精度的影响如何？vLLM 和 TensorRT-LLM 分别怎么支持 KV Cache 量化？
+- 长上下文场景下 KV Cache 显存爆炸怎么办？窗口注意力（Sliding Window Attention）、稀疏注意力、KV Cache 驱逐策略（H2O / StreamingLLM）各自的思路？
+- KV Cache 复用在哪些场景有价值？多轮对话前缀复用、System Prompt 复用、P-Tuning 前缀复用分别怎么实现？
+- Prefix Caching 的原理？如何判断两个请求可以共享 KV Cache 前缀？vLLM 的 automatic prefix caching 机制？
+- MQA（Multi-Query Attention）和 GQA（Grouped-Query Attention）如何减少 KV Cache 的显存占用？Llama 2 用的是哪种？
+
+### PagedAttention 与显存管理（6题）
+- PagedAttention 解决了什么问题？传统 KV Cache 预分配方式的显存浪费有多严重（论文指出有效利用率可低至 20%）？
+- PagedAttention 的核心设计思想？为什么借鉴操作系统虚拟内存的分页机制？逻辑块和物理块的映射关系？
+- PagedAttention 如何处理动态序列长度？新 token 生成时如何按需分配物理块？请求结束后如何回收？
+- vLLM 的 Block Manager 是怎么工作的？block size 的选择对性能有什么影响？
+- PagedAttention 支持 copy-on-write 吗？在 beam search 场景下如何高效共享 KV Cache 块？
+- vAttention 等后续工作对 PagedAttention 做了哪些改进？连续虚拟内存 vs 分页的 trade-off？
+
+### Continuous Batching 与调度（5题）
+- Continuous Batching（又叫 in-flight batching）和 Static Batching 的核心区别？为什么 Static Batching 在 LLM 场景下效率低？
+- Continuous Batching 如何处理 Early-finished Requests？新请求如何动态插入正在运行的 batch？
+- Prefill 阶段和 Decode 阶段的计算特性有什么不同（compute-bound vs memory-bound）？为什么需要分离调度（Disaggregated Prefill）？
+- 当显存不足以容纳所有活跃请求的 KV Cache 时，vLLM 的抢占策略是什么？swap 到 CPU 内存 vs 重计算的 trade-off？
+- 请求优先级调度怎么做？FCFS / SJF / 优先级队列在推理场景下各自的适用性？
+
+### 推理加速技术综合（7题）
+- FlashAttention 的核心优化思路？什么是 IO-aware？tiling 技术如何减少 HBM 访问次数？FlashAttention-2 相比 v1 改进了什么？
+- FlashDecoding 和 FlashAttention 的区别？为什么 decode 阶段需要单独优化（batch_size × num_heads 维度并行）？
+- Speculative Decoding（投机采样）的原理？draft model 和 target model 如何配合？为什么能保证生成结果和原模型完全一致（rejection sampling）？
+- 模型量化方法对比：PTQ（GPTQ / AWQ / SmoothQuant）vs QAT 的区别？INT8 vs INT4 vs FP8 各自适合什么场景？W4A16 vs W8A8 是什么意思？
+- 算子融合（Kernel Fusion）在推理优化中的作用？哪些算子通常会被融合（如 QKV projection、LayerNorm + Linear）？
+- Tensor Parallelism / Pipeline Parallelism / Sequence Parallelism 在推理场景下分别怎么用？TP 和 PP 对延迟和吞吐的影响？
+- MoE（Mixture of Experts）模型的推理有什么特殊挑战？Expert Parallelism 怎么做？All-to-All 通信开销怎么优化？
+
+### 推理框架对比与选型（5题）
+- vLLM、TensorRT-LLM、SGLang、LMDeploy 各自的核心特点和适用场景？
+- vLLM 的架构？Scheduler + Worker + Block Manager 的协作流程？
+- TensorRT-LLM 相比 vLLM 的优势和劣势？为什么 TensorRT-LLM 在 NVIDIA GPU 上通常有更好的单卡性能？
+- 百度 FastDeploy 的定位？如何实现模型压缩、推理和服务的协同优化？ERNIE-4.5-300B 在 FastDeploy 上的性能数据？
+- 如何评估一个推理框架的性能？TTFT / TPOT / throughput / GPU utilization 分别怎么测？benchmark 工具有哪些？
+
+### 追问链路（社招深度追问）
+- 「KV Cache → PagedAttention → Continuous Batching → 调度策略」：从单请求优化到多请求并发优化的完整链路，每一步解决什么问题？
+- 「量化 → FlashAttention → Speculative Decoding → 分布式并行」：从模型压缩到计算优化到解码加速到多卡扩展，如何组合使用？
+- 「百度昆仑芯 vs NVIDIA GPU」：国产芯片在推理场景的适配挑战？软件栈（编译器/算子库/推理框架）的差异？FastDeploy 如何做跨硬件适配？
+- 「从零设计一个大模型推理服务」：请求接入层（限流/鉴权/路由）→ 调度层（Continuous Batching/优先级/抢占）→ 推理引擎层（KV Cache管理/算子优化/多卡并行）→ 输出层（流式返回/token callback），每层的关键设计决策？
+
 ## 系统设计题
 - 设计一个大模型推理服务平台（请求网关/推理引擎/GPU资源池/监控）
 - 设计一个短链接服务

@@ -1,0 +1,134 @@
+{
+  "company": "快手",
+  "business_group": "主站业务",
+  "department": "推荐算法",
+  "role": "推荐算法工程师",
+  "year": 2024,
+  "type": "社招",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/feed/main/detail/2ebcde4522124db5913907f7470ce372",
+      "https://www.nowcoder.com/feed/main/detail/da5a6e64cc064ff993a851faa2f74fa5",
+      "https://www.nowcoder.com/discuss/531830840452558848",
+      "https://www.nowcoder.com/discuss/353156735114354688",
+      "https://www.nowcoder.com/feed/main/detail/1af12d42679845b7b31845094a9308b0"
+    ],
+    "note": "综合牛客网2024年快手主站推荐算法社招/校招面经多篇（一二面汇总帖、三面面经帖、暑期实习二面帖），提取社招高频问题。快手推荐算法面试特点：项目深挖占比极高（每轮30min+），八股从项目中延伸，coding难度中等偏上（一面可能两道），三面偏综合+系统理解。社招更关注工业级推荐系统经验、大模型与推荐结合（OneRec等前沿方向）。"
+  },
+  "verification_status": "real-aggregated-from-public-posts",
+  "interview_rounds": 3,
+  "rounds": [
+    {
+      "name": "一面",
+      "focus": "项目深挖 + 推荐基础 + 机器学习八股 + 手撕代码",
+      "duration_min": 90,
+      "questions": [
+        {
+          "question": "问美团/字节的实习项目，商品量级多大？召回中相关性分档怎么做的？会不会出现query太不规范不能match到商品，怎么解决？",
+          "category": "项目深挖",
+          "insight": "牛客面经。社招一面项目深挖占30-40分钟。面试官会从实习/工作经历中挑推荐相关项目深入追问，关注数据规模、召回策略细节、badcase处理。query不规范的解决方案：query改写（同义词替换、纠错）、语义召回（双塔模型做语义匹配）、兜底策略（热门/品类召回）。"
+        },
+        {
+          "question": "精排模型用的baseline是什么？怎么用query和行为序列做的target attention？行为序列怎么截断的？如何用query打压搜索结果的推荐多样性？",
+          "category": "项目深挖/精排模型",
+          "insight": "牛客面经。考察对DIN/SIM等target attention机制的理解。行为序列截断：按时间窗口截断（如最近50个行为）或按相关性截断（SIM的GSU模块先检索相关子序列）。多样性打压：MMR重排、DPP、类目打散规则。"
+        },
+        {
+          "question": "有哪些序列建模的方法和模型？讲一讲CTR预估和序列推荐模型。",
+          "category": "推荐模型",
+          "insight": "高频题。序列建模：DIN（target attention）、DIEN（兴趣演化，AUGRU）、SIM（长序列建模，GSU+ESU两阶段）、BST（Transformer）、GRU4Rec、SASRec、Caser（CNN）、MIND（多兴趣胶囊网络）。社招需要能讲清楚每个模型解决什么问题、适用场景、工程落地经验。"
+        },
+        {
+          "question": "SIM的详细原理？GSU和ESU分别做什么？",
+          "category": "推荐模型",
+          "insight": "牛客面经。SIM（Search-based Interest Model）：GSU（General Search Unit）用简单模型从超长行为序列中检索出与target item相关的子序列（soft search用内积，hard search用类目匹配）；ESU（Exact Search Unit）对检索出的子序列做精确的target attention。解决DIN无法处理超长行为序列（>1000）的问题。"
+        },
+        {
+          "question": "说一下GBDT的全部流程，能做分类任务吗？怎么做？",
+          "category": "机器学习基础",
+          "insight": "牛客面经。GBDT流程：初始化常数预测→每轮计算负梯度（残差）→拟合一棵CART回归树→更新模型。分类任务：用交叉熵损失，负梯度为y-p（概率残差），每轮拟合的仍是回归树（拟合概率残差），叶子节点输出用Newton步近似。追问：XGBoost vs LightGBM vs CatBoost区别。"
+        },
+        {
+          "question": "手撕代码：寻找两个有序数组的中位数（LC 4，Hard）。",
+          "category": "手撕代码",
+          "insight": "牛客面经。快手推荐算法一面coding难度偏高，可能出Hard题。二分法：对较短数组二分，找到分割点使左半部分元素个数为(m+n+1)/2，检查交叉边界条件。O(log(min(m,n)))。一面可能出两道题。"
+        },
+        {
+          "question": "手写Transformer的核心代码（self-attention部分）。",
+          "category": "手撕代码",
+          "insight": "牛客面经。快手推荐算法面试高频coding题。要求手写Multi-Head Self-Attention：Q=XWq, K=XWk, V=XWv → Attention(Q,K,V) = softmax(QK^T/√dk)V → 多头拼接+线性变换。注意：mask处理、缩放因子√dk的作用（防止点积过大导致softmax梯度消失）。"
+        }
+      ]
+    },
+    {
+      "name": "二面",
+      "focus": "项目深挖 + 推荐系统架构 + 大模型与推荐结合 + 手撕代码",
+      "duration_min": 60,
+      "questions": [
+        {
+          "question": "深入讨论两段实习项目，每个项目交流约20分钟。追问：某个项目为什么效果不好？有何反思？未来如果再做你会怎样改进？",
+          "category": "项目深挖",
+          "insight": "牛客面经。二面项目讨论更深入但更温和，关注候选人的反思能力和改进思路。社招面试官会追问：效果不好的根因分析（数据问题/模型问题/特征问题）、AB实验设计、线上线下不一致的排查经验。"
+        },
+        {
+          "question": "推荐系统的各个环节（召回、粗排、精排、重排）都是干啥的？你有什么理解？",
+          "category": "推荐系统架构",
+          "insight": "牛客三面面经。召回：从百万级候选集中筛选千级候选（多路召回：协同过滤、双塔、热门、关注）。粗排：轻量模型快速打分筛选到百级。精排：复杂模型（DIN/SIM/MMoE）精确排序。重排：多样性、新鲜度、生态约束、listwise优化。社招需要能讲清楚每个环节的工程挑战和优化经验。"
+        },
+        {
+          "question": "了解快手OneRec吗？生成式推荐和传统级联推荐有什么区别？大模型技术如何应用到推荐系统？",
+          "category": "前沿技术/大模型+推荐",
+          "insight": "2025社招热点方向。OneRec：快手端到端生成式推荐系统，用Transformer统一召回和排序，借鉴LLM技术（MoE架构、DPO偏好对齐）。传统级联：召回→粗排→精排→重排，各阶段目标不一致、算力碎片化。生成式推荐：session-wise生成，预测下一个session而非逐点打分。大模型应用：语义理解增强特征、LLM做内容标签、生成式召回。快手主站OneRec已承接约25%QPS，用户时长提升1.6%。"
+        },
+        {
+          "question": "多目标优化怎么做？MMoE和PLE的区别？如果多个目标之间存在冲突怎么处理？",
+          "category": "多目标优化",
+          "insight": "快手推荐高频题。MMoE：多个expert共享+每个task有独立gate选择expert组合。PLE（腾讯）：在MMoE基础上增加task-specific expert，减少任务间负迁移。目标冲突处理：Pareto优化、动态权重调整（如Uncertainty Weighting）、约束优化（一个目标作为约束，优化另一个）。快手短视频场景：点击率、完播率、互动率、用户留存多目标平衡。"
+        },
+        {
+          "question": "场景设计题：快手短视频推荐中，如何平衡用户时长和内容生态健康？如果只优化时长会出现什么问题？",
+          "category": "场景设计",
+          "insight": "社招高频场景题。只优化时长的问题：信息茧房、低质内容泛滥（标题党/擦边）、创作者生态恶化（新创作者无曝光）。平衡方案：多目标融合（时长+互动+多样性+新鲜度）、内容质量分作为约束、创作者侧流量分配机制、探索与利用（E&E）策略、用户长期留存作为北极星指标。"
+        },
+        {
+          "question": "手撕代码：在有序有重复数组中查找第一个k的下标，不符合则返回第一个>k的下标。",
+          "category": "手撕代码",
+          "insight": "牛客面经。二分查找变体，lower_bound实现。注意边界条件：数组为空、k不存在时返回第一个大于k的位置、所有元素都小于k时返回数组长度。O(logn)。"
+        }
+      ]
+    },
+    {
+      "name": "三面",
+      "focus": "综合面/技术视野 + 系统理解 + 职业规划",
+      "duration_min": 45,
+      "questions": [
+        {
+          "question": "宏观地问了找之前所有工作的动机，为什么选择推荐算法方向？为什么想来快手？",
+          "category": "综合面/职业规划",
+          "insight": "牛客面经。三面可能不出coding题，纯聊天。面试官关注：职业规划清晰度、对推荐算法方向的热情、对快手业务的理解（短视频推荐vs电商推荐vs搜索的区别）。社招需要展示对行业趋势的判断。"
+        },
+        {
+          "question": "解释一下某个项目为什么会有效果？模型的核心假设是什么？如果假设不成立会怎样？",
+          "category": "项目深挖/技术深度",
+          "insight": "牛客三面面经。考察候选人对自己工作的深层理解，不只是做了什么，而是为什么有效。需要能从数据分布、模型归纳偏置、业务特点三个角度解释效果来源。"
+        },
+        {
+          "question": "你对推荐系统未来发展趋势怎么看？大模型会如何改变推荐系统？",
+          "category": "技术视野",
+          "insight": "2025社招热点。趋势：(1)端到端生成式推荐（OneRec）取代级联架构；(2)大模型做内容理解和用户画像增强；(3)强化学习做长期收益优化（用户留存）；(4)多模态推荐（视频理解+文本+音频）；(5)Scaling Law在推荐中的验证。快手已在主站落地OneRec，MFU从4.6%提升到28.8%。"
+        },
+        {
+          "question": "你还有什么想问我的？",
+          "category": "反问",
+          "insight": "建议问：快手主站推荐团队当前最大的技术挑战、OneRec后续的演进方向、团队对大模型+推荐的投入力度、新人的成长路径和技术氛围。"
+        }
+      ]
+    }
+  ],
+  "overall_insight": "快手主站推荐算法社招面试三轮，整体风格：项目深挖为主（每轮30min+），八股从项目中延伸而非独立考察，coding难度中等偏上（一面可能出两道，含Hard题）。社招相比校招更关注：(1)工业级推荐系统的完整经验（召回→精排→重排全链路）；(2)大模型与推荐结合的前沿认知（OneRec、生成式推荐、DPO偏好对齐）；(3)多目标优化和AB实验的实战经验；(4)对业务指标的深层理解（不只是AUC，还有用户时长、留存、生态健康）。三面偏综合评估，关注职业动机和技术视野。面试节奏快，一面到三面通常1-2周完成。",
+  "followups": [
+    "可补充快手推荐算法方向的大模型+推荐专项面试题（OneRec/生成式推荐/MoE在推荐中的应用）",
+    "可补充快手推荐系统工程化方向面经（特征平台、在线serving、AB实验平台）"
+  ]
+}

@@ -225,10 +225,10 @@
     },
     {
       "dir": "百度/百度地图/服务端研发",
-      "json": 1,
-      "qb": false,
-      "action": "补 question-bank 并继续补第2份真实面经",
-      "priority": "P0"
+      "json": 2,
+      "qb": true,
+      "action": "继续补第3份真实面经，并将题库按路线规划 / POI / 地理索引 / 实时数据专题继续加厚",
+      "priority": "P1"
     },
     {
       "dir": "美团/核心本地商业/推荐策略",

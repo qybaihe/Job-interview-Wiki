@@ -1,0 +1,85 @@
+{
+  "company": "百度",
+  "business_group": "百度地图",
+  "department": "服务端研发",
+  "role": "后端开发（日常实习）",
+  "year": 2024,
+  "source": {
+    "type": "public-interview-post",
+    "url": "https://www.nowcoder.com/feed/main/detail/7912b7fc8b1b49ef9299e65c3d942851",
+    "urls": [
+      "https://www.nowcoder.com/feed/main/detail/7912b7fc8b1b49ef9299e65c3d942851"
+    ],
+    "note": "已通过 r.jina.ai 成功抓取牛客原帖正文，题目明细可直接从原帖正文抽取。该帖标题为《百度地图后端日常实习一面（凉经）》。",
+    "verification_status": "verified-single-post"
+  },
+  "interview_rounds": 1,
+  "questions": [
+    {
+      "round": "一面",
+      "question": "自我介绍。",
+      "insight": "常规开场。"
+    },
+    {
+      "round": "一面",
+      "question": "实习内容。",
+      "insight": "先让候选人概述过往经历。"
+    },
+    {
+      "round": "一面",
+      "question": "为什么要分网络模型？TCP 三次握手是什么？",
+      "insight": "网络基础题。"
+    },
+    {
+      "round": "一面",
+      "question": "MySQL 事务的隔离级别有哪些？不同引擎有什么特点？索引失效情况有哪些？SQL 查询慢要怎么排查？",
+      "insight": "数据库与 SQL 性能诊断连环追问。"
+    },
+    {
+      "round": "一面",
+      "question": "说一下对 Docker 和 K8S 的理解；Linux 有哪些常用命令？",
+      "insight": "偏后端工程化与运维基础。"
+    },
+    {
+      "round": "一面",
+      "question": "面向对象概念和三个特性是什么？深拷贝和浅拷贝有什么区别？",
+      "insight": "Java / 编程语言基础。"
+    },
+    {
+      "round": "一面",
+      "question": "HashMap 底层原理是什么？为什么 HashMap 线程不安全？List 的不同实现有什么区别？",
+      "insight": "集合框架高频题。"
+    },
+    {
+      "round": "一面",
+      "question": "JMM 是什么？ArrayList 可以插入 null 吗？StringBuffer 和 StringBuilder 有什么区别？",
+      "insight": "Java 语言与并发内存模型基础。"
+    },
+    {
+      "round": "一面",
+      "question": "悲观锁和乐观锁有什么区别？线程池怎么使用？线程池参数有哪些？",
+      "insight": "并发编程高频。"
+    },
+    {
+      "round": "一面",
+      "question": "如何用栈实现队列？如何用队列实现栈？",
+      "insight": "数据结构手写题。"
+    },
+    {
+      "round": "一面",
+      "question": "JVM 垃圾回收、类加载过程、双亲委派机制、JVM 参数分别是什么？",
+      "insight": "JVM 基础知识连问。"
+    },
+    {
+      "round": "一面",
+      "question": "介绍一下短链接服务；token 是什么；什么是单点登录；RabbitMQ 的监控信息怎么看？",
+      "insight": "项目深挖会穿插中间件与鉴权问题。"
+    },
+    {
+      "round": "一面",
+      "question": "实习内容、MySQL 的使用经历、实习项目中有多少数据？",
+      "insight": "继续追问项目规模与数据库实践。"
+    }
+  ],
+  "final_insight": "这是一篇可直接抓到正文的百度地图服务端研发真实单帖，题目覆盖网络、数据库、Java 基础、并发、JVM、数据结构和项目深挖，适合作为百度地图后端方向的真实面经样本。"
+}

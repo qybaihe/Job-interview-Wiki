@@ -1,23 +1,34 @@
 {
   "company": "字节跳动",
-  "business_group": "抖音电商",
-  "department": "商业化技术",
-  "role": "后端开发",
+  "business_group": "飞书",
+  "department": "后端平台",
+  "role": "后台开发工程师",
   "source": {
-    "type": "manual",
-    "url": "",
-    "note": "来源备注"
+    "type": "public-interview-post",
+    "url": "https://example.com/interview-post",
+    "urls": [
+      "https://example.com/interview-post"
+    ],
+    "note": "公开来源原帖或可验证聚合来源。若不是单篇原帖，应在 note 中明确说明整理口径。",
+    "verification_status": "verified-single-post"
   },
   "interview_rounds": 3,
   "questions": [
     {
-      "question": "你如何理解高并发系统中的缓存击穿、缓存穿透、缓存雪崩？",
-      "insight": "这题不只是背概念，更要讲出识别场景、解决手段和方案取舍。"
+      "round": "一面",
+      "question": "MySQL 索引失效的常见场景有哪些？",
+      "insight": "不要只背最左前缀，要结合 where / order by / 类型转换 / 范围查询 / 回表代价一起讲。"
     },
     {
-      "question": "MySQL 索引失效的常见场景有哪些？",
-      "insight": "要从查询写法、联合索引最左前缀、类型转换、范围查询等角度系统回答。"
+      "round": "二面",
+      "question": "如果设计一个支持灰度和快速回滚的配置中心，你会怎么做？",
+      "insight": "系统设计题要覆盖版本管理、审计、推送/拉取、客户端容灾、灰度范围和回滚机制。"
+    },
+    {
+      "round": "三面",
+      "question": "你在做平台化项目时，如何推动业务团队接入，而不是继续重复造轮子？",
+      "insight": "这类题不仅考技术方案，也考治理思路、迁移成本控制和跨团队协作能力。"
     }
   ],
-  "final_insight": "整场面试更看重基础是否扎实、表达是否结构化，以及是否能结合真实项目说明取舍。"
+  "final_insight": "好的结构化面经应该保留题目顺序、轮次上下文、来源强度和个人复盘，而不是只堆题目列表。"
 }

@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-20T15:58:00+08:00",
+  "generated_at": "2026-03-20T18:40:00+08:00",
   "phase": "deepening-and-expanding",
   "summary": {
     "todo": 46,
     "running": 0,
-    "completed": 31,
-    "companies_seeded": 15,
-    "question_banks_filled": 51,
-    "interview_json_count": 132
+    "completed": 32,
+    "companies_seeded": 16,
+    "question_banks_filled": 50,
+    "interview_json_count": 131
   },
   "queues": {
     "priority_companies": ["字节跳动", "腾讯", "阿里巴巴", "美团", "拼多多", "快手", "百度", "京东"],
@@ -37,7 +37,17 @@
     {"dir": "阿里巴巴/淘天集团/技术平台", "json": 3, "qb": true},
     {"dir": "快手/商业化/后端研发", "json": 2, "qb": true},
     {"dir": "腾讯/云与智慧产业事业群/基础架构", "json": 2, "qb": true},
-    {"dir": "华为/云计算BU/后端研发", "json": 1, "qb": true}
+    {"dir": "华为/云计算BU/后端研发", "json": 1, "qb": true},
+    {"dir": "字节跳动/飞书/后端平台", "json": 3, "qb": true},
+    {"dir": "字节跳动/抖音生活服务/服务端研发", "json": 0, "qb": true},
+    {"dir": "阿里巴巴/本地生活/服务端研发", "json": 0, "qb": true},
+    {"dir": "美团/核心本地商业/推荐策略", "json": 1, "qb": true},
+    {"dir": "蚂蚁集团/支付宝/后端开发", "json": 1, "qb": true},
+    {"dir": "华为/2012实验室/算法研究", "json": 1, "qb": true},
+    {"dir": "华为/终端BG/软件开发", "json": 1, "qb": true},
+    {"dir": "小红书/电商技术/服务端研发", "json": 1, "qb": true},
+    {"dir": "小红书/社区技术/后端开发", "json": 1, "qb": true},
+    {"dir": "百度/百度地图/服务端研发", "json": 1, "qb": false}
   ],
   "notes": [
     "2026-03-20T11:35 重新盘点仓库：50个方向，130份面经JSON，41个题库。识别出20个待办项，进入深化扩展阶段。",
@@ -47,32 +57,21 @@
     "2026-03-20T13:24 并行熔断收口：再次显式拉起 3 个 worker，其中新 worker 尚在搜索阶段时即优先采纳已验证候选，完成华为/云计算BU/后端研发题库补强（+18 条公开来源问题）与 README 统计修正后直接提交。",
     "2026-03-20T13:40 新一轮 4-worker 并行执行按熔断策略收口：优先采纳 worker-B 的美团/核心本地商业/推荐策略题库补厚候选，向算法-question-bank 新增 18 条带公开来源索引的问题，并将 progress_state 中该方向的 qb 标记修正为 true。",
     "2026-03-20T13:49 4-worker 并行熔断收口：worker-D 识别出华为/云计算BU/后端研发题库中整段重复追加的 18 条公开面经补充问题，本轮优先采纳该资产治理修复；worker-C 仅形成低置信摘要候选，A/B 未形成可直接入库候选。",
-    "2026-03-20T16:08 8-worker 并行收口：采纳 worker-A 与 worker-B 的 P0 方向题库建设候选，新建 抖音生活服务/服务端研发、飞书/后端平台、阿里本地生活/服务端研发 三个 question-bank；同时根据 worker-H 审计修正 progress_state 中飞书/后端平台统计并同步题库计数。"
+    "2026-03-20T16:08 8-worker 并行收口：采纳 worker-A 与 worker-B 的 P0 方向题库建设候选，新建 抖音生活服务/服务端研发、飞书/后端平台、阿里本地生活/服务端研发 三个 question-bank；同时根据 worker-H 审计修正 progress_state 中飞书/后端平台统计并同步题库计数。",
+    "2026-03-20T18:40 8-worker 并行收口：采纳 worker-E 的百度地图/服务端研发首份真实面经 JSON 候选，补齐该方向从零建设；同时吸收 worker-A 的飞书/后端平台题库补强，并同步修复 README 与 progress_state 统计。"
   ],
   "next_actions": [
-    {"dir": "字节跳动/抖音生活服务/服务端研发", "json": 0, "qb": false, "action": "从零建设：搜索面经+建题库", "priority": "P0"},
-    {"dir": "字节跳动/飞书/后端平台", "json": 2, "qb": true, "action": "继续补充更高置信来源并细化题库", "priority": "P0"},
-    {"dir": "阿里巴巴/本地生活/服务端研发", "json": 0, "qb": false, "action": "从零建设：搜索面经+建题库", "priority": "P0"},
-    {"dir": "小米/AIoT平台/后端研发", "json": 0, "qb": false, "action": "从零建设：搜索面经+建题库", "priority": "P1"},
-    {"dir": "小米/MIUI系统/客户端开发", "json": 0, "qb": false, "action": "从零建设：搜索面经+建题库", "priority": "P1"},
-    {"dir": "微软中国/Azure/后端开发", "json": 0, "qb": false, "action": "从零建设：搜索面经+建题库", "priority": "P1"},
-    {"dir": "微软中国/Bing/算法", "json": 0, "qb": false, "action": "从零建设：搜索面经+建题库", "priority": "P1"},
-    {"dir": "微软中国/Office/软件开发", "json": 0, "qb": false, "action": "从零建设：搜索面经+建题库", "priority": "P1"},
+    {"dir": "字节跳动/抖音生活服务/服务端研发", "json": 0, "qb": true, "action": "继续搜索首份真实面经 JSON", "priority": "P0"},
+    {"dir": "阿里巴巴/本地生活/服务端研发", "json": 0, "qb": true, "action": "继续搜索首份真实面经 JSON", "priority": "P0"},
+    {"dir": "百度/百度地图/服务端研发", "json": 1, "qb": false, "action": "补 question-bank 并继续补第2份真实面经", "priority": "P0"},
     {"dir": "美团/核心本地商业/推荐策略", "json": 1, "qb": true, "action": "继续补1-2份面经", "priority": "P1"},
     {"dir": "哔哩哔哩/推荐算法", "json": 1, "qb": false, "action": "补题库+补1-2份面经", "priority": "P1"},
     {"dir": "小红书/推荐算法", "json": 1, "qb": false, "action": "补题库+补1-2份面经", "priority": "P1"},
+    {"dir": "微软中国/Azure/后端开发", "json": 0, "qb": false, "action": "从零建设：先落题库再找真实面经", "priority": "P1"},
     {"dir": "华为/2012实验室/算法研究", "json": 1, "qb": true, "action": "补1-2份面经", "priority": "P2"},
     {"dir": "华为/终端BG/软件开发", "json": 1, "qb": true, "action": "补1-2份面经", "priority": "P2"},
-    {"dir": "小红书/电商技术/服务端研发", "json": 1, "qb": true, "action": "补1-2份面经", "priority": "P2"},
-    {"dir": "小红书/社区技术/后端开发", "json": 1, "qb": true, "action": "补1-2份面经", "priority": "P2"},
     {"dir": "滴滴/出行平台/后端开发", "json": 1, "qb": true, "action": "补1-2份面经", "priority": "P2"},
     {"dir": "网易/云音乐/后端开发", "json": 1, "qb": true, "action": "补1-2份面经", "priority": "P2"},
-    {"dir": "蚂蚁集团/支付宝/后端开发", "json": 1, "qb": true, "action": "补1-2份面经", "priority": "P2"},
-    {"dir": "快手/商业化/后端研发", "json": 2, "qb": true, "action": "补1份面经深化", "priority": "P2"}
-  ],
-  "pending": []
-}
-qb": true, "action": "补1-2份面经", "priority": "P2"},
     {"dir": "蚂蚁集团/支付宝/后端开发", "json": 1, "qb": true, "action": "补1-2份面经", "priority": "P2"},
     {"dir": "快手/商业化/后端研发", "json": 2, "qb": true, "action": "补1份面经深化", "priority": "P2"}
   ],

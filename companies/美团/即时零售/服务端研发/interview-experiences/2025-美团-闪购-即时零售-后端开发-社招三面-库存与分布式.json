@@ -1,0 +1,107 @@
+{
+  "company": "美团",
+  "business_group": "即时零售",
+  "department": "服务端研发",
+  "role": "后端开发",
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://blog.csdn.net/weixin_54118935/article/details/149570157",
+      "https://blog.csdn.net/YunLLL123/article/details/149576810",
+      "https://www.nowcoder.com/discuss/353156220137709568",
+      "https://www.nowcoder.com/discuss/353154521687859200",
+      "https://www.nowcoder.com/creation/subject/95ec11569aff4d9e83402e4a750ed939",
+      "https://tech.meituan.com/2016/09/29/distributed-system-mutually-exclusive-idempotence-cerberus-gtis.html"
+    ],
+    "note": "综合2024-2025年美团闪购/即时零售方向后端社招面经（CSDN、牛客多篇），侧重即时零售核心技术域：库存扣减一致性、分布式事务、ETA预估、仓店路由、高并发交易链路。美团闪购社招三轮技术面，一面偏Java基础+Redis+MySQL，二面偏分布式系统+业务场景设计（库存/履约），三面偏系统设计+架构视野+项目深挖。每轮有手撕或场景设计题。"
+  },
+  "verification_status": "real-aggregated-from-public-posts",
+  "interview_rounds": 3,
+  "questions": [
+    {
+      "round": "一面",
+      "question": "Redis分布式锁怎么实现？用哪个命令？锁过期了业务没执行完怎么办？",
+      "category": "Redis",
+      "insight": "来自美团闪购面经高频题。SET key value NX EX实现。锁过期问题：Redisson看门狗机制（watchdog），后台线程定期续期（默认每10秒续30秒）。追问：RedLock和普通分布式锁的区别？RedLock需要在N/2+1个独立Redis节点上加锁成功，解决单点故障但性能开销大，美团实际场景中更多用普通Redis锁+业务幂等兜底。"
+    },
+    {
+      "round": "一面",
+      "question": "ZSet底层数据结构？跳表的时间复杂度？为什么用跳表不用红黑树？跳表支持范围查询吗？",
+      "category": "Redis",
+      "insight": "ZSet底层：元素少时ziplist（压缩列表），元素多时skiplist+dict。跳表查询/插入/删除平均O(logN)。跳表优于红黑树：实现简单、范围查询友好（底层有序链表直接遍历）、并发友好（局部锁即可）。即时零售场景中ZSet常用于排行榜、订单优先级队列、ETA排序。"
+    },
+    {
+      "round": "一面",
+      "question": "MySQL索引底层结构？B+树叶子节点存什么？索引失效的常见情况？深度分页为什么慢？怎么优化？",
+      "category": "MySQL",
+      "insight": "B+树叶子节点：聚簇索引存完整行数据，二级索引存主键值。索引失效：函数操作、隐式类型转换、LIKE '%xx'、OR连接非索引列、不满足最左匹配。深度分页慢：LIMIT 100000,10需要扫描100010行再丢弃前100000行。优化：游标分页（WHERE id > last_id LIMIT 10）、延迟关联（子查询先取主键再JOIN）、ES辅助。即时零售订单列表是典型深度分页场景。"
+    },
+    {
+      "round": "一面",
+      "question": "Java线程状态有哪些？BLOCKED和WAITING的区别？线程池核心参数？拒绝策略有哪些？",
+      "category": "Java基础",
+      "insight": "6种状态：NEW、RUNNABLE、BLOCKED、WAITING、TIMED_WAITING、TERMINATED。BLOCKED：等待获取synchronized锁。WAITING：调用wait()/join()/LockSupport.park()主动等待。线程池参数：corePoolSize、maximumPoolSize、keepAliveTime、workQueue、threadFactory、handler。拒绝策略：AbortPolicy（抛异常）、CallerRunsPolicy（调用者执行）、DiscardPolicy（丢弃）、DiscardOldestPolicy（丢弃最老）。即时零售高并发场景线程池调优是实战必备。"
+    },
+    {
+      "round": "一面",
+      "question": "手撕：多线程交替打印奇偶数（synchronized+wait/notify实现）",
+      "category": "手撕代码",
+      "insight": "来自美团闪购面经真题。两个线程共享一个计数器，用synchronized锁+wait/notify交替唤醒。也可用ReentrantLock+Condition或Semaphore实现。面试官会追问：如果要三个线程交替打印ABC怎么改？用三个Condition轮流signal。"
+    },
+    {
+      "round": "二面",
+      "question": "即时零售场景下，下单和扣库存的分布式事务怎么保证？消息丢了怎么办？超卖了怎么兜底？",
+      "category": "分布式/业务场景",
+      "insight": "美团闪购面经核心题。方案：本地消息表+MQ最终一致性。流程：1.订单服务在本地事务中创建订单+写消息表 2.定时任务扫描消息表发送到Kafka 3.库存服务消费Kafka消息扣减库存 4.消费成功回调更新消息状态。消息丢失兜底：定时任务重试未确认消息。超卖兜底：Redis预扣库存（Lua脚本原子操作）+DB最终校验+人工补偿。追问：为什么不用2PC？2PC阻塞严重、性能差，即时零售高并发场景不适合强一致方案。"
+    },
+    {
+      "round": "二面",
+      "question": "Redis存储库存怎么设计？如何保证库存扣减的原子性和幂等性？高并发下怎么防超卖？",
+      "category": "Redis/业务场景",
+      "insight": "来自2025美团闪购面经。设计：Redis Hash存储，Key=商品ID，Field=仓库ID/批次ID，Value=库存数量。原子性：Lua脚本封装查询+扣减为原子操作（先判断库存>=扣减数，再HINCRBY负数扣减）。幂等性：订单号作为SETNX的Key获取分布式锁，防止重复扣减。防超卖：Redis预扣+DB异步校验+对账任务兜底。追问：Redis和DB库存不一致怎么办？定时对账任务+Canal监听binlog同步。"
+    },
+    {
+      "round": "二面",
+      "question": "缓存一致性方案有哪些？延迟双删和Canal各自适用什么场景？即时零售库存场景用哪种？",
+      "category": "Redis/分布式",
+      "insight": "延迟双删：先删缓存→更新DB→延迟再删缓存。适合写少读多、对一致性要求不极端的场景。Canal：监听MySQL binlog异步更新缓存，延迟更低但引入额外组件。即时零售库存场景：写入频繁（每笔订单都扣库存），用Canal+消息队列异步刷新Redis更合适，配合版本号防止旧数据覆盖新数据。追问：Canal延迟导致缓存脏读怎么办？写入时同步删缓存+Canal异步刷新双保险。"
+    },
+    {
+      "round": "二面",
+      "question": "CAP理论在即时零售场景下怎么理解？订单系统和库存系统分别倾向CP还是AP？",
+      "category": "分布式理论",
+      "insight": "订单系统倾向CP：订单数据不能丢、不能重复，宁可短暂不可用也不能数据不一致。库存系统倾向AP+最终一致：高并发下优先保证可用性，允许短暂不一致（Redis预扣可能和DB有延迟），通过对账任务保证最终一致。追问：如果库存选CP会怎样？每次扣库存都走DB强一致，QPS上不去，大促直接打爆数据库。"
+    },
+    {
+      "round": "二面",
+      "question": "手撕/场景设计：设计一个高并发的商品库存扣减系统，要求支持幂等、防超卖、高可用",
+      "category": "系统设计",
+      "insight": "美团闪购二面经典场景题。分层设计：1.接入层：请求去重（订单号幂等键）+限流（令牌桶）2.缓存层：Redis Lua脚本原子预扣库存 3.消息层：扣减成功发Kafka消息 4.持久层：消费者异步更新DB库存 5.对账层：定时任务Redis-DB对账修正。高可用：Redis Cluster多副本、Kafka多分区多副本、DB主从+故障切换。面试官追问：如果Redis挂了怎么降级？降级到DB直接扣减+排队限流。"
+    },
+    {
+      "round": "三面",
+      "question": "ETA预估不准会带来什么后果？如果ETA偏乐观导致大量超时，系统应该怎么快速调整？",
+      "category": "业务场景/即时零售",
+      "insight": "ETA偏乐观后果：用户预期落空→投诉率上升、骑手被催单→安全风险、门店被催出餐→服务质量下降。快速调整：1.动态放宽ETA（乘以安全系数1.2-1.5）2.降级为区间展示（30-45分钟而非35分钟）3.触发运力补充（跨区域调度、提高配送费吸引骑手）4.缩小配送半径减少远距离订单 5.前端提示当前配送繁忙。追问：ETA模型的核心特征？距离、天气、时段、运力密度、商家历史出餐速度、交通状况、订单品类复杂度。"
+    },
+    {
+      "round": "三面",
+      "question": "如果某区域突发暴雨，运力骤降50%，系统应该按什么优先级应对？",
+      "category": "业务场景/即时零售",
+      "insight": "分层降级策略：第一层：动态延长承诺时效（30分钟→45分钟）。第二层：缩小配送半径、关闭远距离供给。第三层：合并配送（顺路单合并）、跨区域调度运力。第四层：前端提示延迟、提供取消免责。第五层：动态调整配送费引导需求削峰。面试官关注的是分层思维和优先级判断能力，不要求有标准答案但要有逻辑。"
+    },
+    {
+      "round": "三面",
+      "question": "你做过的项目中，最复杂的一次跨团队协作是什么？你在其中扮演什么角色？遇到什么困难？",
+      "category": "项目深挖/软素质",
+      "insight": "美团三面（主管面）重点考察协作能力和推动力。即时零售涉及交易、履约、门店、客服多个团队，跨团队协同是日常。回答要点：1.项目背景和目标 2.各团队职责和依赖关系 3.遇到的核心矛盾（需求冲突/排期冲突/技术方案分歧）4.你的推动方式（拉齐目标/拆分边界/建立机制）5.最终结果和反思。"
+    },
+    {
+      "round": "三面",
+      "question": "手撕：有序数组中查找第一个等于目标值的元素下标（二分左边界）",
+      "category": "手撕代码",
+      "insight": "来自美团闪购面经真题。标准二分左边界模板：当nums[mid]==target时不返回，继续收缩右边界right=mid-1，最终检查left是否越界且nums[left]==target。时间O(logN)。面试官可能追问：如果要找最后一个等于目标值的呢？收缩左边界left=mid+1。"
+    }
+  ],
+  "final_insight": "美团闪购/即时零售后端社招面试三轮技术面。一面偏Java基础+Redis+MySQL（ZSet/分布式锁/索引/深度分页），二面偏分布式系统+即时零售业务场景（库存扣减一致性/分布式事务/缓存一致性/CAP选型），三面偏业务理解+系统设计+项目深挖（ETA预估/运力调度/跨团队协作）。即时零售方向特别关注：Redis Lua脚本原子操作、本地消息表+MQ最终一致性、库存防超卖分层设计、ETA动态调整策略、极端天气分层降级。面试风格务实，喜欢结合业务场景考察技术方案选型能力。"
+}

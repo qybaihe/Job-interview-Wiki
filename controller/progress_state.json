@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-20T08:04:00+08:00",
+  "generated_at": "2026-03-20T08:24:00+08:00",
   "phase": "collection-and-production",
   "summary": {
     "todo": 0,
     "running": 0,
-    "completed": 107,
+    "completed": 109,
     "companies_seeded": 8,
     "question_banks_filled": 13,
-    "interview_json_count": 82
+    "interview_json_count": 84
   },
   "queues": {
     "priority_companies": [
@@ -144,14 +144,14 @@
       "business_group": "即时零售",
       "department": "服务端研发",
       "question_bank_ready": true,
-      "interview_json_count": 4
+      "interview_json_count": 5
     },
     {
       "company": "字节跳动",
       "business_group": "抖音主站",
       "department": "推荐架构",
       "question_bank_ready": true,
-      "interview_json_count": 2
+      "interview_json_count": 3
     },
     {
       "company": "拼多多",
@@ -183,9 +183,12 @@
     }
   ],
   "notes": [
-    "2026-03-20T08:04 新增快手/主站业务/推荐算法/推荐算法工程师社招三面面经JSON（来源：牛客网2024年快手推荐算法多篇面经汇总），三面覆盖项目深挖（召回相关性分档、精排target attention、SIM原理）、推荐系统架构全链路、大模型+推荐前沿（OneRec生成式推荐、MoE、DPO偏好对齐）、多目标优化（MMoE/PLE）、场景设计（用户时长vs生态健康平衡）、coding（LC4两有序数组中位数Hard+手写Transformer）。快手推荐算法面经从3份扩展到4份。",
-    "2026-03-20T08:04 补强百度/文心大模型/推理平台题库question-bank.md，新增「推理引擎深度专项（vLLM/TensorRT-LLM/KV Cache，社招高频追问）」，包含KV Cache原理与优化（8题）、PagedAttention与显存管理（6题）、Continuous Batching与调度（5题）、推理加速技术综合（7题）、推理框架对比与选型（5题）、追问链路（4条），共31题+4条追问链。覆盖vLLM PagedAttention、KV Cache量化/复用/驱逐、FlashAttention/FlashDecoding、Speculative Decoding、MoE推理、百度FastDeploy/昆仑芯适配。",
-    "2026-03-20T08:04 补强快手/主站业务/推荐算法题库question-bank.md，新增「大模型与推荐系统结合专项（2025社招高频热点）」第11节，包含生成式推荐基础（5题）、OneRec架构与技术细节（6题）、大模型技术在推荐中的应用（5题）、工程挑战与落地经验（4题）、追问链路（3条），共20题+3条追问链。覆盖OneRec端到端架构、RQ-KMeans Tokenizer、MoE/DPO/ECPO、SKAI训练系统、Scaling Law验证。",
+    "2026-03-20T08:24 新增字节跳动/抖音主站/推荐架构/后端开发春招三面面经JSON（推荐工程化方向），侧重Go语言（GMP/Channel/GC）、特征平台三层架构（离线/近线/实时）、多路召回融合、在线Serving P99优化、AB实验平台分层正交设计、特征存储系统设计。来源：牛客/CSDN/力扣2024-2025年字节推荐架构面经聚合。推荐架构面经从2份扩展到3份。",
+    "2026-03-20T08:24 新增美团/即时零售/服务端研发/后端开发社招三面面经JSON（库存与分布式方向），侧重Redis分布式锁/ZSet/Lua脚本原子库存扣减、本地消息表+MQ最终一致性、缓存一致性（延迟双删vs Canal）、CAP选型（订单CP vs 库存AP）、ETA动态调整、暴雨分层降级策略。来源：CSDN/牛客2024-2025年美团闪购面经聚合。即时零售面经从4份扩展到5份。",
+    "2026-03-20T08:24 补强字节跳动/抖音主站/推荐架构题库question-bank.md，新增三个专项：Go语言专项（GMP调度/Channel/GC/Goroutine泄漏，含追问链路）、特征平台深度专项（分层架构/存储选型/特征一致性/Training-Serving Skew）、AB实验平台深度专项（流量分桶/分层正交/指标评估/假设检验/工程实现）。",
+    "2026-03-20T08:04 新增快手/主站业务/推荐算法/推荐算法工程师社招三面面经JSON。",
+    "2026-03-20T08:04 补强百度/文心大模型/推理平台题库，新增推理引擎深度专项31题+4条追问链。",
+    "2026-03-20T08:04 补强快手/主站业务/推荐算法题库，新增大模型与推荐系统结合专项20题+3条追问链。",
     "2026-03-20T07:44 新增阿里巴巴/淘天集团/搜广推（阿里妈妈-搜索广告）/搜索广告算法工程师社招三面面经JSON。",
     "2026-03-20T07:44 新增腾讯/微信事业群/基础平台（消息与存储方向）/后端开发社招四面面经JSON。",
     "2026-03-20T07:44 补强阿里巴巴/淘天集团/搜广推算法题库，新增搜索广告专项24题+4条追问链。",
@@ -194,26 +197,6 @@
     "2026-03-20T07:24 新增美团/到家事业群/服务端研发（履约调度方向）/后端开发春招两面面经JSON。"
   ],
   "next_actions": [
-    {
-      "company": "美团",
-      "business_group": "即时零售",
-      "department": "服务端研发",
-      "role": "后端开发",
-      "action": "补1份即时零售/闪购方向面经+ETA与仓店协同专题补强",
-      "priority": "P1",
-      "status": "pending",
-      "note": "已有4份面经JSON+完整题库，即时零售方向可深化"
-    },
-    {
-      "company": "字节跳动",
-      "business_group": "抖音主站",
-      "department": "推荐架构",
-      "role": "后端开发",
-      "action": "补1份推荐架构方向社招面经+推荐系统工程化专题",
-      "priority": "P1",
-      "status": "pending",
-      "note": "已有2份面经JSON，推荐架构方向面经偏少"
-    },
     {
       "company": "拼多多",
       "business_group": "Temu",
@@ -230,7 +213,7 @@
       "department": "推理平台",
       "role": "后端开发",
       "action": "补1份推理平台社招面经JSON（侧重vLLM/Continuous Batching/GPU调度实战）",
-      "priority": "P2",
+      "priority": "P1",
       "status": "pending",
       "note": "已有2份面经JSON+深度题库（含31题推理引擎专项），下一步补社招实战面经"
     },
@@ -243,6 +226,26 @@
       "priority": "P2",
       "status": "pending",
       "note": "已有4份面经JSON+深度题库（含20题大模型+推荐专项），工程化方向可继续深化"
+    },
+    {
+      "company": "美团",
+      "business_group": "核心本地商业",
+      "department": "推荐策略",
+      "role": "算法",
+      "action": "补1份推荐策略方向面经+LBS推荐/到店推荐专题",
+      "priority": "P2",
+      "status": "pending",
+      "note": "已有1份样板面经，美团核心本地商业推荐方向值得深化"
+    },
+    {
+      "company": "腾讯",
+      "business_group": "云与智慧产业事业群",
+      "department": "基础架构",
+      "role": "后端开发",
+      "action": "补1份腾讯云基础架构面经+云原生/K8s/存储专题",
+      "priority": "P2",
+      "status": "pending",
+      "note": "已有2份面经JSON，腾讯云方向可继续深化"
     }
   ],
   "pending": []

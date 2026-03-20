@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-20T13:14:00+08:00",
+  "generated_at": "2026-03-20T15:58:00+08:00",
   "phase": "deepening-and-expanding",
   "summary": {
     "todo": 46,
@@ -66,6 +66,12 @@
     {"dir": "小红书/社区技术/后端开发", "json": 1, "qb": true, "action": "补1-2份面经", "priority": "P2"},
     {"dir": "滴滴/出行平台/后端开发", "json": 1, "qb": true, "action": "补1-2份面经", "priority": "P2"},
     {"dir": "网易/云音乐/后端开发", "json": 1, "qb": true, "action": "补1-2份面经", "priority": "P2"},
+    {"dir": "蚂蚁集团/支付宝/后端开发", "json": 1, "qb": true, "action": "补1-2份面经", "priority": "P2"},
+    {"dir": "快手/商业化/后端研发", "json": 2, "qb": true, "action": "补1份面经深化", "priority": "P2"}
+  ],
+  "pending": []
+}
+qb": true, "action": "补1-2份面经", "priority": "P2"},
     {"dir": "蚂蚁集团/支付宝/后端开发", "json": 1, "qb": true, "action": "补1-2份面经", "priority": "P2"},
     {"dir": "快手/商业化/后端研发", "json": 2, "qb": true, "action": "补1份面经深化", "priority": "P2"}
   ],

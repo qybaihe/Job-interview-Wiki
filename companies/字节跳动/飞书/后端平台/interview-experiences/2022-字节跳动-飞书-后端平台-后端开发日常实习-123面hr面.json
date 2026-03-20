@@ -1,0 +1,106 @@
+{
+  "candidate_type": "interview_experience_json_candidate",
+  "confidence": "high",
+  "company": "字节跳动",
+  "business_line": "飞书",
+  "team": "后端平台",
+  "role": "后端开发日常实习",
+  "source": {
+    "title": "字节跳动，飞书，123面+hr面面经",
+    "url": "https://www.nowcoder.com/discuss/354383513132568576",
+    "fetched_via": "https://r.jina.ai/http://www.nowcoder.com/discuss/354383513132568576",
+    "author_meta": "牛客网帖子，2022-05-12，标题明确包含飞书",
+    "verification_note": "正文已可抓取并可核验一面/二面/三面/hr 面题目。"
+  },
+  "summary": {
+    "rounds": 4,
+    "timeline": "4.26投递，4.29一面，5.9二面，5.10三面，5.12 hr 面，10 分钟后 offer",
+    "result": "offer"
+  },
+  "round_details": [
+    {
+      "round": "一面",
+      "duration": "45min",
+      "topics": [
+        "项目介绍与项目改进场景题",
+        "多线程 IO 线程越多越好吗",
+        "操作系统 IO 全过程",
+        "虚拟内存",
+        "操作系统中断过程",
+        "输入 URL 到页面显示过程",
+        "IP 报文如何传送",
+        "IO 多路复用",
+        "Redis 数据结构及时间复杂度"
+      ],
+      "coding": [
+        "二叉树右视图"
+      ]
+    },
+    {
+      "round": "二面",
+      "duration": "40min",
+      "topics": [
+        "项目改进点",
+        "虚拟内存追问",
+        "海量 IP 地址存在磁盘，如何判断某个 IP 是否存在",
+        "IP 地址如何用 int 表示",
+        "IPv4 总数与 bitmap 占用估算",
+        "Linux remove/delete 追问",
+        "MySQL 索引介绍"
+      ],
+      "coding": [
+        "无序数组中求每个位置右侧第一个大于等于它的数（单调栈）"
+      ]
+    },
+    {
+      "round": "三面",
+      "duration": "45min",
+      "topics": [
+        "项目介绍",
+        "Redis 使用方式与数据结构",
+        "IO 多路复用底层",
+        "索引/B+树/索引失效/IN/LIKE",
+        "默认隔离级别与实现",
+        "存储引擎选择",
+        "Redis 中没有资源的大量访问会有什么问题，如何解决",
+        "中间件削峰填谷对用户等待的影响",
+        "类加载器",
+        "HashMap",
+        "网络编程经验"
+      ],
+      "coding": [
+        "数组表示整数，只交换一次两个位置，求交换后最大值"
+      ]
+    },
+    {
+      "round": "HR面",
+      "duration": "18min",
+      "topics": [
+        "自我介绍与过往经历",
+        "转计算机背景动机",
+        "学习方法",
+        "项目合作分工",
+        "未来计划、实习打算、实习时长"
+      ]
+    }
+  ],
+  "extracted_high_frequency_questions": [
+    "多线程 IO 线程越多越好吗",
+    "操作系统 IO 全过程",
+    "虚拟内存怎么理解",
+    "输入 URL 到页面显示过程",
+    "IO 多路复用",
+    "Redis 数据结构与时间复杂度",
+    "海量 IP 判断存在性",
+    "MySQL 索引",
+    "索引失效场景",
+    "默认隔离级别及实现",
+    "缓存穿透/大量访问缓存不存在资源",
+    "类加载器",
+    "HashMap"
+  ],
+  "risk_flags": [
+    "单篇帖子来源，适合作为单场真实面经候选",
+    "岗位标题写的是飞书后端开发日常实习，映射到仓库方向“飞书/后端平台”时需要人工确认命名一致性"
+  ]
+}

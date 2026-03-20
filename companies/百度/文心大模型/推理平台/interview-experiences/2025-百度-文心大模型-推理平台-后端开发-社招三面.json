@@ -1,0 +1,137 @@
+{
+  "company": "百度",
+  "business_group": "文心大模型",
+  "department": "推理平台",
+  "role": "后端开发",
+  "year": 2025,
+  "source": {
+    "type": "aggregated",
+    "urls": [
+      "https://www.nowcoder.com/discuss/519452215057055744",
+      "https://blog.csdn.net/weixin_45768638/article/details/145811592",
+      "https://blog.csdn.net/2201_75499313/article/details/139372738",
+      "https://www.nowcoder.com/enterprise/139/interview"
+    ],
+    "note": "综合牛客网百度深度学习技术平台部2024-2025面经（一面55min+二面45min）、CSDN百度大模型面经、牛客百度算法岗三面面经。百度推理平台方向社招面试侧重GPU编程、模型部署、推理优化实战经验，C++基础要求高。"
+  },
+  "verification_status": "real-aggregated-from-public-posts",
+  "interview_rounds": 3,
+  "rounds": [
+    {
+      "name": "一面",
+      "focus": "GPU编程 + 模型部署实战 + C++基础 + 算法",
+      "duration_min": 55,
+      "questions": [
+        {
+          "question": "自我介绍，挑一个最有深度的项目详细介绍，包括模型部署和推理优化的经验。",
+          "category": "项目",
+          "insight": "百度推理平台一面项目占比大（约25min），面试官会深挖模型服务化、推理优化、GPU资源调度相关经验。社招需要有实际的模型部署经验，能说清楚优化前后的性能数据。"
+        },
+        {
+          "question": "对目前大模型方向的理解？部署过哪些模型？用什么框架部署的？",
+          "category": "推理平台专项",
+          "insight": "考察对大模型生态的整体认知。需要了解主流模型（GPT系列/LLaMA/文心）和部署框架（vLLM/TensorRT-LLM/FastDeploy/Triton）。社招需要有实际部署经验，能对比不同框架的优劣。"
+        },
+        {
+          "question": "GPU内存结构？Global Memory / Shared Memory / Register的层次关系？",
+          "category": "GPU编程",
+          "insight": "GPU内存层次：Register（最快，线程私有）→ Shared Memory（Block内共享，用户管理）→ L1/L2 Cache → Global Memory（最慢，所有线程可见）→ Host Memory。推理优化需要理解内存层次来优化数据访问模式。"
+        },
+        {
+          "question": "CUDA写GEMM（矩阵乘法）的基本思路？Bank Conflict是什么？怎么解决？",
+          "category": "GPU编程",
+          "insight": "GEMM：分块（tiling）到Shared Memory，每个Block计算输出矩阵的一个子块。Bank Conflict：Shared Memory分32个bank，同一warp内多个线程访问同一bank的不同地址时产生冲突。解决：padding（多分配一列）、调整访问模式使线程访问不同bank。这是推理引擎算子优化的核心知识。"
+        },
+        {
+          "question": "缓存一致性协议了解吗？MESI协议的四个状态？",
+          "category": "计算机体系结构",
+          "insight": "MESI：Modified（已修改，独占脏数据）、Exclusive（独占干净数据）、Shared（多核共享）、Invalid（无效）。状态转换由总线嗅探触发。CPU缓存一致性影响多线程程序性能，false sharing问题。"
+        },
+        {
+          "question": "流水线、分支预测、乱序执行分别是什么？对性能有什么影响？",
+          "category": "计算机体系结构",
+          "insight": "流水线：将指令执行分为多个阶段并行。分支预测：预测条件跳转方向减少流水线停顿（预测错误需要flush）。乱序执行：打破指令顺序依赖，提高ILP（指令级并行度）。推理引擎中CPU端调度逻辑的性能优化需要理解这些概念。"
+        },
+        {
+          "question": "手撕：链表排序（要求O(nlogn)时间复杂度）",
+          "category": "算法",
+          "insight": "归并排序最适合链表：快慢指针找中点→递归排序左右两半→合并两个有序链表。时间O(nlogn)，空间O(logn)递归栈。也可用自底向上迭代归并做到O(1)空间。百度一面手撕难度中等，要求代码完整。"
+        }
+      ]
+    },
+    {
+      "name": "二面",
+      "focus": "C++深度 + 系统设计 + 项目追问",
+      "duration_min": 45,
+      "questions": [
+        {
+          "question": "实习/工作中做过的推理优化项目，具体优化了什么指标？优化前后的数据对比？",
+          "category": "项目",
+          "insight": "二面项目追问更深入，关注量化的性能数据。推理平台方向：TTFT降低了多少、吞吐提升了多少倍、GPU利用率从多少提升到多少。需要准备具体的优化手段和效果数据。"
+        },
+        {
+          "question": "shared_ptr、unique_ptr、weak_ptr的区别？各自的使用场景？循环引用怎么解决？",
+          "category": "C++",
+          "insight": "shared_ptr：引用计数共享所有权。unique_ptr：独占所有权，不可拷贝只能移动。weak_ptr：不增加引用计数，解决shared_ptr循环引用。推理引擎中模型对象、KV Cache块的生命周期管理大量使用智能指针。"
+        },
+        {
+          "question": "虚函数的实现原理？虚函数表在内存中的布局？多继承下虚函数表怎么组织？",
+          "category": "C++",
+          "insight": "每个含虚函数的类有一个vtable，对象头部存vptr指向vtable。多继承：每个基类一个vtable，对象中有多个vptr。虚函数调用：通过vptr查vtable找到函数地址间接调用。推理框架（如vLLM的C++后端）大量使用多态设计。"
+        },
+        {
+          "question": "inline函数有什么好处？什么情况下inline会失效？",
+          "category": "C++",
+          "insight": "好处：消除函数调用开销（压栈/跳转/返回）、有利于编译器进一步优化（常量传播/死代码消除）。失效：函数体过大、递归函数、通过函数指针调用、虚函数（运行时才确定）。inline只是建议，编译器可以忽略。"
+        },
+        {
+          "question": "前向声明（forward declaration）的用法？什么时候必须用前向声明？",
+          "category": "C++",
+          "insight": "前向声明：声明类/函数存在但不定义，减少头文件依赖。必须用的场景：两个类互相引用（循环依赖）、只需要指针/引用不需要完整定义时。好处：减少编译时间、降低耦合。大型C++项目（如推理框架）中广泛使用。"
+        },
+        {
+          "question": "虚拟内存和物理内存的关系？页表的作用？TLB miss的代价？",
+          "category": "操作系统",
+          "insight": "虚拟内存：每个进程独立地址空间，通过页表映射到物理内存。页表：虚拟页号→物理页框号的映射。TLB：页表缓存，miss时需要多级页表查找（4级页表需4次内存访问）。大页（Huge Page）可减少TLB miss，推理服务常用2MB/1GB大页优化。"
+        },
+        {
+          "question": "用PyTorch手写一个简单的MLP（多层感知机），包括前向传播。",
+          "category": "深度学习工程",
+          "insight": "考察基本的PyTorch编程能力。nn.Module子类，__init__定义层（nn.Linear + nn.ReLU），forward定义前向传播。注意：激活函数位置、dropout的训练/推理模式区别、参数初始化。推理平台工程师需要理解模型结构才能做好优化。"
+        }
+      ]
+    },
+    {
+      "name": "三面",
+      "focus": "技术视野 + 系统设计 + 综合素质",
+      "duration_min": 45,
+      "questions": [
+        {
+          "question": "如果让你从零设计一个大模型推理服务，支持多模型、多租户、弹性伸缩，你会怎么设计？",
+          "category": "系统设计",
+          "insight": "核心模块：API Gateway（鉴权/限流/路由/多租户隔离）→ 请求调度器（Continuous Batching/优先级队列/抢占策略）→ 推理引擎集群（模型加载/KV Cache管理/GPU资源池化）→ 输出层（流式返回/SSE）。非功能需求：多模型版本管理、灰度发布、弹性伸缩（基于GPU利用率/队列深度的HPA）、监控告警（TTFT/TPOT/吞吐/GPU利用率）。"
+        },
+        {
+          "question": "vLLM和TensorRT-LLM你都用过吗？在实际生产中怎么选型？",
+          "category": "推理框架选型",
+          "insight": "vLLM：开源生态好、模型支持广、PagedAttention显存效率高、适合快速迭代。TensorRT-LLM：NVIDIA深度优化、单卡性能更强、但模型适配成本高。生产选型考虑：模型更新频率（高→vLLM）、极致性能要求（高→TRT-LLM）、硬件多样性（需要→vLLM）、团队技术栈。百度内部有FastDeploy做跨硬件适配。"
+        },
+        {
+          "question": "大模型推理成本优化有哪些方向？从模型层面和系统层面分别说说。",
+          "category": "技术视野",
+          "insight": "模型层面：量化（INT8/INT4/FP8）、蒸馏（大模型→小模型）、剪枝、MoE稀疏激活。系统层面：Continuous Batching提升吞吐、KV Cache优化（PagedAttention/量化/驱逐）、Speculative Decoding加速解码、Prefix Caching减少重复计算、Disaggregated Prefill/Decode分离调度。硬件层面：GPU选型（H100 vs A100）、国产芯片适配（昆仑芯）。"
+        },
+        {
+          "question": "你还有什么想问我的？",
+          "category": "反问",
+          "insight": "建议问：文心大模型推理平台当前最大的技术挑战（长上下文推理？多模态推理？成本优化？）、百度昆仑芯片在推理场景的进展、团队的技术方向和新人成长路径。"
+        }
+      ]
+    }
+  ],
+  "overall_insight": "百度文心大模型推理平台社招面试三轮。一面侧重GPU编程实战（CUDA GEMM/Bank Conflict/GPU内存层次）和模型部署经验，C++基础要求高，手撕链表排序。二面深入C++（智能指针/虚函数/inline/前向声明）和操作系统（虚拟内存/TLB），要求手写PyTorch MLP。三面考察系统设计能力（从零设计推理服务平台）和技术视野（推理框架选型/成本优化方向）。整体风格：百度推理平台社招对GPU编程和C++底层要求很高，需要有实际的模型部署和推理优化经验，能说清楚优化前后的性能数据。面试节奏快，两面可在同一天完成。",
+  "followups": [
+    "可补充百度推理平台方向的算法岗面经（偏模型压缩/量化/蒸馏）",
+    "后续可补充百度昆仑芯片适配和FastDeploy框架相关的系统设计题"
+  ]
+}

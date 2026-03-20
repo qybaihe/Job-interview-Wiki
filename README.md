@@ -29,14 +29,15 @@
 
 ## 当前状态
 
-> 统计口径说明：以下统计按仓库当前文件树直接计数，包含所有 `question-bank.md`、`算法-question-bank.md`、`客户端开发-question-bank.md`，以及 `interview-experiences/` 下全部 JSON 文件。
+> 统计口径说明：以下统计按仓库当前文件树直接计数。`题库主目录` 仅统计 `question-bank.md`；`题库文件总数` 统计所有 `question-bank.md`、`算法-question-bank.md`、`客户端开发-question-bank.md`；JSON 统计包含 `interview-experiences/` 下全部 JSON 文件。
 
 | 指标 | 数量 |
 |------|------|
 | 覆盖公司 | 16 家 |
 | 方向目录 | 50 个 |
-| Markdown 题库 | 50 份 |
-| JSON 面经总数 | 131 份 |
+| 题库主目录（`question-bank.md`） | 49 份 |
+| 题库文件总数（含算法/客户端扩展题库） | 56 份 |
+| JSON 面经总数 | 136 份 |
 
 > 补充说明：
 > - 上述 JSON 统计**包含** `sample.json`、文件名带“样板”的占位数据，以及“首批样板”类示例文件

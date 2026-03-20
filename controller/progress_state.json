@@ -2,7 +2,7 @@
   "generated_at": "2026-03-20T11:35:00+08:00",
   "phase": "deepening-and-expanding",
   "summary": {
-    "todo": 20,
+    "todo": 47,
     "running": 0,
     "completed": 30,
     "companies_seeded": 16,
@@ -39,7 +39,8 @@
     {"dir": "腾讯/云与智慧产业事业群/基础架构", "json": 2, "qb": true}
   ],
   "notes": [
-    "2026-03-20T11:35 重新盘点仓库：50个方向，130份面经JSON，41个题库。识别出20个待办项，进入深化扩展阶段。"
+    "2026-03-20T11:35 重新盘点仓库：50个方向，130份面经JSON，41个题库。识别出20个待办项，进入深化扩展阶段。",
+    "2026-03-20T12:55 新增 TODO_DEEPENING_BACKLOG.md，建立长期 backlog：覆盖从零建设、薄覆盖补厚、强方向深挖、样板清理、README/状态对齐、命名统一与去重治理，确保 cron 在搜索受阻时仍有高质量资产治理任务可做。"
   ],
   "next_actions": [
     {"dir": "字节跳动/抖音生活服务/服务端研发", "json": 0, "qb": false, "action": "从零建设：搜索面经+建题库", "priority": "P0"},

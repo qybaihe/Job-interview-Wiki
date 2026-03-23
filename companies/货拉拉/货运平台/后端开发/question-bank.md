@@ -78,5 +78,5 @@
 
 ## 来源
 - https://www.huolala.cn/
-- 本轮 worker-E 候选包：`.tmp-runs/20260323-1948-worker-E/report.md`
-- 本轮 worker-E 来源记录：`.tmp-runs/20260323-1948-worker-E/sources.txt`
+- 货拉拉官网公开业务信息：https://www.huolala.cn/
+- 公开业务锚点：同城/跨城货运、企业版物流、搬家、零担、跑腿、冷运、汽车租售及车后市场、多车型即时智能调度

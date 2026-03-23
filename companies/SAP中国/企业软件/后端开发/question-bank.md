@@ -55,8 +55,8 @@
 30. 如果你面 SAP中国 的后端岗，在项目介绍里最该重点突出哪些能力：复杂业务建模、企业集成、权限审计、稳定性还是交付落地经验？
 
 ## 来源映射说明
-- 多租户 SaaS：SAP CAP 官方多租户文档
-- Messaging / 事件驱动：SAP CAP Messaging 文档
-- 审计日志：SAP CAP Audit Logging 文档
-- 授权：SAP CAP Authorization 文档
-- 企业集成：SAP Integration Suite 主题页
+- 多租户 SaaS：https://cap.cloud.sap/docs/guides/multitenancy/
+- Messaging / 事件驱动：https://cap.cloud.sap/docs/guides/messaging/
+- 审计日志：https://cap.cloud.sap/docs/guides/data-privacy/audit-logging
+- 授权：https://cap.cloud.sap/docs/guides/security/authorization
+- 企业集成：https://www.sap.com/products/technology-platform/integration-suite.html

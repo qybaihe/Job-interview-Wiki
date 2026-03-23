@@ -1,0 +1,119 @@
+{
+  "company": "科大讯飞",
+  "business_group": "语音技术",
+  "department": "语音与NLP算法",
+  "role": "语音算法实习生",
+  "source": {
+    "type": "public-interview-post",
+    "url": "https://www.nowcoder.com/feed/main/detail/ecc78cf5ec404c078fbe62fc5f94ab75",
+    "urls": [
+      "https://www.nowcoder.com/feed/main/detail/ecc78cf5ec404c078fbe62fc5f94ab75"
+    ],
+    "note": "牛客公开单帖《科大讯飞语音算法实习面经》。原帖明确为日常实习，正文给出项目追问、八股与算法题，未显式拆分一二面，因此按“未明确轮次”结构化保留。岗位方向与现有目录口径映射为“语音技术 / 语音与NLP算法”。",
+    "verification_status": "verified-single-post"
+  },
+  "interview_rounds": 1,
+  "questions": [
+    {
+      "round": "未明确轮次",
+      "question": "结合个人项目问了负责的工作内容。",
+      "insight": "先确认候选人在项目中的真实承担部分，防止只会复述整体方案。"
+    },
+    {
+      "round": "未明确轮次",
+      "question": "llama结构。",
+      "insight": "偏大模型基础结构追问，考察是否真正理解主流 Transformer 变体。"
+    },
+    {
+      "round": "未明确轮次",
+      "question": "微调方式。",
+      "insight": "看是否掌握全量微调、参数高效微调等常见训练路线及适用场景。"
+    },
+    {
+      "round": "未明确轮次",
+      "question": "prompt工程方法。",
+      "insight": "说明岗位不只看语音算法，也看与大模型交互和落地调优能力。"
+    },
+    {
+      "round": "未明确轮次",
+      "question": "启发式算法定义及原理。",
+      "insight": "基础算法理解题，常用于看候选人是否具备抽象与解释能力。"
+    },
+    {
+      "round": "未明确轮次",
+      "question": "另一个项目有关u-net的原理，u是什么意思，encoder、decoder中包含的层是哪些，如何实现升降采样。",
+      "insight": "对项目细节追得很具体，重点在模型结构理解而非只会调用现成框架。"
+    },
+    {
+      "round": "未明确轮次",
+      "question": "transformer原理。",
+      "insight": "大模型/语音算法通用基础题，通常要能讲清注意力、编码层与训练推理差异。"
+    },
+    {
+      "round": "未明确轮次",
+      "question": "transformer和lstm核心区别。",
+      "insight": "考察对序列建模路线差异、并行性与长程依赖处理方式的理解。"
+    },
+    {
+      "round": "未明确轮次",
+      "question": "transformer最大优点。",
+      "insight": "简答题，但能快速暴露候选人是否真正理解架构优势。"
+    },
+    {
+      "round": "未明确轮次",
+      "question": "transformer中encoder和decoder区别。",
+      "insight": "典型模型结构辨析题。"
+    },
+    {
+      "round": "未明确轮次",
+      "question": "transformer中cross attention和self attention在哪里体现。",
+      "insight": "属于更细一层的结构追问，要求不只是知道名词。"
+    },
+    {
+      "round": "未明确轮次",
+      "question": "zero shot 和few shot区别。",
+      "insight": "考察大模型推理范式基础概念。"
+    },
+    {
+      "round": "未明确轮次",
+      "question": "moe原理。",
+      "insight": "涉及当前热门模型架构，能区分基础候选人与跟进前沿的人。"
+    },
+    {
+      "round": "未明确轮次",
+      "question": "大模型最常用结构。",
+      "insight": "看知识框架是否成体系。"
+    },
+    {
+      "round": "未明确轮次",
+      "question": "大模型幻觉产生的原因。",
+      "insight": "偏原理与落地结合题，回答时通常需要兼顾数据、训练目标和解码机制。"
+    },
+    {
+      "round": "未明确轮次",
+      "question": "tokenizer主要类型。",
+      "insight": "基础但高频，适合判断 NLP 基本功。"
+    },
+    {
+      "round": "未明确轮次",
+      "question": "大模型复读机定义及解决方法。",
+      "insight": "除了理论理解，还会看是否了解推理/训练侧常见缓解手段。"
+    },
+    {
+      "round": "未明确轮次",
+      "question": "被用户投诉大模型输出质量差可以从哪些方面改进。",
+      "insight": "工程落地题，重点是能否从数据、提示词、检索、模型、评测等多层给出方案。"
+    },
+    {
+      "round": "未明确轮次",
+      "question": "有序数组从小到大排列，原地删除次数超过两次的元素使得每个元素最多保留两次。",
+      "insight": "典型双指针/原地数组修改题，考察编码基本功。"
+    },
+    {
+      "round": "未明确轮次",
+      "question": "大小为n的数组，找出多数元素，即在数组中出现次数大于n/2的元素，要求三种方法。",
+      "insight": "不仅要会写，还要能比较哈希、排序、投票等不同解法的复杂度。"
+    }
+  ],
+  "final_insight": "这篇单帖虽然没有明确拆成一二面，但岗位、公司、方向和题目集合都较清晰，且题目横跨项目细节、大模型/NLP基础与手撕算法，能较真实反映科大讯飞语音算法实习面试的考察口径。更适合作为‘真实单帖但轮次未明’的结构化面经，而不是硬拆成不存在的多轮记录。"
+}

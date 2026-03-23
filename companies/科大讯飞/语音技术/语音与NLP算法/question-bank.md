@@ -79,3 +79,7 @@
 - https://www.xfyun.cn/doc/tts/online_tts/API.html
 - https://www.xfyun.cn/doc/spark/API.html
 - https://www.xfyun.cn/doc/spark/Web.html
+
+## 合并说明
+- 本轮属于 **既有公司 / 既有方向的正式增强**，不是新增公司。
+- 相比旧版，本版更系统地补齐了 ASR/TTS/NLP 联动、流式处理、评测体系与算法原理高频追问。
